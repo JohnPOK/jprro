@@ -90,6 +90,10 @@ $(document).ready(function(){
 	$('#btn-myad').click(function(){
 		window.open('/srv/www/htdocs/phpmyadmin/','_blank');
 	});
+	$('#btn-dashb').click(function(){
+		window.open('/srv/www/htdocs/bitnami/dashboard/','_blank');
+	});
+
 	$('#btn-pyth').click(function(){
 		window.open('http://localhost:81/test.py','_blank');
 	});
