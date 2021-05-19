@@ -88,7 +88,7 @@ $(document).ready(function(){
 
 	/* PHP MyAdmin and other local Buttons */
 	$('#btn-myad').click(function(){
-		window.open('/srv/www/htdocs/phpMyAdmin/','_blank');
+		window.open('/phpMyAdmin/','_blank');
 	});
 	$('#btn-dashb').click(function(){
 		window.open('/srv/www/htdocs/bitnami/dashboard/','_blank');
