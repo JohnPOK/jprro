@@ -1,0 +1,36 @@
+/*!
+ * Start Bootstrap - Shop Homepage (https://startbootstrap.com/templates/shop-homepage)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+}
+
+.bg-my-testament {
+    background-color: #20697A!important;
+}
+
+.textarea-style {
+    background-image: -webkit-linear-gradient(top, transparent, transparent 19px, #E7EFF8 0), -webkit-radial-gradient(4% 50%, circle closest-corner, #ffffff, #ffffff 39%, transparent 0%), -webkit-radial-gradient(3.9% 46%, circle closest-corner, #ffffff, #ffffff 100%, #ffffff05 0%);
+    height: 200px;
+    background-color: #fff;
+    -webkit-background-size: 100% 20px;
+    background-size: 100% 20px;
+    /* line-height: 1; */
+    /* font-size: 24px; */
+    line-height: 35px;
+    padding: 10px;
+}
+form{
+   width:100%;
+}
+.height-300{
+  height: 300px !important;
+}
+form teaxtarea{
+	min-height:100px;
+}
+.card img.card-img-top {
+    height: 285.88px;
+}

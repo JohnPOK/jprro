@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Major Services Provided on IP Networks</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic A</h2>
+					</div>
+					<h3 class="text-success">IP Network Services</h3>
+					<p>There are a wealth of services available for implementation on an IP network. You will start investigating these by looking at some file transfer services.</p>
+					<h4>Network Services.</h4>
+					<p>Common network services include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">File-transfer services such as <text class="font-weight-bold font-italic text-primary">File Transfer Protocol (FTP)</text> and <text class="font-weight-bold font-italic text-primary">Trivial FTP (TFTP)</text>.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Dynamic Host Configuration Protocol (DHCP)</text>: A network service that automatically assigns IP addresses and other TCP/IP configuration information on network nodes configured as DHCP clients.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Network Address Translation (NAT)</text>.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Network Time Protocol (NTP)</text>.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Domain Name System (DNS)</text>: A Tranmission Control Protocol/Internet Protocol (TCP/IP) name resolution service that translates <i>Fully Qualified Domain Names (FQDNs)</i> into IP addresses.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Network Management</text>.</li>
+					</ul>
+					<h4>FTP</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">File Transfer Protocol (FTP)</text> is a standard networking protocol that moves files between network nodes. Because it uses a client-server model, two connections are required: <text class="font-italic">one for moving the data</text> and <text class="font-italic">one for control purposes</text></p>
+					<p>FTP is <u>not</u> encrypted, which might pose a security risk. Secure versions are available:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-primary">FTPS</text>: FTP with TLS/SSL security uses TLS or SSL to encrypt all FTP communications.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-primary">SFTP</text>: SSH FTP uses SSH to encrypt FTP data transfers.</li>
+					</ul>
+					<p>This table lists the default transport protocols and ports for each type of FTP.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 75%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 25%">FTP Type</th>
+									<th style="width: 75%">Transport Protocol and Port Number</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-primary">FTP</td>
+									<td>TCP port <text class="font-weight-bold">20</text> for data connection and TCP port <text class="font-weight-bold">21</text> for control information.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-primary">FTPS</td>
+									<td class="text-secondary">
+										<ul>
+											<li class="alert alert-danger" role="alert">TCP or UDP ports <text class="font-weight-bold">989</text> and <text class="font-weight-bold">990</text> for implicit FTPS.</li>
+											<li class="alert alert-danger" role="alert">TCP ports <text class="font-weight-bold">20</text> and <text class="font-weight-bold">21</text> for explicit FTPS.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-primary">SFTP</td>
+									<td>TCP or UDP port <text class="font-weight-bold">22</text> (the same port number as SSH).</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h5>Implicit and Explicit FTPS</h5>
+					<p>FTPS provides implicit and explicit modes.</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">With <text class="font-italic">implicit FTPS</text>, an SSL connection is established first, then login and file transfer can occur.</li>
+						<li class="alert alert-warning" role="alert">With <text class="font-italic">explicit FTPS</text>, a traditional FTP connection is established, and then a secure SSL connection is established prior to login. FTPS clients send the AUTH command prior to logging in so that credentials are secured.</li>
+					</ul>
+					<p>Explicit FTPS is the preferred mode, but there are still implicit FTPS clients in use.</p>
+					<h4>TFTP</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">Trivial File Transfer Protocol (TFTP)</text> is an Application layer protocol that enables the transfer of configuration files between Cisco devices. TFTP is a simple version of File Transfer Protocol (FTP). It uses <text class="font-italic">User Datagram Protocol (UDP)</text> as the transport protocol for providing basic file transfer features in a network. TFTP uses UDP port <text class="font-weight-bold">69</text>.</p>
+					<p>Many Cisco devices, most commonly Cisco IP phones, receive configuration files from a TFTP server. The <text class="font-weight-bold text-success">tftp</text> option is used along with the <text class="font-weight-bold text-success">copy</text> command to move configuration files between a switch's or router's <text class="font-italic">Random Access Memory</text> or <text class="font-italic">Non-volatile RAM (NVRAM)</text> and a TFTP server. On the NVRAM or TFTP server, when a file is copied, the existing file is erased and replaced by the new file. However, when a configuration file is copied into the running config file in the RAM, the copied file is merged with the existing running config file. The command to copy configuration files is:</p>
+					<p><text class="font-weight-bold text-success">copy tftp {running-config | startup-config | device:filename}</text> </p>
+					<p>Cisco IP phone devices are <u>not</u> pre-configured with the IP address of the TFTP server. They need to obtain this IP address from the DHCP server. Such devices use option <text class="font-weight-bold">66</text> of the <text class="font-weight-bold text-success">dhcp</text> command to request the DHCP server for the IP address of the TFTP server. If the network has two TFTP servers, devices can use option <text class="font-weight-bold">150</text> to obtain the IP addresses of the primary and secondary TFTP servers.</p>
+					<h4>Command Reference: TFTP Commands</h4>
+					<p>This section contains the commands you will use in the next set of labs.</p>
+					<h5>TFTP Commands</h5>
+					<p>The following commands are used in the TFTP labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">copy running-config [startup-config | tftp | &lt;device&gt;:&lt;filename&gt;]</text>: Copies a device's running configuration file to another destination.</li>
+						<li><text class="font-weight-bold text-success">copy tftp [running-config | startup-config | &lt;device&gt;:&lt;filename&gt;]</text>: Copies a file from a TFTP server to another destination.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">erase startup-config</text>: Deletes the startup configuration file in NVRAM.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-secondary">interface /dg &lt;type&gt; &lt;number&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /ip &lt;ip-address&gt; &lt;subnetmask&gt;</text>: Used in NetSim to assign an IP address and subnet mask to a workstation interface.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show startup-config</text>: Displays the backup configuration file.</li>
+						<li><text class="font-weight-bold text-secondary">show tftp-configs</text>: Used in NetSim to display a list of files copied using TFTP and stored on a PC.</li>
+					</ul>
+					<h5>Lab: Trivial File Transfer Protocol</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Trivial File Transfer Protocol</text></li>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+					<h5>Lab: Backup Using TFTP</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Backup Using TFTP</text></li>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

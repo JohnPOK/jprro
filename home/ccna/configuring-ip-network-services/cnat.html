@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure NAT</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic C</h2>
+					</div>
+					<h3 class="text-success">Configure NAT</h3>
+					<p>Some organizations prefer to use private IP addresses on their internal networks for security and management purposes. As a CCNA, you will be expected to ensure that no matter what type of IP addresses are on your network, users can access the resources they need, whether the resources are stored locally or remotely.</p>
+					<h4>Network Address Translation (NAT)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Network Address Translation (NAT)</text> is a mechanism for translating IP addresses to external addresses. The most common case for NAT is to enable internal hosts using private IP addresses to communicate with external hosts on the Internet.</p>
+					<p>NAT became a necessity when the world adopted private IP addresses. Because private IP addresses are by agreement <u>not</u> routable, hosts on the Internet cannot send packets to them. They can send traffic only to a public IP address. Private hosts temporarily use the router's public IP address. The NAT service running on a router or firewall translates the private addresses to <text class="font-italic">globally unique</text>, public IP addresses. Packets sent to the Internet from internal hosts appear as if they came from a public IP address. The NAT device keeps a table of these translations, thus allowing two-way communications between the internal and external hosts. Translations are kept in the <text class="font-italic">NAT table</text> for about <text class="font-weight-bold">24</text> hours by default. When the client ends the session, the translations eventually age out and are removed from the NAT table.</p>
+					<p><img src="/cisco/include/img/Fig-6-3.png" class="img-thumbnail" alt="nat" width="65%" height="65%"></p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> One side effect of NAT is to add a modicum of security to your network. Because your internal hosts are hidden behind NAT, they cannot normally be found by external hosts until your private hosts make the connection. It is possible, however, for a malicious actor to compromise an external host, and when a connection is made then attack your internal hosts. NAT should be used in conjunction with packet filtering or other firewall rules to protect your internal hosts.</text></li>
+					</ul>
+					<p>NAT uses UDP port <text class="font-weight-bold">5351</text>.</p>
+					<h4>NAT Address Types</h4>
+					<p>Cisco classifies NAT addresses into four types, which are often referred to as "<text class="font-italic">inside</text> and <text class="font-italic">outside NAT</text>":</p>
+					<ul>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Inside local address</text>: An IP address assigned to a node inside your internal network. These are usually <text class="font-italic">private IP addresses</text>.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Inside global address</text>: An IP address assigned to an Internet-facing router and used for communicating with remote hosts. These are <text class="font-italic">public IP addresses</text> that private hosts "borrow" when they are using NAT to communicate on the Internet.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Outside global address</text>: An IP address assigned to a remote host (usually a server on the Internet) and used for communicating with other remote hosts. These are <text class="font-italic">public IP addresses</text>.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Outside local address</text>: An IP address assigned to a remote host and used on your internal network. The remote host is assigned one of YOUR private addresses if it's also being translated as its traffic enters your network. It is actually rare to translate public (outside global) IP addresses to private addresses.</li>
+					</ul>
+					<p><text class="font-italic">Inside NAT</text> is implemented more often than <text class="font-italic">outside NAT</text>.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> NAT does <u>not</u> have to translate from private to public addresses, which is why the types refer to "inside" and "outside".</text></li>
+					</ul>
+					<h4>Source and Destination NAT</h4>
+					<p><text class="font-italic">Source NAT (SNAT)</text> changes the source address (and possibly the source port) in the IP header. This is how the private address gets changed to a public address in the packets that are leaving the local network.</p>
+					<p><text class="font-italic">Destination NAT (DNAT)</text> changes the destination address (and possibly the destination port) in the IP header. This is how incoming packets (that were addressed to the inside global address) get changed to deliver the packet to the inside local address.</p>
+					<h4>Static and Dynamic NAT</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Static NAT</text> is a NAT implementation in which each private IP address used on the local network is mapped to a specific registered public IP address. The IP address of a host on a local network is always translated to the same public IP address by the static NAT service.</p>
+					<p>The NAT router maintains a <text class="font-italic">static one-to-one mapping</text> of private and public IP addresses.</p>
+					<p>Cisco documentation refers to the local network part of the NAT implementation as the <text class="font-italic">inside part</text>. It refers to the external network part of the NAT implementation that deals with hosts in the Internet as the <text class="font-italic">outside part</text>. NAT can also be configured to modify the IP address of an external host.</p>
+					<p><text class="font-weight-bold font-italic text-primary">Dynamic NAT</text> is a NAT implementation in which each private IP address used in the local network is dynamically mapped to a registered public IP address. An address pool with a list of available public IP addresses is used by the dynamic NAT service. The router is configured with the matching logic for address translation, and it also maintains a NAT table.</p>
+					<p>When a packet reaches the router from an internal host, the router:
+						<div>
+							<table class="table table-responsive table-borderless table-sm" style="width: 90%">
+								<tbody>
+									<tr class="alert alert-success" role="alert">
+										<td class="font-weight-bold"style="width: 5%">1.</td>
+										<td style="width: 95%">Applies the matching logic and allocates the first address from the address pool.</td>
+									</tr>
+									<tr class="alert alert-success" role="alert">
+										<td class="font-weight-bold"style="width: 5%">2.</td>
+										<td style="width: 95%">Adds an entry in the NAT table showing the inside global address corresponding to the inside local address.</td>
+									</tr>
+									<tr class="alert alert-success" role="alert">
+										<td class="font-weight-bold"style="width: 5%">3.</td>
+										<td style="width: 95%">Performs NAT translation and routes the packet to the external network.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</p>
+					<p>A <text class="font-weight-bold font-italic text-primary">NAT pool</text> is a set of public IP addresses to be used by NAT for dynamic mapping and address translation.</p>
+					<p>To configure dynamic NAT:
+						<div>
+							<table class="table table-responsive table-borderless table-sm " style="width: 90%">
+								<tbody>
+									<tr class="alert alert-warning" role="alert">
+										<td class="font-weight-bold"style="width: 5%">1.</td>
+										<td style="width: 95%">Configure the interfaces involved in the inside and outside parts of the NAT implementation, and configure an ACL to filter inside local addresses that require NAT.</td>
+									</tr>
+									<tr class="alert alert-warning" role="alert">
+										<td class="font-weight-bold"style="width: 5%">2.</td>
+										<td style="width: 95%">Configure the NAT pool using the <text class="font-weight-bold text-success">ip nat pool</text> command.</td>
+									</tr>
+									<tr class="alert alert-warning" role="alert">
+										<td class="font-weight-bold"style="width: 5%">3.</td>
+										<td style="width: 95%">Enable dynamic NAT by referencing the ACL and the NAT pool using the <text class="font-weight-bold text-success">ip nat inside source list</text> command. The <text class="font-weight-bold text-success">netmask</text> parameter in the <text class="font-weight-bold text-success">ip nat pool</text> command is used to check whether addresses provided in the command are on the same subnet. If addresses are <u>not</u> on the same subnet, the command is <u>not</u> executed by Cisco IOS.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</p>
+					<p>In dynamic NAT, it is possible for the address pool to have fewer public IP addresses than the private IP addresses used on the local network. In such cases, a timer is used in the NAT table. By setting a timeout value, you can ensure that NAT table entries for inside local addresses that have <u>not</u> sent out a packet in a long time are removed. This is done to make sure that inside global addresses can be reallocated among inside local addresses. However, you need to ensure that the address pool is large enough so that hosts are able to transmit packets without delay.</p>
+					<h4>Wildcard Masks and NAT</h4>
+					<p>You can use wildcard masks to determine which private IP addresses are eligible for using NAT by specifying a standard ACL with a source IP address on the inside (private) network.</p>
+					<p>Consider a situation where you want to allow an entire subnet to access the Internet by sharing the outside IP address of a router interface. In this example, the subnet address is <text class="font-weight-bold">192.168.1.0/24</text>, and the router interface is <text class="font-weight-bold">s0/0</text>. To convert public IP addresses, you can use a technique called <text class="font-weight-bold font-italic text-primary">NAT overload</text> (or <text class="font-weight-bold font-italic text-primary">port address translation</text>).</p>
+					<p><img src="/cisco/include/img/Fig-6-4.png" class="img-thumbnail" alt="wildcard masks and nat" width="65%" height="65%"></p>
+					<h4>Command Reference: NAT Configuration</h4>
+					<p>This section contains the commands you will use in the next set of labs.</p>
+					<h5>NAT Configuration</h5>
+					<p>The following commands are used in the NAT Configuration labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">access-list &lt;access-list-number&gt; {deny | permit } &lt;source-address&gt; &lt;source-wildcard&gt;</text>: Creates an access control list (ACL) that denies or permits IP traffic from the specified address or address range.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside</text>: Defines the inside interface for NAT.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside source list &lt;access-list-number&gt; interface &lt;type&gt; &lt;number&gt; overload</text>: Translates anything that matches the ACL to the IP address of the specified interface - <text class="font-weight-bold text-success">overload</text> indicates that PAT will be used.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside source list &lt;access-list-number&gt; pool &lt;pool-name&gt;</text>: Translates anything that matches the ACL to an address from the pool.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside source static &lt;inside-local-address&gt; &lt;inside-global-address&gt;</text>: Enables NAT translation of the inside source address.</li>
+						<li><text class="font-weight-bold text-success">ip nat outside</text>: Configures an interface to be an outside interface.</li>
+						<li><text class="font-weight-bold text-success">ip nat outside source static &lt;inside-local-address&gt; &lt;inside-global-address&gt;</text>: Enables NAT translation of the outside source address.</li>
+						<li><text class="font-weight-bold text-success">ip nat pool &lt;pool-name&gt; &lt;start-address&gt; &lt;end-address&gt; netmask &lt;subnet-mask&gt;</text>: Creates an address pool.</li>
+						<li><text class="font-weight-bold text-success">ip route &lt;destination-prefix&gt; &lt;destination-prefix-mask&gt; &lt;ip-address&gt; | &lt;interface-type&gt; &lt;ip-address&gt;</text>: Establishes a static route.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Configuring Network Address Translation I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab:  <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Configuring Network Address Translation I </text></li>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+					<h5>Lab: Configuring Network Address Translation II</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab:  <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Configuring Network Address Translation II </text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Static NAT</h4>
+					<p>This section contains the commands you will use in the next set of labs.</p>
+					<h5>Static NAT</h5>
+					<p>The following commands are used in the Static NAT labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">clock rate &lt;clock-rate&gt;</text>: Sets the clock rate for a DCE interface.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside</text>: Defines the inside interface for NAT.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside source static &lt;inside-local-address&gt; &lt;inside-global-address&gt;</text>: Enables NAT translation of the inside source address.</li>
+						<li><text class="font-weight-bold text-success">ip nat outside</text>: Configures an interface to be an outside interface.</li>
+						<li><text class="font-weight-bold text-success">network  &lt;network-address&gt;</text>: Activates RIP on the specified network.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">router rip</text>: Enables RIP routing.</li>
+						<li><text class="font-weight-bold text-success">show ip nat translations</text>: Displays the NAT translation table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">version 2</text>: Enables RIPv2.</li>
+					</ul>
+					<h5>Lab: Static NAT I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab:  <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Static NAT I </text></li>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+					<h5>Lab: Static NAT II</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab:  <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Static NAT II </text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Dynamic NAT</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Dynamic NAT</h5>
+					<p>The following commands are used in the Dynamic NAT lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">access-list &lt;access-list-number&gt; {deny | permit } &lt;source-address&gt; &lt;source-wildcard&gt;</text>: Creates an access control list (ACL) that denies or permits IP traffic from the specified address or address range.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside</text>: Defines the inside interface for NAT.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside source list &lt;access-list-number&gt; interface &lt;type&gt; &lt;number&gt; overload</text>: Translates anything that matches the ACL to the IP address of the specified interface - <text class="font-weight-bold text-success">overload</text> indicates that PAT will be used.</li>
+						<li><text class="font-weight-bold text-success">ip nat outside</text>: Configures an interface to be an outside interface.</li>
+						<li><text class="font-weight-bold text-success">ip nat outside source static &lt;inside-local-address&gt; &lt;inside-global-address&gt;</text>: Enables NAT translation of the outside source address.</li>
+						<li><text class="font-weight-bold text-success">ip nat pool &lt;pool-name&gt; &lt;start-address&gt; &lt;end-address&gt; netmask &lt;subnet-mask&gt;</text>: Creates an address pool.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip nat translations</text>: Displays the NAT translation table.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Dynamic NAT</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab:  <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Dynamic NAT </text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Port Address Translation (PAT)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Port Address Translation (PAT)</text> is a subset of dynamic NAT that maps private IP addresses dynamically to public IP addresses by using multiple ports. It is also called <text class="font-italic">dynamic NAT overloading</text>.</p>
+					<p>A router configured with PAT maintains a dynamic NAT table that lists port numbers of inside local and inside global addresses. For every inside local address added to the table, PAT dynamically maps an inside global address along with a unique port number. Though PAT maps several inside local addresses to one inside global address, each mapping is unique because each inside global address is mapped to a unique port number of the inside global address.</p>
+					<p>With PAT, translations are kept in the NAT table for a default time per protocol (<text class="font-weight-bold">24</text> hours for TCP, <text class="font-weight-bold">5</text> minutes for UDP, and <text class="font-weight-bold">60</text> seconds for DNS queries and ICMP messages), but these timeouts can be adjusted per protocol.</p>
+					<p>PAT is used when a large percentage of hosts in an enterprise network need uninterrupted access to the Internet during the business hours of the company. In this scenario, even dynamic NAT would require a large pool of public IP addresses. PAT resolves the problem by making efficient use of the public IP addresses. While NAT works on a one-to-one basis, dedicating a single public IP address for each internal user, PAT can use one IP address to serve many users. It accomplishes this by using TCP ports (of which there are over  <text class="font-weight-bold">65,000 </text>) to create <text class="font-italic">unique IP address/port pairs</text>.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> You can also use wildcard masks with PAT.</text></li>
+					</ul>
+					<h4>NAT Overload</h4>
+					<p>PAT overloads NAT to enable many-to-one mapping of IP addresses.</p>
+					<p>The steps in a many-to-one NAT configuration are:
+						<div>
+							<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+								<tbody>
+									<tr class="alert alert-danger" role="alert">
+										<td class="font-weight-bold"style="width: 5%">1.</text></td>
+										<td style="width: 95%">Define the inside interfaces by using the <text class="font-weight-bold text-success">ip nat inside</text> subcommand.</td>
+									</tr>
+									<tr class="alert alert-danger" role="alert">
+										<td class="font-weight-bold"style="width: 5%">2.</text></td>
+										<td style="width: 95%">Define the outside interfaces by using the <text class="font-weight-bold text-success">ip nat outside</text> subcommand.</td>
+									</tr>
+									<tr class="alert alert-danger" role="alert">
+										<td class="font-weight-bold"style="width: 5%">3.</text></td>
+										<td style="width: 95%">Set up an ACL to apply a matching logic for filtering packets at the inside interfaces.</td>
+									</tr>
+									<tr class="alert alert-danger" role="alert">
+										<td class="font-weight-bold"style="width: 5%">4.</text></td>
+										<td style="width: 95%">Configure PAT by using the <text class="font-weight-bold text-success">ip nat inside source list &lt;access-list-number&gt; interface &lt;type&gt; &lt;number&gt; [overload]</text> command.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</p>
+					<p>The PAT configuration command refers to the IP address matched by the ACL and the IP address of the specified interface. This command is used when PAT needs only one inside global address. The <text class="font-weight-bold text-success">overload</text> option indicates that PAT is used to translate the IP address of the interface.</p>
+					<p>Another method to configure PAT involves using a NAT pool of inside global addresses. This method uses the <text class="font-weight-bold text-success">ip nat inside source list &lt;access-list-number&gt; pool &lt;pool-name&gt; overload</text> command.</p>
+					<h4>Command Reference: NAT Overloading and PAT</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>NAT Overloading - PAT</h5>
+					<p>The following commands are used in the NAT Overloading - PAT lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">access-list &lt;access-list-number&gt; {deny | permit } &lt;source-address&gt; &lt;source-wildcard&gt;</text>: Creates an access control list (ACL) that denies or permits IP traffic from the specified address or address range.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside</text>: Defines the inside interface for NAT.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside source list &lt;access-list-number&gt; interface &lt;type&gt; &lt;number&gt; overload</text>: Translates anything that matches the ACL to the IP address of the specified interface - <text class="font-weight-bold text-success">overload</text> indicates that PAT will be used.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip nat translations</text>: Displays the NAT translation table.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: NAT Overloading - PAT</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab:  <text class="font-weight-bold">CIS-NS-200301-01->Infrastructure->NAT Overloading - PAT </text></li>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+					<h4>Command Reference: Many-to-One NAT</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Many-to-One NAT</h5>
+					<p>The following commands are used in the Many-to-One NAT lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">access-list &lt;access-list-number&gt; {deny | permit } &lt;source-address&gt; &lt;source-wildcard&gt;</text>: Creates an access control list (ACL) that denies or permits IP traffic from the specified address or address range.</li>
+						<li><text class="font-weight-bold text-success">clock rate &lt;clock-rate&gt;</text>: Sets the clock rate for a DCE interface.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside</text>: Defines the inside interface for NAT.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside source list &lt;access-list-number&gt; interface &lt;type&gt; &lt;number&gt; overload</text>: Translates anything that matches the ACL to the IP address of the specified interface - <text class="font-weight-bold text-success">overload</text> indicates that PAT will be used.</li>
+						<li><text class="font-weight-bold text-success">ip nat outside</text>: Configures an interface to be an outside interface.</li>
+						<li><text class="font-weight-bold text-success">network  &lt;network-address&gt;</text>: Activates RIP on the specified network.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">router rip</text>: Enables RIP routing.</li>
+						<li><text class="font-weight-bold text-success">show ip nat translations</text>: Displays the NAT translation table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">version 2</text>: Enables RIPv2.</li>
+					</ul>
+					<h5>Lab: Many-to-One NAT</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab:  <text class="font-weight-bold">CIS-NS-200301-01->Infrastructure->Many-to-One NAT </text></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h4>Command Reference: NAT Pool</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>NAT Pool</h5>
+					<p>The following commands are used in the Many-to-One NAT lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">access-list &lt;access-list-number&gt; {deny | permit } &lt;source-address&gt; &lt;source-wildcard&gt;</text>: Creates an access control list (ACL) that denies or permits IP traffic from the specified address or address range.</li>
+						<li><text class="font-weight-bold text-success">clock rate &lt;clock-rate&gt;</text>: Sets the clock rate for a DCE interface.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside</text>: Defines the inside interface for NAT.</li>
+						<li><text class="font-weight-bold text-success">ip nat inside source list &lt;access-list-number&gt; interface &lt;type&gt; &lt;number&gt; overload</text>: Translates anything that matches the ACL to the IP address of the specified interface - <text class="font-weight-bold text-success">overload</text> indicates that PAT will be used.</li>
+						<li><text class="font-weight-bold text-success">ip nat outside</text>: Configures an interface to be an outside interface.</li>
+						<li><text class="font-weight-bold text-success">ip nat pool &lt;pool-name&gt; &lt;start-address&gt; &lt;end-address&gt; netmask &lt;subnet-mask&gt;</text>: Creates an address pool.</li>
+						<li><text class="font-weight-bold text-success">network &lt;network-address&gt;</text>: Activates RIP on the specified network.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">router rip</text>: Enables RIP routing.</li>
+						<li><text class="font-weight-bold text-success">show ip nat translations</text>: Displays the NAT translation table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">version 2</text>: Enables RIPv2.</li>
+					</ul>
+					<h5>Lab: NAT Pool</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab:  <text class="font-weight-bold">CIS-NS-200301-01->IP Services->NAT Pool </text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

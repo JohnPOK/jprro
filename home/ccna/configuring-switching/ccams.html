@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure Connectivity Among Multiple Switches</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic D</h2>
+					</div>
+					<h3 class="text-success">Configure Interswitch Connectivity</h3>
+					<p>Each VLAN is in its own <text class="font-italic">broadcast domain</text>. Data intended for a different VLAN and connected to a different switch will <u>not</u> reach its destination unless you configure interswitch connectivity.</p>
+					<h4>Trunking</h4>
+					<p>One feature of VLANs is that you can extend a single VLAN across multiple switches. To do this, you need a mechanism that can carry traffic for the same VLAN from switch to switch. <text class="font-weight-bold font-italic text-primary">Trunking</text> is that mechanism.</p>
+					<p>Switches have basically two types of ports: <text class="font-italic">access ports</text> and <text class="font-italic">trunk ports</text>. An access port has an endpoint device plugged into it, and can (generally) only belong to one VLAN at a time. A trunk port, however, is connected to another switch. It doesn't belong to any particular VLAN. Each frame that is transmitted out the trunk port is marked with the ID of the VLAN it belongs to. The receiving switch reads the mark and place the frame in the correct VLAN.</p>
+					<p>The process of inserting a VLAN ID into the header of an Ethernet frame is called <text class="font-weight-bold font-italic text-primary">VLAN tagging</text>.</p>
+					<p><img src="/cisco/include/img/Fig-2-9.png" class="img-thumbnail" alt="trunking" width="70%" height="70%"></p>
+					<p>It is important to understand the difference between a trunk link and an uplink. An <text class="font-weight-bold font-italic text-primary">uplink</text> is a simple connection between access ports on two switches. There is no trunking and no VLAN tagging. The additional switch is simply adding its ports to whatever VLAN that it plugged into on the first switch. There are a few use cases for using uplinks as opposed to trunk links between switches:
+						<ul>
+							<li class="alert alert-info" role="alert">You need to add a small PoE switch to power a few cameras or phones on a particular VLAN.</li>
+							<li class="alert alert-info" role="alert">You need to add just a few more ports to only one of your VLANs.</li>
+							<li class="alert alert-info" role="alert">You want all of the devices on the remote switch to belong to a particular VLAN.</li>
+							<li class="alert alert-info" role="alert">You do <u>not</u> want broadcast traffic from all VLANs taking up bandwidth on the link between the switches.</li>
+						</ul>
+					</p>
+					<p>One thing to keep in mind about <text class="font-italic">trunking</text> is, since a trunk link will carry all VLAN traffic from switch to switch, it will also carry all VLAN broadcasts from switch to switch. If a particular downstream switch does <u>not</u> contain any devices in a particular VLAN, broadcasts for that VLAN will nonetheless consume bandwidth on the link. To mitigate this, it is possible to <text class="font-italic">prune</text> unwanted VLANs on particular trunk links. Another feature you can take advantage of is the <text class="font-italic">VLAN Trunking Protocol (VTP)</text>. VTP can save the administrator from manually creating the same VLANs on all switches.</p>
+					<h4>Trunk Ports</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">trunk port</text> is a switch port that is connected to another switch trunk port to pass all VLAN traffic between the switches. By default, all switch ports are initially configured as access ports. You can configure almost any switch port to become a trunk port. However, since it will carry aggregate traffic, you should choose the higher bandwidth ports (<text class="font-weight-bold">10 Gb</text>, <text class="font-weight-bold">40 Gb</text>, or <text class="font-weight-bold">100 Gb</text>) for trunking. Trunk ports do <u>not</u> use special cables. They use whatever cable the physical port requires, be it twisted pair or fiber optic.</p>
+					<p>Trunk ports are the only ports on a switch that perform <text class="font-italic">VLAN tagging</text>. When a host plugs into an access port, it has no concept that it has just plugged into a VLAN. Access ports do <u>not</u> tag. The switch, however, keeps track of which physical port belongs to which VLAN. Frames are tagged only when they are passed from switch to switch along trunk links. The sending switch tags the frame with the VLAN ID. The receiving switch reads the VLAN ID and ensures that the frame is forwarded only to ports that belong to that VLAN.</p>
+					<p><img src="/cisco/include/img/Fig-2-10.png" class="img-thumbnail" alt="trunk ports carry traffic from multiple vlans" width="60%" height="60%"></p>
+					<p>You can use Cisco's <text class="font-italic">Dynamic Trunking Protocol (DTP)</text>, which is enabled by default, to save time when configuring trunk links. Although switch ports are access ports by default, on Cisco devices they are also willing to become trunk ports if the neighbor port at the other end of the link actively negotiates for it. This means you can configure one side to negotiate trunking, and the other side will dynamically agree, thus forming a trunk link between the switches with half the effort.</p>
+					<p>Best practice, however, recommends that DTP be disabled and all trunk links be manually configured. This increases the security of your trunk links.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Older switches had to be connected to each other by using a 10BASE-T or 100BASE-TX crossover cable. This is a twisted pair cable that connects the transmit wires to the receive pins and vice versa. Most modern switches are able to automatically interchange transmit and receive at the port, so a straight-through twisted pair cable can now be used. Fiber optic cable connectors are generally keyed at a certain way so that the transmit and receive sides of the cable are plugged into the correct side of the port.<br><br>On the exam and in the simulator, if you need to "connect" two switches, be sure to choose a crossover cable.</text></li>
+					</ul>
+					<h4>IEEE 802.1Q</h4>
+					<p>The <text class="font-weight-bold">IEEE 802.1Q</text> standard is the industry standard trunking encapsulation protocol. Although Cisco initially used its own <text class="font-italic">proprietary trunking encapsulation protocol (Inter-Switch Link, or ISL)</text>, Cisco abandoned that method many years ago to adopt the IEEE standard, making it compatible with other vendors. The most notable feature of <text class="font-weight-bold">802.1Q</text> is that it uses VLAN tagging to insert the VLAN ID in an existing Ethernet frame header. Devices that cannot interpret this tag simply ignore the frame, and switches remove the VLAN ID information before forwarding the frames to the recipients. This makes it possible to create a trunk link on a segment that is shared by other types of traffic (although you wouldn't generally want to).</p>
+					<h4>The Native VLAN</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">native VLAN</text> is a special VLAN that is defined by the <text class="font-weight-bold">802.1Q</text> standard to support untagged traffic. A trunk port can support tagged traffic in VLANs and untagged traffic from devices that are <u>not</u> part of VLANs. The native VLAN is designated to handle untagged traffic in a trunk port.</p>
+					<p>A native VLAN is configured on every trunk to handle Ethernet frames without VLAN headers. VLAN switches identify frames received from a native VLAN by the absence of VLAN headers. They are used to support legacy devices that cannot handle VLAN trunks. By default, <text class="font-weight-bold">VLAN1</text> is the native VLAN on all Cisco switches. Some administrators change this default to another number for security reasons. If you choose to do the same, make sure that all switches are configured with the same native VLAN. Otherwise, you risk having errors on the interface and trunk ports possibly shutting themselves down.</p>
+					<h4>Command Reference: Configuring Trunking</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Configuring Trunking</h5>
+					<p>The following commands are used in the Configuring Trunking lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /dg &lt;ip-address&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-success">switchport mode trunk</text>: Assigns a trunk port.</li>
+						<li><text class="font-weight-bold text-success">switchport trunk encapsulation dot1q</text>: Sets the trunk encapsulation format to 802.1Q.</li>
+					</ul>
+					<h5>Lab: Configuring Trunking</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Access->Configuring Trunking</text></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Inter-VLAN Routing</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Inter-VLAN Routing</h5>
+					<p>The following commands are used in the Inter-VLAN Routing I lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">encapsulation dot1q &lt;vlan-id&gt;</text>: Sets the encapsulation of the interface for 802.1Q VLAN trunking - also specifies the VLAN ID for which frames should be tagged.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /all &lt;ip-address&gt;</text>: Used in NetSim to display the IP addresses and Media Acces Control (MAC) addresses on a workstation.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show mac address-table</text>: Displays the MAC forwarding table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show vlan</text>: Displays VLAN information.</li>
+						<li><text class="font-weight-bold text-success">show vlan brief</text>: Displays parameters for all VLANs - contains the VLAN's name, status, and ports assigned to it.</li>
+						<li><text class="font-weight-bold text-success">switchport access vlan &lt;vlan-id&gt;</text>: Assigns the the specific VLAN for a port.</li>
+						<li><text class="font-weight-bold text-success">switchport mode {access | dymaic {auto | desirable} | trunk }</text>: Configures the VLAN membership mode of a port.</li>
+						<li><text class="font-weight-bold text-success">switchport trunk encapsulation dot1q</text>: Sets the trunk encapsulation format to 802.1Q.</li>
+						<li><text class="font-weight-bold text-success">vlan &lt;vlan-id&gt;</text>: Creates and/or names a VLAN.</li>
+					</ul>
+					<h5>Lab: Inter-VLAN Routing I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Access->Inter-VLAN Routing I</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Summary</h4>
+					<p>In this lesson, you configured switching. The skills and concepts used in this lesson will assist you in managing the switches on your LANs and VLANs and to ensure that VLANs can transfer datat to other VLANs.</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

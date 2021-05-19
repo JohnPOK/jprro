@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe The Most Popular Network Models</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic D</h2>
+					</div>
+					<h3 class="text-success">Network Models</h3>
+					<p>To ensure consistent network communications, hardware and software from various sources must be able to work together to transfer data to the intended recipient. Due to the complexity of the facets of data communications, it can be helpful to envision an abstract model to break down the overall process into more manageable units.</p>
+					<h4>Layered Models</h4>
+					<p>Anything that is complex can be easier to understand if you break it down into smaller components. Networking is no exception. All networks provide the same basic function of transferring data from sender to receiver, but each network can use different network hardware and software to accomplish this function. All of the hardware and software products must work together to successfully transfer data. By separating the data communication process into distinct layers, hardware and software vendors can develop products that address each layers responsibilities. As long as the interface <text class="font-italic">between</text> each layer does <u>not</u> change, the hardware and software within a layer can be updated or replaced without affecting the overall data communication process.</p>
+					<p>The two most popular network models are the <text class="font-italic">Open System Interconnection (OSI) model</text> and the <text class="font-italic">TCP/IP model</text>.</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">OSI Model</text>: Developed by the International Organization for Standardization (ISO) for communication in open system networks. This model divides the data communication process into <text class="font-italic">seven layers</text>.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">TCP/IP Model</text>: Developed by the United States Department of Defense. It is a <text class="font-italic">four-layer model</text>.</li>
+					</ul>
+					<h4>The OSI Model</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">OSI Model</text>:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Reduces the complexity of networking to seven smaller, more manageable pieces.</li>
+						<li class="alert alert-success" role="alert">Allows for the standardization of interfaces among devices.</li>
+						<li class="alert alert-success" role="alert">Prevents changes in one layer from affecting other layers.</li>
+						<li class="alert alert-success" role="alert">Enables engineers to concentrate on the specific design of functions in each layer .</li>
+						<li class="alert alert-warning" role="alert">Includes four lower layers that are mostly concerned with transferring data.</li>
+						<li class="alert alert-warning" role="alert">Includes three upper layers that deal with the applications running on the end devices.</li>
+					</ul>
+					<h4>Layers of the OSI Model</h4>
+					<p>This is a standard visual representation of the OSI model:</p>
+					<p class="d-flex justify-content-center"><img src="/cisco/include/img/Fig-1-18.png" class="img-thumbnail" alt="layers of the osi model" width="30%" height="30%"></p>
+					<p>The following table describes each layer.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 20%">Layer</th>
+									<th style="width: 75%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">Layer 1: Physical layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-warning">Provide the means for transmitting data packets over a physical medium.</li>
+											<li class="list-group-item list-group-item-warning">Specifies the elecrical and mechanical characteristics, such as voltage, frequency, and transmission medium on the network.</li>
+											<li class="list-group-item list-group-item-warning">Receives fully formatted data packets from the Data Link layer and places them on the media.</li>
+											<li class="list-group-item list-group-item-warning"><text class="font-weight-bold font-italic">NICs</text> and <text class="font-weight-bold font-italic">APs</text> operate at this layer.</li>
+											<li class="list-group-item list-group-item-warning">Determines the mode and medium of data transmission, which are factors that affect transmission speeds.</li>
+											<li class="list-group-item list-group-item-warning">At this layer, the data (protocol data unit, or PDU) is referred to as "<text class="font-weight-bold font-italic">bits</text>" or <text class="font-weight-bold font-italic">bitstream</text>.</li>
+											<li class="list-group-item list-group-item-warning">Examples include: twisted pair, coax, fiber optic cable, baseband, broadband, clock rate, radio frequency, speed and bandwidth, RJ-45, BNC, AP, NIC, hub, repeater.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">Layer 2: The Data Link layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-warning">Responsible for transferring data between adjacent nodes.
+												<ul>
+													<li>Groups data into frames and attaches the address of the receiving node to each frame.</li>
+													<li>Adds error detection codes to frames and discards any damaged frames.</li>
+												</ul>
+											</li>
+											<li class="list-group-item list-group-item-warning">Most <text class="font-weight-bold font-italic">switches</text> operate at this layer.</li>
+											<li class="list-group-item list-group-item-warning">At this layer, the data is referred to as "<text class="font-weight-bold font-italic">frames</text>".</li>
+											<li class="list-group-item list-group-item-warning">There are two sub-layers: <text class="font-italic">Logical Link Control (LLC) sublayer</text>, which identifies the Layer 3 payload, and <text class="font-italic">Media Access Control (MAC) sublayer</text>, which adds a physical address to the frame.</li>
+											<li class="list-group-item list-group-item-warning">Examples include: switch, bridge, Ethernet, frame-relay, PPP, PPPoE, ARP.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-danger">Layer 3: The Network layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">Responsible for addressing data packets, selecting the best route between a source and a destination, and routing the packets from a source to the destination through the network.</li>
+											<li class="list-group-item list-group-item-danger"><text class="font-weight-bold font-italic">Routers</text> and <text class="font-weight-bold font-italic">some switches</text> operate at this layer.</li>
+											<li class="list-group-item list-group-item-danger">Defines protocols for interconnecting two or more similar networks.</li>
+											<li class="list-group-item list-group-item-danger">At this layer, the data is referred to as "<text class="font-weight-bold font-italic">packets</text>".</li>
+											<li class="list-group-item list-group-item-danger">Examples include: router, Layer 3 switch, firewall, IP, ICMP, IGMP.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-danger">Layer 4: The Transport layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">Ports are used as the endpoints for communication between network applications and services.</li>
+											<li class="list-group-item list-group-item-danger">Accepts data from the upper layers, and breaks it into smaller units known as <text class="font-weight-bold font-italic">segments (TCP)</text> or <text class="font-weight-bold font-italic">datagrams (UDP)</text>.</li>
+											<li class="list-group-item list-group-item-danger">Supports <text class="font-weight-bold font-italic text-primary">connection-oriented (TCP)</text> communication.
+												<ul>
+													<li>Establishes connections between devices and applications, maintains the connection, and then terminates.</li>
+													<li>Passes segments to the lower layers and ensures reliable delivery of all segments.</li>
+													<li>Provides flow-control through sliding windows to prevent overflowing receive buffers.</li>
+													<li>Adds a sequence number to each segment, which helps reconstruct the original sequence of segments and detect any missing segments.</li>
+													<li>Sends acknowledgements for received segments and retransmits any segments that are not acknowledged as being received.</li>
+													<li>Performs error correction by retransmitting any segments whose frames were damaged and discarded by the Data Link layer.</li>
+												</ul>
+											</li>
+											<li class="list-group-item list-group-item-danger">Supports <text class="font-weight-bold font-italic text-primary">connectionless (UDP)</text> communication.
+												<ul>
+													<li>Best effort delivery - no guarantee of reliability.</li>
+													<li>No connection, no flow-control, no sequence numbers or acknowledgements, no error correction.</li>
+												</ul>
+											</li>
+											<li class="list-group-item list-group-item-danger">Examples include: TCP, UDP, firewalls, multilayer switches.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">Layer 5: The Session layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">Controls how, when, and for how long a device can transmit or receive data.</li>
+											<li class="list-group-item list-group-item-success">Specifies procedures for the connection, termination, and re-establishment of sessions.</li>
+											<li class="list-group-item list-group-item-success">At this layer and above, the data is simply called "<text class="font-weight-bold font-italic">data</text>".</li>
+											<li class="list-group-item list-group-item-success">Examples include: TCP and UDP ports, RPC (Remote Procedure Calls), NetBIOS, and named pipes.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">Layer 6: The Presentation layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">Responsible for encoding data into a standard network-compatible format.</li>
+											<li class="list-group-item list-group-item-success">Uses standard data formats to enable devices with different representation techniques to communicate with each other.</li>
+											<li class="list-group-item list-group-item-success">Adds services such as data compression and encryption.</li>
+											<li class="list-group-item list-group-item-success">Examples include: ASCII, Unicode, encryption levels, JPEG, GIF, PNG, MOV, AVI, WMV, audio and video codecs.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">Layer 7: The Application layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">Provides protocols that allow applications to access utilities and services on the network.</li>
+											<li class="list-group-item list-group-item-success">Defines protocols for tasks such as transferring files, sending emails, and saving data to a network server.</li>
+											<li class="list-group-item list-group-item-success">Advertises itself to the server resources available in each system for usage on the network.</li>
+											<li class="list-group-item list-group-item-success">The <text class="font-italic">only layer</text> with which the user directly interacts.</li>
+											<li class="list-group-item list-group-item-success">Examples include: HTTP/HTTPS, SMTP, IMAP4, POP3, SNMP, Telnet, SSH, SMB, NFS, FTP, TFTP, NTP, etc.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>The TCP/IP Model</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">TCP/IP model</text> was:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Developed to allow the addition of new technologies and create a more flexible architecture, which can easily allow the modification of existing protocols.</li>
+						<li class="alert alert-success" role="alert">Initially referred to as the <text class="font-weight-bold font-italic">DoD (or Department of Defense) model</text>, but later it was <text class="font-italic">renamed</text> after two of its most important protocols: <text class="font-weight-bold font-italic text-primary">TCP</text> and <text class="font-weight-bold font-italic text-primary">IP</text>.</li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> An updated version of the TCP/IP model has five layers. This was accomplished by splitting the Network Interface Layer into the Data Link layer and Physical layer. Also, the Internet Layer is renamed to the Network layer in this updated TCP/IP model.</text></li>
+					</ul>
+					<h4>Layers of the TCP/IP Model</h4>
+					<p>This is a standard representation of the TCP/IP model, but some of the layers' names have been changed over time.</p>
+					<p class="d-flex justify-content-center"><img src="/cisco/include/img/Fig-1-19.png" class="img-thumbnail" alt="layers of the tcp ip model" width="70%" height="70%"></p>
+					<p>The following table describes each layer.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 25%">Layer</th>
+									<th style="width: 75%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">Layer 1: The Network Interface layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-warning">Provides services to send and receive data packets on the network.</li>
+											<li class="list-group-item list-group-item-warning">Defines protocols for moving <text class="font-italic">data frames</text> between adjacent nodes, and for accessing the medium by the devices.</li>
+											<li class="list-group-item list-group-item-warning">Defines the protocols for encoding and transmitting data over the network media.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-danger">Layer 2: The Network layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">Sometimes referred to as the <text class="font-weight-bold font-italic">Internet layer</text>.</li>
+											<li class="list-group-item list-group-item-danger">Provides addressing and routing services.</li>
+											<li class="list-group-item list-group-item-danger">Involves transferring data from a source to a destination network when multiple networks are connected together.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-danger">Layer 3: The Transport layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">Sometimes referred to as the <text class="font-weight-bold font-italic">Host-to-Host layer</text>.</li>
+											<li class="list-group-item list-group-item-danger">Provides connection establishment and communication services.</li>
+											<li class="list-group-item list-group-item-danger">Defines protocols for end-to-end transfer of data, along with error and flow controls.</li>
+											<li class="list-group-item list-group-item-danger">Contains two important protocols - <text class="font-weight-bold font-italic">TCP</text> and <text class="font-weight-bold font-italic">UDP</text>.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">Layer 4: The Application layer</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">Provides definition of protocols for file, email, and hypertext transfer.</li>
+											<li class="list-group-item list-group-item-success">Handles the encoding of data, controls the sessions, and defines socket services and other utilities over TCP/IP.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Network Model Comparison</h4>
+					<p>Some of the similarities between the OSI and TCP/IP models include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Both models have a similar architecture.</li>
+						<li class="alert alert-info" role="alert">Both models have the equivalent of an Application, Transport, and Network layer.</li>
+						<li class="alert alert-info" role="alert">Both models have their lowest layer connected to the physical network.</li>
+					</ul>
+					<p>Some of the dissimilarities between the OSI and TCP/IP models include:</p>
+					<ul>
+						<li class="alert alert-secondary" role="alert">The <text class="font-weight-bold font-italic">OSI model</text> was developed to <text class="font-weight-bold font-italic">standardize networking</text> - The <text class="font-weight-bold font-italic">TCP/IP</text> model was specifically developed to execute <text class="font-weight-bold font-italic">Internet-related tasks</text> such as remote login, email, and resource sharing.</li>
+						<li class="alert alert-secondary" role="alert">The <text class="font-weight-bold font-italic">OSI model</text> has <text class="font-weight-bold font-italic">seven architectural layers</text> - The <text class="font-weight-bold font-italic">TCP/IP model</text> has only <text class="font-weight-bold font-italic">four layers</text> and does <u>not</u> have a dedicated Session or Presentation layer.</li>
+						<li class="alert alert-secondary" role="alert">In the <text class="font-weight-bold font-italic">TCP/IP model</text>, the Application layer handles the responsibilities of the <text class="font-weight-bold font-italic">OSI model's</text> Application, Presentation, and Session layers.</li>
+						<li class="alert alert-secondary" role="alert">The <text class="font-weight-bold font-italic">OSI model</text> is an <text class="font-weight-bold font-italic">open model</text> that could support <text class="font-weight-bold font-italic">any network protocol</text>, and as a result, the functionality of each layer is <u>not</u> clearly defined and optimized - In the <text class="font-weight-bold font-italic">TCP/IP model</text>, the <text class="font-weight-bold font-italic">protocols </text> define the <text class="font-weight-bold font-italic">functionality of each layer</text> for optimal performance.</li>
+					</ul>
+					<p class="d-flex justify-content-center"><img src="/cisco/include/img/Fig-1-20.png" class="img-thumbnail" alt="comparing the osi and tcp ip models" width="68%" height="68%"></p>
+
+
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="font-weight-bold text-secondary text-center">Licensed For Use Only By: John O'Kelly johnpo@jprro.co.za Jun 20 2020 9:47AM</p>
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

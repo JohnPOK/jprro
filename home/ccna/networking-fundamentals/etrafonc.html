@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Explain The Role And Function Of Network Components</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Network Components</h3>
+					<p>Now that you can recognize common network types, it's time to look closer at the components that make up networks.</p>
+					<h4>Network Interface Cards (NICs)</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">network interface card (NIC)</text> is a device that serves as a connection between a computer or device and the network. NICs are available for both wired and wireless networks.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> NIC is also called a network adaptor or network card.</text></li>
+					</ul>
+					<p>The <text class="font-weight-bold font-italic text-primary">transceiver</text> is the part of a NIC that is responsible for data transmissions through the communication medium. It has both a transmitter and a receiver integrated into it, so it can receive and send data. Most modern transceivers are built into the NIC.</p>
+					<p><img src="/cisco/include/img/Fig-1-5.png" class="img-thumbnail" alt="nics" width="70%" height="70%"></p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> These are typical representations of wired and wireless NICs, but you might also encounter NICs that do <u>not</u> look exactly like these. For instance, a wireless NIC for a PC might have two antennas (for dual-band communications), and some USB NICs also have one or two antennas.</text></li>
+					</ul>
+					<h4>Servers and Clients</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">server</text> is a network component or process that offers resources to other network nodes. Servers can be general purpose, or they can provide specific applications or services. They can be physical hardware devices, software applications, or processes running on a computer (even a laptop). A <text class="font-weight-bold font-italic">data center</text> or <text class="font-weight-bold font-italic">server farm</text> is a collection of servers housed in the same physical facility that are interconnected with each other to provide enhanced server functionality. The server farm is normally connected to a central management server that manages and monitors the operations being performed by the various servers in the farm.</p>
+					<p>A <text class="font-weight-bold font-italic text-primary">client</text> is a network node that requests services from a server. From a networking perspective, the client always initiates the connection to the server. The server then accepts or rejects the incoming connection attempt. Servers will reject the connection if the client asks for a service that the server does <u>not</u> offer, or if there are permission requirements or other criteria that the client does <u>not</u> meet.</p>
+					<h4>Endpoint Devices</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">endpoint device</text> is a network node that communicates with other nodes and receives resources from servers, but generally does <u>not</u> offer services to other nodes. Basically, it is any client device, including:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">PCs, laptops, tablets, and smart phones</li>
+						<li class="alert alert-info" role="alert">Input/output devices like cameras, printers, and scanners</li>
+						<li class="alert alert-info" role="alert">Retail automation devices like order kiosks and point-of-sale (POS) terminals</li>
+					</ul>
+					<h4>Virtual Machines (VMs)</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">virtual machine (VM)</text> is a computing device that uses hardware or software, or both, to emulate a distinct physical computer system. Depending on the needs of an organization, VMs can be configured as servers or as clients.</p>
+					<p>VMs reside on host computers, and are sometimes referred to as <text class="font-italic">guests</text>, or <text class="font-italic">guest OSs</text>. They typically have their own IP and MAC address, as well as a computer name. VMs save space and power, and are easier to back up, manage, and clone than physical machines. A typical datacenter will have hundreds or even thousands of servers running VMs on a few high-powered physical hosts.</p>
+					<p><img src="/cisco/include/img/Fig-1-6.png" class="img-thumbnail" alt="vms in a datacenter" width="70%" height="70%"></p>
+					<h4>Switches</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">switch</text> is a network device that filters and forwards or floods <text class="font-weight-bold font-italic text-primary">frames</text>, which carry data between systems, based on the destination MAC address of those frames. Most switches have <text class="font-weight-bold">8</text>, <text class="font-weight-bold">12</text>, <text class="font-weight-bold">16</text>, <text class="font-weight-bold">24</text>, or <text class="font-weight-bold">48</text> <text class="font-weight-bold font-italic text-primary">ports</text>. Every port in a switch is considered as a single <text class="font-weight-bold font-italic text-primary">collision domain</text>.</p>
+					<p>Switches inspect the destination address of each frame before forwarding the frames to one or more ports for transmission. If the destination address is unknown, the frame will be <text class="font-weight-bold font-italic text-primary">flooded</text> to all ports except the original port on which it was received. They can work with multiple pairs of ports simultaneously to improve performance by aggregating the ports into a single logical connection.</p>
+					<p>Switches are responsible for forwarding data from the source to the destination, but because they forward data frames only to nodes or segments to which they are addressed, the chances of collision is greatly reduced and network performance is increased.</p>
+					<p><img src="/cisco/include/img/Fig-1-7.png" class="img-thumbnail" alt="a switch filters and forwards frames" width="70%" height="70%"></p>
+					<h5>More about Collision Domains</h5>
+					<p>A <text class="font-weight-bold font-italic text-primary">collision domain</text> is a network segment where data transmissions can collide with one another if they are sent at the same time. When this occurs, both transmissions are discarded and must be sent again.</p>
+					<h4>Access Points (APs)</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">access point (AP)</text> is a networking device that enables wireless devices to connect to a wired network. They transmit and receive network frames by using RF signals. Some APs have built-in routers, while others simply bridge wireless connections to the wired network and require a router or switch for additional services.</p>
+					<p><img src="/cisco/include/img/Fig-1-8.png" class="img-thumbnail" alt="aps enable wireless devices to connect to networks" width="70%" height="70%"></p>
+					<h4>Controllers</h4>
+					<p>In networking, a <text class="font-weight-bold font-italic text-primary">controller</text> is a hardware device or software application that manages the flow of information between network nodes. They can also manage the nodes themselves.</p>
+					<p>There are many types of controllers in network deployments. Two types of controllers you are likely to encounter in Cisco network deployments are <text class="font-italic">Cisco DNA Center</text> and <text class="font-italic">WLC</text>.</p>
+					<ul>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Cisco DNA Center</text> provides centralized management, automation, analytics, and security. It is implemented as a combination of <text class="font-italic">Cisco DNA Center appliance</text> and the <text class="font-italic">Cisco DNA software</text>.
+							<ul class="list-group">
+								<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Cisco DNA stands for Cisco Digital Network Architecture.</text></li>
+							</ul>
+						</li>
+					</ul>
+					<ul>
+						<li class="alert alert-warning" role="alert">A <text class="font-weight-bold font-italic text-primary">wireless LAN controller (WLC)</text> is a network device that manages configuration of APs and their firmware, including the implementation of wireless policies, management settings, and security policies and settings. They provide centralized management of wireless network communications while simplifying overall network management overhead and costs.</li>
+					</ul>
+					<p><img src="/cisco/include/img/Fig-1-9.png" class="img-thumbnail" alt="login page for wireless controller" width="70%" height="70%"></p>
+					<h4>Firewalls</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">firewall</text> is a network security device that monitors network traffic, allowing or blocking traffic based on a set of security rules. Generally implemented between a private network and the Internet, firewalls can manage both incoming and outgoing data.</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">They can be configured to block suspicious or unsolicited incoming traffic while allowing incoming traffic that has been sent as responses to requests from internal hosts.</li>
+						<li class="alert alert-danger" role="alert">They use complex filtering algorithms to analyze incoming data based on destination and source addresses, port numbers, and data types.</li>
+						<li class="alert alert-danger" role="alert">Information about all packets, incoming and outgoing, can be saved to a log and used for network monitoring or hardening.</li>
+					</ul>
+					<p>There are different types of firewalls to provide different levels of protection for a network.</p>
+					<p><img src="/cisco/include/img/Fig-1-10.png" class="img-thumbnail" alt="a firewall separates the private network from the internet" width="70%" height="70%"></p>
+					<h5>Firewall Types</h5>
+					<p>There are several categories of firewalls, including:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic">Packet Filters</text>. These firewalls control access to a network by reading and analyzing the incoming and outgoing <text class="font-weight-bold font-italic text-primary">packets</text>. Typical packet filters inspect packet headers to gather information. Based on the IP addresses, ports, and protocols of the source and destination nodes, each packet is <text class="font-italic">dropped (denied access)</text> or <text class="font-italic">accepted (allowed access)</text>.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic">Stateful inspection firewalls</text>. These firewalls track the state of permitted network requests sent through the firewall, storing details about those requests like the source and destination addresses, ports, and protocol so that any matching response traffic can be dynamically permitted back through the firewall without an explicit rule.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic">Proxy firewalls</text>. These firewalls filter messages at the application level. Rather than allow the client to make a direct connection with the destination, they fetch the desired content on behalf of the client, saving a copy in case it is needed by other clients. They are often referred to as <text class="font-italic">application firewalls</text>.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic">Hybrid firewalls</text>. Hybrid firewalls combine the capabilities of the other types of firewalls.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Next-generation firewalls (NGFWs)</text>. A NGFW is a network security device that goes beyond the capabilities of traditional firewalls by providing <text class="font-italic">application awareness and control</text>, <text class="font-italic">integrated intrusion prevention</text>, and <text class="font-italic">cloud-based threat intelligence</text>.</li>
+					</ul>
+					<h4>Intrusion Detection and Prevention Devices</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">intrusion detection system (IDS)</text> is a security mechanism that monitors traffic, logs suspicious activity, and issues alerts when suspicious activity is discovered.</p>
+					<p>An <text class="font-weight-bold font-italic text-primary">intrusion prevention system (IPS)</text> is a security mechanism that <u>not</u> only monitors and logs suspicious network traffic, it also instructs the router or firewall to reject, quarantine, or block the traffic. IPS systems can also instruct a host to drop a TCP connection by sending a reset (RST) segment to the host.</p>
+					<h4>Routers</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">router</text> is a networking device that forwards packets based on their destination addresses. Routers can connect different types of networks, as long as they use the same network level protocol. One or more metrics are configured to enable the router to determine the optimal path for data forwarding and delivery. They work with routable protocols, which provide separate network and node addresses. A router can be a dedicated device, incorporated into a multifunction device, or implemented as software running on a node that has two or more NICs.</p>
+					<p><img src="/cisco/include/img/Fig-1-11.png" class="img-thumbnail" alt="routers connect networks and determine best path" width="70%" height="70%"></p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="font-weight-bold text-secondary text-center">Licensed For Use Only By: John O'Kelly johnpo@jprro.co.za Jun 20 2020 9:47AM</p>
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

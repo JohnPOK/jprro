@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Troubleshoot Switching Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic C</h2>
+					</div>
+					<h3 class="text-success">Troubleshoot Switching Issues</h3>
+					<p>Another set of issues you will very likely need to troubleshoot are switching issues. When a network is small, with one or two switches, it's relatively easy to identify and solve problems with switch configuration. However, as you scale your network and add more switches and establish VLANs, configurations become more complex, and issues can be harder to identify and isolate.</p>
+					<h4>Common Switching Issues</h4>
+					<p>Common switching issues include <text class="font-italic">VLAN configuration issues</text> and <text class="font-italic">interswitch connectivity issues</text>. More rarely, the <text class="font-italic">MAC address table</text> of a switch or the <text class="font-italic">ARP cache</text> of a host could be corrupt. Rebooting the device clears out corrupt MAC entries.</p>
+					<h4>VLAN Issues</h4>
+					<p>Some of the issues that may occur in VLANs include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">Incorrect IP addressing</text>: Frames will <u>not</u> flow as expected when the IP address, subnet mask, or default gateway is <u>not</u> configured properly. You need to use the <text class="font-weight-bold text-secondary">ipconfig</text> command on the workstation and hosts and then suitably edit the IP address to fix the issue with incorrect IP addressing.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">Missing VLANs</text>: Manually configured VLANs can "go missing" when they are <u>not</u> configured on the switch or are accidentally deleted on the switch. If <text class="font-italic">VLAN Trunking Protocol (VTP)</text> is used by other switches to learn the creation and deletion of VLANs, you need to determine the reason for the VTP <u>not</u> propagating information about the VLANs to the other switches. One possible reason for the missing VLAN could be that if you are using <text class="font-weight-bold">VTPv1</text> or <text class="font-weight-bold">2</text>, and a switch with a higher revision number is added to the domain with a correct password, the new switch will overwrite the VLAN database in your VTP domain. If a VLAN does <u>not</u> exist on a switch, any access ports assigned to that VLAN will stop passing frames.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">Incorrect port assignments</text>: After you create VLANs, you need to assign switch ports to them, after taking into account the devices that will be connected to that port based on the IP address, subnet mask, and default gateway.</li>
+					</ul>
+					<h4>Interswitch Connectivity Issues</h4>
+					<p>Some common interswitch connectivity issues are:</p>
+					<ul class="alert alert-secondary" role="alert">
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">Mismatch in switch port settings</text>. Misconfiguration can cause ports to shut down.
+							<ul>
+								<li class="alert alert-primary" role="alert">You need to be careful about using <text class="font-italic">Dynamic Trunking Protocol (DTP)</text> to automatically create trunk links. A trunk will ONLY be created using DTP if both sides of the link have their port set to <text class="font-italic">dynamic</text>, and at least one side sets the <text class="font-italic">dynamic mode</text> to <text class="font-italic">desirable</text>.</li>
+								<li class="alert alert-primary" role="alert">If both sides of the link are left at <text class="font-italic">dynamic auto mode</text>, neither side will begin the negotiation process and the trunk link will <u>not</u> form.</li>
+								<li class="alert alert-primary" role="alert">If one side is set to <text class="font-italic">trunk mode</text>, and the other side is set to <text class="font-italic">dynamic</text>, a trunk will form.</li>
+								<li class="alert alert-primary" role="alert">Trunk links that have <text class="font-italic">mismatched native VLANs</text> will continuously produce errors, resetting the interfaces. Some devices will simply shut down the physical port (including turning off fiber optic LEDs and lasers) until the error is corrected and the administrator turns the port back on.</li>
+								<li class="alert alert-primary" role="alert">Remember that connectivity will occur only when the access port VLAN on one switch happens to be the same as the native VLAN for <text class="font-weight-bold">802.1Q</text> trunk on the other switch. Otherwise, connectivity will be broken and cannot be established, because the access port will send the frames untagged. When the trunk port receives them at the other end, it may consider them as part of the native VLAN in the absence of a tag.</li>
+								<li class="alert alert-primary" role="alert">When the VLAN numbers match, the frames can be successfully forwarded without a problem. However, if the native VLAN does <u>not</u> match with the VLAN configured on the access port, the frames that enter or leave the trunk port on the switch will be part of a different VLAN than the access port. The frames will no longer be forwarded correctly, and connectivity will be broken.</li>
+							</ul>
+						</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">VTP domain name or authentication mismatch</text>: When you are using DTP to dynamically form trunks and the <text class="font-italic">VTP domain name</text> or <text class="font-italic">password</text> does <u>not</u> match between the two switches, a trunk cannot be formed.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">Native VLAN mismatch</text>: Trunk issues with the native VLAN surface only when you are using IEEE <text class="font-weight-bold">802.1Q</text> trunking encapsulation. There is no concept of a native VLAN with <text class="font-italic">Cisco Inter-Switch Link (ISL)</text> trunking encapsulation. The native VLAN (VLAN1) is used to carry untagged traffic across an <text class="font-italic">802.1Q</text> trunk. It is necessary that the native VLAN matches on both sides of a trunk link. If there is no link, it is possible for traffic to leak from one VLAN to another VLAN, which may result in an undesired forwarding behavior and possible errors with Spanning Tree Protocol.
+							<ul class="list-group">
+								<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Cisco recommends setting the native VLAN on all trunks to an unused VLAN number.</text></li>
+							</ul>
+						</li>
+					</ul>
+					<h4>Command Reference: Troubleshooting Multilayer Switched Networks</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Troubleshooting Multilayer Switched Networks</h5>
+					<p>The following commands are used in the Troubleshooting Multilayer Switched Networks Part 1 lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt; &lt;subinterface-id&gt;</text>: Creates a subinterface.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP version 4 (IPv4) address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show interfaces [&lt;type&gt; &lt;number&gt;]</text>: Displays the interface's Data Link layer status. When the &lt;type&gt; and &lt;number&gt; parameters are included, displays information about the specified interface.</li>
+						<li><text class="font-weight-bold text-success">show interfaces status</text>: Displays the line status of all interfaces.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show vlan</text>: Displays VLAN information.</li>
+						<li><text class="font-weight-bold text-success">switchport access vlan &lt;vlan-id&gt;</text>: Assigns the default VLAN to a port.</li>
+						<li><text class="font-weight-bold text-success">[no] vlan &lt;vlan-id&gt;</text>: Creates a VLAN. The <text class="font-weight-bold text-success">no</text> form removes a VLAN.</li>
+					</ul>
+					<h5>Lab: Troubleshooting Multilayer Switched Networks Part I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: On the <text class="font-weight-bold">Legacy</text> tab, <text class="font-weight-bold">TSHOOT->TSHOOT Labs->Troubleshooting Multilayer Switched Networks Part I</text></li>
+						<li>Approximate duration: 45 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

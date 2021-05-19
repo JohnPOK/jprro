@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Popular Cisco Networking Components And The Basics Of The Cisco IOS Commands</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic G</h2>
+					</div>
+					<h3 class="text-success">Introduction to Cisco Networks and Cisco IOS Commands</h3>
+					<p>Now that you have reviewed the common components of networks, it is time to focus on Cisco networking.</p>
+					<h4>Common Cisco Network Components</h4>
+					<p>The two most common Cisco network components are the <text class="font-italic">switch</text> and the <text class="font-italic">router</text>.</p>
+					<p class="font-weight-bold text-info">Switches:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Provide desktop access to the network at the Access layer.</li>
+						<li class="alert alert-info" role="alert">Enable segmentation of the local area network (LAN) into virtual LANs (VLANs) for larger LANs.</li>
+						<li class="alert alert-info" role="alert">Cisco Catalyst switches are special switches that provide several choices in interfaces, depending on the type of LAN. On Catalyst switches, light-emitting diodes (LEDs) enable you to monitor switch activity and performance:
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-info">The SYST LED displays the system status continuously.</li>
+								<li class="list-group-item list-group-item-info">The switch status is shown by the SYST LED color.</li>
+								<li class="list-group-item list-group-item-info">The status (STAT), duplex (DPLX), and speed (SPD) LEDs show information that is being displayed by the port status LEDs.</li>
+								<li class="list-group-item list-group-item-info">Press the Mode button to cycle the LEDs through the STAT, DPLX, and SPD displays.</li>
+							</ul>
+						</li>
+						<li class="alert alert-info" role="alert">In the traditional Cisco three-tier model, Layer 2 switches are used at the Access and Core layers, while Layer 3 switches are used at the Distribution layer.</li>
+						<li class="alert alert-info" role="alert">In the collapsed core model, Layer 3 switches are used at the Distribution/Core layer.</li>
+					</ul>
+					<p class="font-weight-bold text-danger">Routers:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">Routers are located at the Distribution layer of the three-tier hierarchical model.</li>
+						<li class="alert alert-danger" role="alert">Can be used to connect LANs and for WAN connections.</li>
+						<li class="alert alert-danger" role="alert">The larger the number of connections (e.g., to branch and remote offices), the larger the router needed to support these connections.</li>
+						<li class="alert alert-danger" role="alert">Cisco builds a wide array of router products with varying processor speeds, interface types and densities, and memory capacity.</li>
+						<li class="alert alert-danger" role="alert">Some router models share a commong interface, which makes upgrading easier and more cost effective.</li>
+					</ul>
+					<h4>Cisco Inernetworking Operating System (IOS)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Cisco Inernetworking Operating System (IOS)</text> is a proprietary operating system that runs on most Cisco switches and routers.</p>
+					<ul>
+						<li class="text-success alert alert-success" role="alert">It encompasses the operating system and application program of these devices.</li>
+						<li class="text-success alert alert-success" role="alert">It provides connectivity options for carrying traffic between devices.</li>
+						<li class="text-success alert alert-success" role="alert">It provides network protocol implementations to provide upper-layer and routing support.</li>
+						<li class="text-success alert alert-success" role="alert">It provides security options to control access to network use.</li>
+						<li class="text-success alert alert-success" role="alert">It provides scalability options to add capabilities as the network grows.</li>
+						<li class="text-success alert alert-success" role="alert">It provides reliability options for high availability and dependable network access.</li>
+					</ul>
+					<h4>Command Line Modes for Cisco IOS</h4>
+					<p>To use the command line interface (CLI) for viewing device status or changing its configuration in Cisco IOS, you must be in the proper command-line mode to have the desired command available. Each device has three primary modes - user EXEC mode, privileged EXEC mode, and global configuration mode.</p>
+					<ul>
+						<li class="alert alert-info" role="alert">The first two modes are for checking the status of the device.</li>
+						<li class="alert alert-info" role="alert">The third mode is for specifying configuration for the entire device.</li>
+					</ul>
+					<p>In <text class="font-weight-bold font-italic text-primary">user EXEC mode<text>, you can:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">View statistics and basic router functions.</li>
+						<li class="alert alert-success" role="alert">Perform basic management functions, such as clearing counters, resetting terminal lines, and so forth.</li>
+						<li class="alert alert-success" role="alert">Perform only a subset of the available IOS commands.</li>
+						<li class="alert alert-success" role="alert">Use basic troubleshooting commands such as <text class="font-weight-bold text-success">ping</text>, <text class="font-weight-bold text-success">traceroute</text>, and <text class="font-weight-bold text-success">telnet</text>.</li>
+						<li class="alert alert-success" role="alert">Use <text class="font-weight-bold text-success">show</text> commands that give information about device interface, program, memory, and utilization.</li>
+					</ul>
+					<p>The command-line prompt indicates that you are in user EXEC mode by showing the device name followed by the greater-than symbol (>). For instance, a generic router might have a prompt like <text class="font-weight-bold">router></text> to indicate user EXEC mode.</p>
+					<p>In <text class="font-weight-bold font-italic text-primary">privileged EXEC mode<text>, you can:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Perform all user EXEC commands.</li>
+						<li class="alert alert-warning" role="alert">View or change configuration information.</li>
+						<li class="alert alert-warning" role="alert">Clear informational counters.</li>
+						<li class="alert alert-warning" role="alert">Manage the operating system.</li>
+						<li class="alert alert-warning" role="alert">Start the command-line editor and issue the command to move to global configuration mode.</li>
+					</ul>
+					<p>In this mode, the command-line prompt shows the device name followed by a hash symbol (#). For instance, a generic router might have a prompt like <text class="font-weight-bold">router#</text> to indicate privileged EXEC mode.</p>
+					<p>In <text class="font-weight-bold font-italic text-danger">global configuration mode</text>, you can change the configuration as it pertains to the entire device. For example, the <text class="font-italic">hostname</text> of a device is configured in this mode. The command prompt in this mode includes <text class="font-weight-bold">(config)#</text>. For instance, if you enter global configuration mode for <text class="font-weight-bold">router</text>, the command prompt will say <text class="font-weight-bold">router(config)#</text>.</p>
+					<p><text class="font-weight-bold font-italic text-primary">Interface configuration mode</text> is an example of using a global configuration mode. In interface configuration mode, you can change the configuration of a specific interface. The command prompt for this mode includes <text class="font-weight-bold">(config-if)#</text>. For example, to enable an interface on <text class="font-weight-bold">router</text>, you would want the command prompt to read something like <text class="font-weight-bold">router(config-if)#</text>.</p>
+					<h4>Basic IOS Commands</h4>
+					<p>The following table describes some basic IOS commands.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 30%">Command</th>
+									<th style="width: 70%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold text-success">enable</td>
+									<td>Enter privileged EXEC mode from user EXEC mode.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">configure terminal</td>
+									<td>Enter global configuration mode from privileged EXEC mode.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">hostname &lt;host_name&gt;</td>
+									<td>Configure a device's hostname in global configuration mode.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</td>
+									<td>Enter interface configuration mode from global configuration mode.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">shutdown</td>
+									<td>Disable an interface in interface configuration mode.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">no shutdown</td>
+									<td>Enable an interface in interface configuration mode.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">copy</td>
+									<td>Enables you to copy system images and configuration files.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">end</td>
+									<td>Return to privileged EXEC mode from any configuration mode.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">exit</td>
+									<td>Return to the previous mode from any mode.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Command Reference: Using NetSim</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Using NetSim Command Reference</h5>
+					<p>The following commands are used in the Using NetSim lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host_name&gt;</text>: Sets the device name.</li>
+					</ul>
+					<h5>Lab: Using NetSim</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">Demo->Demo Labs->Using NetSim</text></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+					<h4>Show Commands</h4>
+					<p>The <text class="font-weight-bold text-success">show</text> commands in Cisco IOS enable you to view the status of various Cisco devices. Some of the <text class="font-weight-bold text-success">show</text> commands are listed in the following table.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 30%">Command</th>
+									<th style="width: 70%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold text-success">show version</td>
+									<td>Displays information about the system hardware, including the number of ports, the amount of memory, and the system's base Ethernet address.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show interfaces</td>
+									<td>Displays statistics and information for all ports.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show interface FastEthernet 0/1</td>
+									<td>Displays statistics and information for a FastEthernet interface, where 0 is the slot on the device and 1 is the interface number.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show ip &lt;keyword&gt;</td>
+									<td>Displays information about the switch's IP configuration. Use this command to verify that the switch has been set up correctly for remote management via Telnet, SNMP, or a web browser.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show running-config</td>
+									<td>Displays the contents of the configuration file used by the switch, including all non-default information.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show startup-config</td>
+									<td>Displays the contents of the configuration file that was run at device startup.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Command Reference: Basic Show Commands</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Basic Show Commands Command Reference</h5>
+					<p>The following commands are used in the Basic Show Commands lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file of the router.</li>
+						<li><text class="font-weight-bold text-success">show flash</text>: Displays the boot flash or PC card information.</li>
+						<li><text class="font-weight-bold text-success">show history</text>: Displays the commands used in the current EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">show terminal</text>: Displays the settings of the current terminal.</li>
+						<li><text class="font-weight-bold text-success">history size &lt;number_of_lines&gt;</text>: Sets the number of previously issued commands that are stored in the history buffer.</li>
+						<li><text class="font-weight-bold text-success">show protocols</text>: Displays the list of Layer 3 protocols that are enabled for the router.</li>
+						<li><text class="font-weight-bold text-success">show version</text>: Displays the versions of the hardware platform and softwarte.</li>
+						<li><text class="font-weight-bold text-success">clock set &lt;long_time_format&gt; &lt;long_date_format&gt;</text>: Sets the system software clock to a specific time and date.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration for the router.</li>
+					</ul>
+					<h5>Lab: Basic Show Commands</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Basic Show Commands</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Summary</h4>
+					<p>In this lesson, you investigated some fundamental concepts of networking and got an introduction ti Cisco networking and Cisco IOS commands. You will be able to use these basic concepts to build your knowledge of Cisco networks and devices.</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="font-weight-bold text-secondary text-center">Licensed For Use Only By: John O'Kelly johnpo@jprro.co.za Jun 20 2020 9:47AM</p>
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

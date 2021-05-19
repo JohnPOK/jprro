@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure VLANs</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic C</h2>
+					</div>
+					<h3 class="text-success">Configure VLANs</h3>
+					<p>Now that you have configured basic switch operation, you can branch out into some more complex switching tasks, like creating and managing VLANs.</p>
+					<h4>Virtual LANs (VLANs)</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">virtual LAN (VLAN)</text> is a logical network that groups devices into separate <text class="font-weight-bold font-italic text-primary">broadcast domains</text>. In a LAN, all the interfaces on a switch are in a <text class="font-italic">single broadcast domain</text>. When you configure a VLAN, you can group the interfaces on one switch into two or more broadcast domains. This limits the impact of broadcast and multicast traffic. If a host transmits a broadcast or multicast, it is only heard by hosts in the same VLAN. Hosts in other VLANs will <u>not</u> receive that frame.</p>
+					<p>VLANs are typically used to:
+						<ul>
+							<li class="alert alert-info" role="alert">Divide large network segments into smaller, more manageable ones</li>
+							<li class="alert alert-info" role="alert">Create secure network zones for servers, DMZs, guests and quarantined networks</li>
+							<li class="alert alert-info" role="alert">Segregate devices based on type (such as IP phone, camera, or AP)</li>
+							<li class="alert alert-info" role="alert">Prioritize traffic based on user or device type</li>
+						</ul>
+					</p>
+					<p><img src="/cisco/include/img/Fig-2-6.png" class="img-thumbnail" alt="vlans group devices into separate broadcast domains" width="70%" height="70%"></p>
+					<p>Because VLANs are effectively separate network segments, they do add complexity to your network design. Unless you want to completely prohibit communication with other networks, you will need to assign each VLAN its <text class="font-italic">own IP subnet</text>, <text class="font-italic">default gateway</text>, and <text class="font-italic">(possibly) DHCP scope</text>. You will need to configure a router to route traffic between the VLANs. To prevent unauthorized traffic from flowing into or out of your VLANs, you will also need to implement access control on the router.</p>
+					<p>VLANs afford tremendous flexibility in designing and managing your network. Their <text class="font-italic">biggest advantage</text> is that once the physical network is built, it is independent of the virtual network, which can be reconfigured for optimal performance by simply changing the VLANs configuration. The network does <u>not</u> have to be rewired.</p>
+					<p>Each VLAN is configured with a <text class="font-italic">unique ID</text>. VLAN IDs range from <text class="font-weight-bold">1</text> to <text class="font-weight-bold">4094</text>. Different ID ranges denote different types of VLANs, as shown in the following table:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 50%">VLAN ID</th>
+									<th style="width: 50%">Type of VLAN</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold text-info">1</td>
+									<td class="text-info">Default VLAN</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">1 to 1005</td>
+									<td class="text-success">Normal range VLANs</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">1006 to 4094</td>
+									<td class="text-warning">Extended range VLANs</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">0 and 4095</td>
+									<td class="text-danger">Reserved for system use</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>The configurations of the VLAN IDs <text class="font-weight-bold">1</text> and <text class="font-weight-bold">1002</text> to <text class="font-weight-bold">1005</text> are set automatically in a Cisco device. The configurations of normal range VLANs are stored in the <text class="font-italic">VLAN database</text>, while the configurations of <text class="font-italic">extended range VLANs</text> are stored either in the switch's <text class="font-italic">running-config file (in Virtual Trunking Protocol [VTP] versions 1 and 2)</text> or in the <text class="font-italic">VLAN database (VTP version 3)</text>.</p>
+					<p>You can perform addition, deletion, and modification of VLAN configurations for VLAN IDs <text class="font-weight-bold">2</text> to <text class="font-weight-bold">1001</text> only when the switch is in VTP server or VTP transparent mode. You cannot remove the configurations for VLAN IDs <text class="font-weight-bold">1</text> and <text class="font-weight-bold">1002</text> to <text class="font-weight-bold">1005</text>. In some Cisco devices, the VLAN IDs <text class="font-weight-bold">1002</text> to <text class="font-weight-bold">1005</text> are reserved for Fiber Distributed Data Interface (FDDI) and token ring VLANs.</p>
+					<h4>Default VLANs</h4>
+					<p>The VLAN with VLAN ID <text class="font-weight-bold">1</text> is called the <text class="font-weight-bold font-italic text-primary">default VLAN</text>. Thus, all ports on a Cisco switch are assigned to <text class="font-weight-bold">VLAN 1</text> until they are configured to be in other VLANs. In addition, connected Cisco switches all form a single broadcast domain until you configure other VLANs.</p>
+					<p>The default VLAN configuration is automatically created and stored in the VLAN database file, <text class="font-italic">vlan.dat</text>. The configuration is also stored in the switch's running-config file.</p>
+					<p>All parameters of the default VLAN are set to default values. The default VLAN cannot be renamed or removed from the VLAN database.</p>
+					<h4>Data and Voice Access Ports</h4>
+					<p>A set of ports that are associated with one VLAN and belong to the same broadcast domain are called the <text class="font-weight-bold font-italic text-primary">access ports</text> of that VLAN. An access port acts as a <text class="font-italic">Layer 2 interface</text> for a physical switch port. Each access port is associated with one particular VLAN.</p>
+					<p>Access ports are categorized into two types, depending on the type of traffic they handle. These types are:
+						<ul>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Data access ports</text>. These access ports transmit user data and are usually grouped together to form data VLANs to separate user-generated data from voice and VLAN control traffic. Large enterprise networks use multiple data VLANs. Data access ports are <u>not</u> configured to carry voice information. They support traffic generated by user-related tasks such as file management, printing services, storage services, email access, and network application access.</li>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Voice access ports</text>. These access ports carry voice traffic and are usually grouped together to form a dedicated voice VLAN. Using a voice VLAN assures good voice quality, transmission priority to support emergency calls in a congested network, and minimal transmission delays. A voice access port can connect a switch to a Cisco IP phone and carry Voice Over IP (VoIP) traffic. It can also handle data traffic. In addition to voice conversations, voice VLANs must also manage <text class="font-italic">signaling traffic</text> to support call setup, progress, and disconnect.</li>
+						</ul>
+					</p>
+					<p>You can assign an access port to a VLAN in two ways:
+						<ul>
+							<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-primary">Static membership</text>: Network administrator assigns the access port to a specific VLAN.</li>
+							<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-primary">Dynamic membership</text>: VLAN Membership Policy Server (VMPS) assign the access port to a VLAN dynamically based on a preconfigured database.</li>
+						</ul>
+					</p>
+					<p>If your IP phone supports CDP and trunking you can configure a single switchport to support both the phone and access VLANs at the same time. This popular technique reduces the number of used switchports by <text class="font-italic">piggybacking</text> the PC off the phone.</p>
+					<p><img src="/cisco/include/img/Fig-2-7.png" class="img-thumbnail" alt="piggybacking a pc off an ip phone" width="65%" height="65%"></p>
+					<h4>VLAN Connectivity</h4>
+					<p>VLANs are configured on Access-layer switches to segregate hosts into groups. However, VLANs by themselves cannot connect to each other. They require a router to connect them. To accomplish this, you assign each VLAN its own IP subnet. Hosts on a VLAN all belong to the same subnet. They use a common default gateway to send traffic to other VLANs, remote networks, and the Internet. As such, your router must be able to provide an interface for each VLAN.</p>
+					<p>In modern networks, <text class="font-italic">VLAN routing occurs at the Distribution layer</text>. Physical routers are no longer used to connect VLANs. Instead, you can <text class="font-italic">configure special logical interfaces</text> on Layer 3 switches known as <text class="font-italic">VLAN interfaces</text>. These are <u>not</u> physical switchports, but are instead logical connection points that exist on the backplane of the switch. They have IP addresses and behave very much like Ethernet router interfaces (although they do <u>not</u> have the bandwidth limits that physical switchports have). Once you create the VLAN on the Distribution switch, you can create the VLAN interface. VLAN interfaces have several limitations, however:
+						<ul>
+							<li class="alert alert-info" role="alert">Because they are <u>not</u> physical ports, they can only route traffic (Ethernet) that is able to flow into the switch itself. They <u>cannot</u> work with other Layer 2 protocols such as Token Ring, PPP, Frame Relay, HDLC, etc.</li>
+							<li class="alert alert-info" role="alert">They will only remain "<text class="font-italic">up</text>" if at least one physical switchport that belongs to the same VLAN is also up (fortunately trunk links qualify for this).</li>
+							<li class="alert alert-info" role="alert">You <u>cannot</u> create a VLAN interface without also creating the VLAN on the switch.</li>
+						</ul>
+					</p>
+					<p>One great feature of VLANs is that they can be extended across multiple switches. This means that hosts in the same VLAN, even on different physical switches, can share the same VLAN interface on a Distribution layer switch, as long as the switches are properly connected.</p>
+					<p><img src="/cisco/include/img/Fig-2-8.png" class="img-thumbnail" alt="vlan interfaces" width="70%" height="70%"></p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Do not confuse a VLAN with a VLAN interface. A VLAN is a grouping of switchports. A VLAN interface is a logical router interface on a Layer 3 switch that acts as a default gateway for its VLAN.</text></li>
+					</ul>
+					<h4>Per-VLAN Spanning Tree (PVST) and other Cisco Enhancements</h4>
+					<p>Before the IEEE published STP standards for VLANs (<text class="font-weight-bold">IEEE 802.1s</text>), Cisco developed a proprietary protocol named <text class="font-weight-bold font-italic text-primary">Per-VLAN Spanning Tree (PVST)</text>. This protocol addresses the implementation of VLANs by requiring a separate spanning tree for each VLAN. By default, a single instance of STP runs on each configured VLAN when STP is <u>not</u> manually disabled. You can enable and disable STP on a per-VLAN basis.</p>
+					<p>Further enhancements include PVST+ and Rapid PVST+.</p>
+					<ul>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">PVST+</text> provides the same functionality as PVST but uses <text class="font-weight-bold">802.1Q</text> trunking technology, rather than the <text class="font-italic">legacy Inter-Switch Link (ISL)</text>. PVST+ is an enhancement to the <text class="font-weight-bold">802.1Q</text> specifications and is <u>not</u> supported on non-Cisco devices.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Rapid PVST+</text> is the <text class="font-weight-bold">IEEE 802.1w</text> RSTP standard implemented per VLAN. A single instance of STP runs on each configured VLAN when you do <u>not</u> manually disable STP. Each Rapid PVST+ instance on a VLAN uses a single root switch. Rapid PVST+ uses point-to-point wiring to provide rapid convergence of the spanning tree.</li>
+					</ul>
+					<h4>Command Reference: VLANs</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>VLANs</h5>
+					<p>The following commands are used in the VLANs lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /dg &lt;ip-address&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /ip &lt;ip-address subnet-mask&gt;</text>: Used in NetSim to assign an IP address and subnet mask to a workstation interface.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show interface status</text>: Displays the line status of all interfaces.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show vlan</text>: Displays VLAN information.</li>
+						<li><text class="font-weight-bold text-success">switchport access vlan &lt;vlan-id&gt;</text>: Assigns the the specific VLAN for a port.</li>
+						<li><text class="font-weight-bold text-success">switchport mode {access | dymaic {auto | desirable} | trunk }</text>: Configures the VLAN membership mode of a port.</li>
+						<li><text class="font-weight-bold text-success">vlan &lt;vlan-id&gt;</text>: Creates and/or names a VLAN.</li>
+					</ul>
+					<h5>Lab: VLANs</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Network Access->VLANs</b></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Configuring VLANs</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Configuring VLANs</h5>
+					<p>The following commands are used in the Configuring VLANs lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show vlan brief</text>: Displays parameters for all VLANs - Contains VLAN name, status, and ports assigned to it.</li>
+						<li><text class="font-weight-bold text-success">switchport access vlan &lt;vlan-id&gt;</text>: Assigns the the specific VLAN for a port.</li>
+						<li><text class="font-weight-bold text-success">vlan &lt;vlan-id&gt;</text>: Creates and/or names a VLAN.</li>
+					</ul>
+					<h5>Lab: Configuring VLANs</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Network Access->Configuring VLANs</b></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Deleting VLANs</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Deleting VLANs</h5>
+					<p>The following commands are used in the Deleting VLANs lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show vlan brief</text>: Displays parameters for all VLANs - Contains VLAN name, status, and ports assigned to it.</li>
+						<li><text class="font-weight-bold text-success">switchport access vlan &lt;vlan-id&gt;</text>: Assigns the the specific VLAN for a port.</li>
+						<li><text class="font-weight-bold text-success">vlan &lt;vlan-id&gt;</text>: Creates and/or names a VLAN. The <text class="font-weight-bold text-success">no</text> form deletes a VLAN.</li>
+					</ul>
+					<h5>Lab: Deleting VLANs</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Network Access->Deleting VLANs</b></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

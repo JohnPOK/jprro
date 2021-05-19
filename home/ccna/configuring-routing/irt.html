@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Interpret Routing Tables</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Interpret Routing Tables</h3>
+					<p>Routers depend on their routing tables to make informed decisions about the best path for data transfer between networks. Your ability to read and interpret a routing table can help you determine why certain routers are making certain decisions, and this can be an invaluable troubleshooting tool.</p>
+					<h4>Routing Tables</h4>
+					<p>Each router maintains an IP <text class="font-weight-bold font-italic text-primary">routing table</text>. This table lists IP address groupings, called <text class="font-italic">IP networks</text> and <text class="font-italic">IP subnets</text></p>
+					<p>A <text class="font-weight-bold font-italic text-primary">hop</text> represents each router through which a packet has to pass as it moves from source to destination address. <text class="font-weight-bold font-italic text-primary">Next hop</text> represents the IP address of the nearest or the next router in the optimal path.</p>
+					<p><img src="/cisco/include/img/Fig-4-4.png" class="img-thumbnail" alt="a routing table" width="75%" height="75%"></p>
+					<h4>Routing Protocol Codes</h4>
+					<p>In a routing table entry, the <text class="font-weight-bold font-italic text-primary">route source</text> helps to identify how the route was learned by the router, which typically has multiple interfaces configured. There are two route source codes for the directly connected interfaces:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">C</text>: identifies a directly connected network.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">L</text>: identifies a local route.</li>
+					</ul>
+					<p>The routing table stores information about both directly connected and remote routes. Similar to directly connected networks, the route source identifies how the route was learned for remote networks. For example, the common codes used for remote networks are as follows:</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold text-info">S</text>: Stands for the <text class="font-italic">static route</text>. Indicates that the route was manually created by an administrator to reach a specific network.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">D</text>: Indicates that the route was learned dynamically by the router from another router using the <text class="font-italic">EIGRP</text> routing protocol.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold text-warning">O</text>: Indicates that the route was learned dynamically by the router from another router using the <text class="font-italic">OSPF</text> routing protocol.</li>
+						<li class="alert alert-secondary" role="alert"><text class="font-weight-bold text-secondary">R</text>: Indicates that the route was learned dynamically by the router from another router using the <text class="font-italic">RIP</text> routing protocol.</li>
+					</ul>
+					<p><img src="/cisco/include/img/routing-protocol-codes.png" class="img-thumbnail" alt="a-sample-lan" width="75%" height="75%"></p>
+					<h4>Administrative Distance</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Administrative distance</text> is a feature that routers use to select the best path when there are two or more different routes to the same destination from two different routing protocols. It defines the reliability of a routing protocol. If two or more routing protocols present the router with a route, the route with the <text class="font-italic">lowest administrative distance</text> is placed in the routing table.</p>
+					<p>Each routing protocol is prioritized in order of most to least reliable (believable) with the help of an administrative distance value. This value is the first criterion that a router uses to determine which routing protocol to use if two protocols provide route information for the same destination. An administrative distance with a lower value gets higher priority or trust. It is a measure of the trustworthiness of the source of the routing information. Administrative distance has only local significance and is <u>not</u> advertised in routing updates. This table lists some common administrative distances.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 75%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 40%">Routing Protocol</th>
+									<th style="width: 40%">Administrative Distance</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">Directly connected interface</td>
+									<td class="font-weight-bold text-secondary">0</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">Static route (administrator defined)</td>
+									<td class="font-weight-bold text-secondary">1</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold text-info">External Border Gateway Protocol (BGP)</td>
+									<td class="font-weight-bold text-secondary">20</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Internal EIGRP</td>
+									<td class="font-weight-bold text-secondary">90</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">OSPF</td>
+									<td class="font-weight-bold text-secondary">110</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold text-secondary">RIP</td>
+									<td class="font-weight-bold text-secondary">120</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Although static routes have a default administrative distance of <text class="font-weight-bold">1</text>, the administrator can change this to any value.</text></li>
+					</ul>
+					<h4>Metrics</h4>
+					<p>If two or more routes have the same administrative distance, the router will try to use metrics to decide on the best route. <text class="font-weight-bold font-italic text-primary">Metrics</text> are values that are associated with specific routes and are ranked from most preferred to least preferred. The parameters used to determine the metrics vary based on the routing protocols used. They can include <text class="font-italic">hop count</text>, <text class="font-italic">cumulative link cost</text>, <text class="font-italic">bandwidth plus delay</text>, and other criteria. The optimal path is the path with the <text class="font-italic">lowest metric</text>, and the selected optimal path is included in the routing table. When multiple paths to the same destination have equal metrics, load balancing is performed on the paths to ensure that no single path is overwhelmed with traffic. This concept is known as <text class="font-weight-bold font-italic text-primary">equal cost load balancing</text>. There is also unequal cost load balancing. It is supported <text class="font-italic">only</text> by <text class="font-weight-bold">EIGRP</text> and must be configured as it is <u>not</u> enabled by default on Cisco routers.</p>
+					<p>RIP uses a single routing metric or hop count to measure the distance between the source network and a destination network. A hop count value, which is typically <text class="font-weight-bold">1</text>, is assigned to each hop in a path from source to destination. When a router receives a routing update that contains a new or changed destination network entry, it adds <text class="font-weight-bold">1</text> to the metric value specified in the update and then updates the network address in the routing table. The IP address of the sender is used as the next hop.</p>
+					<h4>Command Reference: Router Basics I and II</h4>
+					<p>This section contains the commands you will use in the next labs.</p>
+					<h5>Router Basics</h5>
+					<p>The following commands are used in the Router Basics I and II labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">bannder login [&lt;delimiting-character&gt; &lt;message&gt; &lt;delimiting-character&gt;]</text>: Configures a message that is displayed at user login attempts.</li>
+						<li><text class="font-weight-bold text-success">bannder motd [&lt;delimiting-character&gt; &lt;message&gt; &lt;delimiting-character&gt;]</text>: Configures a message-of-the-day (MOTD) banner that can be used to display a message at user login attempts.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">disable</text>: Returns to user EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable password &lt;password&gt;</text>: Sets the enable password.</li>
+						<li><text class="font-weight-bold text-success">enable secret &lt;password&gt;</text>: Sets the enable secret password.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">line console 0</text>: Accesses console line configuration mode.</li>
+						<li><text class="font-weight-bold text-success">line vty 0 15</text>: Enters the configuration mode for virtual terminal (Telnet) lines.</li>
+						<li><text class="font-weight-bold text-success">login</text>: Enables password checking at login.</li>
+						<li><text class="font-weight-bold text-success">login local</text>: Prompts for a user name and password.</li>
+						<li><text class="font-weight-bold text-success">logout</text>: Exits fromn the user EXEC mode command-line interface (CLI) and ends the current session.</li>
+						<li><text class="font-weight-bold text-success">password &lt;password&gt;</text>: Specifies the password that is required for a user to log in.</li>
+						<li><text class="font-weight-bold text-success">service password-encryption</text>: Applies encryption to all current and future passwords configured on the device.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Router Basics I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Router Basics I</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h5>Lab: Router Basics II</h5>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Router Basics II</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

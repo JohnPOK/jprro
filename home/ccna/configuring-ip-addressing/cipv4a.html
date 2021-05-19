@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure IPv4 Addresses</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic A</h2>
+					</div>
+					<h3 class="text-success">Configure IPv4 Addresses</h3>
+					<p>The IPv4 protocol is the most widely used addressing and routing protocol in use today. The ability to configure IP addresses is paramount in ensuring that the data moves to its intended destination.</p>
+					<h4>IPv4 Address Structure</h4>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> In this course, when the term "IP" is used, it is meant to refer to IPv4. IPv6 will always be written as IPv6.</text></li>
+					</ul>
+					<p>Every network interface needs an IPv4 or IPv6 address to send and receive packets. An IPv4 address is a <text class="font-weight-bold">32-bit</text> number that is often represented in <text class="font-italic">Dotted-Decimal Notation (DDN)</text>. When you use DDN, you can convert each group of <text class="font-weight-bold">8-bits</text> (<text class="font-italic">octet</text>) in an IP address from its binary form to decimal form and separate the resulting numbers by dots. The decimal range of each octet is from <text class="font-weight-bold">0</text> to <text class="font-weight-bold">255</text>. An example of an IP address written in DDN notation is <text class="font-weight-bold">192.14.56.108</text>.</p>
+					<p><img src="/cisco/include/img/Fig-3-1.png" class="img-thumbnail" alt="ip address in binary and ddn formats" width="70%" height="70%"></p>
+					<h4>IPv4 Address Classes</h4>
+					<p>The IPv4 address space is subdivided into classes based on the range of values in the network portion of the IP addresses. Classes define the type of addressing used.</p>
+					<ul>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-success">Class A</text>: Network addresses from <text class="font-weight-bold">1</text> to <text class="font-weight-bold">126</text></li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-warning">Class B</text>: Network addresses from <text class="font-weight-bold">128</text> to <text class="font-weight-bold">191</text></li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-danger">Class C</text>: Network addresses from <text class="font-weight-bold">192</text> to <text class="font-weight-bold">223</text></li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-info">Class D</text>: Network addresses from <text class="font-weight-bold">224</text> to <text class="font-weight-bold">239</text> are designated as multicast addresses</li>
+						<li class="alert alert-secondary" role="alert"><text class="font-weight-bold font-italic text-secondary">Class E</text>: Network addresses from <text class="font-weight-bold">240</text> to <text class="font-weight-bold">255</text> are experimental and reserved addresses</li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> An IP network of Class A, B, or C is called a classful network. Class A networks are large networks, Class B networks are medium-sized networks, and Class C are small networks. These networks are defined by the class rules of IPv4 addressing. Classful addressing for hosts has been replaced with Classless Inter-Domain Routing (CIDR), but knowing the address classes can help you understand many concepts about IP addressing.</text></li>
+					</ul>
+					<h4>Address Classes and Binary</h4>
+					<p>Address classes are actually defined by the <text class="font-italic">leading bits</text> (first binary numbers) found in the first (far left) octet. The following shows the first octet range of binary and dotted decimal numbers for each class.</p>
+					<ul>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-success">Class A</text> starts with <text class="font-weight-bold text-success">0</text>
+							<ul>
+								<li><text class="font-weight-bold"><text class="text-success">0</text>0000000</text> = <text class="font-weight-bold">0</text></li>
+								<li><text class="font-weight-bold"><text class="text-success">0</text>1111111</text> = <text class="font-weight-bold">127</text></li>
+							</ul>
+						</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-warning">Class B</text> starts with <text class="font-weight-bold text-warning">10</text>
+							<ul>
+								<li><text class="font-weight-bold"><text class="text-warning">10</text>000000</text> = <text class="font-weight-bold">128</text></li>
+								<li><text class="font-weight-bold"><text class="text-warning">10</text>111111</text> = <text class="font-weight-bold">191</text></li>
+							</ul>
+						</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-danger">Class C</text> starts with <text class="font-weight-bold text-danger">110</text>
+							<ul>
+								<li><text class="font-weight-bold"><text class="text-danger">110</text>00000</text> = <text class="font-weight-bold">192</text></li>
+								<li><text class="font-weight-bold"><text class="text-danger">110</text>11111</text> = <text class="font-weight-bold">223</text></li>
+							</ul>
+						</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-info">Class D</text> starts with <text class="font-weight-bold text-info">1110</text>
+							<ul>
+								<li><text class="font-weight-bold"><text class="text-info">1110</text>0000</text> = <text class="font-weight-bold">224</text></li>
+								<li><text class="font-weight-bold"><text class="text-info">1110</text>1111</text> = <text class="font-weight-bold">239</text></li>
+							</ul>
+						</li>
+						<li class="alert alert-secondary" role="alert"><text class="font-weight-bold font-italic text-secondary">Class E</text> starts with <text class="font-weight-bold text-secondary">1111</text>
+							<ul>
+								<li><text class="font-weight-bold"><text class="text-secondary">1111</text>0000</text> = <text class="font-weight-bold">240</text></li>
+								<li><text class="font-weight-bold"><text class="text-secondary">1111</text>1111</text> = <text class="font-weight-bold">255</text></li>
+							</ul>
+						</li>
+					</ul>
+					<h4>Unicast Addresses</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">unicast address</text> is an IP address that is used to communicate information from one node in a network to another node. Packets of data are sent from a source address to a particular destination address in the network. Other nodes in the network that do <u>not</u> match the destination unicast address ignore the data transmission.</p>
+					<p>Unicast addressing is predominantly used in LANs and the Internet.</p>
+					<p>Popular applications that use unicast addressing include <text class="font-italic">Hyper-Text Transfer Protocol (HTTP)</text>, <text class="font-italic">Simple Mail Transfer Protocol (SMTP)</text>, and <text class="font-italic">File Transfer Protocol (FTP)</text>.</p>
+					<h4>Broadcast Addresses</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">broadcast address</text> is an IP address that is used to communicate information from one node to all other nodes in a network. Packets of data are sent from a source address to every other node in the network. The IPv4 <text class="font-italic">global broadcast address</text> is <text class="font-weight-bold">255.255.255.255</text>. A broadcast that is specific to a particular network (<text class="font-italic">directed broadcast</text>) will have all host bits in the address set to binary <text class="font-weight-bold">1</text>s. For example, the directed broadcast for the network <text class="font-weight-bold font-italic text-primary">192.168.1.0/24</text> is <text class="font-weight-bold">192.168.1.255</text>.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> On an Ethernet or WiFi network, if the destination IP address is a broadcast address, then the destination MAC address will also be a broadcast address (<text class="font-weight-bold">FF:FF:FF:FF:FF:FF</text>).</text></li>
+					</ul>
+					<p>Broadcast addresses are typically used by network nodes to check for the availability of a particular service on the network or if a node does <u>not</u> have an IP address assigned to it. They are also used by servers to advertise their presence to the network nodes.</p>
+					<p>Broadcasts, while necessary, are <text class="font-italic">disruptive by their very nature</text>. They are used when the sender does <u>not</u> know the exact node it needs to communicate with. Every node that receives the broadcast must process it, even if it is <u>not</u> the intended target. For this reason, the scope of broadcasts should be limited as much as possible. A well-designed network uses VLANs and other network segments to keep broadcast domains relatively small. Routers do <u>not</u> pass broadcasts to other network segments. Switches, however, <text class="font-italic">flood broadcasts out all ports</text>.</p>
+					<p><img src="/cisco/include/img/Fig-3-2.png" class="img-thumbnail" alt="broadcast addresses sent from one source to all other" width="70%" height="70%"></p>
+					<h4>Multicast Addresses</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">multicast address</text> is an IP address that is used to communicate information from one source to a set of nodes in a network. The set of receivers is predefined as a <text class="font-italic">multicast group</text>. Any nodes that are <u>not</u> part of the multicast group ignore the data transmission. Compared to broadcast addresses, multicast addresses are less disruptive because nodes that are <u>not</u> actively involved in the multicast group simply ignore the packets.</p>
+					<p><img src="/cisco/include/img/Fig-3-3.png" class="img-thumbnail" alt="multicast addresses deliver data to a multicast group" width="70%" height="70%"></p>
+					<p>Switches can also be configured to recognize multicast addresses. Some switches and routers run protocols such as <text class="font-italic">Internet Group Management Protocol (IGMP)</text> that keep track of multicast group membership. On these devices, traffic is <u>not</u> sent out any ports that are <u>not</u> associated with the multicast group.</p>
+					<h4>Private IPv4 Addressing</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">private IP address</text> is a network address or range of addresses that organizations can use to build internal TCP/IP networks (intranets). Private address ranges are defined by the <text class="font-weight-bold font-italic">Request for Comments (RFC) 1918</text> as:</p>
+					<ul>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-success">10.0.0.0</text> through <text class="font-weight-bold font-italic text-success">10.255.255.255</text></li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-warning">172.16.0.0</text> through <text class="font-weight-bold font-italic text-warning">172.31.255.255</text></li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-danger">192.168.0.0</text> through <text class="font-weight-bold font-italic text-danger">192.168.255.255</text></li>
+					</ul>
+					<p>Most companies divide the private ranges into subnets to provide additional network addresses for their use.</p>
+					<p>Although they are actual IP addresses, private addresses are <u>not</u> routable on the Internet and are therefore ineligible for use on a public IP network. They have been reserved for private use only.</p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

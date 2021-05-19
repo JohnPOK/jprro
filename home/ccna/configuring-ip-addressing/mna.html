@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Manage Network Addressing</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic D</h2>
+					</div>
+					<h3 class="text-success">Manage Network Addressing</h3>
+					<p>Now that you have configured both types of IP addresses, you can focus on managing addresses.</p>
+					<h4>Static and Dynamic Addresses</h4>
+					<p>One of the facets of managing IP addresses is to decide when to manually assign addresses and when to configure automatic (dynamic) addressing. There are advantages and disadvantages to both, depending on the situation. For instance, manually specifying IP addresses can be time-consuming and prone to error, but it is the preferred method of configuring servers and other devices that require consistent access.</p>
+					<h4>Client OS IP Parameters</h4>
+					<p>When you are managing addres assignment on client computers, you need to know where to check and configure addressing for each type of client.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 90%">
+							<tbody>
+								<tr>
+									<td class="alert alert-info" role="alert">
+										<ul>
+											<li>In Windows, you can use the command <text class="font-weight-bold text-secondary">ipconfig /all</text> to view the current IP configuration, or you can use the <text class="font-weight-bold">Settings->Network & Internet</text> app.</li>
+										</ul>
+										<p><img src="/cisco/include/img/Fig-3-20.png" class="img-thumbnail" alt="the ipconfig all command" width="70%" height="70%"></p>
+									</td>
+								</tr>
+								<tr>
+									<td class="alert alert-danger" role="alert">
+										<ul>
+											<li>In Mac OS X 10.4, to view the IP configuration:</li>
+										</ul>
+										<div>
+											<table class="table table-responsive table-borderless table-sm">
+												<tbody>
+													<tr>
+														<td class="font-weight-bold">1.</td>
+														<td>Select the Apple menu, then select <text class="font-weight-bold">System Preferences</text></td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold">2.</td>
+														<td>Select <text class="font-weight-bold">Network</text>, and in the <text class="font-weight-bold">Show</text> list box, select the interface you want to view.</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold">3.</td>
+														<td>Select the <text class="font-weight-bold">TCP/IP</text> tab to view IP configuration information.</td>
+													</tr>
+													<tr>
+														<td colspan="2">
+															<p>
+																<a href="https://www.youtube.com/watch?v=9fv3OytdBVU" target="_blank" class="btn btn-primary">View/Config the IP Configuration</a>
+																<a href="https://www.youtube.com/watch?v=9fv3OytdBVU" target="_blank" class="btn btn-primary">View/Config the IP Configuration</a>
+																<a href="https://www.youtube.com/watch?v=ZDNhoedM-ic" target="_blank" class="btn btn-primary">View/Config the IP Configuration</a>
+															</p>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="alert alert-danger" role="alert">
+										<ul>
+											<li>In Mac OS X 10.5, to view the IP configuration:</li>
+										</ul>
+										<div>
+											<table class="table table-responsive table-borderless table-sm">
+												<tbody>
+													<tr>
+														<td class="font-weight-bold">1.</td>
+														<td>Press <text class="font-weight-bold">Command + Spacebar</text> and search for <text class="font-weight-bold">network utility</text>, and select the application in the search results.</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold">2.</td>
+														<td>Select the <text class="font-weight-bold">Info</text> tab, specify a network interface, and view the information in the <text class="font-weight-bold">Interface Information</text> section of the Network Utility window.</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td class="alert alert-warning" role="alert">
+										<ul>
+											<li>In Linux, you can use the <text class="font-weight-bold text-secondary">ifconfig</text> command to view IP information.</li>
+										</ul>
+										<p><img src="/cisco/include/img/Fig-3-21.png" class="img-thumbnail" alt="the ifconfig command" width="70%" height="70%"></p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Address Assignments for Switches and Routers</h4>
+					<p>Routers and Layer 3 switches require a valid IP configuration for each interface that is configured on each subnet or VLAN. This IP address is typically used for configuring a default gateway for clients on the subnet or VLAN. You might want to develop a system for assigning addresses to these devices so that the addresses are easily recognizable as belonging to routers and switches as opposed to endpoint devices. It's likely that you will want to use static addresses for these devices.</p>
+					<p>Routers, Layer 3 switches, and Layer 2 switches should also be configured with a static IP address for management. This is typically a different subnet or VLAN than clients are connected to, and firewall rules or ACLs will restrict traffic to these addresses to administrators only.</p>
+					<p>On routers and Layer 3 switches, you can also assign IP addresses to loopback interfaces. A <text class="font-weight-bold font-italic text-primary">loopback interface</text> is a software interface that emulates a physical interface and is useful because this interface never goes down and can be used by routing protocols for router identification with OSPF, for example.</p>
+					<h4>Command Reference: IP Address Configuration on Switches and Routers</h4>
+					<p>This section contains the commands you will use in the next set of labs.</p>
+					<h5>IP Addresses on Switches and Routers</h5>
+					<p>The following commands are used in the IP Addresses on a Switch and IP Addressing on a Router labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">clock rate &lt;clock-rate&gt;</text>: Sets the clock rate for a Data Communications Equipment (DCE) interface.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /dg &lt;ip-address&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /ip &lt;ip-address&gt; &lt;subnetmask&gt;</text>: Used in NetSim to assign an IP address and subnet mask to a workstation interface.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: IP Addressing on a Switch</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->IP Addressing on a Switch</text></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+					<h5>Lab: IP Addressing on a Router</h5>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->IP Addressing on a Router</text></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+					<h4>Summary</h4>
+					<p>In this lesson, you configured IP addressing, including both IPv4 and IPv6 addresses, along with their subnet masks and prefixes. These skills can help to ensure that the routers and other devices that you administer are properly configured to transfer data across local and remote networks.</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Manage passwords</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Manage passwords</h3>
+					<p>Many AAA implementations require a valid user name and password for authentication. As a CCNA, you will likely be responsible for managing passwords.</p>
+					<h4>Password Policies</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">security policy</text> is a formalized statement that defines how security will be implemented within an organization. It describes the means the organization will take to protect the <text class="font-italic">confidentiality</text>, <text class="font-italic">integrity</text>, and <text class="font-italic">availability</text> of sensitive data and resources. A <text class="font-weight-bold font-italic text-primary">password policy</text> is a subset of an overall security policy that documents standards for <text class="font-italic">creating</text>, <text class="font-italic">storing</text>, and <text class="font-italic">modifying</text> passwords.</p>
+					<p>Password policies define criteria for the use of <text class="font-italic">local passwords</text>, <text class="font-italic">general password management</text>, and <text class="font-italic">password complexity</text>, among other things.</p>
+					<h4>Cisco Authentication</h4>
+					<p>Cisco devices have several options for authentication. These methods are applicable whether you are making a local connection at the console or a remote connection by using <text class="font-italic">Telnet</text> or <text class="font-italic">SSH</text>.</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Authenticate to the local device with a password only.</li>
+						<li class="alert alert-info" role="alert">Authenticate to the local device with a user name and password combination.</li>
+						<li class="alert alert-info" role="alert">Have your authentication forwarded to a TACACS+ or RADIUS server.</li>
+						<li class="alert alert-info" role="alert">Once logged in, elevate your privilege level with an enable password or enable secret password.</li>
+					</ul>
+					<p>Providing a user name along with the password allows the administrator to automatically grant the user a particular privilege level when they log in. If the user logs in with only a password, they enter at <text class="font-italic">User EXEC (unprivileged) mode</text>. If they want to then escalate to privileged mode, they then must type <text class="font-weight-bold font-italic text-success">enable</text> and provide the <text class="font-italic">enable password</text>. If the administrator wants the user to automatically enter in privileged mode (without having to type the enable password), they set the privilege level while creating the user account. For example, <text class="font-weight-bold font-italic text-success">username suzy privilege 15 password letmein</text> will create the user <b class="text-secondary">suzy</b> with the password of <b class="text-secondary">letmein</b>. When Suzy logs in, she is automatically at privileged EXEC mode and does <u>not</u> have to enter the enable password.</p>
+					<p>The <text class="font-weight-bold font-italic text-success">enable</text> command can be given a password to protect privileged EXEC mode. This is <u>not</u> required, but is best practice. Historically, the <text class="font-weight-bold font-italic text-success">enable password</text> was stored in <text class="font-italic">plain text</text> or by using <text class="font-italic">weak encryption</text> that can be easily broken. To address this weakness, Cisco added the <text class="font-weight-bold font-italic text-success">enable secret password</text>, which is stored as an <text class="font-weight-bold">MD5</text> hash. You can configure both the <text class="font-weight-bold font-italic text-success">enable password</text> and <text class="font-weight-bold font-italic text-success">enable secret password</text> on the same device. However, if you do, then the device will use <u>only</u> the <text class="font-weight-bold font-italic text-success">enable secret password</text>. A user cannot specify which version they wish to use. The enable password is used only if the administrator deletes the enable secret password from the device configuration.</p>
+					<p><img src="/cisco/include/img/Fig-7-2.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold">1.</td>
+									<td><text class="font-weight-bold text-secondary">Local authentication</text>: User names and passwords stored in the device's running-config (and startup-config) file.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold">2.</td>
+									<td><text class="font-weight-bold text-secondary">Remote authentication</text>: User names and passwords stored on a RADIUS or TACACS+ server or a separate Directory Services server.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold">3.</td>
+									<td>Logging in with password only or as a user with privilege level <b>1</b> displays the user EXEC prompt.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold">4.</td>
+									<td>Enable password is stored on the device in plain text or with weak encryption, and enable secret password is stored on the device with strong MD5 encryption. If you are at the user EXEC prompt, you must provide either the enable password or enable secret password to gain a privileged EXEC prompt.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold">5.</td>
+									<td>Logging in as a user with privilege level 15 displays the privileged EXEC prompt immediately.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Password Encryption Levels</h4>
+					<p>Cisco offers several levels of password encryption, as described in the following table.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 25%">Password Encryption Level</th>
+									<th style="width: 75%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Type 0</td>
+									<td class="text-dark">There is no encryption. The password is stored as clear text. This level should <u>not</u> be used.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Type 4</td>
+									<td class="text-dark">An older level failed to provide strong password hashes. This level should <u>not</u> be used. It was deprecated with the relaese of IOS <b>15.3(3)</b>.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">Type 5</td>
+									<td class="text-dark">This type uses <b>MD5</b> encryption. The encryption is crackable but it should take a long time to crack it. Use this level <u>only</u> when type <b>8</b> or <b>9</b> is <u>not</u> available in your version of IOS.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Type 7</td>
+									<td class="text-dark">This type uses the Vigenere cipher, which is easily cracked in a matter of seconds or faster. This level should <u>not</u> be used.<br>
+										<ul class="list-group">
+											<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> This is the level that IOS applies when you issue the <text class="font-weight-bold text-success">service password-encryption</text> command.</text></li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="text-success"><b>Type 8</b></td>
+									<td class="text-dark">This type uses Password-Based Key Deriviation Function 2 (PBKDF2) with Secure Hash Algorithm, <b>26-bits</b> (SHA-256) as the hashing algorithm.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="text-success"><b>Type 9</b></td>
+									<td class="text-dark">This type uses scrypt as the hashing algorithm [starting from IOS version <b>15.3(3)</b>]. If your IOS version supports it, it is by far the hardest to crack.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Local Passwords</h4>
+					<p>On a Cisco networking device, a local password is one that is stored in the device configuration. Some devices, such as the ASA firewall, maintain a separate local database. Otherwise, local user names and passwords are simply stored in the device startup-config and running-config files. Depending on the device, purpose, and IOS version, they might be stored in plain text or as a hash. Later versions of the IOS included commands to encrypt any existing plain text passwords in running-config.</p>
+					<h4>Password Management</h4>
+					<p>With all the different types and levels of passwords on a Cisco network, it can be a daunting task to manage them. For remote authentication, you can manage user names and passwords at the AAA server or Directory Services server. Management systems such as Cisco DNA can also be configured with global or individual device user names and passwords, SNMP community strings, authentication types, enable/enable secret passwords, and other authentication information needed to discover and manage devices on the network.</p>
+					<h4>Password Complexity</h4>
+					<p>You can specify a level of password complexity that will make it more difficult for passwords to be cracked. Most organizations require:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Minimum password length, such as <text class="font-weight-bold">7</text> characters.</li>
+						<li class="alert alert-success" role="alert">Allowable characters, such as upper and lower case letters, numbers, and symbols.</li>
+						<li class="alert alert-success" role="alert">Required characters, such as at least one upper case letter and at least one symbol.</li>
+						<li class="alert alert-success" role="alert">Prohibitions, such as no words found in dictionaries, and no consecutive or repeated characters.</li>
+					</ul>
+					<h4>Alternatives to Using Passwords</h4>
+					<p>There are other authentication methods that do <u>not</u> use passwords as the base or sole authentication mechanism. Some of these include:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Multifactor authentication</li>
+						<li class="alert alert-warning" role="alert">Biometrics</li>
+						<li class="alert alert-warning" role="alert">Digital certificate</li>
+					</ul>
+					<h4>Multifactor Authentication</h4>
+					<p>Authentication factors are traditionally listed as:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">Something you know, such as a password or PIN.</li>
+						<li class="alert alert-danger" role="alert">Something you have, such as a token, smart card, or swipe card.</li>
+						<li class="alert alert-danger" role="alert">Something you are, which relates to physical characteristics such as fingerprints or retinal patterns.</li>
+					</ul>
+					<p>Some newer factors include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Where you are, such as directly connected to the network or remotely connected.</li>
+						<li class="alert alert-info" role="alert">What you do, such as keystroke patterns.</li>
+					</ul>
+					<p>For multifactor authentication (MFA) to be in place, you need to include at least two distinct authentication factors. For instance, if you have a user name and password (what you know) and a PIN (what you know), this is <u>not</u> multifactor authentication. However, if you have a user name and password (what you know) and a key fob (what you have) that generates one-time passwords, this is a valid example of multifactor authentication.</p>
+					<p>Some commonly used MFA schemes include:</p>
+					<ul>
+						<li class="alert alert-secondary" role="alert">Using a <text class="font-italic">one-time password (OTP)</text> to gain access to a secure website such as a bank's website. Generally speaking, you enter your user name and password (what you know) credentials on a webpage, and the website sends you a time-sensitive message via email or SMS text that contains an authorization code (what you have) for you to access the website's resources.</li>
+						<li class="alert alert-secondary" role="alert">An <text class="font-italic">employee ID badge</text> (what you have) and a <text class="font-italic">fingerprint</text> or <text class="font-italic">retinal scanner</text> (who you are) used to gain entry to a secure portion of a building.</li>
+					</ul>
+					<h4>Biometrics</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Biometrics</text> is the measurement and analysis of physical characteristics such as fingerprints, voice patterns, and retinal patterns for use in proving an individual's identity. Many keyboards and mobile phones employ biometric technology to assist in protecting equipment and data from unauthorized access. Facial recognition software is also an option.</p>
+					<h4>Digital Certificates</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">digital certificate</text> is an electronic document that is used to identify a person, device, organization, or some other entity. You can use digital certificates for device authentication as well as user authentication. You can also combine certificates with a user name/password combination to enhance security.</p>
+					<p>There are two main categories of digital certificates: <text class="font-italic">certificates signed by a certificate authority (CA)</text> and <text class="font-italic">self-signed certificates</text>. A <text class="font-weight-bold font-italic text-primary">self-signed certificate</text> is a digital certificate that does <u>not</u> have a signature from a CA. Generally speaking, certificates signed by a CA can provide more security, but there are times when using a self-signed certificate should be considered.</p>
+					<p>Because self-signed certificates are easy to create and incur no costs, they should be used on internal LANs without making the network and its data more prone to attack. However, if you do use self-signed certificates, there is a chance that your users will receive a warning that the certificate is <u>not</u> trusted. In this case, they would have to acknowledge the warning to continue their tasks.</p>
+					<p>For networks that have WAN links, it is strongly recommended that CA-issued certificates be used.</p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

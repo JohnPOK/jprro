@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Troubleshoot IPv4 and IPv6 Addressing Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic D</h2>
+					</div>
+					<h3 class="text-success">Troubleshoot IPv4 and IPv6 Addressing Issues</h3>
+					<p>When IPv4 addresses and subnets are <u>not</u> configured correctly, it can have a great impact on the ability of users to connect to the network resources they need to use.</p>
+					<p>As with IPv4, misconfigurations in IPv6 addressing can cause problems for user workstations and network devices such as switches and routers.</p>
+					<h4>Common IPv4 Addressing and Subnetting Issues</h4>
+					<p>Some of the most common IPv4 addressing and subnetting issues are:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Incorrect IP settings on a host, on the default router, or both.</li>
+						<li class="alert alert-warning" role="alert">Incorrect DNS server addresses on the host.</li>
+						<li class="alert alert-warning" role="alert">IP connectivity problem between the DNS server and the host.</li>
+						<li class="alert alert-warning" role="alert">No match between the subnet masks configured on the host and the router (The host and the router are <u>not</u> connected to the same subnet due to incorrectly set subnet IDs or addresses).</li>
+						<li class="alert alert-warning" role="alert">Missing IPv4 configuration settings on a host.</li>
+					</ul>
+					<p>Sometimes a networking problem could be because of issues in the routing logic configured on one or more Cisco routers. A <text class="font-italic">routing problem</text> could be caused by the presence of more than one route to forward a packet to the destination, overlap of subnets due to poor subnetting design, overlap routes due to poor addressing, or packets rejected by ACLs.</p>
+					<p>Other issues can also be mistaken for IP problems. The most common are:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">Host firewalls blocking traffic, particularly ICMP.</li>
+						<li class="alert alert-danger" role="alert">Hosts in the wrong VLAN.</li>
+						<li class="alert alert-danger" role="alert">General Layer 1 and Layer 2 connectivity issues.</li>
+					</ul>
+					<h4>Common IPv4 and IPv6 Troubleshooting Commands</h4>
+					<p>The following table describes some commonly used IPv4 and IPv6 troubleshooting commands.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 25%">Command</th>
+									<th style="width: 65%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold text-success">traceroute &lt;ip-address&gt;</td>
+									<td class="font-italic text-secondary">Displays the network path to the specified destination.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">ping &lt;ip-address&gt;<br>ping ipv6 &lt;ip-address&gt;</td>
+									<td class="font-italic text-secondary">Sends and receives packets to/from the specified IP address.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show cdp neighbor</td>
+									<td class="font-italic text-secondary">Displays information about directly connected neighbors.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show ip interface<br>show ip interface brief<br>show ipv6 interface</td>
+									<td class="font-italic text-secondary">Displays the IP parameters of the interface.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show ip route<br>show ipv6 route</td>
+									<td class="font-italic text-secondary">Displays the IP routing table.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show ip route connected<br>show ipv6 route connected</td>
+									<td class="font-italic text-secondary">Displays a list of the IP networks that are locally connected to the networking device.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Guidelines for Troubleshooting IPv4 Addressing and Subnetting Issues</h4>
+					<p>Here are some guidelines for troubleshooting IPv4 addressing and subnetting issues.</p>
+					<h5>Troubleshooting IPv4 Addressing and Subnetting Issues</h5>
+					<p>Consider the following guidelines when you need to troubleshoot IPv4 addressing and subnetting problems:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Eliminate non-IP issues such as Physical and Data Link Layer problems, firewalls, and incorrect VLAN configurations.</li>
+						<li class="alert alert-info" role="alert">Test network connectivity by using the <text class="font-weight-bold text-success">traceroute</text> and <text class="font-weight-bold text-success">ping</text> commands.</li>
+						<li class="alert alert-info" role="alert">Determine the current status at a Cisco router by using the <text class="font-weight-bold text-success">show ip interface</text> and <text class="font-weight-bold text-success">show ip route connected</text> commands.</li>
+						<li class="alert alert-info" role="alert">Check the DNS server addresses, subnet masks, and default router settings specified at the host, and correct them if necessary.</li>
+						<li class="alert alert-info" role="alert">Ensure that the router and host are connected to the same subnet, and verify that their subnet masks match. Determine the best route for packets and resolve overlap issues caused by overlapping subnets, VLSMs, or poor addressing plans.</li>
+					</ul>
+					<h4>Command Reference: Troubleshooting VLSM</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Troubleshooting VLSM</h5>
+					<p>The following commands are used in the Troubleshooting VLSM lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changed from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP version 4 (IPv4) address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig</text>: Used in NetSim to display the currently configured IP address, subnet mask, and default gateway on a workstation.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an ICMP echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip interface</text>: Displays IP information for an interface.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">telnet &lt;ip-address&gt;</text>: Starts the terminal emulation program from a PC, router, or switch - permits you to access devices remotely over the network.</li>
+					</ul>
+					<h5>Lab: Troubleshooting VLSM</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Troubleshooting VLSM</text></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h4>Common IPv6 Addressing Issues</h4>
+					<p>Addressing issues can arise in an IPv6 network because of incorrect settings applied at switches, hosts, or routers.</p>
+					<ul class="alert alert-info" role="alert">
+						<li>The most common issues that occur at a <text class="font-weight-bold">switch</text> include:
+							<ul>
+								<li class="alert alert-primary">Missing or incorrect VLAN settings.</li>
+								<li class="alert alert-primary">Incorrect MAC address filtering.</li>
+								<li class="alert alert-primary">Incorrect ACL settings received from the router.</li>
+							</ul>
+						</li>
+						<li>The most common issues that occur at a <text class="font-weight-bold">host</text> include:
+							<ul>
+								<li class="alert alert-primary">Differences in the prefix length between a host and its default router.</li>
+								<li class="alert alert-primary">The host <u>not</u> being present in the same subnet as its default router.</li>
+								<li class="alert alert-primary">Incorrect default router setting.</li>
+								<li class="alert alert-primary">Incorrect DNS server setting.</li>
+							</ul>
+						</li>
+						<li>Most common issues occur at <text class="font-weight-bold">routers</text> because of <u>not</u> adhering to the following IPv6 rules:<br>
+							<ul>
+								<li class="alert alert-primary">You must enable IPv6 on every router.</li>
+								<li class="alert alert-primary">All routers must maintain IPv6 routes to all the subnets in the network.</li>
+								<li class="alert alert-primary">The state of router interfaces that are currently in use must be set to "up/up".
+									<ul class="list-group">
+										<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Each router has two status codes. The first status code indicates the status of the line or connectivity, and the second status code indicates the status of the protocol. The "up/up" state indicates that both the line and protocol status are up, and the device is fully functional.</text></li>
+									</ul>
+								</li>
+								<li class="alert alert-primary">Routers using the same data link must be present in the same IPv6 subnet.</li>
+							</ul>
+						</li>
+					</ul>
+					<h4>Guidelines for Troubleshooting IPv6 Addressing Issues</h4>
+					<p>Here are some guidelines for troubleshooting IPv6 addressing and configuration issues.</p>
+					<h5>Troubleshooting IPv6 Addressing Issues</h5>
+					<p>Consider the following guidelines when you need to troubleshoot issues involving IPv6 addressing:</p>
+					<ul>
+						<li class="alert alert-info">Tools:
+							<ul>
+								<li class="alert alert-success">The <text class="font-weight-bold text-success">ping</text> and <text class="font-weight-bold text-success">traceroute</text> commands of the Cisco IOS are the most commonly used commands to detect problems in an IPv6 network.</li>
+								<li class="alert alert-success">Use the <text class="font-weight-bold text-success">show ipv6 route</text>, <text class="font-weight-bold text-success">show ipv6 interface</text>, and <text class="font-weight-bold text-success">show ipv6 neighbors</text> commands to verify IP addressing on an IPv6 network.</li>
+							</ul>
+						</li>
+						<li class="alert alert-info">Some methods to troubleshoot IPv6 addressing issues are:
+							<ul>
+								<li class="alert alert-warning">Checking and correcting the static IP settings on a host (such as the default router and DNS server settings).</li>
+								<li class="alert alert-warning">Verifying that the prefix length settings match at the host and its default router (and correcting them when there is a mismatch).</li>
+								<li class="alert alert-warning">Ensuring that the host and router identify the same subnet on a VLAN.</li>
+								<li class="alert alert-warning">Pinging the default router from a host to identify problems in the LAN that incorrectly filter frames or prevent the flow of frames.</li>
+								<li class="alert alert-warning">Checking whether there is a failure in the stateful or stateless autoconfiguration mechanism by ensuring that all hosts have the correct IPv6 address configuration.</li>
+								<li class="alert alert-warning">Using the <text class="font-weight-bold text-success">traceroute</text> command to see if there is a problem in routing packets or if packets are being discarded by ACL filters.</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

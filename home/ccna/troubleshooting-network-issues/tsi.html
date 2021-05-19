@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Troubleshoot Security Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic I</h2>
+					</div>
+					<h3 class="text-success">Troubleshoot Security Issues</h3>
+					<p>With today's security concerns affecting practically all users on all networks, the ability to troubleshoot network issues is an essential tool for any network administrator.</p>
+					<h4>Common Security Issues</h4>
+					<p>Some common security issues you might encounter include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Issues with port security configurations.</li>
+						<li class="alert alert-info" role="alert">Issues related to device hardening.</li>
+						<li class="alert alert-info" role="alert">Issues related to console access.</li>
+						<li class="alert alert-info" role="alert">Issues with ACLs.</li>
+					</ul>
+					<h4>Port Security Issues</h4>
+					<p>Issues related to port security include:</p>
+					<div class="alert alert-info" role="alert">
+						<ul>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Port security violations</text>. When you enable port security, each interface has a default or configured number of MAC addresses that can be secured. The number of MAC addresses that can be secured per port must be determined and the interface must be configured with the same number of addresses. When port security is applied under anticipated operating conditions and with proper configuration, it will continue to work normally until a port security violation occurs.
+								<ul>
+									<li class="alert alert-danger" role="alert">Causes of port security violation include <text class="font-italic">virus attacks</text>, <text class="font-italic">hostile nodes</text>, or <text class="font-italic">accidental reconfiguration of hosts</text>, and can result in an end host sending out packets with more MAC addresses than expected. This will result in port security violation. The system will log an error message indicating that a violation has occurred. The error message will also include the MAC address of the end host and the port on which the violation occurred. The system will send an alert or a trap if the SNMP traps for port security are enabled.</li>
+									<li class="alert alert-danger" role="alert">Depending on the violation mode, the port can be <text class="font-italic">err-disabled</text> or set to <text class="font-italic">shutdown</text> mode, or the packets from the unsecure addresses can be <text class="font-italic">dropped</text> in the software or set to <text class="font-italic">restrict</text> mode. However, to ensure that the CPU is <u>not</u> loaded when such an event occurs, you need to set the violation mode to shutdown. You can ensure an automatic recovery from the err-disabled state by configuring <text class="font-italic">errdisable recovery</text> and <text class="font-italic">timeout</text>.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="alert alert-info" role="alert">
+						<ul>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Configuration management</text>.
+								<ul>
+									<li class="alert alert-danger" role="alert">The secure trunk port can be configured with the <text class="font-italic">static</text> or <text class="font-italic">sticky</text> secure addresses. However, if you change the set of allowed VLANs on the trunk port, the configured addresses located on certain VLANs will be erased by the software. Then, the system will log an error message that identifies the VLANs from which the VLAN-based maximum and static or sticky secure addresses are erased by the software.</li>
+									<li class="alert alert-danger" role="alert">You can convert a port configured with port security and static or sticky secure addresses to a router port or hotswap it out of the system. This will make the configuration on the port ineffective in the system. The addresses that are secured on the port can be secured on other ports.</li>
+									<li class="alert alert-danger" role="alert">To ensure that the configuration is restored when the port is either converted back to a Layer <text class="font-weight-bold">2</text> switchport or hotswapped into the system, the software will retain the the configuration. When such a port is made available, the software ensures that the configured static or sticky secure addresses are <u>not</u> secured on other ports. If the software observes that the address has been used on a different port than where it was inserted, it will erase the address.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<h4>Command Reference: Troubleshooting Port Security</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Troubleshooting Port Security</h5>
+					<p>The following commands are used in the Troubleshooting Port Security lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-secondary">ip config /all</text>: Used in NetSim to display the IP addresses and MAC address on a workstation.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip interface [&lt;type&gt; &lt;number&gt;]</text>: Displays IP information for an interface.</li>
+						<li><text class="font-weight-bold text-success">show port-security</text>: Displays port-scurity settings for an interface or for a switch.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show running-config [interface &lt;type&gt; &lt;number&gt;]</text>: Displays the specified interface's active configuration file.</li>
+						<li><text class="font-weight-bold text-success">shutdown [no shutdown]</text>: Disables an interface. Enables an interface.</li>
+						<li><text class="font-weight-bold text-success">switchport port-security</text>: Enables port security on an interfrace.</li>
+						<li><text class="font-weight-bold text-success">switchport port-security mac-address &lt;mac-address&gt;</text>: Specifies a secure MAC address for a port.</li>
+					</ul>
+					<h5>Lab: Troubleshooting Port Security</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: On the <b>Lagacy</b> tab, <b>ICND2->Troubleshooting->Troubleshooting Port Security</b></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+					<h4>Device Hardening</h4>
+					<p>Performing device hardening on network computers and devices is meant to keep them safe from unauthorized access, but you might run into cases where a PC, switch or router has been configured so tightly that it can't provide the services that users need. Some facets of device hardening that you might need to troubleshoot include:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Console access issues. These can be a matter of <u>not</u> enough security (meaning unauthorized users can access the console of a Cisco switch or router), or you might encounter situations where IT personnel who should be able to access a console can't do so.</li>
+						<li class="alert alert-warning" role="alert">ACL issues. Again, this might be a situation where an ACL is too restrictive (users who should be able to access a resource can't) or <u>not</u> restrictive enough (unauthorized users can access resources that they should <u>not</u> be able to access).</li>
+					</ul>
+					<h4>Console Access</h4>
+					<p>The default method for accessing Cisco routers and switches is by using the <text class="font-italic">console port</text> (sometimes referred to as the <text class="font-italic">management port</text>). However, most network administrators want the convenience of being able to gain access to a router or switch console from a remote or centralized location. Here are some tips for restricting console access:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Decide if you want or need to allow direct connection access to network devices (via a <text class="font-italic">serial port</text>). This decision migth depend on many factors, including organizational security policies.</li>
+						<li class="alert alert-info" role="alert">Make sure that you use the Cisco <text class="font-italic">rollover cable</text> to connect to the console port. This cable is light blue and provide a unique pinout.</li>
+						<li class="alert alert-info" role="alert">If you decide to prohibit direct connection access and allow only remote access, you might think that disabling the physical console port is the best approach. It would <u>not</u> affect remote access to the device, since that occurs through the existing network media. However, in some troubleshooting scenarios you will want to be able to make a direct connection to a device. A more appropriate action is to physically secure the device in a locked cabinet or room. This will prevent "just anyone" from making a direct connection, but still enables you to do so when the need arises.</li>
+						<li class="alert alert-info" role="alert">Whether for direct access or remote access, you definitely want to require <text class="font-italic">user name/password credentials</text>, and you want to be sure to set the appropriate level of encryption on the password so that it is <u>not</u> easily compromised.</li>
+					</ul>
+					<h4>ACL Configuration Issues</h4>
+					<p>Even before you attempt to troubleshoot ACL issues, you need to focus on these four key points:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold">Determine if there is an ACL problem</text>: If possible, remove the access list and test.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold">Test the interfrace where the ACL is applied, and determine the direction of data flow</text>: You may be tempted to verify the access list first, but it is also important for you to verify the direction that data is flowing, and ensure that the sources and destinations are being correctly interpreted. It might be possible that the applied interface is <u>not</u> on the path the traffic is routed through, or that the ACL has been applied in the wrong direction, such as incoming when it should be outgoing.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold">Check the entries in the access list</text>: Verify that the addresses and port numbers have been entered correctly.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold">Review the order of operations</text>: Remember that ACLs are processed <text class="font-italic">top-down</text>, and the first match (permit or deny) is executed. It could be possible that the traffic is matching an earlier statement. You can check this by temporarily moving the line in question to the top of the list.</li>
+					</ul>
+					<p>Some connectivity issues can result from misconfigured ACLs. The basic premise comes down to two possible issues:</p>
+					<ul>
+						<li class="alert alert-light" role="alert">Traffic that you want to block is being allowed.</li>
+						<li class="alert alert-light" role="alert">Traffic that you want to allow is being blocked.</li>
+					</ul>
+					<p>The following table describes common problems, along with possible causes and solutions.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 98%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 12%">Problem</th>
+									<th style="width: 44%">Possible Cause</th>
+									<th style="width: 44%">Solution</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-danger">All packets are getting blocked:</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">The access list might be empty.</li>
+											<li class="list-group-item list-group-item-danger">A deny filter may be too broad.</li>
+											<li class="list-group-item list-group-item-danger">A deny filter may be too high in the access list order.</li>
+											<li class="list-group-item list-group-item-danger">No existing permit filters can match the packets.</li>
+											<li class="list-group-item list-group-item-danger">You created rules to explicitly deny various types of traffic, then forgot to include a "permit any" rule at the end.</li>
+										</ul>
+									</td>
+									<td class="text-dark">
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">Use the <text class="font-weight-bold text-success">no ip access-group</text> or the <text class="font-weight-bold text-success">no ipv6 traffic-filter</text> command to remove the access list from the interface.</li>
+											<li class="list-group-item list-group-item-success">Use the <text class="font-weight-bold text-success">no ip access-list</text> command for IP version <text class="font-weight-bold">4</text> (<text class="font-weight-bold">IPv4</text>)-ACLs or <text class="font-weight-bold text-success">no ipv6 access-list</text> command for <text class="font-weight-bold">IPv6</text>, and use the <text class="font-weight-bold text-success">no deny</text> command to delete the deny filter.</li>
+											<li class="list-group-item list-group-item-success">Delete the access-list and recreate it.</li>
+											<li class="list-group-item list-group-item-success">Use the <text class="font-weight-bold text-success">ip access-list</text> command for <text class="font-weight-bold">IPv4</text>-ACLs or <text class="font-weight-bold text-success">ipv6 access-list</text> for <text class="font-weight-bold">IPv6</text>, and use the permit command to add the permit filters.</li>
+											<li class="list-group-item list-group-item-success">Make sure the last statement in your ACL permits all traffic.</li>
+											<li class="list-group-item list-group-item-success">For a standard ACL enter <text class="font-weight-bold text-success">access-list &lt;number&gt; permit any</text>. For an extended ACL enter <text class="font-weight-bold text-success">access-list &lt;number&gt; permit any any</text>.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-danger">No packets are getting blocked:</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">A permit filter may be too broad.</li>
+											<li class="list-group-item list-group-item-danger">The permit filter may be too high in the access list order.</li>
+											<li class="list-group-item list-group-item-danger">The filter might be applied to the wrong interface.</li>
+											<li class="list-group-item list-group-item-danger">The filter might be applied to the right interface, but in the wrong direction.</li>
+										</ul>
+									</td>
+									<td class="text-dark">
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">Use the <text class="font-weight-bold text-success">no ip access-list</text> command for IP version <text class="font-weight-bold">4</text> (<text class="font-weight-bold">IPv4</text>)-ACLs or <text class="font-weight-bold text-success">no ipv6 access-list</text> command for <text class="font-weight-bold">IPv6</text>, and use the <text class="font-weight-bold text-success">no deny</text> command to delete the deny filter.</li>
+											<li class="list-group-item list-group-item-success">Delete the access list and recreate it.</li>
+											<li class="list-group-item list-group-item-success">Draw a diagram on paper with arrows indicating the flow of traffic. Ensure that the interface you applied the ACL to is in the path of the data flow.</li>
+											<li class="list-group-item list-group-item-success">Using a traffic-flow diagram, verify that the direction of the ACL on the interface (<text class="font-italic">in</text>, <text class="font-italic">out</text>) corresponds to the direction of the traffic flow. Pay special attention to source and destination IP addresses and ports.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-danger">PortChannel not working with ACL:</td>
+									<td class="text-warning">
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">The ACL may <u>not</u> have been applied to all interfaces in the PortChannel.</li>
+										</ul>
+									</td>
+									<td class="text-dark">
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">Use the <text class="font-weight-bold text-success">show port-channel database</text> command to determine the interfaces that are part of the PortChannel. Then, you need to use the <text class="font-weight-bold text-success">ip access-group</text> or the <text class="font-weight-bold text-success">ipv6 traffic-filter</text> command to add the ACL to all interfaces in the PortChannel.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-danger">Cannot remotely connect to switch:</td>
+									<td class="text-warning">
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">There may be an incorrect ACL on the mgmt0 interface.</li>
+										</ul>
+									</td>
+									<td class="text-dark">
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">Locally connect to the console port and delete the ACL, using the <text class="font-weight-bold text-success">no ip access-group</text> or the <text class="font-weight-bold text-success">no ipv6 traffic-filter</text> command.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Guidelines for Troubleshooting Security Issues</h4>
+					<p>Here are some guidelines for troubleshooting security issues.</p>
+					<h5>Troubleshooting Port Security</h5>
+					<p>To resolve problems related to port security, you need to apply the solutions described in the following table.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 45%">Problem</th>
+									<th style="width: 45%">Cause/Solution</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-light" role="alert">
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">Secure addresses do <u>not</u> appear as static entries in the output of <text class="font-weight-bold text-success">show mac address-table static</text> command.</li>
+										</ul>
+									</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-warning"><text class="font-weight-bold ">Cause</text>: The configuration of the secure addresses is <u>not</u> complete.</li>
+											<li class="list-group-item list-group-item-success"><text class="font-weight-bold ">Solution</text>: Check the address and make it secure by associating the VLANs.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">The previously configured static or sticky secure addresses on VLANs are missing.</li>
+										</ul>
+									</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-warning"><text class="font-weight-bold ">Cause</text>: If you change the set of allowed VLANs on the trunk port, the configured static or sticky secure addresses located on certain VLANs are erased by the software. You can convert a port configured with port security and static/sticky secure addresses to a router port. Also, you can hotswap it out of the system. If this happens, the configuration on the port is ineffective in the system. This allows the addresses that are secured on the port to be secured on other ports.</li>
+											<li class="list-group-item list-group-item-success"><text class="font-weight-bold ">Solution</text>: You need to configure a secure trunk port with static or sticky secure addresses.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-danger">There is a port security violation and the systems have logged the error message <text class="font-weight-bold ">Security violation occured</text>. The systems will send a trap if you have enabled SNMP traps for port security. Based on the violation mode, either the port will be error-disabled (shutdown mode), or the packets from the unsecure addresses may be dropped in the software (restrict mode).</li>
+										</ul>
+									</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-warning"><text class="font-weight-bold ">Cause</text>: Each interface has a default or configured number of MAC addresses that can be secured when port security is enabled. You need to determine the number of MAC addresses that can be secured per port and configure that many number of addresses on the interface. When port security is properly configured under anticipated operating conditions, port security will continue to work normally. However, virus attacks, hostile workstations, or accidentally reconfigured hosts, might cause end hosts to send out packets with more than the expected number of MAC addresses. This will result in a port security violation and the resultant system error messages will appear based on the configuration.</li>
+											<li class="list-group-item list-group-item-success"><text class="font-weight-bold ">Solution</text>: To ensure that the CPU is <u>not</u> loaded when such an event occur, you need to set the violation mode to shutdown. You need to configure <text class="font-weight-bold text-success">errdisable</text> recovery and <text class="font-weight-bold text-success">timeout</text> to ensure an automatic recovery from the err-disable state.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h5>Troubleshooting Console Access</h5>
+					<p>One of the ways to implement device hardening is to restrict the number of users who have permission to remotely access the Cisco devices. The default out-of-the-box method of accessing Cisco routers and switches is using the console port. Some of the factors that you need to consider when troubleshooting console access include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Ensure that the correct COM port has been selected in the terminal program. Mostly, multiple COM ports are displayed in the terminal program, but the last one listed is usually the correct one to use. If it is <u>not</u>, you need to try a different one. This is really a trial-and-error process to determine the correct COM port.</li>
+						<li class="alert alert-info" role="alert">Ensure that the terminal program settings are configured correctly. Remember that the Cisco devices use the following default values: <text class="font-weight-bold ">9600</text> baud, <text class="font-weight-bold ">8</text> data bits, <text class="font-weight-bold ">1</text> stop bit, no parity.</li>
+						<li class="alert alert-info" role="alert">Determine if a line password is used to authenticate access to the console. When a line password is being used, the <text class="font-weight-bold text-success">login</text> command needs to be configured as well. Remember that the <text class="font-weight-bold text-success">login</text> command and a line password are <u>not</u> configured by default.</li>
+						<li class="alert alert-info" role="alert">Ensure that the local user name and password are used to authenticate access to the console. When local authentication is being used, a user name and password needs to be defined in the local database, and the <text class="font-weight-bold text-success">login local</text> command is also required.</li>
+						<li class="alert alert-info" role="alert">Determine if a AAA server is used to authenticate access to the console. When AAA authentication is being used, you need to define a method list with the <text class="font-weight-bold text-success">login authentication { default | list-name }</text> command line console in configuration mode.</li>
+					</ul>
+					<h5>Verifying the Connecting Cables and Drivers</h5>
+					<p>You need to verify that the correct cable and drivers are being used to connect to the console port. Check your device's documentation to determine what is needed. Newer devices may be using a <text class="font-italic">mini USB port</text> as the console port (drivers required on PC), while older devices may still be using the <text class="font-italic">serial to <text class="font-weight-bold ">RJ45</text></text> (rollover) cable.</p>
+					<h5>Troubleshooting ACL Issues</h5>
+					<p>You can begin troubleshooting ACLs by verifying that:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">The access list has been applied to the interface and in the proper direction.</li>
+						<li class="alert alert-danger" role="alert">The access list is <u>not</u> empty.</li>
+						<li class="alert alert-danger" role="alert">The order of the rules in the access list is correct.</li>
+						<li class="alert alert-danger" role="alert">If there are several deny statements in an ACL, make sure that a "permit any" statement appears at the end of the list.</li>
+					</ul>
+					<h4>Command Reference: Troubleshooting Access Lists</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Troubleshooting Access Lists</h5>
+					<p>The following commands are used in the Troubleshooting Access Lists lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">ip access-list [standard | extended] &lt;name&gt;</text>: Creates a named access list and places the router into ACL configuration mode.</li>
+						<li><text class="font-weight-bold text-success">[sequence-number] permit | deny &lt;protocol&gt; &lt;source&gt; &lt;source-wildcard&gt; [&lt;operator&gt; &lt;port&gt;] &lt;destination&gt; &lt;destination-wildcard&gt; [&lt;operator&gt; &lt;port&gt;] [log]</text>: Defines a sequential extended IP ACL statement.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an ICMP echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show access-lists [&lt;number&gt; | &lt;name&gt;]</text>: Displays the contents of current ACLs.</li>
+						<li><text class="font-weight-bold text-success">show ip interface [&lt;type&gt; &lt;number&gt;]</text>: Displays IP information for an interface.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">telnet &lt;ip-address&gt;</text>: Starts the terminal emulation program from a PC, router, or switch. Permits you to access devices remotely over the network.</li>
+					</ul>
+					<h5>Lab: Troubleshooting Access Lists</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Security Fundamentals->Troubleshooting Access Lists</b></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+					<h4>Summary</h4>
+					<p>In this lesson, you identified various methods for troubleshooting a variety of network problems. By identifying and rectifying issues quickly and accurately, you can provide users with a stable, consistent computing environment.</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

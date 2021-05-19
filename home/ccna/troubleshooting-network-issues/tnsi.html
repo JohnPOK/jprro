@@ -1,0 +1,267 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Troubleshoot Network Services Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic G</h2>
+					</div>
+					<h3 class="text-success">Troubleshoot Network Services Issues</h3>
+					<p>You also need to be able to identify and correct problems that prevent user from accessing network services such as DHCP and DNS.</p>
+					<h4>Common Network Services Issues</h4>
+					<p>Here are some common network services issues that you might encounter on your network:</p>
+					<div class="alert alert-warning" role="alert">
+						<text class="font-weight-bold text-warning">Name resolution and DNS issues</text>. There are three possible causes for a client being unable to resolve names to IP addresses or to connect to a DNS server.
+						<ul>
+							<li class="alert alert-danger" role="alert">The client might have an incorrect DNS server setting. This can happen when configuration parameters are entered manually, or when a DHCP server provides the wrong address to the client.</li>
+							<li class="alert alert-danger" role="alert">There is a problem in establishing IP connectivity between the user's host and the DNS server.</li>
+							<li class="alert alert-danger" role="alert">The client is <u>not</u> using DNS at all. Its DNS resolver cache is corrupt, or it found an (incorrect) name-to-IP mapping in its HOSTS file and is sending traffic to the wrong IP address.</li>
+						</ul>
+					</div>
+					<div class="alert alert-warning" role="alert">
+						<text class="font-weight-bold text-warning">DHCP configuration issues</text>
+						<ul>
+							<li>Before configuring DHCP, you need to consider some key points:
+								<ul>
+									<li class="alert alert-danger" role="alert">DHCP clients do <u>not</u> have an IP address configured initially. They must send a broadcast request to obtain an IP address from a DHCP server.</li>
+									<li class="alert alert-danger" role="alert">By default, routers do <u>not</u> forward broadcasts. DHCP broadcast requests must be allowed by the routers, when the DHCP server is on another broadcast domain on the Layer 3 network. This task is performed by using a DHCP relay agent.</li>
+									<li class="alert alert-danger" role="alert">The interface-level <text class="font-weight-bold text-success">ip helper</text> command provide the implementation of DHCP relay by the Cisco router.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="alert alert-warning" role="alert">
+						<text class="font-weight-bold text-warning">DHCP issues</text>. The possible causes of DHCP problems include:
+						<ul>
+							<li class="alert alert-danger" role="alert">Incompatibility between the default configuration of IOS device and configuration of <text class="font-italic">DHCP/BOOTstrap Protocol (BOOTP) Relay Agent</text>, compatibility issue with NIC or issue with a DHCP feature, faulty NIC or improper installation of NIC driver, frequent spanning tree computations causing intermittent network outages, version of operating system or defect in software, misconfiguration of DHCP server scope, and defect in IOS DHCP/BootP Relay Agent software.</li>
+							<li class="alert alert-danger" role="alert">The failure of the <text class="font-italic">Unicast Reverse Path Forwarding (uRPF)</text> check because the DHCP offer is received on an interface that is different from the expected interface.
+								<ul class="list-group">
+									<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> When you enable the Reverse Path Forwarding (RPF) feature on an interface, a Cisco router may drop DHCP and BOOTstrap Protocol (BOOTP) packets with source addresses of <text class="font-weight-bold">0.0.0.0</text> and destination addresses of <text class="font-weight-bold">255.255.255.255</text>. The router may also drop all IP packets that have multicast IP destinations at the interface.</text></li>
+								</ul>
+							</li>
+							<li class="alert alert-danger" role="alert">DHCP conflict logging being enabled, even when the DHCP database agent is <u>not</u> used.</li>
+						</ul>
+					</div>
+					<div class="alert alert-danger" role="alert">
+						<text class="font-weight-bold text-danger">NAT issues</text>
+						<ul>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold text-danger">Issues with source NAT</text>. Most of the issues with source NAT are related to mistakes in the NAT configuration.
+								<ul>
+									<li class="alert alert-danger" role="alert">There may be an issue with the configuration of the interface. Ensure that the interfaces that will be the outside and inside interfaces are properly specified. Otherwise, NAT will <u>not</u> be able to translate the addresses properly.</li>
+									<li class="alert alert-danger" role="alert">There may be an issue with the configuration of the pool. The pool, which represents the inside global addresses, must contain the correct public addresses that will need to be translated.</li>
+									<li class="alert alert-danger" role="alert">There may be an issue in reaching the public addresses in the pool. If the public address is <u>not</u> reachable or advertised to the Internet, the traffic will be unable to return from the destination.</li>
+									<li class="alert alert-danger" role="alert">The correct inside devices may <u>not</u> be referenced by the access list. NAT uses the inside local addresses identified by the ACL for translation to inside global addresses. If the ACL has any incorrect values, the addresses may <u>not</u> be translated correctly.</li>
+									<li class="alert alert-danger" role="alert">The ACL and NAT pool might <u>not</u> be mapped correctly. The <text class="font-weight-bold text-success">ip nat inside source</text> command allows you to create a mapping between the ACL and the pool.</li>
+									<li class="alert alert-danger" role="alert">The <text class="font-weight-bold text-success">overload</text> keyword may be missing. You need to include the <text class="font-weight-bold text-success">overload</text> keyword in the <text class="font-weight-bold text-success">ip nat inside source</text> command in order to enable PAT.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="alert alert-danger" role="alert">
+						<ul>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold text-danger">NAT-related issues for end users</text>. NAT enables you to resolve connectivity issues to the Internet. However, you need to be aware of the potential issues that NAT can create for end users.
+								<ul>
+									<li class="alert alert-danger" role="alert">NAT modifies the checksum for packets because it changes the information about the IP address. However, some VPN protocols verify the packet's integrity by using the packet's checksum. So, it is possible that a packet whose checksum has been modified by NAT could be rejected by a VPN protocol such as IPsec (because the packet might appear to have been altered).</li>
+									<li class="alert alert-danger" role="alert">NAT hides the true IP address information, because it translates an inside IP address to an outside IP address. This makes it challenging to trace a data flow from end to end for the purpose of troubleshooting. Use the <text class="font-weight-bold text-success">show ip nat translation</text> command to verify that the translation exists in the translation table.</li>
+									<li class="alert alert-danger" role="alert">Some applications are <u>not</u> compatible with NAT. This is because, when they are being initialized, some applications randomly determine the ports that are to be used for communication. This feature might be incompatible with how incoming traffic is handled by NAT.</li>
+									<li class="alert alert-danger" role="alert">NAT modifies the Layer 3 information in packets, so the packets may be subject to a slightly longer delay than others. When routers perform numerous NAT translations, this delay can be more evident.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="alert alert-primary" role="alert">
+						<text class="font-weight-bold text-primary">NTP issues</text>
+						<ul>
+							<li class="alert alert-info" role="alert">Some applications are time-sensitive and require that the system time on all relevant computers, servers, and network devices be synchronised. Normally the implementation of NTP servers addresses this issue, but be aware of these possible problems that could arise on your network:
+								<ul>
+									<li class="alert alert-primary" role="alert">Some Cisco routers might <u>not</u> be able to synchronize if internal time servers are Active Directory objects. The routers use NTP, while Active Directory domains use the Simple Network Time Protocol (SNTP).</li>
+									<li class="alert alert-primary" role="alert">Routers might <u>not</u> be able to synchronize with public time servers. Causes can range from ACLs that block UDP port <text class="font-weight-bold">123</text> to router or NTP server misconfigurations.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<h4>Guidelines for Troubleshooting Network Services Issues</h4>
+					<p>Here are some guidelines for troubleshooting common network services issues.</p>
+					<h5>Troubleshooting Network Resolution and DNS Issues</h5>
+					<p>Consider the following as you troubleshoot name resolution and DNS issues:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Determine what has caused the incorrect setting on the DNS server. If it is due to a manual error, you can modify the value suitably in the DNS server entries. However, if the error is on the DHCP server side, you need to check the DHCP server settings. In Cisco IOS, when you are using the IOS DHCP server feature in the DHCP pool mode, you need to specify this setting using the <text class="font-weight-bold text-success">dns-server &lt;server-ip-address&gt;</text> command.</li>
+						<li class="alert alert-warning" role="alert">Problems in establishing IP connectivity between the user's host and the DNS server can be frequently encountered in any network environment. The router can be configured with the IP addresses of the DNS servers, which would allow the router command's attempt to resolve names. For instance, a user of the router command-line interface (CLI) might issue a <text class="font-weight-bold text-success">ping server15</text> command and rely on a DNS request to resolve <text class="font-weight-bold">server15</text> into a matching IP address. However, you need to issue the <text class="font-weight-bold text-success">ip name-server dns1-address dns2-adddress</text> global command to configure a router to use DNS for name resolution. The router also needs the <text class="font-weight-bold text-success">ip domain-lookup</text> global command, which is enabled by default.</li>
+						<li class="alert alert-warning" role="alert">Investigate whether or <u>not</u> the client is being misinformed about the destination's IP address.
+							<ul>
+								<li class="alert alert-danger" role="alert">Check the client's HOSTS file for inappropriate entries. In Windows, it is usually found in <text class="font-italic">C:\Windows\System32\drivers\etc\</text>. In Linux, it is usually found in <text class="font-italic">/etc/</text>.</li>
+								<li class="alert alert-danger" role="alert">Check to see if the client's resolver cache was corrupted with an inappropriate name-to-IP mapping (through a virus or other hacking).
+									<ul>
+										<li class="alert alert-info" role="alert">In Windows, at a command prompt, issue the <text class="font-weight-bold text-secondary">ipconfig /displaydns</text> command and search for suspect entries. You can also enter <text class="font-weight-bold text-secondary">ipconfig /flushdns</text> first to clear dynamic entries, then issue <text class="font-weight-bold text-secondary">ipconfig /displaydns</text> to look for inappropriate persistent entries.</li>
+										<li class="alert alert-info" role="alert">For Linux, the command you need to use will depend on your system. Common commands include:
+											<ul>
+												<li><text class="font-weight-bold text-secondary">sudo systemd-resolved --flush-caches</text></li>
+												<li><text class="font-weight-bold text-secondary">sudo systemctl restart dnsmasq.service</text></li>
+												<li><text class="font-weight-bold text-secondary">sudo /etc/init.d/dns-clean start</text> (Ubuntu)</li>
+												<li><text class="font-weight-bold text-secondary">sudo systemctl restart nscd.service</text> (RedHat)</li>
+											</ul>
+											You can also simply reboot the client to flush its DNS resolver cache.
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<h5>Troubleshooting DHCP Issues</h5>
+					<p>When attempting to troubleshoot potential DHCP issues, remember the following guidelines:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">You need to explicitly configure a router to act as a DHCP relay agent when the DHCP clients and DHCP server are on different subnets. Remember, by default, a router will <u>not</u> forward DHCPDISCOVER broadcast messages and other broadcast messages.</li>
+						<li class="alert alert-info" role="alert">A DHCP pool can contain only a limited number of addresses. When the address limit is reached, new DHCP requests will be rejected.</li>
+						<li class="alert alert-info" role="alert">Ensure that the DHCP server is <u>not</u> handing out the same IP address that has been statically assigned to a host on the network. Duplicate addresses can cause connectivity issues for both the host and the DHCP client.</li>
+						<li class="alert alert-info" role="alert">When you have more than one DHCP server on the same network for redundancy, you need to ensure that the DHCP servers are configured such that they can communicate with each other. If for some reason the DHCP servers are <u>not</u> able to communicate with each other, the DHCP servers may end up assigning overlapping IP addresses to the DHCP clients.</li>
+					</ul>
+					<h5>Troubleshooting NAT Issues</h5>
+					<p>While troubleshooting NAT issues, you need to follow certain guidelines:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">Ensure that the configuration is correct. Use the <text class="font-weight-bold text-success">show ip nat translation</text> and <text class="font-weight-bold text-success">debug ip nat</text> commands.</li>
+						<li class="alert alert-danger" role="alert">Verify that packets are <u>not</u> denied from entering the NAT router by any inbound access lists.</li>
+						<li class="alert alert-danger" role="alert">Verify that on the NAT router the appropriate route is defined in the routing table when the packet is going from inside to outside.</li>
+						<li class="alert alert-danger" role="alert">Verify that all the necessary networks are permitted by the access list referenced by the NAT command.</li>
+						<li class="alert alert-danger" role="alert">Ensure that there are sufficient addresses available in the NAT pool. If <u>not</u>, this may cause a problem when the NAT is <u>not</u> configured for overloading.</li>
+						<li class="alert alert-danger" role="alert">Verify that there are appropriate definitions for the router interfaces as NAT inside or NAT outside.</li>
+					</ul>
+					<h5>Troubleshooting NTP Issues</h5>
+					<p>When a device that is configured as an NTP client is <u>not</u> able to synchronize with an NTP server, you need to use these guidelines:</p>
+					<ul>
+						<li class="alert alert-secondary" role="alert">Use the <text class="font-weight-bold text-success">ping</text> command to test connectivity from the NTP client to the NTP server by using the correct destination IP address and source addresses.</li>
+						<li class="alert alert-secondary" role="alert">Verify that there is no ACL between the NTP client and server that has been configured to deny NTP packets either by accident or on purpose. You need to use the <text class="font-weight-bold text-success">show ip interface &lt;interface-type&gt; &lt;interface-number&gt;</text> command to check if any ACLs exist on the interfaces and then use the <text class="font-weight-bold text-success">show access list</text> command to verify the ACL entries.</li>
+						<li class="alert alert-secondary" role="alert">Use the <text class="font-weight-bold text-success">show running-config | section ntp</text> command to verify the NTP authentication configuration and verify that both the server and client are configured with the correct <text class="font-italic">authentication key</text> and <text class="font-italic">key string</text>.</li>
+						<li class="alert alert-secondary" role="alert">Use the <text class="font-weight-bold text-success">show ntp status</text> command to verify the NTP server that is being used and use the <text class="font-weight-bold text-success">ntp server &lt;ip-address&gt; prefer</text> command to force a preferred NTP server.</li>
+						<li class="alert alert-secondary" role="alert">Use the <text class="font-weight-bold text-success">show process cpu</text> command to verify that CPU load is <u>not</u> causing the NTP issue.</li>
+						<li class="alert alert-secondary" role="alert">Use the <text class="font-weight-bold text-success">show clock</text> command to verify the clock that is set on the device. The NTP hierarchy uses stratum levels from <text class="font-weight-bold">1</text> (<text class="font-italic">best</text> -- most reliable) to <text class="font-weight-bold">15</text> (<text class="font-italic">worst</text> -- least reliable). When a device is synchronizing with another device that has a stratum of <text class="font-weight-bold">15</text>, the synchronization will fail.</li>
+					</ul>
+					<h4>Command Reference: Troubleshooting NTP</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Troubleshooting NTP</h5>
+					<p>The following commands are used in the Troubleshooting NTP lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">clock set &lt;hh:mm:ss&gt; &lt;day&gt; &lt;month&gt; &lt;year&gt;</text>: Set the system software clock.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">ip name-server &lt;ip-address&gt;</text>: Configures the name server for the device.</li>
+						<li><text class="font-weight-bold text-success">no ntp</text>: Disables the NTP service on a device and removes the configuration.</li>
+						<li><text class="font-weight-bold text-success">[no] ntp master [&lt;stratum&gt;]</text>: Configures the Cisco IOS software as an NTP master clock to which peers synchronize themselves. The <text class="font-weight-bold text-success">no</text> form removes the NTP server from the device.</li>
+						<li><text class="font-weight-bold text-success">ntp server &lt;ip-address&gt; [key &lt;key-id&gt;]</text>: Allows the Cisco IOS software clock to be synchronized by an NTP time server.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt; | &lt;host-name&gt;</text>: Sends an ICMP echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show clock [detail]</text>: Displays the time and date from the system software clock.</li>
+						<li><text class="font-weight-bold text-success">show ntp associations [detail]</text>: Shows the status of NTP associations..</li>
+						<li><text class="font-weight-bold text-success">show ntp status</text>: Shows the status of NTP.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Troubleshooting NTP</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Troubleshooting NTP</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Troubleshooting DHCP</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Troubleshooting DHCP</h5>
+					<p>The following commands are used in the Troubleshooting DHCP lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changed from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-secondary">ip config</text>: Used in NetSim to display the currently configured IP address, subnet mask, and default gateway on a workstation.</li>
+						<li><text class="font-weight-bold text-secondary">ip config /all</text>: Used in NetSim to display the IP addresses and MAC address on a workstation.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp excluded-address &lt;ip-address&gt; &lt;last-ip-adddress&gt;</text>: Configures a range of excluded addresses.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp pool &lt;pool-name&gt;</text>: Creates an IP address pool.</li>
+						<li><text class="font-weight-bold text-success">lease [&lt;days&gt; [&lt;hours&gt; [&lt;minutes&gt;]] | infinite]</text>: Configures a custom lease duration for DHCP assignments.</li>
+						<li><text class="font-weight-bold text-success">network &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Enables a DHCP server for a particular network segment.</li>
+						<li><text class="font-weight-bold text-success">[no] service dhcp</text>: Configures the router to respond to any DHCP requests. The <text class="font-weight-bold text-success">no</text> form disables the DHCP service and prevents a DHCP relay agent from forwarding DHCP requests.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt; | &lt;host-name&gt;</text>: Sends an ICMP echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp binding</text>: Displays active DHCP-assigned IP addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp pool</text>: Displays a basic summary of a configured DHCP pool.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp server statistics</text>: Displays general operating statistics for a DHCP server process.</li>
+						<li><text class="font-weight-bold text-success">show ip interface [&lt;type&gt; &lt;number&gt;]</text>: Displays IP information for an interface.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Troubleshooting DHCP</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Troubleshooting DHCP</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Troubleshooting DNS</h4>
+					<p>This section contains the commands you will use in the next labs.</p>
+					<h5>Troubleshooting DNS</h5>
+					<p>The following commands are used in the Troubleshooting DNS labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-secondary">ip config /all</text>: Used in NetSim to display the IP addresses and MAC address on a workstation.</li>
+						<li><text class="font-weight-bold text-secondary">ip config /dg &lt;ip-address&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-secondary">ip config /dns &lt;ip-address&gt;</text>: Used in NetSim to set the primary DNS server for a workstation.</li>
+						<li><text class="font-weight-bold text-secondary">ip config /ip &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Used in NetSim to assign an IP address and subnet mask to a workstation.</li>
+						<li><text class="font-weight-bold text-success">ip dns server</text>: Enables the DNS server on a router.</li>
+						<li><text class="font-weight-bold text-success">ip domain-lookup</text>: Enables the DNS lookup feature.</li>
+						<li><text class="font-weight-bold text-success">ip host &lt;host-name&gt; &lt;ip-address&gt;</text>: Configures a static host name-to-address mapping in the host cache of a device.</li>
+						<li><text class="font-weight-bold text-success">ip name-server &lt;ip-address&gt;</text>: Configures the name server for a device.</li>
+						<li><text class="font-weight-bold text-success">no shutdown</text>: Enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt; | &lt;host-name&gt;</text>: Sends an ICMP echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show hosts</text>: Displays the default domain name, a list of name server hosts, and a cached list of host names and addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp binding</text>: Displays active DHCP-assigned IP addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp pool</text>: Displays a basic summary of a configured DHCP pool.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show ip protocols</text>: Displays information about active routing protocols.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Troubleshooting DNS I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Troubleshooting DNS I</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h5>Lab: Troubleshooting DNS II</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Troubleshooting DNS II</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

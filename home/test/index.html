@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Python Testing</title>
+		<link href="../include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" media="all" href="../include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../include/js/popper/popper.min.js"></script>
+		<script src="../include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../include/js/custom.js"></script>
+
+		<script type=text/javascript>
+			$(document).ready(function(){
+				$('#btn-ajax').click(function(){
+		    	event.preventDefault();
+					var val = $(this).attr('value');
+					alert("Clicked 'btn-ajax' with value of: " + val);
+
+					$.ajax({
+						type:	'POST',
+						url:	'/cgi-bin/test.py',
+						data:	{ 'field': val },
+						//dataType: 'json',
+						success: function(response){
+							$("#msg").empty();
+							$("#msg").html(response);
+							$("#msg").append("<br>");
+						},
+						error: function(request, ajaxOptions, thrownError){
+							$("#msg").empty();
+							$("#msg").append("<ul>");
+							$("#msg").append("<li>status:       " + request.status + "</li>");
+							$("#msg").append("<li>statusText:   " + request.statusText + "</li>");
+							$("#msg").append("<li>readyState:   " + request.readyState + "</li>");
+							$("#msg").append("<li>responseText: " + request.responseText + "</li>");
+							$("#msg").append("<li>ajaxOptions:  " + ajaxOptions + "</li>");
+							$("#msg").append("</ul>");
+							$("#msg").append("<br>");
+						}
+					});
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Python Scripting</h1>
+			<p>Teaching myself Python.</p>
+		</div>
+
+		<!-- Navigation bar -->
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<a class="navbar-brand" href="#"><img src="../include/img/cool.jpg" class="rounded-circle" alt="Python Script Testing" width="20%" height="20%"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<div class="btn-group">
+						<button type="button" class="btn btn-warning btn-sm" id="btn-home">Home</button>
+						<button type="button" class="btn btn-warning btn-sm" id="btn-coreyms">CoreyMS</button>
+						<button type="button" class="btn btn-warning btn-sm" id="btn-python-sample-code">Python Sample Code</button>
+						<button type="button" class="btn btn-warning btn-sm" id="btn-skulpt">Skulpt</button>
+					</div>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="btn-group">
+
+
+					</div>
+				</div>
+				<div class="col-sm-4">&nbsp;</div>
+				<div class="col-sm-8">
+					<p><button type="button" class="btn btn-danger btn-sm" value="129.232.175.226" id="btn-ajax">Execute</button></p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Messages -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-4">&nbsp;</div>
+				<div class="col-sm-8" id="msg">
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

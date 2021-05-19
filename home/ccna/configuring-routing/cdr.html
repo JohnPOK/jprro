@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure Dynamic Routing</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic D</h2>
+					</div>
+					<h3 class="text-success">Configure Dynamic Routing</h3>
+					<p>Static routes might be appropriate for small networks that undergo few changes, but for large networks that change constantly, you will want to use dynamic routes to take advantage of their benefits.</p>
+					<h4>Dynamic Routing</h4>
+					<p>Most networks use dynamic routes to communicate between routers but may have one or two static routes configured for special cases. In <text class="font-weight-bold font-italic text-primary">dynamic routing</text>, the network protocol adjusts the path automatically, based on network topology (or rarely, on traffic). Changes in dynamic routes are shared with other routers in the network. Cisco routers can use IP routing protocols, such as <text class="font-italic">Open Shortest Path First (OSPF)</text>, to learn routes dynamically.</p>
+					<h4>Routing Protocols</h4>
+					<p>Routing protocols specify how routers communicate with each other, particularly how they share route information and how they help routers determine the best path to a data packet's destination. Routing protocols operate at the Internet layer of the TCP/IP model.</p>
+					<p>There are three main categories of routing protocols: <text class="font-italic">distance vector</text>, <text class="font-italic">link-state</text>, and <text class="font-italic">path vector</text>.</p>
+					<p>A <text class="font-weight-bold font-italic text-primary">distance vector protocol</text> advertises its routing table to all directly connected neighbors at regular intervals via <text class="font-italic">multicast messages</text>. In the process, it uses a lot of bandwidth and is slowest to converge. Any time a route becomes unavailable, all router tables need to be updated to reflect the current state. Each router must advertise the new information to its neighbors, so it takes longer for <text class="font-weight-bold font-italic text-primary">convergence</text> to occur. Convergence occurs when all routers have an accurate and current view of the network.</p>
+					<p>Examples of distance vector routing protocols include:</p>
+					<ul>
+						<li class="font-weight-bold alert alert-warning" role="alert">Classless protocols that support VLSM:
+							<ul>
+								<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-warning">Routing Information Protocol version 2 (RIPv2)</text></li>
+							</ul>
+						</li>
+						<li class="font-weight-bold alert alert-danger" role="alert">Classful legacy protocols have a fixed-length subnet mask:
+							<ul>
+								<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-danger">Routing Information Protocol (RIP)</text></li>
+								<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-danger">Interior Gateway Routing Protocol (IGRP)</text></li>
+							</ul>
+						</li>
+					</ul>
+					<p>Unlike distance-vector protocols, a <text class="font-weight-bold font-italic text-primary">link-state protocol</text> does <u>not</u> advertise the routing table. Instead, it enables the exchange of information about changes to interface states (or link-state information). This greatly reduces the time required for convergence. The link state describes an interface and its relationship to the networking devices in its neighborhood. Interface information includes details such as <text class="font-italic">IP address of the interface</text>, <text class="font-italic">network mask</text>, <text class="font-italic">type of the connected network</text>, <text class="font-italic">available bandwidth</text>, and the <text class="font-italic">routers connected to the network</text>. This information is multicast using various types of <text class="font-italic">link-state advertisements (LSAs)</text>. Each router stores a collection of received LSA data in a <text class="font-italic">link-state database</text> that include LSA data for all the links on the router. They use variable length subnet masks, which are scalable and make more efficient use of IP addresses. Examples of link-state routing protocols include:</p>
+					<ul>
+						<li class="font-weight-bold  alert alert-success" role="alert">Open Shortest Path First (OSPF)</li>
+						<li class="font-weight-bold  alert alert-success" role="alert">Intermediate System-Intermediate System (IS-IS)</li>
+					</ul>
+					<p>Some routing protocols are <text class="font-weight-bold font-italic text-primary">hybrid</text> - they have characteristics of both distance vector and link-state routing protocols. An example of a hybrid routing protocol is:
+						<ul>
+							<li class="font-weight-bold  alert alert-secondary" role="alert">Enhanced Interior Gateway Routing Protocol (EIGRP)</li>
+						</ul>
+						which is also referred to as an <text class="font-italic">advanced distance-vector protocol</text>.
+					</p>
+					<p>The routing protocols discussed so far are considered <text class="font-weight-bold font-italic text-primary">interior gateway protocols</text>. This means they work within an autonomous system (AS), which is a network or collection of networks under common administrative control.</p>
+					<p>An <text class="font-weight-bold font-italic text-primary">exterior gateway protocols</text> works to connect and route information among different autonomous systems, such as over the Internet. Currently, <text class="font-italic">Border Gateway Protocol (BGP)</text> is the only exterior gateway protocol in use, and BGP is considered a <text class="font-weight-bold font-italic text-primary">path vector protocol</text>. Instead of link-state information, BGP receives path information from AS border routers, so BGP routing table entries contain the destination network, the next router, and the path to reach the destination.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Do <u>not</u> confuse routing protocols with <text class="font-italic">routed</text> protocols. Routing protocols are used by routers to share routes with each other. Routed protocols are the user traffic such as IP.</text></li>
+					</ul>
+					<h4>Open Shortest Path First (OSPF) and OSPFv2</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Open Shortest Path First (OSPF)</text> is a true link-state protocol that was developed as an open standard for routing IP across large multi-vendor networks. This protocol provides support for IP subnetting and tagging of externally derived routing information. It also permits packet authentication and uses IP multicast when sending and receiving packets. It manages the routing tables in the control plane on each router. The data plane on each router uses the routing tables to forward packets.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> OSPF remains a draft standard that was never released. OSPFv2 is the version that is in common use today for IPv4.</text></li>
+					</ul>
+					<p><text class="font-weight-bold font-italic text-primary">Open Shortest Path First version 2 (OSPFv2)</text> is an Internet Engineering Task Force (IETF) link-state protocol that supports routing for IPv4 networks.</p>
+					<p>When you start each OSPFv2-enabled router, the router sends hello packets to all directly connected OSPFv2 routers. The hello packets contain information such as <text class="font-italic">router timers</text>, <text class="font-italic">router ID</text>, and <text class="font-italic">subnet mask</text>. If the routers have similar information in the hello packets, they become <text class="font-weight-bold font-italic text-primary">OSPF neighbors</text>. After routers become neighbors, they can establish <text class="font-weight-bold font-italic text-primary">adjacencies</text> by exchanging link-state databases. Adjacency means that the routers will synchronize their link-state databases to ensure that they have identical OSPF routing information. Adjacency routers will share <text class="font-italic">link-state advertisements (LSAs)</text> that include information about the operational state of each link, the cost of the link, and any other neighbor information. The routers then flood these LSAs out to every OSPF-enabled interface in the OSPF area, so that all OSPFv2 routers in the area eventually have identical link-state databases. When all OSPFv2 routers have identical link-state databases, the network will converge.</p>
+					<p>A <text class="font-weight-bold font-italic text-primary">point-to-point link</text> is a connection between two nodes. In most cases, such as on dedicated WAN links, there are only two nodes on the network. In some cases, other nodes can reside on the network or even between the two nodes. In such cases, the link is virtual as opposed to physical. Virtual point-to-point links use unicast transmission to communicate.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Other routing protocols such as EIGRP and BGP exist, but they are beyond the scope of this course.</text></li>
+					</ul>
+					<h4>Areas and OSPFv2</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">area</text> is a logical division of routers and links within an OSPFv2 domain that allows you to create separate subdomains. A single area refers to a situation where all your devices are contained within the same OSPF area.</p>
+					<p>You can limit the CPU and memory requirements required by routers for running OSPFv2 by dividing an OSPFv2 network into areas. LSA flooding is contained within an area, and the link-state database is limited to links within the area. You can assign an Area ID to the interfaces within the defined area. The area ID is a <text class="font-weight-bold">32-bit</text> value that can be entered as a number or in dotted decimal notation, such as <text class="font-weight-bold">10.12.13.11</text>.</p>
+					<p><img src="/cisco/include/img/Fig-4-7.png" class="img-thumbnail" alt="single area ospfv2" width="35%" height="35%"></p>
+					<p>OSPF requires a backbone area, which is area <text class="font-weight-bold">0</text>. All other areas must connect to the backbone area.</p>
+					<h4>Establishing Adjacencies</h4>
+					<p>When an OSPF router forms a relationship with its neighbor and is actually exchanging routes, this is called an <text class="font-italic">adjacency</text>. <u>Not</u> all OSPF neighbors will be able to establish an adjacency. Adjacency requires that the routers:
+						<ul>
+							<li class="alert alert-danger" role="alert">Belong to the same area</li>
+							<li class="alert alert-danger" role="alert">Have the same authentication configuration (if applicable)</li>
+							<li class="alert alert-danger" role="alert">Belong to the same subnet</li>
+							<li class="alert alert-danger" role="alert">Have the same hello and dead intervals</li>
+							<li class="alert alert-danger" role="alert">Have the same stub flags</li>
+						</ul>
+					</p>
+					<p>Some neighbors will become fully adjacent based on the network type and the designated router establishment and will share LSAs with all their neighbors, while other neighbors will <u>not</u> be able to do so. Adjacency will be established using <text class="font-italic">Database Description packets</text>, <text class="font-italic">Link State Request (LSR) packets</text>, and <text class="font-italic">Link State Update (LSU) packets</text> in OSPF.</p>
+					<p>Routers on point-to-point and point-to-multipoint links (as specified with the OSPF interface type setting) will automatically establish adjacencies. Routers with OSPF interfaces that are configured as broadcast (on Ethernet) and Nonbroadcast Multiaccess (NBMA) (on Frame Relay) use a designated router that establishes those adjacencies.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Some OSPF features are beyond the scope of this class.</text></li>
+					</ul>
+					<h4>Router IDs</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">router ID</text> is a <text class="font-weight-bold">32-bit</text> number that uniquely identifies a router in the OSPF database. The router ID is determined by using the following criteria:
+						<ul>
+							<li class="alert alert-success" role="alert">Manual configuration of the router ID.</li>
+							<li class="alert alert-success" role="alert">The highest IP address on a loopback interface.</li>
+							<li class="alert alert-success" role="alert">The highest IP address on a non-loopback interface.</li>
+						</ul>
+					</p>
+					<h4>Designated Router (DRs) and Backup Designated Routers (BDRs)</h4>
+					<p>Within all versions of OSPF, the role of the <text class="font-weight-bold font-italic text-primary">designated router (DR)</text> and a <text class="font-weight-bold font-italic text-primary">backup designated router (BDR)</text> is to act as a central point for exchanging OSPF information between multiple routers on the same, multiaccess broadcast network segment. Non-DR and non-BDR routers exchange routing information <text class="font-italic">only</text> with the DR and BDR, rather than exchanging updates with every other router on the segment. The DR and the BDR listen for LSU packets on the multicast address <text class="font-weight-bold">224.0.0.6</text> and then forward any LSU packets to all other OSPF routers in the area listening on <text class="font-weight-bold">224.0.0.5</text>. This significantly reduces the number of OSPF routing updates that need to be sent.</p>
+					<p>Router IDs are used to elect the DR (router with the lowest router ID) and the BDR (router with the next lowest router ID).</p>
+					<p><img src="/cisco/include/img/Fig-4-8.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> OSPF does <u>not</u> elect DR/BDR roles on point-to-point links. You can find details on the different OSPF network types at <a href="https://www.ccexpert.us/ospf-network/different-network-types-and-ospf.html" target="_blank">www.ccexpert.us/ospf-network/different-network-types-and-ospf.html</a></text></li>
+					</ul>
+					<h4>WildcardMasks and OSPF</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">wildcard mask</text> identifies a specific range of host IP addresses. Any number(s) that fall under the binary <text class="font-weight-bold">1</text> of the wildcard mask are considered to be a match.</p>
+					<p>OSPF uses wildcard masks in network statements to pinpoint what part of a network it should advertise to other routers. In most cases, this includes all IP addresses on a particular link, though it is possible to specify only a subset of addresses or even a single host.</p>
+					<p>To calculate what the wildcard mask should be, simpy subtract the subnet mask from <text class="font-weight-bold">255.255.255.255</text>. In other words, if you add the subnet mask and wildcard mask together, they should total <text class="font-weight-bold">255.255.255.255</text>.</p>
+					<p><img src="/cisco/include/img/Fig-4-9.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<h4>Examples</h4>
+					<p>Here are some examples of wildcard masks:
+						<ul>
+							<li class="alert alert-secondary" role="alert">To specify the entire <text class="font-weight-bold">10.0.0.0/8</text> network, use the command:<br>
+								<text class="font-weight-bold text-success">network 10.0.0.0 0.255.255.255 area 0</text>
+							</li>
+							<li class="alert alert-secondary" role="alert">To specify the <text class="font-weight-bold">10.20.0.0/16</text> subnet, use the command:<br>
+								<text class="font-weight-bold text-success">network 10.20.0.0 0.0.255.255 area 0</text>
+							</li>
+							<li class="alert alert-secondary" role="alert">To specify the <text class="font-weight-bold">172.16.0.0/12</text> network, use the command:<br>
+								<text class="font-weight-bold text-success">network 172.16.0.0 0.15.255.255 area 0</text>
+							</li>
+							<li class="alert alert-secondary" role="alert">To specify the <text class="font-weight-bold">192.168.1.32/27</text> subnet, use the command:<br>
+								<text class="font-weight-bold text-success">network 192.168.1.32 0.0.0.31 area 0</text>
+							</li>
+							<li class="alert alert-secondary" role="alert">To specify a single host <text class="font-weight-bold">192.168.35.46</text>, use the command:<br>
+								<p><text class="font-weight-bold text-success">network 192.168.35.46 0.0.0.0 area 0</text></p>
+								<ul class="list-group">
+									<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> This is a special use case where the subnet mask is <text class="font-weight-bold">255.255.255.255</text>, meaning "this host only".</text></li>
+								</ul>
+							</li>
+						</ul>
+					</p>
+					<h4>Command Reference: OSPF Routes</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>OSPF Routes</h5>
+					<p>The following commands are used in the OSPF Routes labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">clock rate &lt;clock-rate&gt;</text>: Sets the clock rate for a Data Communications Equipment (DCE) interface.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">network &lt;network-address&gt; &lt;wildcard-mask&gt;</text>: Activates OSPF on the specified network and places the matching interface in the specified area.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: OSPF Routes</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Connectivity->OSPF Routes</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Planning and Configuring Single Area OSPF</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Planning and Configuring Single Area OSPF</h5>
+					<p>The following commands are used in the IP Addresses on a Switch and IP Addressing on a Router labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">debug ip ospf</text>: Displays information on OSPF-related events, such as adjacencies, flooding information, designated router selection, and shortest path first (SPF) calculations.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ip ospf priority &lt;number-value&gt;</text>: Sets the router priority, which helps determine the DR for the network.</li>
+						<li><text class="font-weight-bold text-success">network &lt;network-address&gt; &lt;wildcard-mask&gt;</text>: Activates OSPF on the specified network and places the matching interface in the specified area.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">router ospf &lt;process-id&gt;</text>: Enters router configuration mode for an OSPF process.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show ip ospf &lt;process-id&gt; &lt;area-id&gt; database &lt;router&gt;</text>: Displays the OSPF link state database.</li>
+						<li><text class="font-weight-bold text-success">show ip ospf interface &lt;type&gt; &lt;number&gt; [brief]</text>: Displays OSPF interface information.</li>
+						<li><text class="font-weight-bold text-success">show ip ospf &lt;process-id&gt; &lt;area-id&gt;</text>: Displays OSPF neighbor information.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Planning and Configuring Single Area OSPF</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Connectivity->Planning and Configuring Single Area OSPF</text></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+					<h4>OSPFv3</h4>
+					<p><text class="font-weight-bold font-italic text-primary">OSPFv3</text> is an IETF link-state protocol that supports routing for IPv6 networks. OSPFv3 protocol supports the features of OSPFv2, along with the following additional features:
+						<ul>
+							<li class="alert alert-warning" role="alert">OSPFv3 expands on OSPFv2 and provides support for IPv6 routing prefixes and IPv6 addresses that are of larger size when compared to IPv4 addresses.</li>
+							<li class="alert alert-warning" role="alert">LSAs in OSPFv3 need to be expressed as prefix and prefix length instead of address and mask.</li>
+							<li class="alert alert-warning" role="alert">The router ID and the area ID are <text class="font-weight-bold">32-bit</text> numbers with no relationship to IPv6 addresses.</li>
+							<li class="alert alert-warning" role="alert">OSPFv3 uses link-local IPv6 addresses for neighbor discovery and other features.</li>
+							<li class="alert alert-warning" role="alert">OSPFv3 allows you to use the IPv6 authentication trailer or IPSec for authentication.</li>
+							<li class="alert alert-warning" role="alert">OSPFv3 redefines the types of LSA.</li>
+						</ul>
+					</p>
+					<p>The first step in configuring OSPFv3 is to create an OSPFv3 instance. You need to assign a unique instance tag for the OSPFv3 instance. You can also configure optional parameters such as <text class="font-italic">Router ID</text>, <text class="font-italic">Administrative distance</text>, <text class="font-italic">Log adjacency changes</text>, <text class="font-italic">Maximum paths</text>, and <text class="font-italic">Reference bandwidth</text>.</p>
+					<h4>Command Reference: Configuring Static and OSPFv3 Routing</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Configuring Static and OSPFv3 Routing</h5>
+					<p>The following commands are used in the Configuring Static and OSPFv3 Routing lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ipv6 address &lt;address&gt;/&lt;prefix-length&gt;</text>: Configures an IPv6 address for an interface.</li>
+						<li><text class="font-weight-bold text-success">ipv6 ospf &lt;process-id&gt; area &lt;area-id&gt;</text>: Configures an interface to run OSPFv3.</li>
+						<li><text class="font-weight-bold text-success">ipv6 route &lt;network&gt;/&lt;length&gt; &lt;next-hop&gt;</text>: Configures a static route for IPv6.</li>
+						<li><text class="font-weight-bold text-success">ipv6 router ospf &lt;process-id&gt;</text>: Configures global options for OSPFv3.</li>
+						<li><text class="font-weight-bold text-success">ping ipv6 &lt;ipv6-address&gt;</text>: Sends an ICMP echo request to the specified IPv6 address.</li>
+						<li><text class="font-weight-bold text-success">router-id &lt;ipv4-address&gt;</text>: Defines the router ID for the OSPFv3 process - is required only if the router is IPv6 only.</li>
+						<li><text class="font-weight-bold text-success">show ipv6 route</text>: Displays the IPv6 routing table.</li>
+						<li><text class="font-weight-bold text-success">show ipv6 ospf neighbor</text>: Displays a list of all OSPFv3 neighbors.</li>
+					</ul>
+					<h5>Lab: Configuring Static and OSPFv3 Routing</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Layer 3 Technologies->Configuring Static and OSPFv3 Routing</text></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h4>Summary</h4>
+					<p>In this lesson, you configured various forms of routing, including static routing, dynamic routing for IPv4 networks, and dynamic routing for IPv6 networks. The ability to configure routing ensures you can support yout Cisco networks as they transfer data internally and across other networks.</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Basic Routing Concepts</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic A</h2>
+					</div>
+					<h3 class="text-success">Routing Basics</h3>
+					<p>In this lesson, you will configure routing. As with switches, it is best to have some foundational knowledge before attempting the actual routing configuration process.</p>
+					<h4>Routes and Routing</h4>
+					<p>The fundamental responsibility of a router is to select the best path for transferring data packets from one network to another. This path is called a <text class="font-weight-bold font-italic text-primary">route</text>, and the process is called <text class="font-weight-bold font-italic text-primary">routing</text>. Routers make decisions based on the network destinations or Layer 3 address of the IP packet, and store routing information in <text class="font-italic">routing tables</text>.</p>
+					<p>There are various ways routing table entries can be added to the routing table. They can be <text class="font-italic">locally connected routes</text>, <text class="font-italic">routes learned from other routers through routing protocols</text>, and <text class="font-italic">statically created routes</text>. A router may also have a <text class="font-italic">default route</text> of <text class="font-weight-bold">0.0.0.0/0</text>, which would be used if an entry could <u>not</u> be found for the destination network. A router may also <u>not</u> have this entry, and if that is the case and no match can be found, the router would drop the packet.</p>
+					<h4>Forwarding Decisions</h4>
+					<p>Forwarding decisions are made in the following manner:
+						<div>
+							<table class="table table-responsive table-borderless table-sm">
+								<tbody>
+									<tr class="alert alert-info">
+										<td><b>1.</b></td>
+										<td>When the destination matches a single entry in the routing table, the packet is forwarded through the interface associated with that route.</td>
+									</tr>
+									<tr class="alert alert-info">
+										<td><b>2.</b></td>
+										<td>When the destination matches more than one entry in the routing table, then the packet is forwarded out of the interface associated with the route that has the longest match (the prefix or CIDR subnet mask is the longest).</td>
+									</tr>
+									<tr class="alert alert-info">
+										<td><b>3.</b></td>
+										<td>When the destination does <u>not</u> match any other entry in the routing table, the packet is forwarded through the interface specified for the default route. If no default route has been configured, the packet is discarded.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</p>
+					<p>For example, a packet destined for <text class="font-weight-bold">172.168.32.1</text> arrives on an interface with the following routes in the routing table:
+						<div>
+							<table class="table table-responsive table-borderless table-sm">
+								<tbody>
+									<tr>
+										<td><text class="font-weight-bold text-secondary">172.168.32.0/24 gateway 10.1.1.2<text></td>
+									</tr>
+									<tr>
+										<td><text class="font-weight-bold text-secondary">172.168.32.0/19 gateway 10.1.1.3<text></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</p>
+					<p>In this case, a packet destined to <text class="font-weight-bold">172.168.32.1</text> is directed toward <text class="font-weight-bold">10.1.1.2</text>, because <text class="font-weight-bold">172.168.32.1</text> falls within the <text class="font-weight-bold">172.168.32.0/24</text> network. It also falls within the other route in the routing table, but <text class="font-weight-bold">172.168.32.0/24</text> has the longest prefix within the routing table (<text class="font-weight-bold">24</text> bits vs. <text class="font-weight-bold">19</text> bits).</p>
+					<p><img src="/cisco/include/img/Fig-4-1.png" class="img-thumbnail" alt="forwarding decisions" width="70%" height="70%"></p>
+					<h4>Default Routes</h4>
+					<p>A default route is one that has the address <text class="font-weight-bold">0.0.0.0/0</text>. It is used to direct frames that do <u>not</u> have an explicit next hop. In other words, no entry in the routing table refers to the destination network address. For default routes, the next hop is the <text class="font-italic">gateway of last resort</text>.</p>
+					<p>The <text class="font-weight-bold font-italic text-primary">gateway of last resort</text> refers to the default route to which all unroutable packets must be sent. The Cisco IOS software uses the gateway (router) of last resort when it does <u>not</u> have or is unable to determine a better route for a packet and when the destination specified is <u>not</u> a connected network. The Cisco IOS software uses both administrative distance and metric information to determine the default route or the gateway of last resort.</p>
+					<p>The selected default route appears in the gateway of last resort line displayed in the output of the <text class="font-weight-bold text-success">show ip route</text> EXEC command.</p>
+					<p><img src="/cisco/include/img/Fig-4-2.png" class="img-thumbnail" alt="default routes and the gateway of last resort" width="70%" height="70%"></p>
+					<h4>Command Reference: Default Routes</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Default Routes</h5>
+					<p>The following commands are used in the Default Routes lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">clock rate &lt;clock-rate&gt;</text>: Sets the clock rate for a Data Communications Equipment (DCE) interface.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt; &lt;subinterface-id&gt;</text>: Creates a subinterface.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP version 4 (IPv4) address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /dg &lt;ip-address&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /ip &lt;ip-address&gt; &lt;subnetmask&gt;</text>: Used in NetSim to assign an IP address and subnet mask to a workstation interface.</li>
+						<li><text class="font-weight-bold text-success">ip route &lt;destination-prefix&gt; &lt;destination-prefix-mask&gt; [&lt;ip-address&gt; | &lt;interface-type&gt; &lt;ip-address&gt;]</text>: Establishes a static route.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an ICMP echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Default Routes</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Connectivity->Default Routes</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>First Hop Redundancy Protocols</h4>
+					<p>First hop redundancy provides multiple routes to the default router. A <text class="font-weight-bold font-italic text-primary">First Hop Redundancy Protocol (FHRP)</text> is a routing protocol that enables routers to provide backup for the default route. Two examples of FHRPs are <text class="font-italic">Hot Standby Router Protocol (HSRP)</text> and <text class="font-italic">Virtual Router Redundancy Protocol (VRRP)</text>.</p>
+					<p><text class="font-weight-bold font-italic text-primary">Hot Stanby Router Protocol (HSRP)</text> is a FHRP that is designed to provide transparent failover of the first-hop IP device or the default router. It is a Cisco proprietary protocol that provides high network availability by allowing first-hop routing redundancy for IP hosts on networks configured with a default gateway IP address. Used in a group of routers, HSRP enables you to assign a virtual IP address to the group, and to select an active device and a standby device.</p>
+					<p><text class="font-weight-bold font-italic text-primary">Virtual Router Redundancy Protocol (VRRP)</text> enables you to configure a group of routers to share a <text class="font-italic">virtual</text> IP address. This configuration also provides for transparent failover at the first-hop IP router. VRRP is an industry standard protocol that works in any multi-vendor environment. VRRP selects a master router in the router group to handle all packets for the virtual IP address. The remaining routers in the group are on standby and will take over if the master router fails.</p>
+					<p><img src="/cisco/include/img/Fig-4-3.png" class="img-thumbnail" alt="first hop redundancy" width="70%" height="70%"></p>
+					<h4>HSRP Operation</h4>
+					<p>When you use HSRP, the HSRP virtual IP address is configured as the host's default gateway. This is different from the usual practice where most IP hosts have an IP address of a single device (such as a router) configured as the default gateway. When you configure HSRP on a network segment, it provides a virtual MAC address and an IP address that is shared among a group of devices that are running HSRP.</p>
+					<p>HSRP is useful for hosts that do <u>not</u> support a discovery protocol such as <text class="font-italic">ICMP Router Discovery Protocol (IRDP)</text>. Such hosts cannot switch to a new device when their selected device is reloaded or loses power. You can use HSRP on these hosts, because the existing TCP sessions can survive the failover. This provides a more transparent recovery for hosts that dynamically choose a next hop for routing traffic.</p>
+					<p>When HSRP detects that the designated active device has failed, at the same time, a selected standby device assumes control of the MAC and IP addresses of the Hot Standby group. A new standby device may also be selected at that time. HSRP uses a priority mechanism to determine the default active device.</p>
+					<h4>Command Reference: Configuring Router Interfaces</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Configuring Router Interfaces</h5>
+					<p>The following commands are used in the Configuring Router Interfaces lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">clock rate &lt;clock-rate&gt;</text>: Sets the clock rate for a Data Communications Equipment (DCE) interface.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">description &lt;description-text&gt;</text>: Assigns a description to an interface, a class map, or a policy map.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt; &lt;subinterface-id&gt;</text>: Creates a subinterface.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP version 4 (IPv4) address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ip host &lt;host-name&gt; &lt;ip-address&gt;</text>: Configures a static host-name-to-address mapping in the host cache of a device.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an ICMP echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show cdp neighbors</text>: Displays information about directly connected Cisco devices.</li>
+						<li><text class="font-weight-bold text-success">show controllers [&lt;type&gt; &lt;number&gt;]</text>: Displays cable orientaion for serial interfaces.</li>
+						<li><text class="font-weight-bold text-success">show interfaces [&lt;type&gt; &lt;number&gt;]</text>: Displays statistics for all interfaces configured on the router.</li>
+						<li><text class="font-weight-bold text-success">show ip interface</text>: Displays IP information for an interface.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Configuring Router Interfaces</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Configuring Router Interfaces</text></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Saving Router Configurations</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Saving Router Configurations</h5>
+					<p>The following commands are used in the Saving Router Configurations lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">copy running-config startup-config</text>: Saves the configuration file.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">erase startup-config</text>: Deletes the startup configuration file in non-volatile random access memory (NVRAM).</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">reload</text>: Reboots the router.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show startup-config</text>: Displays the backup configuration file.</li>
+					</ul>
+					<h5>Lab: Saving Router Configurations</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Saving Router Configurations</text></li>
+						<li>Approximate duration: 5 - 10 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>
