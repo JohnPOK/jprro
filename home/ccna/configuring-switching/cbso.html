@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure Basic Switch Operation</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Configure Basic Switch Operation</h3>
+					<p>Now that you have reviewed some basic concepts, it is time to configure a switch.</p>
+					<h4>Cisco Discovery Protocol (CDP)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Cisco Discovery Protocol (CDP)</text> is a proprietary Cisco protocol used to aid in the discovery and management of Cisco devices. CDP works at <text class="font-weight-bold">Layer 2</text> to provide information about the device to all directly connected neighbors.</p>
+					<p>Cisco routers and switches use CDP messages to advertise device information to neighbors through <text class="font-italic">multicast addressing</text>.</p>
+					<p>You can use CDP in the <text class="font-weight-bold text-success">show</text> command to view details about neighbors.
+						<ul class="list-group">
+							<text class="font-weight-bold text-success">show cdp neighbors [&lt;type&gt; &lt;number&gt;]</text>
+							<text class="font-weight-bold text-success">show cdp neighbors detail</text>
+							<text class="font-weight-bold text-success">show cdp entry &lt;name&gt;</text>
+						</ul>
+					</p>
+					<p><img src="/cisco/include/img/Fig-2-2.png" class="img-thumbnail" alt="issuing the show cdp neighbors command" width="70%" height="70%"></p>
+					<p><img src="/cisco/include/img/Fig-2-3.png" class="img-thumbnail" alt="results of the show cdp neighbors detail command" width="70%" height="70%"></p>
+					<p><text class="font-weight-bold">CDPv2</text> is the latest version with advanced device tracking capabilities.</p>
+					<p>CDP is <text class="font-italic">enabled by default</text> on all Cisco devices. All Cisco devices that run CDP maintain a <text class="font-italic">neighbor table</text>. They add entries to this table by listening for the multicast <text class="font-weight-bold font-italic text-primary">SubNetwork Access Protocol (SNAP)</text> frame from the directly attached neighboring devices. Once an entry is listed in the table, a timer is set for the entry, so devices that go down will be deleted from the table after a few minutes. By viewing the information in the neighbor table, you can find out how your devices are physically connected in the network topology.</p>
+					<h4>Command Reference: CDP</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Cisco Discovery Protocol</h5>
+					<p>The following commands are used in the Cisco Discovery Protocol lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">[no] cdp enable</text>: Enables CDP on an interface. The <text class="font-weight-bold text-success">no</text> form of the command disables CDP on an interface.</li>
+						<li><text class="font-weight-bold text-success">cdp holdtime &lt;seconds&gt;</text>: Specifies or modifies the amount of time the receiving device should hold a CDP packet before discarding it.</li>
+						<li><text class="font-weight-bold text-success">cdp timer &lt;seconds&gt;</text>: Specifies how often Cisco IOS sends CDP packets.</li>
+						<li><text class="font-weight-bold text-success">[no] cdp run</text>: Enables CDP globally on a router or switch. The <text class="font-weight-bold text-success">no</text> form of the command disables CDP globally.</li>
+						<li><text class="font-weight-bold text-success">show cdp</text>: Displays global CDP information, including timer and hold-time information.</li>
+						<li><text class="font-weight-bold text-success">show cdp entry {* | &lt;entry-name&gt; [protocol | version]}</text>: Displays information about a specific neighboring device using CDP.</li>
+						<li><text class="font-weight-bold text-success">show cdp interface  [&lt;type number&gt;]</text>: Displays information about the interface on which CDP is enabled.</li>
+						<li><text class="font-weight-bold text-success">show cdp neighbors</text>: Displays information about directly connected neighbors.</li>
+						<li><text class="font-weight-bold text-success">show cdp neighbors detail</text>: Displays detailed information about directly connected neighbor devices including their device types, interface names, and IP addresses.</li>
+						<li><text class="font-weight-bold text-success">show cdp traffic</text>: Displays information about traffic between devices gathered by using CDP.</li>
+					</ul>
+					<h5>Lab: Cisco Discovery Protocol</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Network Access->Cisco Discovery Protocol</b></li>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+					<h4>Link Layer Discovery Protocol (LLDP)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Link Layer Discovery Protocol (LLDP)</text> is an industry standard protocol that you can use to discover Cisco and non-Cisco devices. LLDP works as a <text class="font-weight-bold">Layer 2</text> protocol and is used by network devices to advertise their current status and capabilities.</p>
+					<p>Devices use LLDP attributes that include type-length-value entries (TLV) to advertise and solicit information from neighbors. TLVs include:
+						<ul>
+							<li class="alert alert-info" role="alert">System description and capabilities</li>
+							<li class="alert alert-info" role="alert">Device identity</li>
+							<li class="alert alert-info" role="alert">Port description</li>
+							<li class="alert alert-info" role="alert">Port VLAN</li>
+							<li class="alert alert-info" role="alert">Configuration information</li>
+						</ul>
+					</p>
+					<p>LLDP is defined by the <text class="font-weight-bold font-italic">Institute of Electrical and Electronics Engineers (IEEE) 802.1ab</text> standard. Because it operates on the <text class="font-italic">Data Link layer</text>, LLDP allows discovery of devices running different network protocols. By default, LLDP is disabled on a device. Therefore, to use LLDP for device discovery, it must be enabled on the device and then on the interface. For each interface, LLDP can be used to discover one neighboring device.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note: </text> When LLDP is first enabled on a device, all interfaces will automatically send and receive LLDP frames.</text></li>
+					</ul>
+					<br>
+					<h4>Spanning Tree Protocol (STP)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Spanning Tree Protocol (STP)</text> is an <text class="font-weight-bold font-italic">Institute of Electrical and Electronics Engineers (IEEE) 802.1D</text> <text class="font-italic">bridge</text> and <text class="font-weight-bold">Layer 2</text> link-management protocol that prevents undesirable loops in the network by providing path redundancy. There can only be one existing active path between two stations for the proper functioning of a <text class="font-weight-bold">Layer 2</text> Ethernet network. STP operation is transparent to end stations that cannot detect whether they are connected to a switched LAN with multiple segments or to a single LAN segment.</p>
+					<p>The process for creating a loop-free STP topology is:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold" style="width: 45%">1. Elect the root bridge</td>
+									<td style="width: 55%">The <text class="font-weight-bold font-italic text-primary">root bridge</text> or root switch is the reference point for all switches in the spanning tree topology. The root bridge has the <text class="font-italic">lowest Bridge ID</text> of all the switches. All other switches are referred to as <text class="font-italic">non-root bridges</text>.</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<ul class="list-group">
+											<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note: </text> The Bridge ID consists of the Bridge Priority and the switch's MAC address. The default Bridge Priority is <text class="font-weight-bold">32768</text>. If all switches have the same Bridge Priority, the switch with the lowest MAC address will become the root bridge.</text></li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold" style="width: 45%">2. Select one root port on each non-root switch.</td>
+									<td>Once a root bridge has been elected, each non-root bridge determines which of its ports has the <text class="font-italic">lowest path cost</text> to the root bridge, and that port is designated as the <text class="font-weight-bold font-italic text-primary">root port</text>.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold" style="width: 45%">3. Select one designated port on each network segment.</td>
+									<td>The port that advertises the <text class="font-italic">lowest root path cost</text> is elected as the <text class="font-weight-bold font-italic text-primary">designated port</text>. All other ports are identified as non-designated or <text class="font-weight-bold font-italic text-primary">blocking ports</text>.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p><img src="/cisco/include/img/Fig-2-4.png" class="img-thumbnail" alt="spanning-tree topology" width="75%" height="75%"></p>
+					<p><a href="https://www.youtube.com/watch?v=japdEY1UKe4" target="_blank" class="btn btn-primary">Spanning Tree Protocol Explained: Step by Step</a></p>
+					<p><a href="https://www.youtube.com/watch?v=j-bK-EFt9cY" target="_blank" class="btn btn-primary">Spanning Tree Protocol (Part 1)</a></p>
+					<h4>Rapid STP</h4>
+					<p>As its name implies, <text class="font-weight-bold font-italic text-primary">Rapid STP (RSTP)</text> (<text class="font-weight-bold">IEEE 802.1w</text>) provides faster recovery in response to network changes or failures, by using new convergence behaviors and bridge port roles. RSTP was designed to be backwards-compatible with STP.</p>
+					<h4>Root Bridges</h4>
+					<p>As mentioned previously, the root bridge is the central reference point in a spanning tree topology, so there is one root bridge for each VLAN. But what if that switch fails or becomes unavailable? You can designate a secondary root bridge by setting its Bridge Priority to the second-lowest value.</p>
+					<h4>Port States</h4>
+					<p>When the spanning-tree algorithm is run, it transitions each port through several different states to ensure that placing a port in forwarding mode will <u>not</u> cause a loop. The spanning-tree port states are:
+						<ul>
+							<li class="alert alert-secondary" role="alert"><text class="font-weight-bold font-italic text-danger">Blocking</text>: When you enable STP, an interface always starts in the blocking state. After the device initializes, it sends a <text class="font-italic">Bridge Protocol Data Unit (BPDU)</text> to the Ethernet and radio ports of the access points. When the access points exchange BPDUs, it helps in identifying the root bridge.<br>When an interface is in a blocking state, it does <u>not</u> participate in frame forwarding, it discards the frames received on the port, and it does <u>not</u> learn addresses. It does, however receive BPDUs. Ports connected to redundant links are put in a blocked state for an indefinite period. If the original link goes down, then the blocked port is unblocked and used in its place.</li>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-danger">Listening</text>: The listening state is the first interface state after the blocking state. When STP determines that the interface should participate in frame forwarding, the device enters this state.<br>When an interface is in the listening state, it discards frames received on the port and does <u>not</u> learn addresses. It does, however receive BPDUs. The default duration of the listening state is <text class="font-weight-bold">15 seconds</text>.</li>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-danger">Learning</text>: The learning state is the next interface state after the listening state. When an interface is in the learning state, it prepares to participate in frame forwarding. In the learning state, the interface discards frames received on the port, but it will learn addresses, update MAC address tables, and receive BPDUs. The default duration of the learning state is <text class="font-weight-bold">15 seconds</text>.</li>
+							<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-danger">Forwarding</text>: The forwarding state is the next interface state after the learning state. When an interface is in the forwarding state, it participates in frame forwarding. It receives and forwards frames recieved on the port, and it learns addresses and receives BPDUs.</li>
+							<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-danger">Disabled</text>: The disabled state is the next interface state after the forwarding state. When an interface is in the disabled state, it does <u>not</u> participate in frame forwarding or in the spanning tree and is non-operational. It discards frames received on the port. The interface in disabled state does <u>not</u> <text class="font-italic">learn addresses</text> or <text class="font-italic">receive BPDUs</text>.</li>
+						</ul>
+					</p>
+					<h4>PortFast</h4>
+					<p>STP PortFast causes a <text class="font-weight-bold">Layer 2</text>, LAN port, <text class="font-italic">configured as an access port</text> to enter forwarding state immediately, by allowing the device to bypass the listening and learning states.</p>
+					<p>Interfaces connected to a single workstation or server should <u>not</u> receive BPDUs. A PortFast-enabled port can immediately transition to the blocking state if necessary (this could happen on receipt of a superior BPDU). PortFast can be enabled on trunk ports and can have an operational value that is different from the configured value.</p>
+					<h4>Link Aggregation Control Protocol (LACP)</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">EtherChannel</text> is a port-link aggregation technology that combines <text class="font-italic">multiple physical Ethernet links into one logical link</text>, providing fault tolerance and high-speed links for connecting switches, routers, and servers.</p>
+					<p><text class="font-weight-bold font-italic text-primary">Link Aggregation Control Protocol (LACP)</text> is an <text class="font-weight-bold">IEEE 802.3ad</text> standard that supports the automatic creation of EtherChannels by permitting the exchange of LACP packets between LAN ports that are in passive and active modes. The protocol dynamically learns about the capabilities of LAN port groups and informs the other LAN ports.</p>
+					<p>When LACP identifies the correctly matched Ethernet links, it allows the grouping of links into an EtherChannel. Then, the EtherChannel is added to the spanning tree as a single bridge port.</p>
+					<p>Using criteria such as port speed and trunking state, both passive and active modes allow LACP to negotiate between LAN ports to determine if an EtherChannel can be formed. <text class="font-weight-bold">Layer 2</text> EtherChannels also use VLAN numbers as a criterion.</p>
+					<p>Even LAN ports that are in different LACP modes can form an EtherChannel as long as the modes are compatible. For Example:
+						<ul>
+							<li class="alert alert-success" role="alert">Two LAN ports that are in active mode can form an EtherChannel.</li>
+							<li class="alert alert-success" role="alert">A LAN port that is in active mode can form an EtherChannel with another LAN port that is in passive mode.</li>
+							<li class="alert alert-danger" role="alert">Two LAN ports that are in passive mode <u>cannot</u> form an EtherChannel because neither of the ports will be able to initiate a negotiation.</li>
+						</ul>
+					</p>
+					<p><a href="https://www.youtube.com/watch?v=8gKF2fMMjA8" target="_blank" class="btn btn-primary">Configuring EtherChannel</a></p>
+					<h4>System Configuration Dialog</h4>
+					<p>The System Configuration Dialog is an interactive mode to perform the initial steps for switch configuration. It appears automatically when a switch is powered on for the first time or when the <text class="font-weight-bold">Non-volatile RAM (NVRAM)</text> does <u>not</u> contain a configuration file for the switch.</p>
+					<p>Cisco IOS enters into switch setup mode and prompts the user to enter basic switch configuration information, accepting user input for the required configuration settings. It also requests confirmation to save the settings. Once confirmed, IOS saves the configuration file into <text class="font-weight-bold">NVRAM</text> and uses it as the <text class="font-italic">startup-config</text> file.</p>
+					<p>The <text class="font-italic">System Configuration Dialog</text> is used by administrators to quickly enter basic switch configuration information. It is also used when an administrator decides to erase the <text class="font-italic">startup-config file</text> in the <text class="font-weight-bold">NVRAM</text> and create a new config file. The prompts that appear in the System Configuration Dialog depend on the hardware and software installed on the switch. The System Configuration Dialog <u>cannot</u> be used to configure advanced switch settings.</p>
+					<p>You can access help resources at every prompt of the System Configuration Dialog by entering a question mark (<text class="font-weight-bold">?</text>). At any point during the setup, you can press <text class="font-weight-bold">Ctrl+C</text> to stop the configuration steps without saving the changes and enter privileged EXEC mode. By entering the <text class="font-weight-bold text-success">setup</text> command in privileged EXEC mode, you can configure additional switch settings.</p>
+					<p><img src="/cisco/include/img/Fig-2-5.png" class="img-thumbnail" alt="the system configuration dialog" width="65%" height="65%"></p>
+					<h4>Command Reference: System Configuration Dialog</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Using the System Configuration Dialog for Initial Switch Configurations</h5>
+					<p>The following commands are used in the Using the System Configuration Dialog for Initial Switch Configurations lab:</p>
+					<ul>
+						<li><text class="text-success"><b>copy running-config startup-config</b></text>: Saves the configuration file to NVRAM.</li>
+						<li><text class="text-success"><b>enable</b></text>: enters privileged EXEC mode.</li>
+						<li><text class="text-success"><b>end</b></text>: Ends and exits configuration mode.</li>
+						<li><text class="text-success"><b>erase startup-config</b></text>: Deletes the startup configuration file in NVRAM.</li>
+						<li><text class="text-success"><b>interface &lt;type&gt; &lt;number&gt;</b></text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="text-success"><b>ip default-gateway &lt;ip-address&gt;</b></text>: Configures a default gateway IP address to which traffic destined to remote networks has to be forwarded.</li>
+						<li><text class="text-success"><b>ping &lt;ip-address&gt;</b></text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="text-success"><b>reload</b></text>: Reboots the switch.</li>
+						<li><text class="text-success"><b>show running-config</b></text>: Displays the active configuration file.</li>
+						<li><text class="text-success"><b>show startup-config</b></text>: Displays the backup configuration file.</li>
+						<li><text class="text-success"><b>[no] shutdown</b></text>: Disables an interface. The <text class="text-success"><b>no</b></text> form enables an interface.</li>
+					</ul>
+					<h5>Lab: Using the System Configuration Dialog for Initial Switch Configuration</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Network Fundamentals->Using the System Configuration Dialog for Initial Switch Configuration</b></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Switch and Workstation Configuration</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Switch and Workstation Configuration</h5>
+					<p>The following commands are used in the Switch and Workstation Configuration lab:</p>
+					<ul>
+						<li><text class="text-success"><b>configure terminal</b></text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="text-success"><b>enable</b></text>: Enters privileged EXEC mode.</li>
+						<li><text class="text-success"><b>end</b></text>: Ends and exits configuration mode.</li>
+						<li><text class="text-success"><b>hostname &lt;host-name&gt;</b></text>: Sets the device name.</li>
+						<li><text class="text-success"><b>ip address &lt;ip-address subnet-mask&gt;</b></text>: Assigns an IP address to an interface.</li>
+						<li><text class="text-secondary"><b>ipconfig /all</b></text>: Used in NetSim to display the IP addresses and Media Access Control (MAC) addresses on a workstation.</li>
+						<li><text class="text-secondary"><b>ipconfig /dg &lt;ip-address&gt;</b></text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="text-secondary"><b>ipconfig /ip &lt;ip-address subnet-mask&gt;</b></text>: Used in NetSim to assign an IP address and subnet mask to a workstation interface.</li>
+						<li><text class="text-success"><b>ping &lt;ip-address&gt;</b></text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="text-success"><b>show ip interface brief</b></text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="text-success"><b>show running-config</b></text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Switch and Workstation Configuration</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Network Fundamentals->Switch and Workstation Configuration</b></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>Command Reference: Inital Switch Configuration</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Inital Switch Configuration</h5>
+					<p>The following commands are used in the Inital Switch Configuration lab:</p>
+					<ul>
+						<li><text class="text-success"><b>configure terminal</b></text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="text-success"><b>copy running-config startup-config</b></text>: Saves the configuration file to NVRAM.</li>
+						<li><text class="text-success"><b>enable</b></text>: Enters privileged EXEC mode.</li>
+						<li><text class="text-success"><b>enable password &lt;password&gt;</b></text>: Sets the enable password.</li>
+						<li><text class="text-success"><b>enable secret &lt;password&gt;</b></text>: Sets the enable secret password.</li>
+						<li><text class="text-success"><b>end</b></text>: Ends and exits configuration mode.</li>
+						<li><text class="text-success"><b>exit</b></text>: Exits one level in the menu structure.</li>
+						<li><text class="text-success"><b>hostname &lt;host-name&gt;</b></text>: Sets the device name.</li>
+						<li><text class="text-success"><b>interface &lt;type&gt; &lt;number&gt;</b></text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="text-success"><b>ip address &lt;ip-address subnet-mask&gt;</b></text>: Assigns an IP address to an interface.</li>
+						<li><text class="text-success"><b>ip default-gateway &lt;ip-address&gt;</b></text>: Configures a default gateway IP address to which traffic destined to remote networks has to be forwarded.</li>
+						<li><text class="text-success"><b>line vty 0 15</b></text>: Enters configuration mode for the specified virtual terminal (Telnet) lines.</li>
+						<li><text class="text-success"><b>login</b></text>: Enables password checking.</li>
+						<li><text class="text-success"><b>password &lt;password&gt;</b></text>: Specifies the password that is required for a user to log in.</li>
+						<li><text class="text-success"><b>ping &lt;ip-address&gt;</b></text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="text-success"><b>reload</b></text>: Reboots the switch.</li>
+						<li><text class="text-success"><b>show ip interface brief</b></text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="text-success"><b>show startup-config</b></text>: Displays the backup configuration file.</li>
+						<li><text class="text-success"><b>[no] shutdown</b></text>: Disables an interface. The <text class="text-success"><b>no</b></text> form enables an interface.</li>
+					</ul>
+					<h5>Lab: Inital Switch Configuration</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Network Fundamentals->Inital Switch Configuration</b></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

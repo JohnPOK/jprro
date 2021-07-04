@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Troubleshoot Interface and Cable Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Troubleshooting Interface and Cable Issues</h3>
+					<p>When physical layer components fail, it is very likely that the network connectivity will be affected, whether it be one user or a building full of users.</p>
+					<h4>Common Interface and Cable Issues</h4>
+					<p>Common interface and cable issues include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">Bad or damaged cable</text>. Generally speaking, if only one computer or device is affected, the problem could be a <text class="font-italic">bad</text> or <text class="font-italic">damaged cable</text>. Some of the possible symptoms are lost connections, slow performance over the network, or intermittent connectivity. You can easily swap a suspect cable with an Ethernet cable that you know is good. If the problems disappear, your troubleshooting is complete.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">Auto-negotiation and NIC issues</text>. Sometimes there can be problems between Cisco switches and certain third-party NICs. Remember that by default, Catalyst switch ports and interfaces are set to auto-negotiate. Also, it is common for devices like laptops or other devices to be set to auto-negotiate as well. However, sometimes auto-negotiation issues may still occur. To troubleshoot auto-negotiation problems, it is recommended that you try hardcoding both sides. If neither auto-negotiation or hardcoding appears to work, there may be a problem with the firmware or software on your NIC. You may need to upgrade the NIC driver to the latest version available on the website of the manufacturer to resolve this issue.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold">Ethernet and fiber cables</text>. You need to ensure that you are using the correct cable type for the connections. For Ethernet, you need to use Category <text class="font-weight-bold">3</text> copper cable for <text class="font-weight-bold">10 Mbps</text> UTP connections. You need to use Category <text class="font-weight-bold">5</text> UTP copper cable for <text class="font-weight-bold">10/100 Mbps</text> connections, Category <text class="font-weight-bold">5e</text> or Category <text class="font-weight-bold">6</text> UTP copper cable for <text class="font-weight-bold">10/100/1000 Mbps</text> connections, and Category <text class="font-weight-bold">6A</text> cable for cameras and WAPs. For fiber-optic connections, you need to verify that you have the correct cable for the distance and port type. You need to ensure that the connected <text class="font-italic">device ports both match</text> and use the same <text class="font-italic">type encoding</text>, <text class="font-italic">optical frequency</text>, and <text class="font-italic">fiber type</text>. For copper connections, you need to determine if a crossover cable was used when a straight-through was required or vice-versa. You may have to enable <text class="font-italic">Auto MDI-X</text> on the switch, or replace the cable.</li>
+					</ul>
+					<p>The types of errors related to interfaces and cable are:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">Input queue drops</text>: This indicates that a router received information faster than it could process the information.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">Output queue drops</text>: This indicates that a router is <u>not</u> able to send information out through the outgoing interface due to congestion or possibly due to an input/output speed mismatch.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">Input errors</text>: This indicates that frames were <u>not</u> received correctly. For example, a <text class="font-italic">cyclic redundancy check (CRC)</text> error may have occured, which could indicate that a cabling problem or a duplex mismatch has occured.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">Output errors</text>: This indicates that the frames were <u>not</u> transmitted correctly, possibly due to a duplex mismatch.</li>
+					</ul>
+					<h4>Physical Damage</h4>
+					<p>You should always check cables for physical damage or failure. A cable may be just good enough to connect at the Physical layer, but it might corrupt packets as a result of subtle damage to the wiring or connectors. You need to check or swap the copper or fiber cable. Also, you may need to swap the transceiver, whether it is a Gigabit Interface Converter (GBIC), SFP or SFP+ transceiver, if removable, for fiber connections.</p>
+					<p>You also need to verify and rule out any bad patch panel connections or media convertors between source and destination. You may need to try the cable in another port or interface if one is available and see if the problem continues.</p>
+					<p>Be aware that visual inspection of the media can go only so far. To check for cable breaks that cannot be detected visually, you will need to use a <text class="font-italic">TDR</text> or other cable-testing tool.</p>
+					<h4>Speed or Duplex Mismatch</h4>
+					<p>Duplex mode can be of two types: <text class="font-italic">full-duplex</text> and <text class="font-italic">half-duplex</text>. Full-duplex mode enables devices to send and receive data at the same time. Half-duplex mode allows the devices to perform only one action, either sending data or receiving data, at the same time. Both <text class="font-italic">duplex</text> and <text class="font-italic">speed</text> settings are interrelated because the speed of transmission specified for an interface will affect its duplex settings. </p>
+					<p>The common issue with speed or duplex occurs when the duplex settings don't match between two switches, between a switch and a router, or between the switch and a workstation or server. This can happen when you are manually hardcoding the speed and duplex settings, or from auto-negotiation issues between the two devices.</p>
+					<p>While there may be other causes for <text class="font-italic">late collisions</text>, duplex mismatch is probably the most common reason. You can either set both sides of the connection to <text class="font-italic">auto-negotiate speed/duplex</text>, or you can set the <text class="font-italic">speed/duplex manually</text> on both sides. Setting auto speed/duplex on one side and <text class="font-weight-bold">100</text>/Full-duplex on the other side is also a misconfiguration, and can result in a duplex mismatch. When the switch port receives a lot of <text class="font-italic">late collisions</text>, this usually indicates that there is a duplex mismatch problem and can result in the port being placed in an <text class="font-weight-bold text-success">errdisable</text> state. The <text class="font-italic">half duplex</text> side expects packets only at certain times. If it receives packets at any time other than the expected times, it will consider such packets as <text class="font-italic">collisions</text>.</p>
+					<h4>Collisions</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">collision</text> refers to a situation in the network when two nodes transmit data simultaneously without being aware that the other node is also sending data at the same time. This occurs when two nodes listen for network traffic, "hear" none or detect no traffic on the network, and then transmit data simultaneously. Collisions are normal for interfaces configured as <text class="font-italic">half-duplex</text> but should <u>not</u> be seen on <text class="font-italic">full-duplex</text> interfaces. If collisions increase dramatically, this points to a highly utilized link or possibly a duplex mismatch with the attached device.</p>
+					<p>The <text class="font-weight-bold text-success">show interface ethernet</text> command will show you the number of times a collision occurred before the interface transmitted a frame to the media successfully. The command output shows statistics for <text class="font-italic">collisions</text> and <text class="font-italic">late collisions</text>.</p>
+					<p>A <text class="font-weight-bold font-italic text-primary">late collision</text> occurs when two devices transmit at the same time, and neither side of the connection detects a collision. The reason for this occurrence is because the time to propagate the signal from one end of the network to another is longer than the time to put the entire packet on the network. The two devices that cause the late collision never see that the other is sending until after it puts the entire packet on the network. Late collisions are <u>not</u> detected by the transmitter until after the first <text class="font-weight-bold">64</text> byte slot time. This is because they are only detected in transmissions of packets longer than <text class="font-weight-bold">64</text> bytes.</p>
+					<p>The <text class="font-italic">excessive collisions counter</text> increases after <text class="font-weight-bold">16</text> consecutive late collisions have occurred. After <text class="font-weight-bold">16</text> attempts have been made to send the packet, the packet is dropped and the excessive collisions counter increments. If this counter increment occurs, it is an indication of a <text class="font-italic">wiring problem</text>, an <text class="font-italic">excessively loaded network</text>, or a <text class="font-italic">duplex mismatch</text>. An excessively loaded network can be caused by too many devices on a shared Ethernet.</p>
+					<p>You can use the <text class="font-weight-bold text-success">show controller ethernet &lt;interface-number&gt;</text> command to see the number of excessive collisions.</p>
+					<h4>Guidelines for Troubleshooting Interface and Cable Issues</h4>
+					<p>Here are some guidelines for troubleshooting interface and cable issues.</p>
+					<h5>Troubleshooting Interface and Cable Issues</h5>
+					<p>The following table lists symptoms, causes, and possible solutions for some common interface and cable issues.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 40%">Issue and Symptom/Cause</th>
+									<th style="width: 60%">Solutions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td><text class="font-weight-bold">Excessive noise</text>--When you view the output of the <text class="font-weight-bold text-success">show interface ethernet</text> command, it contains more CRC errors but fewer collisions, which is an indicator of excessive noise on the interface.</td>
+									<td>
+										<ul>
+											<li class="alert alert-warning" role="alert">Check for damage to any of the cables.</li>
+											<li class="alert alert-warning" role="alert">Check for signal reflections due to any badly spaced <text class="font-italic">Test Access Points (TAPs)</text>, which are hardware devices that enable you to access data that is sent on a network.</li>
+											<li class="alert alert-warning" role="alert">Ensure that for <text class="font-weight-bold">100BaseTX</text> medium, you are using only Category <text class="font-weight-bold">5</text> cabling and <u>not</u> any other type like Category <text class="font-weight-bold">3</text> cabling.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td><text class="font-weight-bold">Excessive collisions</text>--Slow Network performance.</td>
+									<td>
+										<ul>
+											<li class="alert alert-danger" role="alert">When you view the output of the <text class="font-weight-bold text-success">show interface ethernet</text> command, it shows the number of collisions with respect to the total number of output packets.</li>
+											<li class="alert alert-danger" role="alert">Use a <text class="font-italic">Time-Domain Reflectometer (TDR)</text> to find any unterminated Ethernet cables. A TDR is an electronic instrument that can be used to characterize and locate faults in metallic cables, such as twisted wire pairs and coaxial cables.</li>
+											<li class="alert alert-danger" role="alert">Look for any transceiver attached to a host that is constantly sending unwanted signals, which can disrupt the communication within the network. You may need to perform a host-by-host inspection or use a protocol analyzer.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td><text class="font-weight-bold">Late collisions</text>--Late collisions will normally <u>not</u> occur in a properly designed Ethernet network. They will usually occur when the Ethernet cables used are too long or when too many repeaters are used in the network.</td>
+									<td>
+										<ul>
+											<li class="alert alert-warning" role="alert">Check for late collisions by using a protocol analyzer.</li>
+											<li class="alert alert-warning" role="alert">Check the diameter of the network, and ensure that it is within specification.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td><text class="font-weight-bold">Excessive runt frames</text>--When runt frames occur in a shared Ethernet environment but the collision rate is <u>not</u> high or they occur in a switched Ethernet environment, they may be due to underruns or bad software on a NIC.</td>
+									<td>
+										<ul>
+											<li class="alert alert-danger" role="alert">A runt frame is less then <text class="font-weight-bold">64</text> bytes in size and has a bad CRC. When runt frames occur in a shared Ethernet environment, they are mostly caused by collisions. If this is the case, you need to apply the same solutions given for <text class="font-italic">excessive collisions</text>.</li>
+											<li class="alert alert-danger" role="alert">Use a protocol analyzer to try to determine the source address of the runt frames.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td><text class="font-weight-bold">No link integrity on 10BaseT, 100BaseT4, or 100BaseTX</text>--Wrong wire type being used, mismatch in card, cross-connect of cables, or excessive noise may cause the issue.</td>
+									<td>
+										<ul>
+											<li class="alert alert-warning" role="alert">Make sure you are <u>not</u> using <text class="font-weight-bold">100BaseT4</text> when only two pairs of wire are available, because <text class="font-weight-bold">100BaseT4</text> requires four pairs.</li>
+											<li class="alert alert-warning" role="alert">Check for a mismatch between <text class="font-weight-bold">10BaseT</text>, <text class="font-weight-bold">100BaseT4</text>, or <text class="font-weight-bold">100BaseTX</text>. This may help to detect if any card that is different from the switch port is being used.</li>
+											<li class="alert alert-warning" role="alert">Identify whether there is <text class="font-italic">cross-connect</text>. For example, ensure that only straight-through cables are used between a station and the switch. Cross-over cables must <u>not</u> be used between a station and the switch.</li>
+											<li class="alert alert-warning" role="alert">Identify any excessive noise.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h5>Troubleshooting Speed and Duplex Issues</h5>
+					<p>When you are attempting to troubleshoot issues related to speed and duplex, you need to look at both endpoints of the link. This will help you verify that the devices are using the same speed and duplex settings. If the endpoints are <u>not</u> using the same speed and duplex setting, you might experience the following issues.</p>
+					<ul>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">Mismatch in Speed</text>: When the transmission speed of the endpoints are <u>not</u> the same, both endpoints will show the interface status as <text class="font-italic">not connected</text> or <text class="font-italic">inactive</text>.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-danger">Mismatch in Duplex</text>: When the duplex settings of the endpoints are <u>not</u> the same, the endpoint that has the half-duplex setting specified will show problems and will <u>not</u> be able to communicate properly with the endpoint that has full-duplex settings specified, although the interfaces will appear to be active.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

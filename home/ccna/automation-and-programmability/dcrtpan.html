@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Concepts Related to Programmability and Networking</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic C</h2>
+					</div>
+					<h3 class="text-success">Programmability Concepts</h3>
+					<p>Automation of network management is impossible without the ability to craft software code that performs repetitive tasks.</p>
+					<h4>Web Services</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Web services</text> are applications or data sources that are accessible through the HTTP and HTTPS protocols and that provide interoperability, communication, and data exchange between applications. Messages between web services and other applications are most often created in <text class="font-italic">Extensible Markup Language (XML)</text>, and the web services do <u>not</u> depend on a single operating system or programming language.</p>
+					<p>For example, consider a web page for a travel agency that provides travelers with the ability to make airline and hotel reservations, as well as reserve a rental car and buy travel insurance, all from the agency's web page. Each of these travel services is enabled on the web page by the use of web services. The agency can provide all this functionality without the need for writing application code.</p>
+					<p>Web services are often categorized according to the protocols and standards they use:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">XML-RPC</text> is the simplest XML-based protocol for exchanging information between networked computers. RPC stands for <text class="font-italic">Remote Procedure Call</text>.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Universal Description, Discovery, and Integration (UDDI)</text> is an XML-based standard used for describing, publishing, and discovering web services. You can think of it as providing a catalog of available web services.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Service Oriented Architecture Protocol (SOAP)</text> is an XML-based protocol that enables data exchange over HTTP or SMTP. It is steadily being deprecated in favor of REST.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Representational State Transfer (REST)</text> is an architectural style for creating web services.</li>
+					</ul>
+					<h4>Representational State Transfer (REST) Technology</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Representational State Transfer (REST)</text> is a software architecture that defines constraints that are used during the creation of web services. These constraints provide <text class="font-italic">performance</text>, <text class="font-italic">scalability</text>, <text class="font-italic">reliability</text>, <text class="font-italic">simplicity</text>, <text class="font-italic">modifiability</text>, <text class="font-italic">visibility</text>, and <text class="font-italic">portability</text>.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 25%">Constraint</th>
+									<th style="width: 75%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">Client-server architecture</td>
+									<td class="text-dark">This constraint separates the user interface from the data source.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-danger">Statelessness</td>
+									<td class="text-dark">This constraint follows the client-server constraint, as the server does <u>not</u> retain client information after a request has completed. All the information required for a client request is sent within the request.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">Cacheability</td>
+									<td class="text-dark">This constraint requires responses to define themselves as cacheable or <u>not</u> cacheable to prevent clients from receiving incorrect or outdated data in response to a request.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-danger">Layered systems</td>
+									<td class="text-dark">This constraint requires transparency for clients that are <u>not</u> directly connected to the end server. No additional code is required to address any intermediary servers that pass the client request to the end server. In addition, this constraint enables the addition of a security layer, protecting client/server communications without affecting the performance of the web services themselves.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">Uniform interface</td>
+									<td class="text-dark">Constraints to provide a uniform interface involve including resource identifiers for each individual resource being requested, self-description messages that provide the information needed to process the message, the ability for clients to manipulate resources, and the use of hyperlinks to discover available actions.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-danger">Code on demand (optional)</td>
+									<td class="text-dark">This optional constraint enables servers to transfer code to a client to provide any additional or different functionality required to complete a request.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>RESTful APIs</h4>
+					<p><text class="font-weight-bold font-italic text-primary">RESTful APIs</text> are APIs that are created according to REST constraints and that use HTTP requests to manipulate data. They provide flexibility for developers because:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">They use protocols that are already in place on an IP network, so there is no need to load additional libraries or software.</li>
+						<li class="alert alert-warning" role="alert">They decouple data from the underlying resources or methods so one RESTful API can meet the needs of many types of program calls.</li>
+						<li class="alert alert-warning" role="alert">They can use many data formats in addition to XML, including <text class="font-italic">JavaScript Object Notation (JSON)</text>, and <text class="font-italic">YAML Ain't Markup Language (YAML)</text>.</li>
+						<li class="alert alert-warning" role="alert">They use less bandwidth than SOAP technology.</li>
+					</ul>
+					<h4>HTTP Verbs</h4>
+					<p>RESTful APIs leverage at least the following HTTP verbs:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">POST to create a resource.</li>
+						<li class="alert alert-info" role="alert">GET to read a resource.</li>
+						<li class="alert alert-info" role="alert">PUT to update or create a resource.</li>
+						<li class="alert alert-info" role="alert">DELETE to remove a resource.</li>
+					</ul>
+					<p>These verbs correspond to the basic <text class="font-italic">Create Read Update Delete (CRUD)</text> operations that are commonly accepted user actions for data.</p>
+					<h4>Data Encoding</h4>
+					<p>In general computing, <text class="font-weight-bold font-italic text-primary">data encoding</text> is the process of converting data from one form to another. When it comes to RESTful APIs, a common form of encoding is <text class="font-weight-bold font-italic text-primary">URL encoding</text>. This is the practice of ensuring that the URLs that are sent over an IP network conform to the ASCII character set. For instance, there is no ASCII character for a space or for various punctuation marks that are often included in URLs, so encoding replaces those entities with the <text class="font-italic">percent symbol</text>, <text class="font-weight-bold">%</text>, followed by <text class="font-italic">two hex digits</text>, such as <text class="font-weight-bold">%20</text> for a space.</p>
+					<p><img src="/cisco/include/img/Fig-8-6.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<h4>Software Configuration Management Options</h4>
+					<p><text class="font-italic">Software configuration management (SCM)</text> enables developers and other IT personnel to organize the various facets of the software used by an organization, such as source code, documentation, problems, change requests, and changes that have been implemented. Common goals of SCM include <text class="font-italic">configuration</text>, <text class="font-italic">identification</text>, <text class="font-italic">baselining</text>, <text class="font-italic">control</text>, and <text class="font-italic">change management</text>.</p>
+					<p>There are numerous options for implementing configuration management for software. Some of the most notable include <text class="font-italic">Puppet</text>, <text class="font-italic">Chef</text>, and <text class="font-italic">Ansible</text>.</p>
+					<h4>Puppet, Chef, and Ansible</h4>
+					<p>This table describes three popular SCM tools.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 25%">Tool</th>
+									<th style="width: 65%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-danger">Puppet&#174;</td>
+									<td>Puppet is an open-source SCM tool used primarily for <text class="font-italic">deploying</text>, <text class="font-italic">configuring</text>, and <text class="font-italic">managing servers</text>. Often used in cloud deployments, it employs a master/slave architecture to enable various node configurations to be transferred to the puppet master. Puppet uses a set of universal specifications to provide automation of administrative tasks such as adding users, installing software packages, and updating server configurations.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-danger">Chef&#174;</td>
+									<td>Chef is an automation tool for configuring and managing infrastructure as code. Chef is based on the Ruby programming language and provides recipes to record and update information about the infrastructure and any compliance rules that might be in effect.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-danger">Ansible&#174;</td>
+									<td>Ansible is a simple, open-source IT automation platform that is commonly used for websites and documentation. It uses a push-based architecture that sends configuration information in the form of Ansible modules to the nodes you want to manage and then runs the modules over SSH and removes them when the modules finish execution. Modules can be stored anywhere on your network - no servers or databases are needed.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>JavaScript and JavaScript Object Notation (JSON)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">JavaScript</text> is a lightweight scripting language that is often used to provide dynamic content and interactivity on web pages and to develop mobile apps. It works with HTML and CSS and provides the automation found on most websites today.</p>
+					<p><text class="font-weight-bold font-italic text-primary">JavaScript Object Notation (JSON)</text> is an open standard text-based data format that uses human-readable text to transmit data objects and arrays in web applications. It is considered a low-overhead alternative to XML and is widely used to exchange data in web services. A JSON file contains a <text class="font-italic">collection of name/value pairs</text> and <text class="font-italic">lists of values</text>. (You will sometimes see references to <text class="font-italic">key/value pairs</text> or <text class="font-italic">attribute/value pairs</text> - these are just variations in name).</p>
+					<p>JSON is based on the same syntax as JavaScript, but it can be used with many other programming and scripting languages. Files have the extension <text class="font-italic">.json</text> and the MIME type <text class="font-italic">application/json</text>.</p>
+					<p>The following is a sample JSON file describing a person.</p>
+					<pre>
+{
+	"firstName": "Brenda",
+	"lastName": "Maben",
+	"isAlive": true,
+	"age": 31,
+	"address": {
+		"streetAddress": "226 Pearl Street",
+		"aptNo": "6C",
+		"city":	"Greene City",
+		"state": "RL",
+		"postalCode": "99999-1000"
+	},
+	"phoneNumbers": [
+		{
+			"type": "home",
+			"number": "555-555-1844"
+		},
+		{
+			"type": "office",
+			"number": "555-555-7731"
+		},
+		{
+			"type": "mobile",
+			"number": "555-555-5204"
+		},
+	],
+	"children": [],
+	"spouse": null
+}
+					</pre>
+					<p>Another example sets up the data format for an online catalog.<br>
+						<img src="/cisco/include/img/Fig-8-7.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%">
+					</p>
+					<h4>JSON Encoded Data Interpretation</h4>
+					<p>Because JSON files use human-readable text, you can open them using several types of programs:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">You can import a JSON file into your web browser to view or modify it.</li>
+						<li class="alert alert-success" role="alert">You can open a JSON file in Notepad or any other text editor to view or modify it.</li>
+						<li class="alert alert-success" role="alert">You can import a JSON file into Excel, or into programs created in languages such as Python, Java, or JavaScript.</li>
+						<li class="alert alert-success" role="alert">You can download a JSON viewer, editor, or parser and use that to open JSON files.</li>
+					</ul>
+					<h4>Summary</h4>
+					<p>In this lesson, you explored automation, including how automation can support network management, SDN and controller-based networking, device management, and concepts related to programmability. Each of these facets of automation can help you manage your network with fewer errors and less downtime.</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Common Processes for Troubleshooting Network Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic A</h2>
+					</div>
+					<h3 class="text-success">Troubleshooting Methodologies</h3>
+					<p>One of the most important facets of successful troubleshooting is to use a systematic approach to identifying and resolving issues. By identifying common troubleshooting methodologies, you can adopt one to use as a standard framework for your troubleshooting activities.</p>
+					<h4>Cisco Troubleshooting Model</h4>
+					<p>Cisco offers an eight-step troubleshooting method to help you fix your network:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 50%">
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<!-- <td class="text-warning" style="width: 25%">Define the problem.</td> -->
+									<td style="width: 25%"><a href="#objectives-001" data-toggle="collapse" class="text-warning">Define the problem.</a></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<!-- <td class="text-warning" style="width: 25%">Gather detailed information.</td> -->
+									<td style="width: 25%"><a href="#objectives-002" data-toggle="collapse" class="text-warning">Gather detailed information.</a></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<!-- <td class="text-warning" style="width: 25%">Consider probable cause for the failure.</td> -->
+									<td style="width: 25%"><a href="#objectives-003" data-toggle="collapse" class="text-warning">Consider probable cause for the failure.</a></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold" style="width: 5%">4.</td>
+									<!-- <td class="text-warning" style="width: 25%">Devise a plan to solve the problem.</td> -->
+									<td style="width: 25%"><a href="#objectives-004" data-toggle="collapse" class="text-warning">Devise a plan to solve the problem.</a></td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold" style="width: 5%">5.</td>
+									<!-- <td class="text-danger" style="width: 25%">Implement the plan.</td> -->
+									<td style="width: 25%"><a href="#objectives-005" data-toggle="collapse" class="text-danger">Implement the plan.</a></td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold" style="width: 5%">6.</td>
+									<!-- <td class="text-danger" style="width: 25%">Observe the results of the implementation.</td> -->
+									<td style="width: 25%"><a href="#objectives-006" data-toggle="collapse" class="text-danger">Observe the results of the implementation.</a></td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold" style="width: 5%">7.</td>
+									<!-- <td class="text-danger" style="width: 25%">Repeat the process if the plan does <u>not</u> resolve the problem.</td> -->
+									<td style="width: 25%"><a href="#objectives-007" data-toggle="collapse" class="text-danger">Repeat the process if the plan does <u>not</u> resolve the problem.</a></td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold" style="width: 5%">8.</td>
+									<!-- <td class="text-success" style="width: 25%">Document the changes made to solve the problem.</td> -->
+									<td style="width: 25%"><a href="#objectives-008" data-toggle="collapse" class="text-success">Document the changes made to solve the problem.</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div id="objectives-001" class="collapse">
+						<div class="alert alert-warning" role="alert">
+							<h4 class="font-weight-bold text-warning">Step 1: Define The Problem.</h4>
+							<p>At the first indication of a potential issue, consider verifying that the network is working correctly by checking the documentation and network configuration. Documentation of network addresses is vital. You can use the Cisco IOS <text class="font-weight-bold text-success">show</text> and <text class="font-weight-bold text-success">debug</text> command outputs to check the topology and to test connectivity.</p>
+						</div>
+					</div>
+					<p class="text-danger alert alert-danger" role="alert">Be sure to record your ideas and actions at every step of the process.</p>
+					<div id="objectives-002" class="collapse">
+						<div class="alert alert-warning" role="alert">
+							<h4 class="font-weight-bold text-warning">Step 2: Gather Detailed Information</h4>
+							<p>Communicate with the individuals who reported the problem to try and elicit information about what they were doing when the problem surfaced.</p>
+							<p>Network diagrams can help you resolve IP connectivity problems. Use them to compare the current network traffic with the expected working of the network.</p>
+							<p>One way to isolate a problem is to determine the path of a packet in the network and identify the point at which the network stops forwarding the packet. Use the documentation, network configuration, and the <text class="font-weight-bold text-success">traceroute</text> and <text class="font-weight-bold text-success">ping</text> commands. Test every hop of a packet from its source to destination to identify the exact issue.</p>
+						</div>
+					</div>
+					<div id="objectives-003" class="collapse">
+						<div class="alert alert-warning" role="alert">
+							<h4 class="font-weight-bold text-warning">Step 3: Consider Probable Cause For The Failure</h4>
+							<p>Determine the cause of the problem and identify suitable actions that can be performed to resolve the problem.</p>
+							<p>Problems in the network can be due to connectivity issues between a source and destination. Some of the common causes of network problems are Physical layer issues, first-hop Layer 3 connectivity issues, Layer 3 IP connectivity issues along the path of the packet, and name resolution issues.</p>
+							<p>If you are successful at a certain level of the OSI model, you can probably assume that the lower levels are operating correctly. For example, if you ping a router interface, it is unlikely that there is a cable issue.</p>
+						</div>
+					</div>
+					<div id="objectives-004" class="collapse">
+						<div class="alert alert-warning" role="alert">
+							<h4 class="font-weight-bold text-warning">Step 4: Devise A Plan To Solve The Problem.</h4>
+							<p>When you have identified a cause, develop a resolution that will address the cause.</p>
+							<p>Some of the commonly used approaches to resolve connectivity issues include:</p>
+							<ul>
+								<li class="alert alert-warning" role="alert">Verifying that the entire route (from source to destination) is available with the router.</li>
+								<li class="alert alert-warning" role="alert">Fixing software problems or other configuration problems in a router.</li>
+								<li class="alert alert-warning" role="alert">Fixing physical connectivity problems.</li>
+								<li class="alert alert-warning" role="alert">Checking for resource availability problems, such as lack of memory on a router.</li>
+								<li class="alert alert-warning" role="alert">Identifying routing loops and routing-protocol-related problems.</li>
+								<li class="alert alert-warning" role="alert">Identifying whether traffic is blocked by firewalls or packet filters.</li>
+							</ul>
+							<p>Symptoms can be misleading. Many problems manifest themselves as client connectivity issues. Make sure you check things like ACL configuration even if you don't think the problem is a security issue.</p>
+							<p>Part of correcting the problem also includes determining if you should resolve it yourself or escalate the issue. If you are unable to resolve the network issue, you need to escalate it to the next level or to Cisco System's <text class="font-weight-bold text-warning">Technical Assistance Center (TAC)</text>. The network diagrams, output of <text class="font-weight-bold text-success">show</text> and <text class="font-weight-bold text-success">debug</text> commands, and key information you gathered while troubleshooting will be useful in issue resolution.</p>
+						</div>
+					</div>
+					<div id="objectives-005" class="collapse">
+						<div class="alert alert-danger" role="alert">
+							<h4 class="font-weight-bold text-danger">Step 5: Implement The Plan.</h4>
+							<p>As you implement your plan, try to change only one thing at a time. That way, if the change does <u>not</u> produce the expected results, you can undo the change and try another approach. Recording what you changed and how it affected the network is extremely important.</p>
+						</div>
+					</div>
+					<div id="objectives-006" class="collapse">
+						<div class="alert alert-danger" role="alert">
+							<h4 class="font-weight-bold text-danger">Step 6: Observe The Results Of The Implementation.</h4>
+							<p>Verify thet your plan addressed the problem and did <u>not</u> introduce additional issues.</p>
+							<p>After you have identified and resolved any network problems, it is important to verify the operation of the network. You can do this by checking the flow of packets along their respective paths in the network topology. Executing commands such as <text class="font-weight-bold  text-success">show ip</text>, <text class="font-weight-bold text-success">show interface</text>, and <text class="font-weight-bold text-success">show running-config</text> on a Cisco router can help to determine the current status of the network. The <text class="font-weight-bold text-success">debug</text> command enables you to monitor the network operation over a period of time. In addition, checking the log messages generated by the <text class="font-weight-bold text-success">debug</text> command can help you determine if the network is functioning as expected.</p>
+						</div>
+					</div>
+					<div id="objectives-007" class="collapse">
+						<div class="alert alert-danger" role="alert">
+							<h4 class="font-weight-bold text-danger">Step 7: Repeat The Process If The Plan Does Not Resolve The Problem.</h4>
+							<p>Sometimes troubleshooting is an iterative process. If your plan does <u>not</u> provide the intended results, back out of the changes and return to <text class="font-weight-bold text-warning">Step 4</text> to develop and implement a new plan.</p>
+						</div>
+					</div>
+					<div id="objectives-008" class="collapse">
+						<div class="alert alert-success" role="alert">
+							<h4 class="font-weight-bold text-success">Step 8: Document The Changes Made To Solve The Problem.</h4>
+							<p>Use the information you recorded as you worked through the troubleshooting process to document the reported problem, its cause, your plan of attack, and the results of implementing the plan. This information can be vitally important if the issue arises again in the future.</p>
+						</div>
+					</div>
+					<h4>Log Files and Troubleshooting</h4>
+					<p>Log files generated by Cisco devices can enable you to identify the causes of issues, so that you can take suitable measures to troubleshoot the issues faced. The <text class="font-weight-bold text-success">show logging</text> command allows you to view the state of system logging (syslog) and the contents of the standard system logging buffer.</p>
+					<p>Routers and switches issue log messages in response to different events. For example, if an interface fails, the device creates log messages. With default settings in place, Cisco IOS sends these messages to the console port. You can also configure Cisco IOS to handle log messages by applying filters and specifying the delivery destinations for the log messages.</p>
+					<p>Most devices display messages and errors in real-time to their console. If you wish to observe an activity step by step, you can also turn on <text class="font-italic">debugging</text>. Common use cases for debugging include observing:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Pings or general IP traffic</li>
+						<li class="alert alert-info" role="alert">NAT translations</li>
+						<li class="alert alert-info" role="alert">Routing protocol handshakes, adjacency establishment, and route updates</li>
+						<li class="alert alert-info" role="alert">Dialup or VPN connection establishment and teardown</li>
+					</ul>
+					<p>You should also be aware that if you are managing a Cisco device from a remote console, you might <u>not</u> be seeing all of the error messages. It is possible to set the amount of messaging you would like to see on your console.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Console messages and debug output are <u>not</u> sent to vty terminal (Telnet or SSH) sessions by default. Use the <text class="font-weight-bold text-success">terminal monitor</text> command within the vty session to display console messages.</text></li>
+					</ul>
+					<h4>Command Reference: Debugging</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Debugging</h5>
+					<p>The following commands are used in the Basic Debugging lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">debug ip icmp</text>: Displays IP diagnostic information on ICMP transactions.</li>
+						<li><text class="font-weight-bold text-success">debug ip rip</text>: Displays IP diagnostic information on RIP routing transactions.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">no debug all</text>: Turns off all diagnostic output.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show debugging</text>: Determins which type of debugging is enabled.</li>
+					</ul>
+					<h5>Lab: Basic Debugging</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Supplemental->Basic Debugging</text></li>
+						<li>Approximate duration: 30 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Network Topology Architectures</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic C</h2>
+					</div>
+					<h3 class="text-success">Network Topologies</h3>
+					<p>Once you connect network components together, you need to ensure they are able to communicate. By identifying rules for physical layout, how nodes are connected, signaling, and data flow, you can ensure the transfer of data from node to node.</p>
+					<h4>Physical and Logical Topologies</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Network topologies</text> are specifications that determine the network's <text class="font-italic">overall layout</text>, <text class="font-italic">signaling</text>, and <text class="font-italic">data-flow patterns</text>. They are classified into:</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Physical topology</text>: A topology that describes a network's physical wiring layout or shape. Some of the physical topologies are <text class="font-italic">bus</text>, <text class="font-italic">star</text>, <text class="font-italic">ring</text>, <text class="font-italic">mesh</text>, and <text class="font-italic">hybrid</text>.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Logical topology</text>: A topology that describes the paths through which data moves.</li>
+					</ul>
+					<p>The physical and logical topologies for a given network can be, and often are, different.</p>
+					<p><img src="/cisco/include/img/Fig-1-12.png" class="img-thumbnail" alt="physical start logical bus topology" width="70%" height="70%"></p>
+					<h4>Small Office/Home Office (SOHO) Networks</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">small office/home office (SOHO) network</text> is a group of computers (typically fewer than 10), along with peripherals such as printers and networking devices such as switches and APs, that are connected together by cables or wireless connections for the purpose of conducting business activities.</p>
+					<p>Each SOHO network is as individual as the business that they support. An author who works from home might have several laptops, a printer or multifunction device, voice over IP (VoIP) telephone equipment, and a SOHO (broadband) router, while a single-site engineering office might add plotters, specialized workstations for computer-aided design (CAD) projects, and a server to provide file storage and email services.</p>
+					<p><img src="/cisco/include/img/Fig-1-13.png" class="img-thumbnail" alt="a soho network" width="70%" height="70%"></p>
+					<h4>Tiered Networks</h4>
+					<p>To facilitate network implementation and management, you can implement a <text class="font-weight-bold font-italic text-primary">tiered</text> network approach. The key concept behind this approach is to group devices into two or more tiers, so that devices in the <text class="font-italic">same tier all have the same role</text>. Once the role of each device has been established, you can define the interconnections between devices. The most common implementation are two-tier and three-tier network architectures.</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Two-tier architecture</text> is similar to a basic client-server model. The application at the client end directly communicates with the data on the server end. The client runs the user interfaces and application programs, while the server stores the data.</li>
+						<li class="alert alert-info" role="alert">In a <text class="font-weight-bold font-italic text-primary">three-tier architecture</text>, the data access, data storage, and user interface functions are developed and maintained as independent modules on separate platforms.</li>
+					</ul>
+					<p>Cisco uses a three-tier hierarchical model to build networks that are scalable, secure, and reliable. The tiers are called the <text class="font-italic">Access layer</text>, the <text class="font-italic">Distribution layer</text>, and the <text class="font-italic">Core layer</text>. When network services and functions are separated into functional layers, making a change or adding to any one function should not require a total rebuild of the network, just a modification of the affected part.</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">The <text class="font-weight-bold font-italic text-primary">Core layer</text> is basically the network backbone. Consisting of high-speed switching devices and cables, this layer is responsible for fast and reliable data transmission.</li>
+						<li class="alert alert-danger" role="alert">The <text class="font-weight-bold font-italic text-primary">Distribution layer</text> provides LAN-based routing, packet filtering, and packet manipulation, among other functions.</li>
+						<li class="alert alert-danger" role="alert">The <text class="font-weight-bold font-italic text-primary">Access layer</text> is where clients connect to the network.</li>
+					</ul>
+					<p><img src="/cisco/include/img/Fig-1-14.png" class="img-thumbnail" alt="cisco three tier hierarchical architecture" width="70%" height="70%"></p>
+					<p>The three-tier architecture is ideal for <text class="font-italic">larger enterprises</text> that have multiple buildings on a single campus. <text class="font-italic">Smaller organizations</text> might find the number of connections required to provide a full mesh between the Core and the Distribution layers to be more effort than the perceived benefits of scalability. These organizations would likely find it more advantageous to implement a two-tier architecture.</p>
+					<h4>Cisco Collapsed Core Architecture</h4>
+					<p>The three-tier hierarchical approach can be modified to use two tiers, often referred to as the Cisco <text class="font-weight-bold font-italic text-primary">collapsed core architecture</text>. In this scenario, the Core and Distribution layers are combined into <text class="font-italic">one layer</text>. This reduces network costs while maintaining most of the benefits of the three-tier architecture. It also results in the functions of the Distribution layer and Core layer being implemented in a single device.</p>
+					<p><img src="/cisco/include/img/Fig-1-15.png" class="img-thumbnail" alt="cisco collapsed core architecture" width="70%" height="70%"></p>
+					<h4>Spine-Leaf Topology</h4>
+					<p>One implementation of a collapsed core architecture uses a <text class="font-weight-bold font-italic text-primary">spine-and-leaf topology</text>. The spine layer contains the devices in the Core layer (network backbone), while the leaf layer contains the lower-tier switches. Each leaf is connected to each device in the spine layer in a mesh arrangement, meaning that each switch has a direct connection to each of the spine-layer devices. This facilitates balancing the traffic to the backbone, and it provides redundancy in the case of failure of a Core-layer device.</p>
+					<p>With a spine-and-leaf architecture, no matter which leaf switch to which a server is connected, its traffic always has to cross the same number of devices to get to another server (unless the other server is located on the same leaf). This approach keeps latency at a predictable level because a payload only has to hop to a spine switch and another leaf switch to reach its destination.</p>
+					<p><img src="/cisco/include/img/Fig-1-16.png" class="img-thumbnail" alt="spine leaf topology" width="55%" height="55%"></p>
+					<h4>WAN Topologies</h4>
+					<p>Interconnecting multiple sites across WANs can involve different service provider technologies and WAN topologies. Common WAN topologies are:</p>
+					<ul>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Point-to-point</text> topology</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Hub-and-spoke</text> topology</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Full mesh</text> topology</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Partial mesh</text> topology</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Single-homed</text> topology</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Dual-homed</text> topology</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Multi-homed</text> topology</li>
+					</ul>
+					<p>These WAN topologies are described in the following table.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th class="font-weight-bold font-italic" style="width: 25%">WAN Topology</th>
+									<th class="font-weight-bold font-italic" style="width: 75%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary alert alert-info" role="alert">Point-to-point</td>
+									<td class="alert alert-info" role="alert">The simplest of the WAN topologies, in which a customer can connect two sites by using either a dedicated telecommunications link or a VPN across the Internet.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary alert alert-info">Star (Hub-and-spoke)</td>
+									<td class="alert alert-info" role="alert">
+										<ul>
+											<li>A WAN topology where the central site acts as a hub for each <text class="font-italic">remote (leaf) site</text>.</li>
+											<li>Remote (leaf) sites can communicate with each other by routing through the central hub site, or they can be restricted to communicating only with the central site, <u>not</u> with other remote (leaf) sites.</li>
+											<li>The central site serves as the root of a tree, and each remote site is one of the leaves.</li>
+											<li>The topology is also referred to as <text class="font-weight-bold font-italic text-primary">hub-and-spoke</text> and <text class="font-weight-bold font-italic text-primary"> point-to-multipoint</text>. Regardless of the term you use for the topology, it creates a service that works well for networks that have a <text class="font-italic">central site</text> along with <text class="font-italic">many remote sites</text>.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary alert alert-success">Full mesh</td>
+									<td class="alert alert-success" role="alert">
+										<ul>
+											<li>A WAN topology that provides each site with a direct connection to every other site.</li>
+											<li>This topology is <text class="font-italic">fully redundant</text> and the <text class="font-italic">most expensive</text> to implement.</li>
+											<li>This topology is useful if the enterprise needs to connect several sites to the WAN with a goal of allowing every site to send frames directly to every other site.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary alert alert-success">Partial mesh</td>
+									<td class="alert alert-success" role="alert">
+										<ul>
+											<li>A hub-and-spoke WAN topology in which some of the leaf sites also have links to each other, as well as to the central hub site.</li>
+											<li>This topology is useful if the enterprise wants to allow some leaf sites to directly communicate with each other, without the latency or potential congestion of passing traffic through a central hub site.</li>
+											<li>This topology is also referred to as a <text class="font-italic">redundant star</text>.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary alert alert-warning">Single-homed</td>
+									<td class="alert alert-warning" role="alert">
+										<ul>
+											<li>Provides a <text class="font-italic">single link</text> between the Internet Service Provider (ISP) and the enterprise network. There must be <text class="font-italic">only one ISP</text>, and this link must be the only connectivity to that ISP.</li>
+											<li>Typically used to connect an enterprise branch office to the Internet.</li>
+											<li>Enables various kinds of WAN links such as Digital Subscriber Line (DSL), cable, fiber Ethernet, or a wireless Long-Term Evolution (LTE) connection.</li>
+											<li>If the link to the ISP fails  or the router at either end of the link fails, the Internet will <u>not</u> be accessible.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary alert alert-warning">Dual-homed</td>
+									<td class="alert alert-warning" role="alert">
+										<ul>
+											<li>Provides <text class="font-italic">two links</text> between the ISP and the enterprise network. There must be <text class="font-italic">only one ISP</text>, and each link must provide one of the two paths to reach the ISP.</li>
+											<li>Using two links provides an alternative method for reaching the ISP if either link fails.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary alert alert-danger">Multi-homed</td>
+									<td class="alert alert-danger" role="alert">
+										<ul>
+											<li>Provides links between two ISPs and the enterprise network.</li>
+											<li><text class="font-weight-bold font-italic">Single multi-homed</text> designs have one router at the edge of the enterprise network that is connected to two different ISPs, or it has two enterprise routers, each of which are connected to different ISPs.</li>
+											<li><text class="font-weight-bold font-italic">Dual multi-homed</text> designs provide redundant links to two different ISPs. If one enterprise router is used, it has two links to each ISP. If two enterprise routers are used, each can have two links to one of the ISPs, or for additional redundancy, you can configure the routers so each has a link to both ISPs.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>WAN Technologies Supported by Cisco</h4>
+					<p>Cisco IOS software supports a range of WAN capabilities that will fit the need of most of the network environments. Some of the wide area network (WAN) technologies supported by Cisco are:</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Virtual private network (VPN)</text>: A set of security protocols that are implemented on both ends of an insecure network, such as the Internet, to provide secure connectivity to remote sites and partner sites.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Frame Relay</text>: A <text class="font-italic">standard Data Link protocol</text> that defines the capabilities to create a <text class="font-italic">frame-switched</text> or <text class="font-italic">packet-switched service</text>, which allows Data Terminal Equipment (DTE) devices like routers to send data to many other devices using a single physical connection to the Frame Relay.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Asynchronous Transfer Mode (ATM)</text>: A <text class="font-italic">cell-switching and multiplexing technology</text> that provides data link (Layer 2) services with scalable bandwidth usually over <text class="font-italic">Synchronous Optical Networking (SONET)</text>/<text class="font-italic">Synchronous Digital Hierarchy (SDH) physical (Layer 1)</text> links.</li>
+					</ul>
+					<h4>On-Premises and Cloud Services</h4>
+					<p>Another characteristic of network topologies defines the location of network services.</p>
+					<ul>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-primary">On-premises services</text> are those network services that are housed and maintained at an organization's physical site.</li>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-primary">Cloud services</text> are network services housed and maintained remotely and accessed through WAN links. Public clouds are provided by a third party (<text class="font-italic">cloud service provider</text>) on a subscription basis, while private clouds are created and maintained by an organization for its own use. There is also a <text class="font-italic">hybrid cloud</text> approach that you can implement - for example, you could subscribe to a software service from a cloud service provider, but store sensitive data on a private cloud.</li>
+					</ul>
+					<p><img src="/cisco/include/img/Fig-1-17.png" class="img-thumbnail" alt="on premises and cloud services" width="70%" height="70%"></p>
+					<h4>Cloud Service Providers</h4>
+					<p>Some of the services and benefits offered by cloud service providers include:</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 40%">
+							<tbody>
+								<tr>
+									<td class="alert alert-info" style="width: 25%">
+										<ul>
+											<li>On demand self service.</li>
+											<li>Broad network access.</li>
+											<li>Resource pooling (multi-tenancy).</li>
+											<li>Rapid elastic provisioning.</li>
+											<li>Measured services (pay-for-what-you-use).</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="font-weight-bold text-secondary text-center">Licensed For Use Only By: John O'Kelly johnpo@jprro.co.za Jun 20 2020 9:47AM</p>
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

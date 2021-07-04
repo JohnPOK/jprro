@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Troubleshoot Routing Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic E</h2>
+					</div>
+					<h3 class="text-success">Troubleshoot Routing Issues</h3>
+					<p>As with switches, the more routers you have implemented on a network, the more potentially complicated the troubleshooting can be.</p>
+					<h4>Common Routing Issues</h4>
+					<p>Common routing issues include:</p>
+					<ul>
+						<li class="alert alert-primary" role="alert">Issues related to static routes.</li>
+						<li class="alert alert-primary" role="alert">Problems routing information between VLANs.</li>
+						<li class="alert alert-primary" role="alert">Issues with the operation of the OSPF protocol.</li>
+					</ul>
+					<h4>Static Routing Issues</h4>
+					<p>On both IPv4 and IPv6 networks, if it seems that a previously defined static route is missing from the routing table, you need to consider the following:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">When end-to-end connectivity becomes a problem, you need to ensure that you can ping your own interface and other devices on the directly connected networks. After you have verified the direct connectivity, you need to begin testing connectivity to remote networks from other devices.</li>
+						<li class="alert alert-warning" role="alert">Remember that networks are subject to events that can cause their status to change quite often. These include failure of an interface, a connection dropped by a service provider, oversaturated links, and incorrect configuration information entered by an administrator.</li>
+					</ul>
+					<h4>Interf-VLAN Routing Issues</h4>
+					<p>Besides basic cabling and physical interface problems, Inter-VLAN routing has its own issues. The following table describes common problems related to inter-VLAN routing.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 35%">Issue</th>
+									<th style="width: 65%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-info">Absence of VLAN interfaces</td>
+									<td>L3 switches must provide a VLAN interface for each VLAN that needs to have its traffic routed.</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold text-info">Hosts <u>not</u> configured to use the VLAN interface as their default gateway</td>
+									<td>Hosts that are plugged into a particular VLAN must be configured to use the VLAN interface as their default gateway.</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-info">Remote switches have no pathway to the VLAN interfaces</td>
+									<td>Ensure that the trunk links are created between the switches so that hosts on any VLAN can access their default gateway, even if it is on a remote switch.</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold text-info">Absence of the VLAN when trying to create a VLAN interface</td>
+									<td>You cannot create a VLAN interface until its corresponding VLAN exists. Some devices will automatically create the VLAN for you as you create the interface.</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-info">Absence of routes in the L3 switch route table</td>
+									<td>Layer 3 switches must be treated like physical routers when routing VLAN traffic. They must have an entry for every single route on the network in their routing table (or a default route) or they will drop the packets as undeliverable. Configure routing protocols or static route entries to ensure all L3 switches know all routes.</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold text-info">Speed or duplex mismatch</td>
+									<td>The router or switch interface is unable to negotiate speed or duplex, or has had these values set manually using the interface <text class="font-weight-bold text-success">speed</text> or <text class="font-weight-bold text-success">duplex</text> subcommand. The link state will change to "<text class="font-italic">down/down</text>".</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-info">Shutdown</td>
+									<td>The router or switch interface has been configured with the <text class="font-weight-bold text-success">shutdown</text> subcommand. The link state will be "<text class="font-italic">Admin down/down</text>".</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold text-info">Err-disabled switch</td>
+									<td>The neighboring switch port uses port security, which has put the port in an <text class="font-italic">err-disabled state</text>. The link state will be "<text class="font-italic">down/down</text>".</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold text-info">No cable/bad cable</td>
+									<td>The link has no cable installed, the cable is bad, or the cable pin-outs are incorrect. The link state will be "<text class="font-italic">down/down</text>".</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Common OSPF Issues</h4>
+					<p>Common issues related to OSPF include:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">Inability to access remote resources.</li>
+						<li class="alert alert-danger" role="alert">General connectivity issues between networks.</li>
+						<li class="alert alert-danger" role="alert">Wrong protocols used.</li>
+					</ul>
+					<h4>Guidelines for Troubleshooting Routing Issues</h4>
+					<p>Here are some guidelines for troubleshooting common routing issues.</p>
+					<h5>Troubleshooting IPv4 and IPv6 Routing Issues</h5>
+					<p>Any change in the network can result in loss in connectivity. Network administrators must be able to locate and solve the problem. You should be familiar with the tools that will help you to quickly isolate routing problems. The commands that are used for troubleshooting missing static routes are described in the following table.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 35%">Command</th>
+									<th style="width: 65%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold text-success">ping &lt;ip-address&gt;</td>
+									<td class="font-italic text-secondary">Sends an ICMP echo request to the specified address.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">traceroute &lt;ip-address&gt;</td>
+									<td class="font-italic text-secondary">Provides diagnostic methods for detecting problems in the network.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show ip route</td>
+									<td class="font-italic text-secondary">Displays the IP routing table.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show ip interface brief</td>
+									<td class="font-italic text-secondary">Displays the IP information for an interface.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-success">show cdp neighbors detail</td>
+									<td class="font-italic text-secondary">Displays directly connected neighbor devices and their device types, interface names, and IP addresses.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h5>Troubleshooting Inter-VLAN Routing Connectivity Issues</h5>
+					<p>To troubleshoot inter-VLAN routing connectivity issues, consider the following steps:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold" style="width: 10%">1.</td>
+									<td><text style="width: 80%">Try sending ICMP pings to see if you have Layer 2 connectivity.</text>
+										<ul>
+											<li class="alert alert-info" role="alert">If you can't ping between two devices on the same VLAN <text class="font-italic">on the same switch</text>, verify that the source and destination ports have devices connected to them and that they are assigned to the same VLAN.</li>
+											<li class="alert alert-info" role="alert">If you can't ping between two devices on the same VLAN <text class="font-italic">but <u>not</u> on the same switch</text>, verify that trunking is configured properly and that the native VLAN matches on both sides of the trunk.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold" style="width: 10%">2.</td>
+									<td style="width: 80%">Initiate an ICMP ping from an end device connected to the switch to its corresponding VLAN interface. If you were able to ping between two devices on a VLAN (but <u>not</u> on the same switch) and this step fails (meaning that the device is unable to reach the end device on the other VLAN), verify that the default gateway on the connected device is configured correctly.</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="font-weight-bold" style="width: 10%">3.</td>
+									<td style="width: 80%">If you are unable to reach the Internet or the corporate network, verify that the default route on the Cisco switch points to the correct IP address on the default router. Also, verify that the IP address and subnet mask on the switch are configured correctly.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h5>Troubleshooting OSPF</h5>
+					<p>As you troubleshoot OSPF, be aware that OSPF neighbors might <u>not</u> be able to establish adjacency if there are problems related to the configuration. You must locate the problem and manually rectify it by changing the configuration.</p>
+					<p>The following table describes common OSPF-related problems and the commands you can use to troubleshoot them.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 70%">Problem</th>
+									<th style="width: 30%">Command to Isolate the Problem</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-danger" role="alert">
+									<td class="text-danger">OSPF may <u>not</u> have been configured on one of the routers.</td>
+									<td class="font-weight-bold text-success">show ip ospf</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="text-danger">OSPF may <u>not</u> be enabled on an interface where it is needed.<br>OSPF <text class="font-italic">HELLO</text> or <text class="font-italic">Dead timer interval values</text> may be mismatched.<br>There may be an IP OSPF network-type mismatch on the adjoining interfaces.</td>
+									<td class="font-weight-bold text-success">show ip ospf interface</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="text-danger">There is an MTU mismatch between neighboring interfaces.</td>
+									<td class="font-weight-bold text-success">show interface &lt;type&gt;&lt;number&gt;</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="text-danger">OSPF <text class="font-italic">area-type</text> is stub on one neighbor, but the adjoining neighbor in the same area may <u>not</u> be configured as a stub.</td>
+									<td class="font-weight-bold text-success">show running-config<br>show ip ospf interface</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="text-danger">OSPF neighbors may have duplicate Router IDs.</td>
+									<td class="font-weight-bold text-success">show ip ospf<br>show ip ospf interface</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="text-danger">OSPF <text class="font-italic">HELLOs</text> are <u>not</u> processed due to a lack of resources. This may be caused by factors such as high CPU utilization or <u>not</u> enough memory.</td>
+									<td class="font-weight-bold text-success">show memory summary<br>show memory processor</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="text-danger">A Layer 2 problem may be preventing OSPF <text class="font-italic">HELLOs</text> from being received.</td>
+									<td class="font-weight-bold text-success">show interface</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Command Reference: Troubleshooting OSPF</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Troubleshooting OSPF</h5>
+					<p>The following commands are used in the Troubleshooting OSPF lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">debug ip ospf [[adjacency] [database-timer] [events] [flooding] [hello]]</text>: Displays information on OSPF-related events, such as adjacencies, flooding information, designated router selection, and shortest path first (SPF) calculation.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changed from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">network &lt;network-address&gt; &lt;wildcard-mask&gt; area &lt;area-id&gt;</text>: Activates OSPF on the specified network and places the matching interface in the specified area.</li>
+						<li><text class="font-weight-bold text-success">router ospf &lt;process-id&gt;</text>: Enter router configuration mode for an OSPF area.</li>
+						<li><text class="font-weight-bold text-success">show cdp neighbors</text>: Displays information about directly connected neighbors.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show ip ospf &lt;process-id&gt;</text>: Displays OSPF process information.</li>
+						<li><text class="font-weight-bold text-success">show ip ospf interface [&lt;type&gt; &lt;number&gt;] [brief]</text>: Displays OSPF interface information.</li>
+						<li><text class="font-weight-bold text-success">show ip ospf neighbor</text>: Displays OSPF neighbor information.</li>
+						<li><text class="font-weight-bold text-success">show ip protocols</text>: Displays information about active routing protocols.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show running-config &lt;type&gt; &lt;number&gt;</text>: Displays the specified interface's active configuration.</li>
+					</ul>
+					<h5>Lab: Troubleshooting OSPF</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Connectivity->Troubleshooting OSPF</text></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

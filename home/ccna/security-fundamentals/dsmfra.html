@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Security Measures For Remote Access</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic E</h2>
+					</div>
+					<h3 class="text-success">Remote Access Security</h3>
+					<p>Configuring remote security ensures that your remote-access traffic is safe from unauthorized access.</p>
+					<h4>Remote Access</h4>
+					<p>The term <text class="font-italic">remote access</text> can refer to two conditions:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Configuring a network so that users can access its resources from outside the network.</li>
+						<li class="alert alert-warning" role="alert">Configuring a network device so that IT personnel can manage it from anywhere on the network, or even from outside the network.</li>
+					</ul>
+					<h4>Remote Access for Users</h4>
+					<p>Today's workforce includes people who work at the office, people who travel for work, and people who work from home. Wherever they are located, they are likely to need access to network resources.</p>
+					<h4>Remote Access for Management Purposes</h4>
+					<p>You can configure remote access for virtually any Cisco network device.</p>
+					<p>On routers, Cisco IOS uses the <text class="font-italic">Virtual Terminal (VTY)</text> lines to receive connections related to protocols such as <text class="font-italic">Telnet</text> and <text class="font-italic">SSH</text>. The settings specified on a VTY line apply to session requests that arrive on any of the device interfaces. The typical VTY-level settings include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><u>Timeout Value</u>: This value defines the inactivity timeout for the terminal lines. The parameters of the <text class="font-weight-bold text-success">exec-timeout</text> command are <text class="font-italic">MINUTES</text> and <text class="font-italic">SECONDS</text>, respectively.</li>
+						<li class="alert alert-info" role="alert"><u>Password</u>: The combination of the <text class="font-weight-bold text-success">password</text> and <text class="font-weight-bold text-success">login</text> commands, which requires a generic user initiating a Telnet session to the router to specify this password.</li>
+					</ul>
+					<p>To prepare a switch for remote management access, the switch must be configured with an IP address and a subnet mask. The IP address has nothing to do with how switches forward Ethernet frames - it simply exists to support overhead management traffic. Keep in mind that to manage the switch from a remote location on the network (or on another network - basically any time a router sits between you and the switch), the switch must be configured with a default gateway. This is very similar to configuring the IP address information on host devices.</p>
+					<h4>Remote Access Security Considerations</h4>
+					<p>Addressing security issues for remote access depends on the type of remote access you are providing.</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">For user remote access, you must provide access to the appropriate network resources without compromising the network or the data that users send to and receive from remote locations. One of the most popular ways to accomplish this is to set up a <text class="font-italic">virtual private network (VPN)</text>.</li>
+						<li class="alert alert-warning" role="alert">For management remote access, you must protect the network device from unauthorized access. When a switch has been configured with an IP address, it can be accessed via ping and other tools, which can cause a possible vulnerability. A malicious user could discover the IP address and initiate access requests, either gaining remote access or flooding the switch with enough traffic to make it unusable by authorized users. You can implement <text class="font-italic">ACLs</text> to prevent spurious access requests from affecting your network devices.</li>
+					</ul>
+					<h4>Tunneling and Encapsulation</h4>
+					<p>The practice of tunneling and encapsulation helps to protect packets as they travel across remote networks.</p>
+					<p><text class="font-weight-bold font-italic text-primary">Encapsulation</text> is the process of enclosing a piece of data in a larger data unit. In fact, encapsulation is the implementation of layered networks, where a unit of Application-layer information is enclosed in a Transport-layer segment, which is in turn enclosed in an Internet-layer packet, and finally enclosed in a Network-Access-layer frame. Each layer adds header information to help move the data to its intended destination.</p>
+					<p><img src="/cisco/include/img/Fig-7-7.png" class="img-thumbnail" alt="a-sample-lan" width="50%" height="50%"></p>
+					<p><text class="font-weight-bold font-italic text-primary">Tunneling</text> is the process of establishing a private path through one or more public networks by the use of encapsulation. Consider a remote user who needs access to network resources located at the main headquarters. In this set of circumstances, a packet containing private data is enclosed in another packet. For additional protection, the original data is also encrypted. This allows the packet to safely travel across WAN links and the Internet without revealing any of the private data, including the final destination address.</p>
+					<p><img src="/cisco/include/img/Fig-7-8.png" class="img-thumbnail" alt="a-sample-lan" width="50%" height="50%"></p>
+					<h4>VPNs</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">virtual private network (VPN)</text> is a set of security protocols that are implemented on both ends of an insecure network, such as the Internet, to provide secure connectivity to remote sites and partner sites. Common VPN protocols are <text class="font-italic">SSL</i> and <text class="font-italic">IP Security (IPSec)</text>.</p>
+					<p>Internet VPN is a type of VPN used by an enterprise to connect each business to the Internet by using the Internet as a WAN service. An enterprise can connect each business site to the Internet and use VPN to create an Internet VPN. This enables the enterprise's packets to be secured and kept private through encryption and other security mechanisms even when the data is sent over the Internet. An Internet VPN provides important security features to:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">Prevent anyone (man-in-the-middle) on the Internet from being able to read, copy, or replay the transmitted data and pose as a legitimate user.</li>
+						<li class="alert alert-danger" role="alert">Verify that the VPN packet originated from a legitimate device and <u>not</u> any device that is used by an attacker.</li>
+						<li class="alert alert-danger" role="alert">Verify that the packet was intact and <u>not</u> changed during transit on the Internet.</li>
+					</ul>
+					<p>Internet VPN is available worldwide due to the Internet, and the communications are secured by using VPN technology and protocols.</p>
+					<p><img src="/cisco/include/img/Fig-7-9.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<p>The <text class="font-weight-bold font-italic text-primary">Dynamic Multipoint VPN (DMVPN)</text> feature on Cisco IOS routers provides a simple and scalable way to create large and small IPSec VPNs by combining <text class="font-italic">Generic Routing Encapsulation (GRE) tunnels</text>, <text class="font-italic">IPsec encryption</text>, and <text class="font-italic">Next Hop Resolution Protocol (NHRP)</text>. Spokes in a DMVPN network can register their public IP addresses with the hub during every boot session. Source spokes can query the NHRP database on the hub to obtain the public IP address of the destination spokes. A multipoint GRE tunnel interface will enable a single GRE tunnel to support multiple IPsec tunnels. DMVPN supports two configurations: <text class="font-italic">hub-to-spoke</text> and <text class="font-italic">spoke-to-spoke</text>.</p>
+					<h4>VPN Types</h4>
+					<p>The main types of VPNs are:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Client-to-site VPNs, most commonly known as remote access VPNs.</li>
+						<li class="alert alert-success" role="alert">Site-to-site VPNs.</li>
+						<li class="alert alert-success" role="alert">Host-to-host VPNs.</li>
+					</ul>
+					<h4>Client-to-Site (Remote Access) VPNs</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">client-to-site VPN</text> is a VPN that connects a single VPN client to a remote site. For instance, an individual who works from home might establish a client-to-site VPN to access the portions of the corporate network that are behind a firewall. This type of VPN is often referred to as a <text class="font-weight-bold font-italic text-primary">remote-access VPN</text>.</p>
+					<p><img src="/cisco/include/img/Fig-7-10.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<p><text class="font-italic">Cisco AnyConnect</text> defaults to a SSL/TLS VPN protocol. You can optionally configure IPSec instead. Here are some general steps for using IPSec to encrypt data on a remote access VPN:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold"style="width: 5%">1.</td>
+									<td style="width: 95%">Install and configure a VPN client on the remote computer. The <text class="font-italic">Cisco AnyConnect Secure Mobility client</text> or <text class="font-italic">AnyConnect client</text> is software that is placed on the user's PC and creates one end of the VPN remote-access tunnel using SSL. SSL is used by web browsers to provide a secure communication method using port <text class="font-weight-bold">443</text>. SSL encrypts data that is transferred between the browser and the server after authenticating the user.<br>
+										<ul class="list-group">
+											<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Cisco also allows Clientless SSL VPN configurations that simply use the browser to establish the VPN connection.</text></li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold"style="width: 5%">2.</td>
+									<td style="width: 95%">On the VPN server, ensure that the <text class="font-italic">Internet Security Association and Key Management Protocol (ISAKMP)</text>, also called <text class="font-italic">IKE</text>, is enabled. ISAKMP is the negotiation protocol that allows the IPsec client on the remote PC and the VPN server to agree on how to build an IPsec Security Association. Each ISAKMP negotiation is divided into two sections called <text class="font-italic">Phase 1</text> and <text class="font-italic">Phase 2</text>.
+										<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+											<tbody>
+												<tr>
+													<td class="font-weight-bold"style="width: 3%">a.</td>
+													<td style="width: 97%">Phase 1 creates a tunnel to protect the authentication and data-tunnel-creation process.</td>
+												</tr>
+												<tr>
+													<td class="font-weight-bold"style="width: 3%">b.</td>
+													<td style="width: 97%">Phase 2 creates a tunnel that protects the data that travels across the secure connection.</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold"style="width: 5%">3.</td>
+									<td style="width: 95%">On the remote PC, use the VPN client to authenticate to the VPN server. After authentication, HTTPS messages are allowed to pass through the SSL VPN client. This ensures that all the packets that are sent to the other end of the tunnel are encrypted.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Site-to-Site VPNs</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">site-to-site VPN</text> is a VPN tunnel created by two enterprise sites for sending encrypted data between two devices. In a main office/branch office scenario, you might elect to create a site-to-site VPN so that the two networks are connected without the use of a dedicated WAN link.</p>
+					<p>IPsec is the architecture or framework that needs to be used for security services on the IP networks that connect via a site-to-site VPN. IPsec defines how devices at both the enterprise sites that connect to the Internet can achieve the main goals of VPN -- <text class="font-italic">confidentiality</text>, <text class="font-italic">integrity of data</text>, <text class="font-italic">authentication</text>, and <text class="font-italic">anti-replay</text>.</p>
+					<p>These are the steps to encrypt data on a site-to-site VPN:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold"style="width: 5%">1.</td>
+									<td style="width: 95%">The sending VPN device provides the original packet and the session key for encryption and encryption data calculation.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold"style="width: 5%">2.</td>
+									<td style="width: 95%">The sending device encapsulates the encrypted data into a packet that includes the new IP and VPN headers.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold"style="width: 5%">3.</td>
+									<td style="width: 95%">The sending device sends the new packet to the destination VPN device.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold"style="width: 5%">4.</td>
+									<td style="width: 95%">The receiving VPN device uses the encrypted data and session key to run the decryption formula to decrypt the data.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>When you are configuring site-to-site VPNs, you should consider the IP subnet design at each location. If two locations use the same subnetting scheme and the same addresses, there will be IP addressing conflicts after the two sites are connected via the VPN. If this happens, you need to reconfigure one of the locations to use a different subnet address.</p>
+					<h4>Host-to-Host VPNs</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">host-to-host VPN</text> connects a host at one location to another individual host at another location (or even the same location) via a VPN tunnel. If a remote user establishes a host-to-host VPN, only the resources on the remote host are made available to the remote user. Examples of host-to-host VPNs include:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">An Internet-facing web server that also needs to connect to an internal SQL server for product and order information. The web server does <u>not</u> need to connect to any other portion of the internal network.</li>
+						<li class="alert alert-success" role="alert">An organization that partners with an outsourcing firm for payroll purposes, where all employee data is stored on one server at the organization's site, and all payroll information is stored on one server at the partner site. Neither organization needs to connect to any other portion of their partner's networks.</li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> The establishment of host-to-host VPNs is less common in enterprise environments, and is <u>not</u> normally the responsibility of a CCNA.</text></li>
+					</ul>
+					<h4>Summary</h4>
+					<p>In this lesson, you identified common network security concepts and practices. Your ability to protect the data and other assets of your organization will help ensure your success as a CCNA.</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Explain The Similarities And Differences Between Network Types</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic A</h2>
+					</div>
+					<h3 class="text-success">Network Types</h3>
+					<p>This lesson introduces basic network concepts that can help you with implementing and administering Cisco networks. Often, the level of complexity of administrative tasks depends on the type of network you are managing. To begin, you will identify network types. In this topic, you will explain the similarities and differences between network types.</p>
+					<h4>The Networking Process</h4>
+					<p>Before you dig into the intricacies of managing networks, take a look at the networking process in general.</p>
+					<p>Most networks are composed of computers, servers, printers, and connectivity devices, all connected by a shared medium. Regardless of the type of device used, the networking process has <text class="font-weight-bold font-italic text-warning">four basic components</text>:
+						<ul>
+							<li>An <text class="font-weight-bold font-italic text-warning">application</text> that wants to communicate with another application</li>
+							<li>A <text class="font-weight-bold font-italic text-warning">common language (protocol)</text> that the two sides use to communicate</li>
+							<li>A <text class="font-weight-bold font-italic text-warning">network interface</text> that allows the nodes to connect</li>
+							<li>A <text class="font-weight-bold font-italic text-warning">transmission medium</text> that carries the data from one node to the next</li>
+						</ul>
+					</p>
+					<p><img src="/cisco/include/img/Fig-1-1.png" class="img-thumbnail" alt="the networking process" width="70%" height="70%"></p>
+					<h3>Common Network Types</h3>
+					<p>Networks are often classified into various types based on the area that they cover. The following table describes the most common network types.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th class="font-weight-bold font-italic" style="width: 30%">Type of Network</th>
+									<th class="font-weight-bold font-italic" style="width: 70%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary">Local Area Network (LAN)</td>
+									<td>
+										Covers an area that is small enough to fit in a building.<br>A type of network that covers an area roughly equivalent to a single floor or building.
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary">Metropolitan Area Network (MAN)</td>
+									<td>Covers an area equivalent to a city or a municipality.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary">Campus Area Network (CAN)</td>
+									<td>Covers an area equivalent to an academic campus or business park and is typically owned or used exclusively by a single entity.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary">Personal Area Network (PAN)</td>
+									<td>Connects two or three computers with cables and is most often seen in small offices or homes.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary">Wireless Personal Area Network (WPAN)</td>
+									<td>Is a variation of PAN that connects devices in close proximity through technologies such as <text class="font-weight-bold font-italic text-secondary">Infrared</text> and <text class="font-weight-bold font-italic text-secondary">Bluetooth</text>&#174; but <u>not</u> through a Wireless Access Point (WAP).</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-primary">Wide Area Network (WAN)</td>
+									<td>Covers a large area and is usually spread across geographical locations.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3>Local Area Networks (LANs)</h3>
+					<p>A LAN is a <text class="font-italic text-warning">self-contained network</text> that:
+						<ul>
+							<li>Spans a small area such as a single building, floor, or room.</li>
+							<li>Provides fast data transfer.</li>
+							<li>Does <u>not</u> require a leased telecommunication system for its functioning.</li>
+							<li>Includes multiple nodes and segments, which are directly connected with cables or short-range wireless technologies.</li>
+							<li>Can be used to implement different technologies depending on the configuration and operational requirements.</li>
+						</ul>
+						<p><img src="/cisco/include/img/Fig-1-2.png" class="img-thumbnail" alt="a sample lan" width="70%" height="70%"></p>
+					</p>
+					<h3>Wide Area Networks (WANs)</h3>
+					<p>A WAN:
+						<ul>
+							<li>Provides access outside of the LAN.</li>
+							<li>Provides connectivity between two or more locations over long distances.</li>
+							<li>Connects disparate LANs to make one large intranet to facilitate corporate communications between branch locations.</li>
+							<li>Can be private, such as those built and maintained by large, multinational corporations, or can be public, such as the Internet.</li>
+						</ul>
+						<p><img src="/cisco/include/img/Fig-1-3.png" class="img-thumbnail" alt="a sample wan" width="70%" height="70%"></p>
+					</p>
+					<p>Metropolitan Area Networks (MANs) are <text class="font-italic text-warning">specialized</text> types of WANs.</p>
+					<h3>Connectivity Options</h3>
+					<p>You can also classify network types based on the sort of <text class="font-weight-bold font-italic text-primary">connectivity</text> that is present. The primary connectivity option are:
+						<ul>
+							<li><text class="font-weight-bold font-italic text-primary">Wired network</text>: A type of network that uses different types of cabling to establish connectivity among nodes and enable data transfer and communication among the nodes.</li>
+							<li><text class="font-weight-bold font-italic text-primary">Wireless network</text>: A type of network that allows nodes to connect to each other, communicate, and transfer data within the network <text class="font-italic">without</text> using any physical media.</li>
+						</ul>
+					</p>
+					<h3>Wired Networks</h3>
+					<p>Wired networks typically use either copper or fiber optic cabling (or a combination of both) to connect network devices and nodes.</p>
+					<ul>
+						<li>The most widely used copper cabling today is designed in accordance with the <text class="font-weight-bold">IEEE 802.3</text> standard, which is commonly known as <text class="font-weight-bold font-italic text-primary">Ethernet</text>. Ethernet is a set of networking technologies and media access methods specified for LANs. The original Ethernet standard described specifications for copper cabling, but ammendments to the standard also define specifications for other transmission media, including <text class="font-italic">optical fiber</text> and <text class="font-italic">wireless communications</text>.</li>
+						<li>Fiber optic cables were traditionally used more for long-distance connections and network backbones, but as the cost of implementing and maintaining fiber optic cables decrease, their use in short-distance communications increases.</li>
+					</ul>
+					<p>There are several types of Ethernet that use copper and fiber optic media, as described in the following table.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th class="font-weight-bold font-italic" style="width: 30%">Ethernet Type</th>
+									<th class="font-weight-bold font-italic" style="width: 70%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold font-italic text-dark">Ethernet</td>
+									<td>A LAN technology that connects computers by using switches.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-warning">Fast Ethernet</td>
+									<td>An Ethernet technology that can transmit data along either copper or fiber optic cable at speeds up to  <text class="font-weight-bold">100 Mbps</text>. The maximum cable length for copper is <a href="#" data-toggle="tooltip" data-placement="bottom" title="meter x 3.281" class="font-weight-bold text-light bg-warning">100 m (328 feet)</a> and ranges from <a href="#" data-toggle="tooltip" data-placement="bottom" title="meter x 3.281" class="font-weight-bold text-light bg-warning">400 m (1312 feet)</a> to <a href="#" data-toggle="tooltip" data-placement="bottom" title="km/1.609" class="font-weight-bold text-light bg-warning">2 km (1.24 miles)</a> for fiber optic cables.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-danger">Gigabit Ethernet (GbE)</td>
+									<td>An Ethernet technology that can transmit data at speeds up to <text class="font-weight-bold">1000 Mbps</text>. Copper cable can run up to <a href="#" data-toggle="tooltip" data-placement="bottom" title="meter x 3.281" class="font-weight-bold text-light bg-danger">100 m (328 feet)</a>, while fiber optic cables are used for distances ranging from <a href="#" data-toggle="tooltip" data-placement="bottom" title="meter x 3.281" class="font-weight-bold text-light bg-danger">500 m (1640 feet)</a> to <a href="#" data-toggle="tooltip" data-placement="bottom" title="km/1.609" class="font-weight-bold text-light bg-danger">100 km (62 miles)</a>.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-info">10 Gigabit Ethernet (10GbE)</td>
+									<td>An Ethernet technology that can transmit data at speeds up to <text class="font-weight-bold">10 Gbps</text>. Depending on the grade of copper, maximum cable length is either <a href="#" data-toggle="tooltip" data-placement="bottom" title="meter x 3.281" class="font-weight-bold text-light bg-info">55 m (180 feet)</a> or <a href="#" data-toggle="tooltip" data-placement="bottom" title="meter x 3.281" class="font-weight-bold text-light bg-info">100 m (328 feet)</a>. Depending on the type of fiber optic cable, maximum distances range from <a href="#" data-toggle="tooltip" data-placement="bottom" title="meter x 3.281" class="font-weight-bold text-light bg-info">300 m (984 feet)</a> to <a href="#" data-toggle="tooltip" data-placement="bottom" title="km/1.609" class="font-weight-bold text-light bg-info">40 km (25 miles)</a></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-success">40 Gigabit Ethernet (40GbE)</td>
+									<td>An Ethernet technology that can transmit data at speeds up to <text class="font-weight-bold">40 Gbps</text>. The defining characteristic is the use of two transceivers connected by a <text class="font-weight-bold">OM3</text> or <text class="font-weight-bold">OM4</text> fiber optic cable, with each transceiver being connected to a network server or other device. Maximum cable lengths depend on the type of cable and transceiver used.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold font-italic text-success">100 Gigabit Ethernet (100GbE)</td>
+									<td>An Ethernet technology that can transmit data at speeds up to <text class="font-weight-bold">100 Gbps</text>. This technology also uses two transceivers connected by <text class="font-weight-bold">OM3</text> or <text class="font-weight-bold">OM4</text> fiber. Maximum cable lengths depend on the type of cable and transceiver used, ranging from <a href="#" data-toggle="tooltip" data-placement="bottom" title="meter x 3.281" class="font-weight-bold text-light bg-success">5 m (16 feet)</a> to over <a href="#" data-toggle="tooltip" data-placement="bottom" title="km/1.609" class="font-weight-bold text-light bg-success">80 km (50 miles)</a>.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3>Wireless Networks</h3>
+					<p>A wireless network:</p>
+					<ul>
+						<li>Typically consists of client systems such as desktop PCs, laptops, or tablets and wireless connectivity devices such as access points (APs) or Internet of Things (IoT) devices.</li>
+						<li>Enables users to connect to a local network or the Internet, even on the move.</li>
+						<li>Can be easier to install and configure than a wired network and affords clients a lot of mobility.</li>
+						<li>Is useful in areas where it would be difficult or impossible to connect using wires, such as in hazardous areas, across long distances, or inside historic buildings.</li>
+						<li>Can introduce security concerns if APs are not configured to limit traffic to authorized users.</li>
+					</ul>
+					<p><img src="/cisco/include/img/Fig-1-4.png" class="img-thumbnail" alt="a sample wireless network" width="70%" height="70%"></p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="font-weight-bold text-secondary text-center">Licensed For Use Only By: John O'Kelly johnpo@jprro.co.za Jun 20 2020 9:47AM</p>
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure IPv4 Subnets</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Configure IPv4 Subnets</h3>
+					<p>Now that you have configured basic IP addresses, it is time to look at one of the most common ways to provide flexibility in addressing and more efficient address management.</p>
+					<h4>Subnetting</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Subnetting</text> is a process that subdivides the IPv4 address space of a network into smaller groups of consecutive IP addresses. An IP subnet refers to a subdivided network. IPv4 subnetting methods create small logical networks within any IP network.</p>
+					<p><img src="/cisco/include/img/Fig-3-4.png" class="img-thumbnail" alt="a network divided into subnets" width="70%" height="70%"></p>
+					<p>Implementing subnets enable more efficient use of the IP address space. For example, you can divide the <text class="font-weight-bold">132.9.0.0/16</text> network into four subnets with network addresses such as <text class="font-weight-bold">132.9.0.0/18</text>, <text class="font-weight-bold">132.9.1.0/18</text>, <text class="font-weight-bold">132.9.2.0/18</text>, and <text class="font-weight-bold">132.9.3.0/18</text> to prevent wasting IP addresses.</p>
+					<p>The conventional addressing techniques specifies IP addresses with two hierarchical components, namely <text class="font-italic">network ID</text> and <text class="font-italic">host ID</text>. However, in Cisco subnet addressing, the host portion of the address is further divided into <text class="font-italic">subnet ID</text> and <text class="font-italic">host ID</text>. Therefore, Cisco subnet addressing is designed with three hierarchical levels: <text class="font-weight-bold font-italic">network ID</text>, <text class="font-weight-bold font-italic">subnet ID</text>, and <text class="font-weight-bold font-italic">host ID</text>. Subnetting borrows bits from the host portion and uses them to create subnets.</p>
+					<p>Subnetworks provide better <text class="font-italic">manageability</text>, <text class="font-italic">performance</text>, <text class="font-italic">security for hosts and networks</text>, and <text class="font-italic">reduced network congestion</text>.</p>
+					<h4>Subnet Masks</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">subnet mask</text> is a <text class="font-weight-bold">32-bit</text> number that divides an IPv4 address into two parts:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">the network part</li>
+						<li class="alert alert-info" role="alert">the host part</li>
+					</ul>
+					<p>It comprises a series of binary <text class="font-weight-bold">1</text>s that end abruptly, followed by all <text class="font-weight-bold">0</text>s. The dividing line between the <text class="font-weight-bold">1</text>s and <text class="font-weight-bold">0</text>s is also the dividing line between the network part and the host part of the IP address. A subnet mask uses the <text class="font-italic">Boolean AND operation</text> to remove the <text class="font-italic">node ID</text> from the IP address, leaving just the network portion.</p>
+					<p>The number of addresses on a subnet are determined by the number of binary <text class="font-weight-bold">0</text>s in the host portion of the subnet mask. To calculate how many host addresses are available, use the formula <text class="font-weight-bold text-danger">2<sup><text class="font-italic">n</text></sup> - 2</text>, where <text class="font-weight-bold font-italic text-danger">n</text> is the number of <text class="font-weight-bold">0</text>s on the right side of the subnet mask.</p>
+					<p>Hosts use the subnet mask to determine if a packet's destination is on the same network or on a different network. If it is on the same network, the sender delivers the packet directly to the recipient. If the destination is on a different network, the sender delivers the packet to its <text class="font-italic">default gateway</text>. The router then assumes responsibility for delivery.</p>
+					<p><img src="/cisco/include/img/Fig-3-5.png" class="img-thumbnail" alt="subnet mask" width="70%" height="70%"></p>
+					<h4>Default Subnet Masks</h4>
+					<p>In legacy IP addressing, addresses were divided into address classes that had <text class="font-weight-bold font-italic text-primary">default subnet masks</text> assigned to each class. This was called <text class="font-italic">classful addressing</text>, which has been deprecated and has been replaced by <text class="font-weight-bold font-italic text-primary">Classless Inter Domain Routing (CIDR)</text>. A basic understanding of the original IP addressing design is necessary to recognize the reasons for many current practices and technologies used to extend the useful life of IPv4.</p>
+					<p>Classful addresses were assigned a default subnet mask that was assumed by a receiving router or host based on the most significant bits in the IP address.</p>
+					<p>A default subnet mask always has all <text class="font-weight-bold">1</text>s or all <text class="font-weight-bold">0</text>s in an octet. Groups of IP addresses have specific default subnet masks based on the range of values of the first octet of the IP address.</p>
+					<ul>
+						<li>In Class <text class="font-weight-bold">A</text>, <text class="font-weight-bold">B</text>, and <text class="font-weight-bold">C</text> addresses, the <text class="font-italic">network ID</text> is divided from the <text class="font-italic">host ID</text> based on octet boundaries. Each default subnet mask always has a <text class="font-weight-bold">255</text> or <text class="font-weight-bold">0</text> when expressed in decimal notation.</li>
+						<li>Classes <text class="font-weight-bold">D</text> and <text class="font-weight-bold">E</text> do <u>not</u> have subnet masks.</li>
+					</ul>
+					<p><img src="/cisco/include/img/Fig-3-6.png" class="img-thumbnail" alt="default subnet masks" width="70%" height="70%"></p>
+					<p>This table lists the default subnet masks for class A, B, and C, along with the corresponding values in the first octet.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 70%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 25%">Default Subnet Mask</th>
+									<th style="width: 25%">Value of First Octet</th>
+									<th style="width: 25%">Network Class</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold text-secondary">255.0.0.0</td>
+									<td class="font-weight-bold">0 to 127</td>
+									<td class="font-weight-bold text-success">Class A (/8)</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-secondary">255.255.0.0</td>
+									<td class="font-weight-bold">128 to 191</td>
+									<td class="font-weight-bold text-warning">Class B (/16)</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-secondary">255.255.255.0</td>
+									<td class="font-weight-bold">192 to 223</td>
+									<td class="font-weight-bold text-danger">Class C (/24)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>In the Network Class column, the <text class="font-italic">slash (CIDR) notation</text> indicates how many bits are populated with <text class="font-weight-bold">1</text>s.</p>
+					<h4>Subnet Mask Rules and Application</h4>
+					<p>To conform to TCP/IP standards, subnets must follow a set of rules:
+						<ul>
+							<li class="alert alert-success" role="alert">The <text class="font-weight-bold">1</text>s in the mask always starts at bit <text class="font-weight-bold">32</text>, at the left end of the mask.</li>
+							<li class="alert alert-success" role="alert">The <text class="font-weight-bold">0</text>s in the mask always starts at bit <text class="font-weight-bold">1</text>, at the right end of the mask.</li>
+							<li class="alert alert-success" role="alert">The <text class="font-weight-bold">1</text>s in the mask must be contiguous, with no <text class="font-weight-bold">0</text>s interspersed between them.</li>
+							<li class="alert alert-success" role="alert">The only decimal values permitted in an octet are: <text class="font-weight-bold text-success">255</text>, <text class="font-weight-bold text-success">254</text>, <text class="font-weight-bold text-success">252</text>, <text class="font-weight-bold text-success">248</text>, <text class="font-weight-bold text-success">240</text>, <text class="font-weight-bold text-success">224</text>, <text class="font-weight-bold text-success">192</text>, <text class="font-weight-bold text-success">128</text>, and <text class="font-weight-bold text-success">0</text>.</li>
+							<li class="alert alert-success" role="alert">Each subnet must have its own unique network ID.</li>
+							<li class="alert alert-success" role="alert">All devices on a subnet must share the same network ID.</li>
+							<li class="alert alert-success" role="alert">All devices on a subnet must have the same subnet mask.</li>
+							<li class="alert alert-success" role="alert">Nodes on a local subnet must have unique node IDs.</li>
+						</ul>
+					</p>
+					<p>Applying a subnet mask involves a sequence of steps to isolate the network portion of the IP address from the host portion:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 70%">
+							<tbody class="alert alert-info" role="alert">
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td style="width: 90%">Convert both the IP address and the subnet mask to binary format.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td style="width: 90%">Use the AND operation on the two binary numbers. In the AND operation, the <text class="font-weight-bold">0</text>s in the subnet mask convert all the bits in the node portion of the IP address to <text class="font-weight-bold">0</text>s, leaving the network portion of the address intact.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p><img src="/cisco/include/img/Fig-3-7.png" class="img-thumbnail" alt="applying a subnet mask" width="70%" height="70%"></p>
+					<h4>The Subnetting Process</h4>
+					<p>Here are the stages in the subnetting process:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 70%">
+							<tbody class="alert alert-warning" role="alert">
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td style="width: 90%">Identify the number of subnets required in the network.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td style="width: 90%">Identify the number of hosts that need to be accommodated per subnet.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td style="width: 90%">Starting from the address mask assigned to you by an addressing authority, select a subnet mask that will create the desired number of subnets while still leaving the required number of hosts.<br>When one subnet mask is applied to all the subnets, the same number of hosts can be accommodated in each subnet.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">4.</td>
+									<td style="width: 90%">Determine the subnet IDs and host IDs.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="alert alert-danger" role="alert">For example, an organization has a network address of <text class="font-weight-bold">192.173.28.0</text> with a subnet mask of <text class="font-weight-bold">255.255.255.0</text>, and it wants to set up six subnets to segregate traffic across six departments. To do this, three higher order bits in the last octet can be reserved for subnetting. The result is a subnet mask <text class="font-weight-bold">255.255.255.224</text>, or <text class="font-weight-bold">8</text> subnets, each capable of supporting <text class="font-weight-bold">30</text> hosts.</p>
+					<h4>Method for Determining a New Subnet Mask and Subnet IDs</h4>
+					<p>There are many options for deriving custom subnet masks and IDs for a network. One way is described here.</p>
+					<p>The general process is:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 90%">
+							<tbody class="alert alert-success" role="alert">
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td style="width: 90%">Identify the existing subnet mask.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td style="width: 90%">Determine the number of bits to add to or remove from the mask.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td style="width: 90%">Change the mask and identify the delta.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">4.</td>
+									<td style="width: 90%">Calculate the subnet IDs and address ranges.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>This diagram can help you calculate subnets, hosts, and masks:</p>
+					<p><img src="/cisco/include/img/Fig-3-8.png" class="img-thumbnail" alt="subnet calculator" width="70%" height="70%"></p>
+					<p>You can also use the calculator to determine <text class="font-weight-bold text-danger">2<sup><text class="font-italic">n</text></sup></text>. If you consider the bottom row to the value of <text class="font-weight-bold text-danger">n</text>, then the top row is the result. So, <text class="font-weight-bold">2<sup><text class="font-italic">7</text></sup></text> is <text class="font-weight-bold">128</text>, <text class="font-weight-bold">2<sup><text class="font-italic">6</text></sup></text> is <text class="font-weight-bold">64</text>, and so forth.</p>
+					<p>Now you are ready to work through the subnetting process.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 90%">
+							<tbody class="alert alert-warning" role="alert">
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td>Identify the original subnet mask. Write the network ID in CIDR notation on a sheet of paper.<br>For example, <text class="font-weight-bold">192.168.1.0/24</text>. Below that, write it again, replacing the host portion with a series of <text class="font-weight-bold">8</text> dashes (denoting the bits) and draw a vertical line at the starting mask position.
+										<p><img src="/cisco/include/img/Fig-3-9.png" class="img-thumbnail" alt="identifying the original subnet mask" width="40%" height="40%"></p>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td>Determine the number of bits to add to or remove from the mask. This depends on how many subnets you need. To determine the number of subnets, you can use the formula <text class="font-weight-bold text-danger">2<sup><text class="font-italic">n</text></sup></text>, where <text class="font-weight-bold font-italic text-danger">n</text> is the number of bits to add or remove.
+										<div>
+											<table class="table table-responsive table-borderless table-sm" style="width: 60%">
+												<thead class="thead-light">
+													<tr>
+														<th style="width: 25%">Number of Subnets Needed</th>
+														<th style="width: 25%">Number of Bits to Add to the Mask</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">1</td>
+														<td class="font-weight-bold" style="width: 5%">0</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">2</td>
+														<td class="font-weight-bold" style="width: 5%">1</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">4</td>
+														<td class="font-weight-bold" style="width: 5%">2</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">8</td>
+														<td class="font-weight-bold" style="width: 5%">3</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">16</td>
+														<td class="font-weight-bold" style="width: 5%">4</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">32</td>
+														<td class="font-weight-bold" style="width: 5%">5</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">64</td>
+														<td class="font-weight-bold" style="width: 5%">6</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">128</td>
+														<td class="font-weight-bold" style="width: 5%">7</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">256</td>
+														<td class="font-weight-bold" style="width: 5%">8</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">512</td>
+														<td class="font-weight-bold" style="width: 5%">9</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">1024</td>
+														<td class="font-weight-bold" style="width: 5%">10</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">2048</td>
+														<td class="font-weight-bold" style="width: 5%">11</td>
+													</tr>
+													<tr>
+														<td class="font-weight-bold" style="width: 5%">4096</td>
+														<td class="font-weight-bold" style="width: 5%">12</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<ul class="list-group">
+											<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> The last six rows are used where there are more than eight host bits.</text></li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td>Change the mask and identify the delta. Update your drawing with the results from <u>step 2</u>.
+										<p><img src="/cisco/include/img/Fig-3-10.png" class="img-thumbnail" alt="adding bits to the original mask" width="55%" height="55%"></p>
+										Referring back to the calculator, identify the decimal number immediately to the left of the new-mask line. This is the <text class="font-italic">delta</text>. In this example, the delta is <text class="font-weight-bold">32</text>. This means that the subnet IDs need to increment by <b>32</text>.
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">4.</td>
+									<td>Calculate the subnet IDs and address ranges. Use the delta to increment the subnet IDs, starting with subnet <text class="font-weight-bold">0</text>, and adding the delta to determine the next subnet ID. Continue until all subnet IDs have been calculated.
+										<p><img src="/cisco/include/img/Fig-3-11.png" class="img-thumbnail" alt="subnet ids" width="45%" height="45%"></p>
+										For each subnet ID, determine the address ranges. Remember that the first address in each subnet is actually the subnet ID, and the last address in each subnet is the broadcast address for that subnet.
+										<p><img src="/cisco/include/img/Fig-3-12.png" class="img-thumbnail" alt="subnet address ranges for the first two subnets" width="50%" height="50%"></p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Variable Length Subnet Masks (VLSMs)</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">variable length subnet mask (VLSM)</text> is used to create subnets containing different numbers of hosts. In the VLSM process, you apply a custom subnet mask to the IP addresses and provide the number of hosts required for each subnet.</p>
+					<p>A network is first divided into subnets, then some of the subnets are divided into sub-subnets, and some of these are further divided. The detailed structure of routing information for one subnet group is hidden from routers in another subnet group.</p>
+					<p><img src="/cisco/include/img/Fig-3-13.png" class="img-thumbnail" alt="vlsm" width="70%" height="70%"></p>
+					<p>For instance, a network with a prefix length of <text class="font-weight-bold">/24</text> (<text class="font-weight-bold">255.255.255.0</text>) might contain three subnets: subnet <text class="font-weight-bold">1</text> with <text class="font-weight-bold">5 hosts</text>, subnet <text class="font-weight-bold">2</text> with <text class="font-weight-bold">12 hosts</text>, and subnet <text class="font-weight-bold">3</text> with <text class="font-weight-bold">28 hosts</text>. By applying the variable subnet mask <text class="font-weight-bold">/29</text> (<text class="font-weight-bold">255.255.255.248</text>) to subnet <text class="font-weight-bold">1</text>, <text class="font-weight-bold">/28</text> (<text class="font-weight-bold">255.255.255.240</text>) to subnet <text class="font-weight-bold">2</text>, and <text class="font-weight-bold">/27</text> (<text class="font-weight-bold">255.255.255.224</text>) to subnet <text class="font-weight-bold">3</text>, you waste only one IP address on subnet <text class="font-weight-bold">1</text>, and two IP addresses on each of subnets <text class="font-weight-bold">2</text> and <text class="font-weight-bold">3</text>.</p>
+					<p>VLSM enables optimal use of the available address space in a network.</p>
+					<h4>The Address Optimization Process</h4>
+					<p>The steps to apply VLSM to optimize IP addressing in subnets are:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 90%">
+							<tbody class="alert alert-success" role="alert">
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td style="width: 90%">Determine the number of subnets required and the number of hosts to be accommodated in each subnet.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td style="width: 90%">Begin VLSM subnetting with the subnet that has the highest requirement of hosts.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td style="width: 90%">Determine the number of bits required in the subnet mask and generate the required number of host addresses.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">4.</td>
+									<td style="width: 90%">Continue subnetting for the next highest subnet, and in this way, complete the VLSM.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="alert alert-danger" role="alert">
+						<p>For example, consider a network with the address space <text class="font-weight-bold">173.35.4.0/24</text>. The network requires three LAN subnets and one wide area network (WAN) subnet. LAN <text class="font-weight-bold">1</text> requires <text class="font-weight-bold">60</text> hosts, LAN <text class="font-weight-bold">2</text> requires <text class="font-weight-bold">28</text> hosts, and LAN <text class="font-weight-bold">3</text> requires <text class="font-weight-bold">12</text> hosts.</p>
+						<table class="table table-responsive table-borderless table-sm" style="width: 90%">
+							<tbody>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td style="width: 90%">Since LAN <text class="font-weight-bold">1</text> has the highest requirement, begin subnetting for LAN <text class="font-weight-bold">1</text>. Use <text class="font-weight-bold">6</text> bits to get <text class="font-weight-bold">2<sup><text class="font-italic">6</text></sup> - 2 = 62</text> host addresses. The prefix <text class="font-weight-bold">/26</text> moves the mask down the delta position <text class="font-weight-bold">64</text>, giving you just enough IP addresses for your case.
+										<ul>
+											<li>The delta is <text class="font-weight-bold">64</text> - subnet IDs will increment by <text class="font-weight-bold">64</text></li>
+											<li>Delta <text class="font-weight-bold">64</text> gives you <text class="font-weight-bold">4</text> subnets with a <text class="font-weight-bold">/26</text> mask:
+												<ul>
+													<li class="font-weight-bold">173.35.4.0</li>
+													<li class="font-weight-bold">173.35.4.64</li>
+													<li class="font-weight-bold">173.35.4.128</li>
+													<li class="font-weight-bold">173.35.4.192</li>
+												</ul>
+											</li>
+											<li>Subnet  <text class="font-weight-bold">0</text> can be used for LAN <text class="font-weight-bold">1</text>:
+												<ul>
+													<li><text class="font-weight-bold">173.35.4.0</text> = subnet ID</li>
+													<li><text class="font-weight-bold">173.35.4.1</text> = first legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.62</text> = last legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.63</text> = broadcast</li>
+												</ul>
+												Addresses <text class="font-weight-bold">173.35.4.1/26</text> through <text class="font-weight-bold">173.35.4.62/26</text> are available for hosts.
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td>For LAN <text class="font-weight-bold">2</text>, you need addresses for 28 hosts:
+										<ul>
+											<li><text class="font-weight-bold">5</text> bits are needed to generate <text class="font-weight-bold">2<sup><text class="font-italic">5</text></sup> - 2 = 30</text> host addresses.</li>
+											<li>You don't want these addresses to overlap with LAN <text class="font-weight-bold">1</text>, so you start with the next subnet <text class="font-weight-bold">173.35.4.64</text> (subnet "<text class="font-weight-bold">64</text>").</li>
+											<li>The available host range is <text class="font-weight-bold">173.35.4.65</text> - <text class="font-weight-bold">173.35.4.126</text>.</li>
+											<li>If you use all of subnet <text class="font-weight-bold">64</text>, you can have 62 hosts, but you don't need that many.</li>
+											<li>You can move the mask down one more bit to <text class="font-weight-bold">/27</text> to further divide subnet <text class="font-weight-bold">64</text> in half:
+											<li><text class="font-weight-bold">173.35.4.64/27</text>
+												<ul>
+													<li><text class="font-weight-bold">173.35.4.64</text> = subnet ID</li>
+													<li><text class="font-weight-bold">173.35.4.65</text> = first legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.94</text> = last legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.95</text> = broadcast</li>
+												</ul>
+											</li>
+											<li><text class="font-weight-bold">173.35.4.96/27</text>
+												<ul>
+													<li><text class="font-weight-bold">173.35.4.96</text> = subnet ID</li>
+													<li><text class="font-weight-bold">173.35.4.97</text> = first legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.126</text> = last legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.127</text> = broadcast (notice how the next IP would take you into subnet <text class="font-weight-bold">128</text>)</li>
+												</ul>
+											</li>
+											<li>Each of these subnets gives you <text class="font-weight-bold">30</text> usable hosts, which is perfect for your scenario.</li>
+											<li><text class="font-weight-bold">173.35.4.64/27</text> gives you a host range <text class="font-weight-bold">173.35.4.65</text> - <text class="font-weight-bold">173.35.4.94</text></li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td>Similarly, for LAN <text class="font-weight-bold">3</text>, <text class="font-weight-bold">4</text> bits are needed to generate <text class="font-weight-bold">2<sup><text class="font-italic">4</text></sup> - 2 = 14</text> host addresses.
+										<ul>
+											<li>You have subnet <text class="font-weight-bold">96</text> available for use.</li>
+											<li>You don't need all <text class="font-weight-bold">30</text> IP addresses from subnet <text class="font-weight-bold">96</text>, so can even further subdivide it.</li>
+											<li>Move the mask down one more bit to <text class="font-weight-bold">/28</text>. It will split subnet <text class="font-weight-bold">96</text> in half:
+											<li><text class="font-weight-bold">173.35.4.96/28</text>
+												<ul>
+													<li><text class="font-weight-bold">173.35.4.96</text> = subnet ID</li>
+													<li><text class="font-weight-bold">173.35.4.97</text> = first legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.110</text> = last legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.111</text> = broadcast</li>
+												</ul>
+											</li>
+											<li><text class="font-weight-bold">173.35.4.112/28</text>
+												<ul>
+													<li><text class="font-weight-bold">173.35.4.112</text> = subnet ID</li>
+													<li><text class="font-weight-bold">173.35.4.113</text> = first legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.126</text> = last legitimate host IP</li>
+													<li><text class="font-weight-bold">173.35.4.127</text> = broadcast (notice how the next IP would take you into subnet <text class="font-weight-bold">128</text>)</li>
+												</ul>
+											</li>
+											<li>You only need to use one of theses subnets to supply <text class="font-weight-bold">12</text> hosts, so use <text class="font-weight-bold">173.35.4.96/28</text>.</li>
+											<li>The prefix <text class="font-weight-bold">/28</text> can be used to generate host addresses <text class="font-weight-bold">173.35.4.97/28</text> through <text class="font-weight-bold">173.35.4.110/28</text></li>
+										</ul>
+										<p><img src="/cisco/include/img/Fig-3-14.png" class="img-thumbnail" alt="subnetting subnets" width="75%" height="75%"></p>
+									</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">4.</td>
+									<td>Continue subnetting for the next highest subnet, and in this way, complete the VLSM.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Command Reference: VLSM Practice</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<p><img src="/cisco/include/img/note-vlsm-command-references.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<h5>VLSM Practice</h5>
+					<p>The following commands are used in the VLSM Practice labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt; &lt;subinterface-id&gt;</text>: Creates a subinterface.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /dg &lt;ip-address&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /ip &lt;ip-address&gt; &lt;subnetmask&gt;</text>: Used in NetSim to assign an IP address and subnet mask to a workstation interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: VLSM Practice I-M</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->VLSM Practice I-M</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h5>Lab: VLSM Practice II-M</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->VLSM Practice II-M</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h5>Lab: VLSM Practice III-M</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->VLSM Practice III-M</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

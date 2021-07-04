@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure IPv6 Addresses</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic C</h2>
+					</div>
+					<h3 class="text-success">Configure IPv6 Addresses</h3>
+					<p>You have configured IPv4 addresses and subnets, but you also need to be able to configure addresses for IPv6.</p>
+					<h4>IPv6 Address Structure</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">Internet Protocol version 6 (IPv6) address</text> has <text class="font-weight-bold">128</text> bits (or <text class="font-weight-bold">16</text> bytes) and is denoted as <text class="font-italic">eight hexadecimal blocks</text> separated by colons. The byte on the extreme left has the highest order, and the byte on the extreme right has the lowest order.</p>
+					<p>IPv6 addresses are abbreviated for convenience. The rules for abbreviating IPv6 addresses are:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Remove the leading <text class="font-weight-bold">0</text>s from the first three positions on the left in each group of hexadecimal digits.</li>
+						<li class="alert alert-info" role="alert">Replace two or more groups that contain all <text class="font-weight-bold">0</text>s with a "<text class="font-weight-bold">::</text>". Only one "<text class="font-weight-bold">::</text>" is allowed in an IPv6 address</li>
+					</ul>
+					<p><img src="/cisco/include/img/Fig-3-15.png" class="img-thumbnail" alt="ipv6 address structure" width="70%" height="70%"></p>
+					<h4>Why adopt IPv6?</h4>
+					<p>The original motivation for adopting IPv6 was the fear of running out of IPv4 addresses. Because that issue has been made less urgent by the widespread use of private IPv4 addresses, organizations might decide to adopt IPv6 for any of the following reasons:</p>
+					<ul class="alert alert-warning" role="alert">
+						<li><text class="font-weight-bold">Address availability</text>. Although <u>not</u> as compelling a reason as originally thought, the sheer numbers of available IPv6 addresses could still be a deciding factor in whether or <u>not</u> to migrate from IPv4. Considering the huge increase of <text class="font-italic">Internet of Things (IoT)</text> devices over the past few years, and the fact that the number of connected devices is bound to keep increasing, having the virtually limitless supply of IPv6 addresses is a definite advantage.</li>
+						<li><text class="font-weight-bold">Native connectivity</text>. By providing native IPv6 connectivity for your customers, you can ensure that they do <u>not</u> suffer any performance impact from translating IPv6 to IPv4.</li>
+						<li><text class="font-weight-bold">Ease of management</text>. IPv6 supports automatic address configuration by hosts, dynamic assignment via DHCP, and static address configuration. When organizations grow or merge with others, there is no need to reconfigure addresses to prevent address conflicts.</li>
+						<li><text class="font-weight-bold">Mandated security</text>. IPv6 works with IPsec to provide encrypted communications, greatly reducing the risk of an attacker to observe or manipulate traffic between hosts.</li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Many mobile network providers are using IPv6 extensively or exclusively. See https://www.internetsociety.org/resources/2018/state-of-ipv6-deployment-2018/ .</text></li>
+					</ul>
+					<h4>Address Prefixes</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">IPv6 address prefix</text> is the group of leftmost bits in the address that denote the subnet of an interface. Address prefixes correspond to the network portion of the address. The number of bits that indicate the subnet is known as <text class="font-weight-bold font-italic text-primary">prefix length</text>. The syntax for representing an IPv6 prefix is <text class="font-weight-bold font-italic text-primary">IPv6 address/Prefix length</text>.</p>
+					<p>In most cases, the prefix for an IPv6 address assigned to an interface is <text class="font-weight-bold">/64</text> (<text class="font-weight-bold">64</text> bits long). The first <text class="font-weight-bold">48</text> bits are assigned by the ISP and denote the network, while the remaining <text class="font-weight-bold">16</text> bits denote the subnet. Having a standardized IPv6 addressing structure allows organizations to keep their internal subnetting scheme, even if they change ISPs. They can simply detach from the first <text class="font-weight-bold">48</text> bits of one ISP and attach to the next ISP without changing subnet or host addresses.</p>
+					<p><img src="/cisco/include/img/Fig-3-16.png" class="img-thumbnail" alt="ipv6 address prefix" width="70%" height="70%"></p>
+					<h4>Address Autoconfiguration</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Address autoconfiguration</text> is the ability of an IP host to dynamically attain its network address without any physical intervention. There are two types of autoconfiguration in IPv6:</p>
+					<ul class="alert alert-warning" role="alert">
+						<li><text class="font-weight-bold">Stateful autoconfiguration</text>: Works the same way as Dynamic Host Configuration Protocol (DHCP) in Internet Protocol version 4 (IPv4). External devices assist hosts at startup to determine their network address prefixes, addresses of hosts, and some router addresses.</li>
+						<li><text class="font-weight-bold">Stateless autoconfiguration</text>: Allows hosts to directly determine their addresses from routers without depending on any external devices. In stateless autoconfiguration, hosts determine their network prefix by querying the router. They then attach a unique host identifier (either randomly generated or a variant of their MAC address) to create a unique IP address.</li>
+					</ul>
+					<h4>IPv6 Stateless Address Autoconfiguration (SLAAC)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">IPv6 Stateless Address Autoconfiguration (SLAAC)</text> is a dynamic method for assigning IPv6 addresses that does <u>not</u> require a DHCP or other stateful server.</p>
+					<p>In SLAAC, when a host connects to the network, the router provides only the prefix of the host's IPv6 address. Using the prefix, the host can automatically build a unique IPv6 address.</p>
+					<p>The steps that a host performs to generate an IPv6 address in SLAAC are:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 90%">
+							<tbody class="alert alert-success" role="alert">
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td style="width: 90%">Obtain  the IPv6 prefix by communicating with a router through Neighbor Discovery Protocol (NDP) RS/RA multicast messages.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td style="width: 90%">Build the IPv6 address by using the prefix and choosing the host ID value.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td style="width: 90%">Ensure that no other host is using the same IPv6 address by using Duplicate Address Detection (DAD).</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>In addition to the IPv6 address, a host also needs other key settings such as the prefix length, Domain Name Service (DNS) server addresses, and the default router address. To learn the prefix length, the host uses NDP messages. The host can also learn the default router and the addresses of the other routers through the NDP messages. To learn the DNS server addresses, the host uses stateless DHCPv6 or a locally configured DNS address.</p>
+					<h4>IPv6 Address Types</h4>
+					<p>There are many ways of classifying IPv6 addresses:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic">Based on compatibility with existing IPv4 networks</text>:
+							<ul class="alert-secondary" role="alert">
+								<li class="font-weight-bold font-italic text-secondary">IPv4-compatible addresses</li> and
+								<li class="font-weight-bold font-italic text-secondary">IPv4-mapped addresses.</li>
+							</ul>
+						</li>
+						<li class="alert alert-warning" role="alert">
+							<text class="font-weight-bold font-italic">Based on the number of recipients</text>: Unicast, multicast, and anycast. The classification of IPv6 addresses based on the number of recipients is the most widely used classification.<br><text class="font-weight-bold text-danger">Unicast</text> addresses are further classified into:
+							<ul class="font-italic alert alert-danger" role="alert">
+								<li class="font-weight-bold text-danger">global unicast</li>
+								<li class="font-weight-bold text-danger">link local</li>
+								<li class="font-weight-bold text-danger">unique local</li>
+							</ul>
+						</li>
+					</ul>
+					<h4>Global Unicast Addresses</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">global unicast address</text> is a public IPv6 address that is used by a single interface. Global unicast IPv6 addresses are similar to IPv4 public addresses.</p>
+					<p>An organization that requires public IPv6 addresses is assigned a block of unique IPv6 addresses called a <text class="font-weight-bold font-italic text-primary">global routing prefix</text>, typically with a length of <text class="font-weight-bold">/48</text>. An organization uses the IPv6 addresses withing the assigned block to create subnets. Every IPv6 address used by the organizational network is a public address that is unique across the world.</p>
+					<p>Because the global routing prefix is used to reserve a block of IPv6 addresses for a particular organization, all the IPv6 addresses within that organizational network must begin with the assigned global routing prefix. The next <text class="font-weight-bold">16</text> bits or <text class="font-weight-bold">4</text> hex characters in the IPv6 address denotes the subnet ID, and the rest of the bits or characters denote the interface ID.</p>
+					<p><img src="/cisco/include/img/Fig-3-17.png" class="img-thumbnail" alt="global unicast addresses" width="65%" height="65%"></p>
+					<p>Global unicast addresses are assigned by a registering authority called <text class="font-italic">Internet Assigned Numbers Authority (IANA)</text>. Except those address ranges that are reserved for other address types, all the addresses in the IPv6 address space are available for global unicast addresses. The current global unicast range uses the prefix <text class="font-weight-bold">2000::/3</text>.</p>
+					<h4>Unique Local Addresses</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">unique local address</text> is a private IPv6 address that is used by a single interface. Unique local addresses are unique in the local network, but they are <u>not</u> unique across the world.</p>
+					<p>The assigned prefix for unique local addresses is <text class="font-weight-bold">FC00::/7</text>. This means all unique local addresses begin with the hexadecimal digits <text class="font-weight-bold">FC</text> or <text class="font-weight-bold">FD</text>.</p>
+					<p>Unique local address subnetting works the same way as global unicast address subnetting. In a unique local adddress, the prefix is made up of <text class="font-weight-bold">48</text> bits - the first <text class="font-weight-bold">7</text> bits are fixed, and the remaining <text class="font-weight-bold">41</text> bits are assigned in a random manner.</p>
+					<p><img src="/cisco/include/img/Fig-3-18.png" class="img-thumbnail" alt="unique local addresses" width="70%" height="70%"></p>
+					<p>The address prefix, along with the <text class="font-weight-bold">16</text> bits in the subnet field, make up the subnet ID. The remaining <text class="font-weight-bold">64</text> bits is the interface ID. The prefix is local within an organizational network and is <u>not</u> registered with any authority. Therefore, multiple organizations can use the same local prefix for unique local addresses.</p>
+					<h4>Link-Local Addresses</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">link-local address</text> is a host's IPv6 address that is used for communicating on a single segment. IPv6 requires a link-local address on every interface that has IPv6 enabled, even if it already has a Global Unicast Address. All link-local addresses begin with the prefix <text class="font-weight-bold">fe80::/10</text> (<text class="font-weight-bold">fe80::</text> through <text class="font-weight-bold">febf::</text>). Cisco and some Linux hosts use the <text class="font-weight-bold font-italic">EUI-64</text> format to generate the host ID. Other operating systems use other mechanisms, including randomly generating a unique host ID.</p>
+					<p>Link-local addresses are most commonly used by protocols such as <text class="font-italic">NDP</text> to send messages within a subnet. It is possible to ping and deliver user traffic to link-local addresses, but <u>not</u> all client applications support them. Because all link-local addresses have the same network ID, packets addressed to a host's link-local address are <u>not</u> forwarded by routers. In this way, link-local addresses are the functional equivalent of IPv4 APIPA addresses.</p>
+					<p>All interfaces in a network can dynamically generate link-local addresses of their own. Because all link-local addresses have the same network ID regardless of how many interfaces there are on a device, it is necessary to add an <text class="font-italic">interface ID</text> (<text class="font-weight-bold">%#</text>) to each addresss so that the local system can correctly identify which interface a packet was received on and thereby use the same interface for any reply packets.</p>
+					<p><img src="/cisco/include/img/Fig-3-19.png" class="img-thumbnail" alt="link local address" width="70%" height="70%"></p>
+					<h4>Multicast Addresses</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">IPv6 multicast address</text> is an IPv6 address that identifies many interfaces on the network. The first byte of a multicast IPv6 address is always the hexadecimal <text class="font-weight-bold">FF</text>. A host can belong to more than one multicast group, so it can have more than one multicast address.</p>
+					<p>IPv6 does <u>not</u> support broadcast addresses. Instead, any one-to-many transmissions are done through multicasting.</p>
+					<p><text class="font-italic">Link-local scope multicast addresses</text> are used to ensure that packets sent to that multicast address stay within the scope of the link. IPv6 addresses beginning with <text class="font-weight-bold">FF02</text> are reserved for link-local scope multicast addressing. The reserved multicast addresses and the devices to which packest are routed using each reserved multicast address are listed in the following table.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 80%">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col" style="width: 25%">Reserved Multicast Address</th>
+									<th class="font-italic" scope="col"style="width: 70%">Packets are Routed to:</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold text-primary">FF02::1</td>
+									<td class="font-weight-bold text-secondary">All hosts and routers in the network that support IPv6.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-warning">FF02::2</td>
+									<td class="font-weight-bold text-secondary">All routers in the network that support IPv6.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-danger">FF02::A</td>
+									<td class="font-weight-bold text-secondary">A subset of routers that use the Enhanced Interior Gateway Routing Protocol (EIGRP)</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-danger">FF02::5 and FF02::6</td>
+									<td class="font-weight-bold text-secondary">A subset of routers that use the Open Shortest Path First (OSPF) protocol.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>A <text class="font-weight-bold font-italic text-primary">solicited-node multicast address</text> is a unique multicast address generated by each host within a subnet to allow it to be located using a <text class="font-italic">NDP Neighbor Solicitation message</text>, which replaces the use of the ARP protocol. The solicited-node multicast address for an interface is generated by replacing the last <text class="font-weight-bold">6</text> hex characters in the prefix <text class="font-weight-bold">FF02::1:FF00:0000/104</text> with the last <text class="font-weight-bold">24</text> bits of the interface MAC address.</p>
+					<h4>Anycast Addresses</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">anycast address</text> is an IPv6 address that identifies a set of interfaces, but data sent to this address is processed by one specific interface in the set. The interface that processes the data is either the most suitable interface for delivery or is the nearest to the transmitter.</p>
+					<p>The structure of anycast addresses is similar to that of unicast addresses, and they are allocated from the global unicast address space. To distinguish anycast transmissions from other unicast transmissions, interfaces must be configured to recognize the anycast address.</p>
+					<h4>Modified EUI-64</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">modified Extended Unique Identifier (EUI)-64</text> is a format that is used by the Cisco hosts and some Linux hosts to automatically generate their own unique interface IDs. The last <text class="font-weight-bold">64</text> bits of a host's IPv6 address denote its interface ID.</p>
+					<p>A host generates its interface ID by converting its <text class="font-weight-bold">48-bit</text> MAC address to a <text class="font-weight-bold">64-bit</text> value. This conversion must follow the rules in the modified <text class="font-weight-bold">EUI-64</text> specification.</p>
+					<p>The conversion of a MAC address to an interface ID involves four steps:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 100%">
+							<tbody class="alert alert-success" role="alert">
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td style="width: 90%">Dividing the MAC adddress into two halves. The first <text class="font-weight-bold">24</text> bits form the Organizationally Unique Identifier (OUI), and the last <text class="font-weight-bold">24</text> bits identify the network interface card (NIC).</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td style="width: 90%">Inserting the OUI part of the MAC address into the first <text class="font-weight-bold">24</text> bits of the interface ID, and inserting the NIC part into the last <text class="font-weight-bold">24</text> bits of the interface ID.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td style="width: 90%">Inserting a <text class="font-weight-bold">16-bit</text> part (equivalent to the hexadecimal <text class="font-weight-bold">FFFE</text>) between the two halves.</td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold" style="width: 5%">4.</td>
+									<td style="width: 90%">Converting the bit in the seventh position from <text class="font-weight-bold">0</text> to <text class="font-weight-bold">1</text> if the address is local.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p><a href="https://www.youtube.com/watch?v=irhS0ASkvy8" target="_blank" class="btn btn-primary">IPv6 Addresses Explained</a></p>
+					<h4>Command Reference: Configuring IPv6</h4>
+					<p>This section contains the commands you will use in the next set of labs.</p>
+					<h5>Configuring IPv6</h5>
+					<p>The following commands are used in the Configuring IPv6 labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt; &lt;subinterface-id&gt;</text>: Creates a subinterface.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP version 4 (IPv4) address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ipv6 address &lt;ip-address&gt;/&lt;prefix-length&gt;</text>: Configures an IPv6 address for an interface.</li>
+						<li><text class="font-weight-bold text-success">ipv6 router rip &lt;process-name&gt;</text>: Configures a router for RIPng.</li>
+						<li><text class="font-weight-bold text-success">ipv6 rip &lt;process-name&gt; enable</text>: Configures an interface for RIPng.</li>
+						<li><text class="font-weight-bold text-success">ipv6 unicast-routing</text>: Enables IPv6 routing.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">ping ipv6 &lt;ipv6-address&gt;</text>: Sends an ICMP echo request to the specified IPv6 address.</li>
+						<li><text class="font-weight-bold text-success">show interfaces &lt;type&gt; &lt;number&gt;</text>: Displays the interfaces, Data Link lyer status, when the &lt;type&gt; and &lt;number&gt; parameters are included - Displays detailed information about the specified interface.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show ipv6 interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show ipv6 route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Configuring IPv6 I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Configuring IPv6 I</text></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+					<h5>Lab: Configuring IPv6 II</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Configuring IPv6 II</text></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

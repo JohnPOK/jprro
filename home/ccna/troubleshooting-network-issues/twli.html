@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Troubleshoot WLAN Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic F</h2>
+					</div>
+					<h3 class="text-success">Troubleshoot WLAN Issues</h3>
+					<p>Ensuring continuous wireless networking capabilities is another important facet of a CCNA's duties.</p>
+					<h4>Common WLAN Issues</h4>
+					<p>Common WLAN issues include:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Weak signal</text>. The client is too far from the WAP.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Wrong user authentication</text>. The user is trying to enter the wrong password when trying to connect to the WAP.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Standalone AP is too congested or has reached the maximum number of clients it can handle</text>. Most standalone APs and SOHO wireless routers can only handle <text class="font-weight-bold">10</text> concurrent client connections at a time.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">RADIUS server is <u>not</u> authorizing the user or device</text>. A customer might <u>not</u> have paid their subscription, or a device might be violating policy (such as time of day, type of device, user group affiliation, etc.) configured on the RADIUS server.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Wrong RADIUS password between WAP and RADIUS server</text>. WLANs that use RADIUS to authenticate users typically also require the WAP to authenticate itself to the RADIUS server. It's possible that the password (secret key) was entered incorrectly when first setting up RADIUS.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Frequency mismatch on SOHO networks</text>. The <text class="font-weight-bold">802.11</text> standards provide for five distinct frequency ranges which, in turn, are divided into channels. Two of these ranges (or bands), <text class="font-weight-bold">2.4 GHz</text> and <text class="font-weight-bold">5 GHz</text>, are the ones most commonly used for Wi-Fi signals. Many newer devices support both bands, but on an established WLAN, <text class="font-weight-bold">5 GHz</text> devices might <u>not</u> be able to communicate with older <text class="font-weight-bold">2.4 GHz</text> equipment.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Connecting to a WAP when its SSID is hidden</text>. If the SSID is <u>not</u> broadcast, all wireless clients must be configured manually.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Security protocol mismatch</text>. The WAP will likely use WPA2 or WPA2 enterprise, so if the OS or drivers on the clients are <u>not</u> compatible with the WAP's security protocol, clients will have problems connecting to and using the WLAN.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">WAP misconfiguration</text>. In environments with multiple VLANs and SSIDs, it is possible that the AP could be configured with an erroneous setting. This can result in clients <u>not</u> being able to connect to the AP.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">General network issues at both ends of the connection</text>, including IP address and subnet configuration, default gateway address, and DHCP server address, among others.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">Wi-Fi disconnect</text>. Users might find that their Wi-Fi connections keep dropping. This could stem from outdated drivers on the client devices, too many clients attempting to connect to the WLAN at the same time, or a device moving in and out of range of WAP radios.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold">LAP too far from controller</text>. Lightweight access points are usually PoE devices. They create a tunnel to their controller to receive commands and pass user traffic. LAPs that are more than <b>50</b> meters away from their controller should be connected using <text class="font-weight-bold">CAT6</text> or better cable, otherwise the voltage drop on the line will be too great and they will have trouble establishing a connection with their WLC.</li>
+					</ul>
+					<h4>Guidelines for Troubleshooting WLAN Issues</h4>
+					<p>Here are some guidelines for troubleshooting WLAN issues.</p>
+					<h5>Troubleshooting WLAN Issues</h5>
+					<p>Consider the following when your users experience WLAN issues:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Try connecting to a suspect AP with a wireless device that is known to be configured properly for the WLAN.</li>
+						<li class="alert alert-info" role="alert">Make sure that enough APs are available for the anticipated number of wireless clients, and add more APs on occasions when there will be a significant increase in the number of wireless users.</li>
+						<li class="alert alert-info" role="alert">Verify that the configurations of the APs and controllers do <u>not</u> contain errors.</li>
+						<li class="alert alert-info" role="alert">Verify that the client devices are properly configured for the WLAN.</li>
+						<li class="alert alert-info" role="alert">Test wireless signal strength by using a tool such as an RF signal meter or an application such as WiFi Analyzer or Wireshark.</li>
+						<li class="alert alert-info" role="alert">Locate and correct general network issues.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

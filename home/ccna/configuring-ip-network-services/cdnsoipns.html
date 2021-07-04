@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure DNS on IP Networks</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic E</h2>
+					</div>
+					<h3 class="text-success">Configure DNS</h3>
+					<p>The ability to translate IP addresses into meaningful names makes it much easier for humans to remember them. The primary way of accomplishing this on an IP network is to implement <text class="font-italic">Domain Name System (DNS)</text>.</p>
+					<h4>Host Names</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Host names</text> are labels assigned to network devices and endpoints. Host names are much easier to remember than IP or MAC addresses, and they can be configured to be quite descriptive.</p>
+					<h4>The HOSTS File</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">host table</text> is a mapping of host names  to the associated IP addresses. They are unique names assigned to IP hosts that provide an easy way to configure and manage remote systems within the network. Host tables are generally stored in a text file called <text class="font-italic">HOSTS</text> (no matter what operating system is running).</p>
+					<p>A host table provides static host name to IP address mapping on a router. Host tables can be created on any router on the network that requires one, and they are valid only on the router in which they are built. You use the <text class="font-weight-bold text-success">ip host</text> global configuration command to create a host table. To add a host entry to an existing table, use the <text class="font-weight-bold text-success">ip host</text> command.</p>
+					<h4>Command Reference: Creating a Host Table</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Creating a Host Table</h5>
+					<p>The following commands are used in the Creating a Host Table lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">clock rate &lt;clock-rate&gt;</text>: Sets the clock rate for a DCE interface.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ip host &lt;host-name&gt; &lt;ip-address&gt;</text>: Configures a staic host name-to-address mapping in the host cache of a device.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show hosts</text>: Displays the default domain name, a list of name server hosts, and a cached list of host names and addresses.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Creating a Host Table</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Connectivity->Creating a Host Table</b></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h4>Domain Name System (DNS)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Domain Name System (DNS)</text> is a TCP/IP name resolution service that translates a <text class="font-italic">Fully Qualified Domain Name (FQDN)</text>, which is a domain name of a specific location in the DNS hierarchy, into an IP address (or vice versa). A domain is a group of computers whose communication is managed as one unit. A domain name is a unique name that identifies a domain. DNS consists of a system of hierarchical databases that are stored on separate DNS servers on all networks that connect to the Internet. DNS servers do the following:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">List IP addresses and related computer names.</li>
+						<li class="alert alert-info" role="alert">Store, maintain, and update databases.</li>
+						<li class="alert alert-info" role="alert">Use the databases to respond to DNS client name-resolution requests to translate host names into IP addresses.</li>
+						<li class="alert alert-info" role="alert">Work together to resolve FQDNs.</li>
+						<li class="alert alert-info" role="alert">On internal networks, a local DNS service can resolve host names without using external DNS servers.</li>
+					</ul>
+					<p>A host name is the unique name given to a network node on a TCP/IP network. The <text class="font-italic">host name</text> combined with the <text class="font-italic">host's domain name</text> forms the <text class="font-italic">node's FQDN</text>. The domain name space consists of information about the hierarchy of domains and the hosts under each domain, which is referred to by the DNS servers for mapping domains. The FQDN denotes the specific location of the host in the DNS hierarchy from the top-level domain to the last.</p>
+					<p><img src="/cisco/include/img/Fig-6-5.png" class="img-thumbnail" alt="dns" width="70%" height="70%"></p>
+					<p>DNS uses TCP/UDP port <text class="font-weight-bold">53</text>.</p>
+					<h4>Name Resolution with DNS</h4>
+					<p>There are two types of DNS servers: <text class="font-italic">authoritative</text> and <text class="font-italic">recursive</text>.</p>
+					<ul>
+						<li>An <text class="font-weight-bold font-italic text-primary">authoritative DNS server</text> provides the IP mapping to a host name when requested by a recursive DNS server.</li>
+						<li>A <text class="font-weight-bold font-italic text-primary">recursive DNS server</text> gathers the name resolution requests from hosts and is responsible for fulfilling those requests.</li>
+					</ul>
+					<p>DNS lookup is the process of resolving the IP address for a host name. This operation includes the following steps:
+						<div>
+							<table class="table table-responsive table-borderless table-sm" style="width: 90%">
+								<tbody>
+									<tr class="alert alert-warning" role="alert">
+										<td class="font-weight-bold"style="width: 5%">1.</td>
+										<td style="width: 95%">A client sends a name resolution request to its preferred DNS server.</td>
+									</tr>
+									<tr class="alert alert-warning" role="alert">
+										<td class="font-weight-bold"style="width: 5%">2.</td>
+										<td style="width: 95%">The preferred DNS server checks its DNS cache entries or its local DNS database and returns the IP address to the client. If the DNS server does <u>not</u> find a match:
+											<table class="table table-responsive table-borderless table-sm">
+												<tbody>
+													<tr class="alert alert-danger" role="alert">
+														<td class="font-weight-bold"style="width: 5%">a.</td>
+														<td style="width: 95%">It requests the root server for the IP address of the DNS server, which is responsible for the top-level domain.</td>
+													</tr>
+													<tr class="alert alert-danger" role="alert">
+														<td class="font-weight-bold"style="width: 5%">b.</td>
+														<td style="width: 95%">The root server returns the IP address of the appropriate DNS server.</td>
+													</tr>
+													<tr class="alert alert-danger" role="alert">
+														<td class="font-weight-bold"style="width: 5%">c.</td>
+														<td style="width: 95%">The preferred DNS server contacts the top-level domain's DNS server to resolve the name. If solved, the preferred DNS server receives the required IP address. If the top-level domain cannot resolve the name because of additional levels in the FQDN, it sends the IP address of the second-level DNS server.</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+									<tr class="alert alert-warning" role="alert">
+										<td class="font-weight-bold"style="width: 5%">3.</td>
+										<td style="width: 95%">The communication between DNS servers continues until it reaches the level in the DNS hierarchy where a DNS server can resolve the host name.</td>
+									</tr>
+									<tr class="alert alert-warning" role="alert">
+										<td class="font-weight-bold"style="width: 5%">4.</td>
+										<td style="width: 95%">The preferred DNS server provides the client with the IP address of the target host.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</p>
+					<p><img src="/cisco/include/img/Fig-6-6.png" class="img-thumbnail" alt="dns name resolution" width="70%" height="70%"></p>
+					<h4>Command Reference: Configuring DNS</h4>
+					<p>This section contains the commands you will use in the next labs.</p>
+					<h5>Configuring DNS</h5>
+					<p>The following commands are used in the Configuring DNS labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-secondary">bedit &lt;filename&gt;</text>: Used in NetSim to open a file from a workstation.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /all</text>: Used in NetSim to display the IP address and MAC address on a workstation.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /dg &lt;ip-address&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /dns &lt;ip-address&gt;</text>: Used in NetSim to set the primary DNS server for a workstation.</li>
+						<li><text class="font-weight-bold text-success">ip dns server</text>: Enables the DNS server on a router.</li>
+						<li><text class="font-weight-bold text-success">ip domain-lookup</text>: Enables the DNS lookup feature.</li>
+						<li><text class="font-weight-bold text-success">ip host &lt;host-name&gt; &lt;ip-address&gt;</text>: Configures a staic host name-to-address mapping in the host cache of a device.</li>
+						<li><text class="font-weight-bold text-success">ip name-server &lt;ip-address&gt;</text>: Configures the name server for a device.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show hosts</text>: Displays the default domain name, a list of name server hosts, and a cached list of host names and addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: Configuring DNS I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Configuring DNS I</b></li>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+					<h5>Lab: Configuring DNS II</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Configuring DNS II</b></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure Security For Layer 2 Devices</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic C</h2>
+					</div>
+					<h3 class="text-success">Configure Layer 2 Security</h3>
+					<p>Part of your responsibilities as a CCNA is to ensure the security of various Cisco devices, such as switches.</p>
+					<h4>Layer 2 Devices and Security Mechanisms</h4>
+					<p>Layer 2 devices include switches and other devices that use MAC addresses to forward data. Common security mechanisms for Layer 2 devices include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Port security</li>
+						<li class="alert alert-info" role="alert">Secure MAC addresses</li>
+						<li class="alert alert-info" role="alert">DHCP snooping</li>
+						<li class="alert alert-info" role="alert">ARP inspection</li>
+					</ul>
+					<h4>Port Security</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Port security</text> is a feature that is used to restrict inputs at an interface by limiting and identifying the MAC addresses allowed to access the port. Port security has no restrictions on whether the frame came from a local device or it was forwarded through other switches. By implementing port security, you can block unknown devices from connecting to a specified switch port. You can also secure the port by specifying <text class="font-italic">static MAC addresses</text> or by configuring the switch to <text class="font-italic">dynamically learn a limited number of MAC addresses</text>.</p>
+					<p>When a secure port receives a frame, the source MAC address of the frame is compared with the list of secure source addresses that were <text class="font-italic">manually configured</text> or <text class="font-italic">autoconfigured</text> on the port. If the MAC address does <u>not</u> match any entry in the list of secure source addresses, the switch shuts down the port until it is administratively enabled, or drops incoming frames from the insecure host. You can configure the actions to be initiated when the security of a port is violated.</p>
+					<p>The switch determines which frames to filter by using three basic methods:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Limit the specific MAC addresses that can be allowed to send and receive frames on a switch interface, and discard frames to/from other MAC addresses.</li>
+						<li class="alert alert-success" role="alert">Limit the number of MAC addresses that are allowed to use the interface, and discard frames to/from MAC addresses that are learned after the maximum limit is reached.</li>
+						<li class="alert alert-success" role="alert">A combination of the previous two methods.</li>
+					</ul>
+					<p>The <text class="font-weight-bold text-success">switchport port-security maximum &lt;value&gt;</text> interface configuration command enables you to configure the maximum number of secure addresses allowed on a port.</p>
+					<p><img src="/cisco/include/img/Fig-7-3.png" class="img-thumbnail" alt="a-sample-lan" width="60%" height="60%"></p>
+					<h4>Secure MAC Addresses</h4>
+					<p>Cisco switches normally support three types of secure MAC addresses:</p>
+					<ul>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Static Secure MAC Addresses</text>: These types of addresses are manually configured by using the <text class="font-weight-bold text-success">switchport port-security mac-address &lt;mac-address&gt;</text> interface configuration command, stored in the address table, and added to the running configuration of the switch.</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Dynamic Secure MAC Addresses</text>: These types of addresses are dynamically configured and stored only in the address table. These addresses are <u>not</u> added to the running configuration of the switch, and are removed when the switch restarts.</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Sticky Secure MAC Addresses</text>: These types of addresses can be dynamically learned or manually configured, stored in the address table, and added to the running configuration of the switch. If these addresses are saved in the configuration file, when the switch restarts, these addresses are <u>not</u> dynamically reconfigured.</li>
+					</ul>
+					<h4>More About Sticky Secure MAC Addresses</h4>
+					<p>When you enable sticky secure MAC addresses, the device secures the MAC addresses in the same manner as dynamic address learning, and stores the addresses it learned in <text class="font-italic">non-volatile RAM (NVRAM)</text>. This results in the addresses learned by the sticky method being available even after a device restart.</p>
+					<p>The sticky secure MAC addresses are displayed in the running configuration of an interface.</p>
+					<p>Dynamic and sticky address learning are mutually exclusive, which means when sticky learning is enabled on the device, it stops using dynamic learning. In the same manner, when you disable sticky learning, the device resumes with dynamic learning.</p>
+					<p>The device does <u>not</u> age sticky secure MAC addresses.</p>
+					<p>Although it is possible for you to manually configure static secure addresses, it is <u>not</u> recommended.</p>
+					<h4>Guidelines for Configuring Port Security</h4>
+					<p>Consider the following guidelines as you are configuring port security.</p>
+					<h5>General Port Security Guidelines</h5>
+					<p>Here are some considerations related to general port security:</p>
+					<ul>
+						<li class="text-secondary alert alert-info" role="alert">You can configure port security only on static access ports or trunk ports. You <u>cannot</u> apply port security on a dynamic access port.</li>
+						<li class="text-secondary alert alert-info" role="alert">You <u>cannot</u> use a secure port as a destination port for port mirroring, also known as <i>Switched Port Analyzer (SPAN)</i>.</li>
+						<li class="text-secondary alert alert-info" role="alert">A secure port <u>cannot</u> belong to a Fast EtherChannel or a Gigabit EtherChannel port group.</li>
+						<li class="text-secondary alert alert-info" role="alert">When you are changing the maximum secure address value for an interface, specifying a new value that is greater than the existing value overwrites the previously configured value with the new value.</li>
+						<li class="text-secondary alert alert-info" role="alert">If the newly specified maximum secure address for an interface is lower than the previous value, and is also lower than the number of currently configured secured addresses on the interface, the command issued to specify the maximum secure addresses will be rejected.</li>
+						<li class="text-secondary alert alert-info" role="alert">Static secure or sticky secure MAC addresses <u>cannot</u> be configured in the voice virtual LAN (VLAN).</li>
+						<li class="text-secondary alert alert-info" role="alert">Cisco switches do <u>not</u> support port security aging of sticky secure MAC addresses.</li>
+					</ul>
+					<h4>DHCP Snooping</h4>
+					<p><text class="font-weight-bold font-italic text-primary">DHCP snooping</text> is a security feature that detects rogue DHCP servers and filters DHCP traffic originating from untrusted sources. It acts similar to a firewall between untrusted hosts and trusted DHCP servers. DHCP snooping:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Identifies DHCP messages that are received from untrusted sources and filters out the invalid messages.</li>
+						<li class="alert alert-warning" role="alert">Implements rate limits on DHCP traffic from trusted and untrusted sources.</li>
+						<li class="alert alert-warning" role="alert">Builds and manages the DHCP snooping binding database that contains information about untrusted hosts with leased IP addresses.</li>
+						<li class="alert alert-warning" role="alert">Uses the information from the DHCP snooping binding database to validate subsequent requests from untrusted hosts.</li>
+					</ul>
+					<p>The DHCP snooping feature will help you determine whether DHCP traffic sources are trusted or untrusted.</p>
+					<ul>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Trusted sources</text>: In an enterprise network, trusted sources are the devices that are under your administrative control. The devices that are trusted sources include routers, switches, and servers. For a switch, you need to indicate that a source is trusted by configuring the trust state of the interface of the switch that is connecting to it.</li>
+						<li class="alert alert-light" role="alert"><text class="font-weight-bold font-italic text-primary">Untrusted sources</text>: Untrusted sources are devices that are beyond the firewall or outside your network. Generally, host ports and unknown DHCP servers are treated as untrusted sources. In a service provider environment, any device that is outside the service provider network, such as a customer switch, is considered as an untrusted source. Also, the host ports are considered as untrusted sources. Traffic attacks or other hostile actions may be initiated by an untrusted source. The DHCP snooping feature allows you to filter messages and apply rate-limits to traffic that originates from untrusted sources and prevent such attacks.</li>
+					</ul>
+					<p>A <text class="font-weight-bold font-italic text-primary">spurious DHCP server</text> (or <text class="font-weight-bold font-italic text-primary">rogue DHCP server</text>) refers to a DHCP server that is active on your network without your knowledge and is running on an untrusted port. This server refers to any piece of equipment that is loaded with a DHCP server enabled. You need to send dummy DHCP-DISCOVER packets out to all the DHCP servers so that you receive a response back to the switch. You can use this response to detect spurious DHCP servers.</p>
+					<p>Once DHCP snooping has been enabled, all devices are in an untrusted state by default. You need to configure switch interfaces that will communicate with DHCP servers as trusted. You need to configure other interfaces as trusted, if you need to connect them to devices such as switches or routers within your network. Usually, you need <u>not</u> configure host port interfaces as trusted.</p>
+					<p>You can enable DHCP snooping on a per-VLAN basis - in other words, it can be enabled on a single VLAN or a range of VLANs.</p>
+					<h4>DHCP Snooping Binding Database</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">DHCP snooping binding database</text> is dynamically built and maintained by the DHCP snooping feature by using the information extracted from the intercepted DHCP messages. This database contains an entry for each untrusted host with a leased IP address, if DHCP snooping is enabled for the VLAN to which the host is associated. It does <u>not</u> contain entries for hosts that are connected using trusted interfaces.</p>
+					<p>Each entry in this database contains the <text class="font-italic">MAC address</text> of the host, the <text class="font-italic">leased IP address</text>, the <text class="font-italic">leased time</text>, the <text class="font-italic">binding type</text>, the <text class="font-italic">VLAN number</text>, and the <text class="font-italic">interface information</text> associated with the host. When the switch receives specific DHCP messages, the DHCP snooping feature updates the database. For example, when the switch receives a DHCP-ACK message, the DHCP snooping feature adds an entry to the database from the server. This entry will be removed from the database when the switch receives a DHCP-RELEASE message from the host or when the IP address lease expires.</p>
+					<p><img src="/cisco/include/img/Fig-7-4.png" class="img-thumbnail" alt="a-sample-lan" width="60%" height="60%"></p>
+					<p>The DHCP snooping database agent enables you to retain the bindings across reloads. In the absence of this agent, the bindings established by the DHCP snooping feature are lost upon reload, along with the connectivity. The DHCP snooping database agent stores the bindings within a file at a configured location. When the switch is reloaded, it reads the file to build the database for the bindings. The switch writes to the file as the database changes to keep the file current. Each entry in the file is tagged with a checksum, which is used to validate the entries each time the file is read. On the first line of the file, the <text class="font-italic">&lt;initial-checksum&gt;</text> entry helps distinguish entries associated with the latest write from entries that are associated with a previous write.</p>
+					<h4>Dynamic ARP Inspection</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Dynamic ARP inspection</text> is a security feature that validates that ARP packets contain <text class="font-italic">valid MAC-to-IP address bindings</text>. This feature helps defend against ARP cache poisoning and therefore <text class="font-italic">man-in-the-middle attacks</text>.</p>
+					<p>When dynamic ARP inspection is enabled on a switch, it intercepts all ARP requests and responses. When the MAC-to-IP address binding is verified as being valid, the switch updates the local ARP cache and forwards the packet to its intended destination. When DHCP snooping is enabled on the VLAN and the switch, the DHCP snooping database is used to verify the bindings.</p>
+					<p><img src="/cisco/include/img/Fig-7-5.png" class="img-thumbnail" alt="a-sample-lan" width="60%" height="60%"></p>
+					<h4>Command Reference: Security Tools</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Security Tools</h5>
+					<p>The following commands are used in the Applying Security Tools lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">action drop | forward</text>: Defines the action for matching traffic in a VLAN map.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt; &lt;subinterface-id&gt;</text>: Creates a subinterface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /all</text>: Displays the IP addresses and MAC addresses on a PC.</li>
+						<li><text class="font-weight-bold text-success">mac access-list extended &lt;access-list-name&gt;</text>: Defines an extended MAC access list.</li>
+						<li><text class="font-weight-bold text-success">match ip address &lt;access-list&gt; | mac addresss &lt;access-list&gt;</text>: Defines match criteria for a VLAN access map.</li>
+						<li><text class="font-weight-bold text-success">permit | deny any | host &lt;source-mac-address&gt; any | host &lt;destination-mac-address&gt;</text>: Allows Layer 2 traffic to be forwarded if the conditions are met.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an ICMP echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show interfaces &lt;type&gt; &lt;number&gt;</text>: Displays the interface's Data Link layer status. When the <text class="font-weight-bold text-success">&lt;type&gt;</text> and <text class="font-weight-bold text-success">&lt;number&gt;</text> parameters are included, displays detailed information about the specified interface.</li>
+						<li><text class="font-weight-bold text-success">show port-security</text>: Displays port-security settings for an interface or for the switch.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show vlan filter access-map &lt;name&gt; | vlan &lt;vlan-id&gt; &lt;subinterface-id&gt;</text>: Displays information about all VLAN filters or about a particular VLAN or VLAN access map.</li>
+						<li><text class="font-weight-bold text-success">spanning-tree bpduguard enable</text>: Enables the BPDU guard feature for an interface.</li>
+						<li><text class="font-weight-bold text-success">spanning-tree guard root</text>: Enables root guard on an interface.</li>
+						<li><text class="font-weight-bold text-success">switchport port-security</text>: Enables port security on an interface.</li>
+						<li><text class="font-weight-bold text-success">switchport port-security mac-address &lt;mac-address&gt;</text>: Specifies a secure MAC address for a port.</li>
+						<li><text class="font-weight-bold text-success">switchport port-security violation {protect | restrict | shutdown}</text>: Sets the security violation mode and the action to be taken if port security is violated.</li>
+						<li><text class="font-weight-bold text-success">vlan access-map &lt;name&gt; [&lt;number&gt;]</text>: Creates or modifies a VLAN access map and changes to VLAN access-map configuration mode.</li>
+						<li><text class="font-weight-bold text-success">vlan filter &lt;map-name&gt; {vlan-list &lt;vlan-list&gt; | interface &lt;interface-number&gt;}</text>: Applies a VLAN acces map to one or more VLANs.</li>
+					</ul>
+					<h5>Lab: Applying Security Tools</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: On the <text class="font-weight-bold">Legacy</text> tab, <text class="font-weight-bold">SWITCH->SWITCH->Applying Security Tools</text></li>
+						<li>Approximate duration: 30 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

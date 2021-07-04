@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Protocols That Support Network Communications</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic E</h2>
+					</div>
+					<h3 class="text-success">Basic Networking Protocols</h3>
+					<p>Network communication is impossible without the proper use of networking protocols. There are scores of protocols addressing various types of communication, and you need to be familiar with those used on your network.</p>
+					<h4>Protocols</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">protocol</text> is a standard set of rules that enable electronic devices to communicate. Protocols specify how information should be structured, as well as how the information should be sent and received by each device.</p>
+					<p>Various protocols are associated with each layer of the OSI or TCP/IP model, such as:</p>
+					<ul>
+						<li class="alert alert-secondary" role="alert">Media access and delivery protocols</li>
+						<li class="alert alert-secondary" role="alert">Addressing and routing protocols</li>
+						<li class="alert alert-secondary" role="alert">Transport protocols</li>
+						<li class="alert alert-secondary" role="alert">Application protocols</li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Some protocols are multilayer and do <u>not</u> easily fit into one of these four designations.</text></li>
+					</ul>
+					<h4>Media Access and Delivery Protocols</h4>
+					<p>Media access and delivery protocols are those that operate at the <text class="font-italic">Network Interface layer</text> of the <text class="font-italic">TCP/IP model</text> (and the <text class="font-italic">Physical</text> and <text class="font-italic">Data Link layers</text> of the <text class="font-italic">OSI model</text>). These protocols and standards include:</p>
+					<ul class="alert alert-light" role="alert">
+						<li class="alert alert-info" role="alert">Ethernet and its variations, such as Fast Ethernet and Gigabit Ethernet.</li>
+						<li class="alert alert-info" role="alert">Asynchronous Transfer Mode (ATM).</li>
+						<li class="alert alert-info" role="alert">Token Ring.</li>
+						<li class="alert alert-info" role="alert">Fiber Distributed Data Interface (FDDI).</li>
+						<li class="alert alert-info" role="alert">Point-to-Point Protocol (PPP)</li>
+					</ul>
+					<h4>Addressing and Routing Protocols</h4>
+					<p>Addressing and routing protocols are those that operate at the <text class="font-italic">Network layer</text> of the <text class="font-italic">TCP/IP model</text> (and the <text class="font-italic">Network layer</text> of the <text class="font-italic">OSI model</text>). These protocols and standards include:</p>
+					<ul class="alert alert-light" role="alert">
+						<li class="alert alert-warning" role="alert">Internet Protocol (IP), including both IPv4 and IPv6.</li>
+						<li class="alert alert-warning" role="alert">Address Resolution Protocol (ARP).</li>
+						<li class="alert alert-warning" role="alert">Internet Control Message Protocol (ICMP).</li>
+						<li class="alert alert-warning" role="alert">Open Shortest Path First (OSPF).</li>
+						<li class="alert alert-warning" role="alert">Internet Group Management Protocol (IGMP).</li>
+					</ul>
+					<h4>Transport Protocols</h4>
+					<p>Transport protocols are those that operate at the <text class="font-italic">Transport layer</text> of the <text class="font-italic">TCP/IP model</text> (and the <text class="font-italic">Transport layer</text> of the <text class="font-italic">OSI model</text>). These protocols and standards include:</p>
+					<ul class="alert alert-light" role="alert">
+						<li class="alert alert-danger" role="alert">Transmission Control Protocol (TCP): The most popular protocol stack used today to transmit and receive data throughout corporations and the Internet.</li>
+						<li class="alert alert-danger" role="alert">User Datagram Protocol (UDP): A connectionless transport protocol that is often used when faster service is required.</li>
+					</ul>
+					<p>The following table describes these protocols in more detail.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 15%">Transport Protocol</th>
+									<th style="width: 80%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-success">A connection-oriented, guaranteed-delivery protocol used to send data segments between computers over a network such as the Internet.</li>
+											<li class="list-group-item list-group-item-success">Works with IP to transfer data.</li>
+											<li class="list-group-item list-group-item-success">Responsible for breaking up data into segments, reassembling them at the other end, resending data lost in transit, and sequencing data.</li>
+											<li class="list-group-item list-group-item-success">Sends data, waits for an acknowledgement, and fixes erroneous data.</li>
+											<li class="list-group-item list-group-item-success">Used in both LANs and WANs.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold font-italic text-info">UDP</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-info">A connectionless, best-effort delivery protocol that is used with IP.</li>
+											<li class="list-group-item list-group-item-info">Lacks reliability, flow-control, and error-recovery functions.</li>
+											<li class="list-group-item list-group-item-info">Is less complex than TCP.</li>
+											<li class="list-group-item list-group-item-info">Provides faster service because it is a connectionless protocol.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Ports and Port Numbers</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">Network port</text> is a number that identifies one side of a connection between two computers. Because so many types of messages travel to and from network nodes, port numbers help to identify which process or application is sending or should receive a particular message.</p>
+					<p>This table lists common TCP and UDP port numbers.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 15">Port Number</th>
+									<th style="width: 15%">Protocol</th>
+									<th style="width: 70%">Service Name/Service</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">20</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">ftp-data/File Transfer Protocol (default data)</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">21</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">ftp/File Transfer Protocol (control)</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">22</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">ssh/SSH</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">23</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">telnet/Telnet</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">25</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">smtp/SMTP</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">53</td>
+									<td class="font-weight-bold font-italic text-warning">TCP, UDP</td>
+									<td class="font-weight-bold font-italic text-warning">dns/DNS</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">67</td>
+									<td class="font-weight-bold font-italic text-warning">TCP, UDP</td>
+									<td class="font-weight-bold font-italic text-warning">bootps/DHCP (BOOTP) server</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">68</td>
+									<td class="font-weight-bold font-italic text-warning">TCP, UDP</td>
+									<td class="font-weight-bold font-italic text-warning">bootpc/DHCP (BOOTP) client</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold font-italic text-secondary">69</td>
+									<td class="font-weight-bold font-italic text-secondary">UDP</td>
+									<td class="font-weight-bold font-italic text-secondary">tftp/Trivial File Transfer Protocol</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">80</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">http/HTTP</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">110</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">pop3/POP3</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold font-italic text-secondary">123</td>
+									<td class="font-weight-bold font-italic text-secondary">UDP</td>
+									<td class="font-weight-bold font-italic text-secondary">ntp/NTP</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">143</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">imap/IMAP</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold font-italic text-secondary">161</td>
+									<td class="font-weight-bold font-italic text-secondary">UDP</td>
+									<td class="font-weight-bold font-italic text-secondary">snmp/SNMP</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">389</td>
+									<td class="font-weight-bold font-italic text-warning">TCP, UDP</td>
+									<td class="font-weight-bold font-italic text-warning">ldap/LDAP</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">443</td>
+									<td class="font-weight-bold font-italic text-success">TCP</td>
+									<td class="font-weight-bold font-italic text-success">https/HTTPS</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">546</td>
+									<td class="font-weight-bold font-italic text-warning">TCP, UDP</td>
+									<td class="font-weight-bold font-italic text-warning">dhcpv6-client/DHCPv6 client</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">547</td>
+									<td class="font-weight-bold font-italic text-warning">TCP, UDP</td>
+									<td class="font-weight-bold font-italic text-warning">dhcpv6-server/DHCPv6 server</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">3389</td>
+									<td class="font-weight-bold font-italic text-warning">TCP, UDP</td>
+									<td class="font-weight-bold font-italic text-warning">rdp/RDP</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Application Protocols</h4>
+					<p>Application protocols are those that operate at the <text class="font-italic">Application layer</text> of the <text class="font-italic">TCP/IP model</text> (and the <text class="font-italic">Transport layer</text> of the <text class="font-italic">OSI model</text>). They are the primary means for an application to request network services from the operating system. These protocols and standards include:</p>
+					<ul class="alert alert-light" role="alert">
+						<li class="alert alert-success" role="alert">Border Gateway Protocol (BGP)</li>
+						<li class="alert alert-success" role="alert">Domain Name System (DNS)</li>
+						<li class="alert alert-success" role="alert">Dynamic Host Configuration Protocol (DHCP)</li>
+						<li class="alert alert-success" role="alert">File Transfer Protocol (FTP)</li>
+						<li class="alert alert-success" role="alert">Gopher</li>
+						<li class="alert alert-success" role="alert">HyperText Transfer Protocol (HTTP)</li>
+						<li class="alert alert-success" role="alert">Network File System (NFS)</li>
+						<li class="alert alert-success" role="alert">Network Time Protocol (NTP)</li>
+						<li class="alert alert-success" role="alert">Post Office Protocol version 3 (POP3)</li>
+						<li class="alert alert-success" role="alert">Routing Information Protocol (RIP)</li>
+						<li class="alert alert-success" role="alert">Simple Mail Transfer Protocol (SMTP)</li>
+						<li class="alert alert-success" role="alert">Simple Network Management Protocol (SNMP)</li>
+						<li class="alert alert-success" role="alert">Telnet</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="font-weight-bold text-secondary text-center">Licensed For Use Only By: John O'Kelly johnpo@jprro.co.za Jun 20 2020 9:47AM</p>
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

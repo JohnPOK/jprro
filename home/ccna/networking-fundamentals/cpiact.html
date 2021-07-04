@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Compare Physical Interface and Cabling Types</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic F</h2>
+					</div>
+					<h3 class="text-success">Tranmission Media and Connectors</h3>
+					<p>Due to the open nature of the OSI model and the TCP/IP model, there are many options for carrying networking signals. As a CCNA, you are expected to distinguish between different transmission media and physical interfaces.</p>
+					<h4>Tranmission Media</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">transmission medium</text> is a physical path for electrical, optical, or electromagnetic signals to travel for data transfer from a sender to a receiver. Two main types of tranmission media are commonly used: <text class="font-italic">bounded (wired)</text> and <text class="font-italic">unbounded (wireless)</text>.</p>
+					<p><img src="/cisco/include/img/Fig-1-21.png" class="img-thumbnail" alt="transmission media can be bounded or unbounded" width="70%" height="70%"></p>
+					<h4>Physical Media</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Physical media</text> are bounded transmission media that are normally composed of copper or glass cables and their connectors.</p>
+					<p><img src="/cisco/include/img/Fig-1-22.png" class="img-thumbnail" alt="physical media is normally made of copper or glass" width="75%" height="75%"></p>
+					<h4>Copper Cabling</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Copper cable</text> is a type of physical media that is composed of strands of copper wire that are either twisted around each other (twisted pair) or enclosed in layers of insulation and copper mesh (coaxial).</p>
+					<p>Twisted pair cables can be further categorized as <text class="font-italic">unshielded</text> or <text class="font-italic">shielded</text>.</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Unshielded twisted pair (UTP)</text> cable is the most common type of cable used for Ethernet networks with speeds up to <text class="font-weight-bold">10 Gbps</text>. Four wire pairs are twisted around each other to minimize electromagnetic interference and enclosed in a plastic sheath.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Shielded twisted pair (STP)</text> cable are found in high-speed networks. For <text class="font-weight-bold">10 Gbps</text> Ethernet distances greater than <text class="font-weight-bold">55 meters</text>, STP must be used. Like UTP, four wire pairs are twisted around each other, <u>but</u> a metal shield encloses the wires (for additional protection from interference), and then the entire cable is enclosed in a plastic sheath.</li>
+					</ul>
+					<p>To ensure that the building or campus infrastructure is able to meet the needs of deploying both <text class="font-weight-bold">100</text> and <text class="font-weight-bold">1000 Mbps</text> Ethernet, the cabling you use must adhere to specifications defined by the <text class="font-italic">Electronic Industries Association (EIA)</text> and the <text class="font-italic">Telecommunications Industry Association (TIA)</text>. The standards vary for each type of Ethernet and define areas such as <text class="font-italic">connector type</text>, <text class="font-italic">maximum cable length</text>, and the <text class="font-italic">type of physical media</text> used.</p>
+					<p><img src="/cisco/include/img/Fig-1-23.png" class="img-thumbnail" alt="copper cable" width="70%" height="70%"></p>
+					<h4>Copper Connectors</h4>
+					<p>Copper connectors are placed at the ends of copper cables to provide an interface for connecting to electronic devices such as computers, switches, and broadband routers.</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Twisted pair connectors are called <text class="font-weight-bold">RJ-45</text> connectors and resemble a telephone jack.</li>
+						<li class="alert alert-success" role="alert">Coaxial connectors used in networking are called <text class="font-italic">BNC</text> connectors, which are round metal connectors that either have a protruding metal pin or a receptacle to receive the pin.</li>
+					</ul>
+					<p><img src="/cisco/include/img/Fig-1-24.png" class="img-thumbnail" alt="copper connectors" width="70%" height="70%"></p>
+					<h4>Power over Ethernet</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Power over Ethernet (PoE)</text> is the practice of using regular twisted pair cabling to carry both <text class="font-italic">DC electricity</text> and <text class="font-italic">Ethernet data</text>. Typically, PoE is used where it is <u>not</u> practical to install an electrical power supply for devices such as wireless APs, IP cameras, IP phones, and keyless entry pads. PoE can be supplied from a PoE-capable switch, or added to the line by a PoE injector. Most PoE implementations supply <text class="font-weight-bold">48 volts DC</text> at <text class="font-weight-bold">15.4 watts</text> per device.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Both the device and the switch must support PoE.</text></li>
+					</ul>
+					<p><img src="/cisco/include/img/Fig-1-25.png" class="img-thumbnail" alt="poe implementations" width="70%" height="70%"></p>
+					<h4>Fiber Optic Cabling</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Fiber optic cable</text> is a type of physical media that is composed of ultra-thin strands of glass or plastic through which light can pass. It supports much longer distances than the <text class="font-weight-bold">100 meters</text> supported by Ethernet on UTP cables. It also experiences much less interference from outside sources when compared to copper cables.</p>
+					<p>The two main types of fiber optic cabling are:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Single-mode fiber</li>
+						<li class="alert alert-warning" role="alert">Multimode fiber</li>
+					</ul>
+					<p>These correspond to the <text class="font-weight-bold font-italic text-primary">propagation mode</text>, which is a characteristic of light waves that refers to how the light travels through a medium such as optical fiber. Variations in the intensity of the light over the cable's cross section and down its length are caused by reflection and refraction, and the number of modes in a given cable depend on the cable's dimensions and the amount of refraction that occurs in the core and cladding.</p>
+					<p><img src="/cisco/include/img/Fig-1-26.png" class="img-thumbnail" alt="fiber optic cable" width="70%" height="70%"></p>
+					<h4>Single-Mode Fiber</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Single-mode fiber (SMF)</text> is an optical fiber designed to carry light directly down the fiber in <text class="font-italic">only one propagation mode</text>. This enables the signal to travel longer distances, but is more expensive than multimode fiber and is used with laser-based hardware for long-distance high-bandwidth connections such as those implemented by telephone companies, cable television providers, and higher education.</p>
+					<p><img src="/cisco/include/img/Fig-1-27.png" class="img-thumbnail" alt="single-mode fiber is used for long-haul communications" width="70%" height="70%"></p>
+					<h4>Multimode Fiber</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Multimode fiber (MMF)</text> is an optical fiber designed to carry light directly down the fiber in <text class="font-italic">more than one propagation mode</text>. This cable type has a larger core than SMF (enabling multiple signals to be transmitted), but more signals are lost over longer distances. It is generally cheaper than SMF and it works fine with less-expensive LEDs in LANs.</p>
+					<p><img src="/cisco/include/img/Fig-1-28.png" class="img-thumbnail" alt="multimode fiber is often used in lans" width="70%" height="70%"></p>
+					<h4>Fiber Optic Connectors</h4>
+					<p>Fiber optic connectors provide the interfaces for fiber optic cables to be connected to network devices or nodes. There are many connectors available, but the most common are <text class="font-italic">ST</text>, <text class="font-italic">SC</text>, <text class="font-italic">FC</text>, <text class="font-italic">MT-RJ</text>, and <text class="font-italic">LC</text>, each of which can be used with single-mode or multimode fiber.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 20%">Connector Type</th>
+									<th style="width: 80%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-light" role="alert">
+									<td class="text-primary">
+										<text class="font-weight-bold">ST (Straight Tip)</text>
+										<p><img src="/cisco/include/img/fo-st-connector.png" class="img-thumbnail" alt="straight tip connector" width="60%" height="60%"></p>
+									</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-info">Are similar in appearance to BNC connectors.</li>
+											<li class="list-group-item list-group-item-info">Are generally used to connect multimode fibers.</li>
+											<li class="list-group-item list-group-item-info">Have a straight, ceramic center pin and bayonet lug lockdown.</li>
+											<li class="list-group-item list-group-item-info">Are often used in network patch panels.</li>
+											<li class="list-group-item list-group-item-info">Are among the most popular types of fiber connectors.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="text-primary">
+										<text class="font-weight-bold">SC (Subscriber Connector)</text>
+										<p><img src="/cisco/include/img/fo-sc-connector.png" class="img-thumbnail" alt="subscriber connector" width="60%" height="60%"></p>
+									</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-info">Are box-shaped connectors that snap into a receptacle.</li>
+											<li class="list-group-item list-group-item-info">Are often used in a duplex configuration where two fibers are terminated into two SC connectors that are molded together.</li>
+											<li class="list-group-item list-group-item-info">Are generally used with single-mode fiber.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="text-primary">
+										<text class="font-weight-bold">FC (Ferrule Core)</text>
+										<p><img src="/cisco/include/img/fo-fc-connector.png" class="img-thumbnail" alt="ferrule core connector" width="60%" height="60%"></p>
+									</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-info">Use a heavy duty <text class="font-weight-bold font-italic text-primary">ferrule</text> in the center for better mechanical stability than ST connectors. A ferrule is a tubular structure made of ceramic or metal that aligns and protects the stripped end of an optical fiber.</li>
+											<li class="list-group-item list-group-item-info">Are popular in industrial settings where greater strength and durability is required.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="text-primary">
+										<text class="font-weight-bold">MT-RJ (Mechanical Transfer-Registered Jack)</text>
+										<p><img src="/cisco/include/img/fo-mtrj-connector.png" class="img-thumbnail" alt="mechanical transfer-registered jack connector" width="60%" height="60%"></p>
+									</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-info">Are sometimes referred to as <text class="font-italic">Fiber Jack</text> connectors.</li>
+											<li class="list-group-item list-group-item-info">Are compact snap-to-lock connectors, making them easy to use.</li>
+											<li class="list-group-item list-group-item-info">Are normally used with multimode fiber.</li>
+											<li class="list-group-item list-group-item-info">Are similar in size to the <text class="font-weight-bold">RJ-45</text> connector.</li>
+											<li class="list-group-item list-group-item-info">Connect two strands of fiber.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="text-primary">
+										<text class="font-weight-bold">LC (Lucent Connector)</text>
+										<p><img src="/cisco/include/img/fo-lc-connector.png" class="img-thumbnail" alt="lucent connector" width="60%" height="60%"></p>
+									</td>
+									<td>
+										<ul class="list-group">
+											<li class="list-group-item list-group-item-info">Are sometimes referred to as "<text class="font-italic">Little Connectors</text>".</li>
+											<li class="list-group-item list-group-item-info">Are used for both single-mode and multimode fiber.</li>
+											<li class="list-group-item list-group-item-info">Has a small form factor ceramic ferrule. (It is about half the size of an SC or ST connector.)</li>
+											<li class="list-group-item list-group-item-info">Use an <text class="font-weight-bold">RJ-45-type latching</text>.</li>
+											<li class="list-group-item list-group-item-info">Can be used to transition installations from twisted pair (copper) cabling to fiber.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Wireless Communication Methods</h4>
+					<p>Wireless communication is another term used for unguided transmission, and common methods include the use of:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert">Radio waves</li>
+						<li class="alert alert-danger" role="alert">Microwaves</li>
+						<li class="alert alert-danger" role="alert">Infrared light</li>
+					</ul>
+					<h4>Radio Frequency (RF) Communications</h4>
+					<p><text class="font-weight-bold font-italic text-primary">RF (radio frequency) communication</text> uses unguided media in the form of radio waves to transmit data from sender to receiver. The term RF refers to the rate of oscillation of electrical current in the range of <text class="font-weight-bold">20 kiloHertz (kHz)</text> to <text class="font-weight-bold">300 gigaHertz (gHz)</text>.</p>
+					<h4>Wi-Fi</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Wi-Fi (wireless fidelity)</text> is a subset of RF communications that is based on <text class="font-weight-bold">IEEE 802.11</text> standards and enables the creation and use of wireless LANs (WLANs).</p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="font-weight-bold text-secondary text-center">Licensed For Use Only By: John O'Kelly johnpo@jprro.co.za Jun 20 2020 9:47AM</p>
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

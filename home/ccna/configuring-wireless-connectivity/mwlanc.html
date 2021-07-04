@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Manage WLAN Connections</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Manage WLAN Connections</h3>
+					<p>One of the main responsibilities of a CCNA is to manage WLAN connections. This topic describes the options you have for connecting to WLCs and APs so that you can manage them.</p>
+					<h4>Console Port</h4>
+					<p>When you use the CLI to configure Cisco network devices, you have the option of using a direct serial connection to the console port, or you can use a remote network session. You typically connect to the AP's console port to configure it to be either stand-alone, with its own configuration, or to be a LAP controlled by a WLC.</p>
+					<p>To directly connect a computer to a Cisco device such as a WLC, you need:
+						<ul class="alert alert-info" role="alert">
+							<li>A Cisco console cable to plug into the controller's console port and the serial port of your computer. One end of the cable has an <text class="font-weight-bold">RJ-45</text> connector for the console port, and the other end has a serial connector for the serial port.</li>
+							<li>A computer that must be running a terminal emulation program such as PuTTY. This program should be configured with default settings.</li>
+							<li>A valid user name and password for logging on to the device.</li>
+						</ul>
+					</p>
+					<h4>Telnet</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Telnet</text> is a protocol that enables TCP/IP connections to a host. Telnet enables a user at one site to establish a TCP connection to a login server at another site and then allows keystrokes to be passed from one device to the other. Telnet can accept either an IP address or a domain name as the address of the remote device. The Telnet application protocol invokes the terminal emulator or a Telnet client. The Telnet server is the device that listens for the commands and replies to the commands. Because Telnet sends all traffic in clear text, it is <u>not</u> a secure form of management and SSH should be used instead whenever possible.</p>
+					<p>For managing Cisco devices remotely using Telnet, you need:
+						<ul class="alert alert-warning" role="alert">
+							<li>A computer that is connected to the network and that can reach the device's management IP address or service port address.</li>
+							<li>The IP address of the device.</li>
+							<li>A <text class="font-weight-bold">VT-100</text> terminal emulation program to run the Telnet session. The program should be configured with an IP address and to use TCP port <text class="font-weight-bold">23</text>.</li>
+							<li>A valid user name and password to log in to the device.</li>
+						</ul>
+					</p>
+					<p>In addition, the device needs to be configured to accept Telnet connections.</p>
+					<h4>SSH</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Secure Shell (SSH)</text> is a protocol that provides a secure remote access connection to network devices. Unlike Telnet, both versions of SSH (<text class="font-weight-bold">1</text> and <text class="font-weight-bold">2</text>) encrypt the communications between the client and server. You should implement SSH version <text class="font-weight-bold">2</text> whenever possible because it uses a more enhanced security encryption algorithm than SSH version <text class="font-weight-bold">1</text>.</p>
+					<p>To enable SSH support on a Cisco WLC, you would perform the following process:
+						<div>
+							<table class="table table-responsive table-borderless table-sm">
+								<tbody>
+									<tr class="alert alert-success" role="alert">
+										<td class="font-weight-bold">1.</td>
+										<td>Configure the <text class="font-weight-bold text-success">hostname</text> command to specify a valid host name.</td>
+									</tr>
+									<tr class="alert alert-success" role="alert">
+										<td class="font-weight-bold">2.</td>
+										<td>Configure the <text class="font-italic">Domain Name System (DNS)</text> domain to define your domain.</td>
+									</tr>
+									<tr class="alert alert-success" role="alert">
+										<td class="font-weight-bold">3.</td>
+										<td>Generate the SSH key to be used.</td>
+									</tr>
+									<tr class="alert alert-success" role="alert">
+										<td class="font-weight-bold">4.</td>
+										<td>Enable SSH transport support for the virtual type terminal.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<ul class="list-group">
+							<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> On Windows clients, you will need to download an SSH client application such as PuTTY.</text></li>
+						</ul>
+					</p>
+					<h4>Command Reference: Configuring SSH</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Configuring SSH</h5>
+					<p>The following commands are used in the Configuring SSH lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">crypto key generate rsa</text>: Generate RSA key pairs.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">ip domain-name &lt;name&gt;</text>: Defines a default domain name to complete unqualified host names.</li>
+						<li><text class="font-weight-bold text-success">ip ssh time-out &lt;seconds&gt;</text>: Configures the time interval that the router waits for the SSH client to respond.</li>
+						<li><text class="font-weight-bold text-success">ip ssh version [1 | 2]</text>: Specifies the version of SSH to be run on a device.</li>
+						<li><text class="font-weight-bold text-success">line vty 0 4</text>: Enters configuration mode for the specified virtual terminal (VTY) lines.</li>
+						<li><text class="font-weight-bold text-success">login local</text>: Configures the device to use its local database for authentication at login.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip ssh</text>: Displays the version and configuration data for SSH.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show ssh</text>: Displays the status of SSH server connections on the device.</li>
+						<li><text class="font-weight-bold text-success">ssl [-l &lt;user-id&gt;] &lt;ip-address&gt; | &lt;host-name&gt;</text>: Starts an encrypted session with a remote networking device.</li>
+						<li><text class="font-weight-bold text-success">telnet &lt;ip-address&gt;</text>: Starts the terminal emulation program from a PC, router, or switch - permits you to access devices remotely over the network.</li>
+						<li><text class="font-weight-bold text-success">transport input [all | none | ssh | telnet]</text>: Defines which protocols to connect to a specific line of a router.</li>
+						<li><text class="font-weight-bold text-success">username &lt;name&gt; privilege &lt;privilege-level&gt; password &lt;password&gt;</text>: Creates a local user name and password pair and sets the privilege level for the user.</li>
+					</ul>
+					<h5>Lab: Configuring SSH</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->Configuring SSH</text></li>
+						<li>Approximate duration: 10 minutes</li>
+					</ul>
+					<h4>HTTP and HTTPS</h4>
+					<p>If you want to use a graphical interface to manage your WLANs, you can enable the controller's distribution system port as a web port or secure web port by using <text class="font-italic">HyperText Transfer Protocol (HTTP)</text> and <text class="font-italic">HyperText Transfer Protocol Secure (HTTPS)</text>, respectively.</p>
+					<ul>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-primary">HTTP</text> is a protocol that forms the basis of the World Wide Web. It defines how messages are formatted and transmitted, along with how web servers and browsers should respond to various commands.</li>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-primary">HTTPS</text> is an extension of HTTP that uses <text class="font-italic">Secure Sockets Layer (SSL)</text> or <text class="font-italic">Transport Layer Security (TLS)</text> to encrypt communications. Once HTTPS is enabled, the controller generates a local web administration SSL certificate and applies it to the management GUI.</li>
+					</ul>
+					<p>You can use the GUI or CLI to enable web and secure web modes.</p>
+					<h4>TACACS+</h4>
+					<p>You can use TACACS+ to provide authentication services to enterprise WLANs. <text class="font-weight-bold font-italic text-primary">Terminal Access Controller Access Control System Plus (TACACS+)</text> is a Cisco proprietary protocol that enables centralized authentication of remote user access to network devices through <text class="font-italic">authentication, authorization, and accounting (AAA)</text>. Implementing TACACS+ requires a TACACS+ server. A TACACS+ daemon running on the server supports a database that stores TACACS+ service information. It enables the use of a single access control server with separate databases to handle AAA services independently. It uses TCP port <text class="font-weight-bold">49</text> and supports multifactor authentication.</p>
+					<p><img src="/cisco/include/img/Fig-5-5.png" class="img-thumbnail" alt="tacacs+ server provides authentication services" width="50%" height="50%"></p>
+					<h4>Command Reference: Configuring IOS Security II: TACACS+</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Configuring IOS Security II: TACACS+</h5>
+					<p>The following commands are used in the Configuring IOS Security II: TACACS+ lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">aaa authentication login [default |  &lt;list-name&gt; ] method1 [method2 ...]</text>: Enables AAA login.</li>
+						<li><text class="font-weight-bold text-success">aaa new-model</text>: Enables the AAA model.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enter global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">line vty 0 15</text>: Enters configuration mode for the specified virtual terminal (VTY) lines.</li>
+						<li><text class="font-weight-bold text-success">login</text>: Enables password checking.</li>
+						<li><text class="font-weight-bold text-success">login authentication [default |  &lt;list-name&gt; ]</text>: Enables login to a TACACS+ server.</li>
+						<li><text class="font-weight-bold text-success">password &lt;password&gt;</text>: Specifies the password that is required for a user to log in.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+						<li><text class="font-weight-bold text-success">tacacs-server host &lt;ip-address&gt; single-connection</text>: Sets the authentication encryption key used for all TACACS+ communication between the access server and the TACACS+ daemon.</li>
+						<li><text class="font-weight-bold text-secondary">tacacs user &lt;name&gt; password &lt;password&gt;</text>: Used in NetSim to create a user name and password pair on a workstation configured as a TACACS server.</li>
+						<li><text class="font-weight-bold text-secondary">tacacs key &lt;case-sensitive-key-phrase&gt;</text>: Used in NetSim to add a TACACS key to a workstation configured as a TACACS server.</li>
+						<li><text class="font-weight-bold text-success">telnet &lt;ip-address&gt;</text>: Starts the terminal emulation program from a PC, router, or switch - permits you to access devices remotely over the network.</li>
+						<li><text class="font-weight-bold text-success">username &lt;name&gt; password &lt;password&gt;</text>: Creates a local user name and password pair.</li>
+					</ul>
+					<h5>Lab: Configuring IOS Security II: TACACS+</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Infrastructure Security->Configuring IOS Security II: TACACS+</text></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+					<h4>Radius</h4>
+					<p><text class="font-weight-bold text-primary">Remote Authentication Dial-In User Service (RADIUS)</text> is an open standard that enables a server to provide standardized and centralized authentication for remote users through AAA. RADIUS uses UDP port numbers <b>1812</b> and <b>1813</b>. You can configure an authentication server as a RADIUS server, and all of the other devices that access the server, including remote access servers, can be configured as RADIUS clients. The RADIUS clients pass all authentication requests to the RADIUS server. You can configure Cisco routers, APs, and switches as RADIUS clients. User configuration, remote access policies, and usage logging are centralized on the RADIUS server.</p>
+					<p>RADIUS is based on a distributed client/server architecture. It provides for centralized authentication in a network that includes servers from different vendors. It can also be used on networks where user access must be restricted to a specific service, resource accoutning services must be provided, or users must be authenticated to access specific resources. RADIUS does <u>not</u> support two-way authentication and is <u>not</u> suitable for network environments that use multiple protocols. RADIUS associates users with one particular service model. Therefore, it is <u>not</u> suitable for networks that need to support multiple services.</p>
+					<p><img src="/cisco/include/img/Fig-5-6.png" class="img-thumbnail" alt="radius servers provide authentication services" width="45%" height="45%"></p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

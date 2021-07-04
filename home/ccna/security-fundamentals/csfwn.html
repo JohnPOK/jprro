@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure Security For Wireless Networking</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic D</h2>
+					</div>
+					<h3 class="text-success">Configure Wireless Security</h3>
+					<p>Configuring wireless security ensures that your WLAN traffic is safe from unauthorized access.</p>
+					<h4>Wireless Security Considerations</h4>
+					<p>Bounded media provides physical security for the signal. In other words, you have to make a physical connection to the network to exploit it. With unbounded media, all you need is RF, so if you are in range, you can see the signal. If you can see it, you can capture it, and unless it's encrypted, you might be able to read it.</p>
+					<p>Wireless security controls focus on the available wireless security protocols and how a WLAN is configured.</p>
+					<h4>Wireless Security Protocols</h4>
+					<p>There are several wireless security protocols implemented on today's networks, as described in this table.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 15%">Protocol</th>
+									<th style="width: 85%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">WEP</text></td>
+									<td class="text-secondary">Stands for <text class="font-weight-bold">Wired Equivalent Privacy</text> and is a legacy protocol that should <u>not</u> be used to secure wireless network traffic.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">WPA</td>
+									<td class="text-secondary">Stands for <text class="font-weight-bold">Wi-Fi Protected Access</text> and was built to replace WEP. It uses a <text class="font-italic">pre-shared key (PSK)</text> of up to <text class="font-weight-bold">256 bits</text> for authentication. It introduced the <text class="font-italic">Temporal Key Integrity Protocol (TKIP)</text> that changes the key for each transmitted packet and provides message integrity. WPA has been replaced by WPA2 and should <u>not</u> be used to secure wireless traffic.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold text-info">WPA2</td>
+									<td class="text-secondary">Is an update to and replacement for WPA that offers <text class="font-italic">Advanced Encryption Standard (AES)</text> as an option for encryption. There are two versions: <text class="font-weight-bold">WPA2 personal</text> (which uses <text class="font-italic">PSKs</text> for authentication) and <text class="font-weight-bold">WPA2 enterprise</text> (which uses <text class="font-weight-bold">IEEE802.1x</text> and <text class="font-italic">RADIUS</text> for authentication).</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">WPA3</td>
+									<td class="text-secondary">Is an update to and replacement for WPA2 and provides enhanced encryption for private and public networks. Like WPA2, it offers personal and enterprise versions. <text class="font-weight-bold">WPA3 personal</text> uses <text class="font-weight-bold">128-bit</text> encryption and PSKs, while <text class="font-weight-bold">WPA3 enterprise</text> uses <text class="font-weight-bold">192-bit</text> encryption and <text class="font-weight-bold">802.1x</text> for authentication.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>As you can see, securing wireless traffic includes the implementation of both <text class="font-italic">authentication</text> and <text class="font-italic">encryption</text>. However, there are some instances where you might <u>not</u> want or need to implement authentication, such as in the case of a <text class="font-italic">guest network</text>. In this situation, a <text class="font-italic">captive portal</text> is often used, which requires a user to accept terms of use rather than provide a password. Be aware that most captive portals use unencrypted wireless connections, shifting the security burden onto the client.</p>
+					<h4>WLAN Configuration</h4>
+					<p>To provide security on your WLAN, you need to configure a wireless security protocol. WPA2 is widely deployed, and it is strongly recommended that you implement it or WPA3. You also need to decide if you will use the personal or enterprise version of whichever protocol you use.</p>
+					<p>On a Cisco WLC, you can use the command line or the GUI tool to configure security protocols on a WLAN. The general steps for configuring WPA2 with a PSK through the GUI are:</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold"style="width: 5%">1.</td>
+									<td style="width: 95%">If necessary, create a WLAN.</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold"style="width: 5%">2.</td>
+									<td style="width: 95%">On the WLAN, enable WPA2 and map it to the interface or interface group that connects to the APs.</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold"style="width: 5%">3.</td>
+									<td style="width: 95%">Configure Layer 2 security to:
+										<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+											<tbody>
+												<tr class="alert alert-light" role="alert">
+													<td class="font-weight-bold"style="width: 5%">a.</td>
+													<td td style="width: 95%">Enable a WPA2 policy.</td>
+												</tr>
+												<tr class="alert alert-light" role="alert">
+													<td><b>b.</b></td>
+													<td>Select AES or TKIP as the encryption method.</td>
+												</tr>
+												<tr class="alert alert-light" role="alert">
+													<td class="font-weight-bold"style="width: 5%">c.</td>
+													<td td style="width: 95%">Select PSK as the authentication method.</td>
+												</tr>
+												<tr class="alert alert-light" role="alert">
+													<td class="font-weight-bold"style="width: 5%">d.</td>
+													<td td style="width: 95%">Specify the PSK format.</td>
+												</tr>
+												<tr class="alert alert-light" role="alert">
+													<td class="font-weight-bold"style="width: 5%">e.</td>
+													<td td style="width: 95%">Specify the text for the PSK.</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+								</tr>
+								<tr class="alert alert-secondary" role="alert">
+									<td class="font-weight-bold"style="width: 5%">4.</td>
+									<td style="width: 95%">Save the configuration.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p><img src="/cisco/include/img/Fig-7-6.png" class="img-thumbnail" alt="a-sample-lan" width="60%" height="60%"></p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

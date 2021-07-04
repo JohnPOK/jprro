@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Explain Basic Concepts Of Switching</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic A</h2>
+					</div>
+					<h3 class="text-success">Switching Concepts</h3>
+					<p>In this lesson, you will configure switching. Before you start the actual configuration tasks, there are some basic concepts you should be aware of.</p>
+					<h4>Media Access Control (MAC) Addresses</h4>
+					<p>A <text class="font-weight-bold font-italic text-primary">Media Access Control (MAC) address</text> is a hardware identification number that uniquely identifies each network interface on a network. It is a <text class="font-weight-bold">48-bit</text> serial number that is programmed into the NIC during the manufacturing process. Sometimes referred to as the <text class="font-italic">physical address</text> or <text class="font-italic">burned-in address (BIA)</text>, it is used by the MAC sublayer of the Data Link layer of the OSI model to identify which device should receive a data frame.</p>
+					<p>There are two parts to every MAC address: the <text class="font-italic">organizational unique identifier (OUI)</text> and the <text class="font-italic">vendor-assigned address</text>. OUIs are assigned to hardware vendors by the IEEE. For instance, if you have this MAC address:</p>
+					<p><text class="font-weight-bold font-italic text-dark">00-04-a1-08-d8-18</text></p>
+					<p>the OUI is <text class="font-weight-bold font-italic text-dark">00-04-a1</text> and the vendor-assigned number is <text class="font-weight-bold font-italic text-dark">08-d8-18</text>.</p>
+					<p>Cisco formats MAC addresses in three groups of four hexadecimal numbers. So the previous example would look like this: <text class="font-weight-bold font-italic text-secondary">0004.a108.d818</text>.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Vendors can have multiple OUIs assigned to them.</text></li>
+					</ul>
+					<h4>MAC Address Table</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">MAC address table</text> (also called <text class="font-italic">switching table</text> or <text class="font-italic">forwarding table</text>) is a table that contains a list of MAC addresses and the corresponding outgoing ports. MAC address tables are created dynamically by each switch.</p>
+					<p>This table shows an example of a MAC address table.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 98%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 50%">MAC Address</th>
+									<th style="width: 50%">Port Number</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-light" role="alert">
+									<td class="text-secondary">0013.7251.d5a9</td>
+									<td class="text-secondary">F0/3</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="text-secondary">0003.ff5b.f1c8</td>
+									<td class="text-secondary">F0/5</td>
+								</tr>
+								<tr class="alert alert-light" role="alert">
+									<td class="text-secondary">0012.3fed.3f2c</td>
+									<td class="text-secondary">F0/6</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>MAC Learning and Aging</h4>
+					<p>Switches dynamically build MAC address tables by learning MAC addresses from incoming frames. For every MAC address in the MAC address table, an <text class="font-italic">inactivity timer</text> is also stored. This timer indicates the duration for which no frames was received at the interface. When a switch receives a frame from an interface whose MAC address is already listed in the MAC address table, the switch resets the inactivity timer for that entry. This indicates that the interface is actively sending frames.</p>
+					<p>The MAC address learning process is as follows:
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td class="text-success" style="width: 95%">When a switch receives a frame, the switch compares the source MAC addresss in the frame with the entries in the MAC address table.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td class="text-success" style="width: 95%">If a match is found, the switch resets the inactivity timer for that entry.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td class="text-danger" style="width: 95%">If a match is <u>not</u> found, the switch creates a new entry in the MAC address table and inserts the source MAC address along with the interface number from which it received the frame. The inactivity timer is set to zero for new entries.</td>
+								</tr>
+							</tbody>
+						</table>
+					</p>
+					<p>A switch uses the inactivity timer to identify inactive interfaces that have <u>not</u> sent a frame in a long time. The switch deletes very old entries to ensure that the table is up-to-date and does <u>not</u> run out of memory. This process is called <text class="font-weight-bold font-italic text-primary">aging</text>.</p>
+					<h4>Switching Decisions</h4>
+					<p>When a switch receives a frame, the following steps are performed:
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold" style="width: 5%">1.</td>
+									<td class="text-success" style="width: 95%">The destination MAC address in the frame is compared against the list of MAC addresses in the MAC address table.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold" style="width: 5%">2.</td>
+									<td class="text-success" style="width: 95%">If a match is found, the switch forwards the frame only to the outgoing interface corresponding to that MAC address. It does <u>not</u> forward the frame to any other port.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold" style="width: 5%">3.</td>
+									<td class="text-danger" style="width: 95%">If a match is <u>not</u> found, the switch floods the frame out all ports except the port that received it.</td>
+								</tr>
+							</tbody>
+						</table>
+					</p>
+					<h4>Switching Methods</h4>
+					<p>Cisco switches use three types of switching methods:
+						<ul>
+							<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Store-and-Forward</text>: The switch receives the entire frame and performs a <text class="font-italic">Cyclic Redundancy Check (CRC)</text> before forwarding the frame. This ensures that frames with errors are immediately flushed and prevents bad frames from propagating through the network.</li>
+							<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Cut-Through</text>: The switch checks the destination MAC address as soon as a frame is received and begins to immediately forward the frame to the destination port. This is a faster method than Store-and-Forward, but it <text class="font-italic">does</text> <u>not</u> <text class="font-italic">include error checking</text>, so the possibility of forwarding a frame with errors is higher.</li>
+							<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">Fragment-Free</text>: The switch combines the error checking logic of Store-and-Forward with the speed of Cut-Through. It checks the <text class="font-italic">first <text class="font-weight-bold">64</text> bytes for errors</text> because that is the minimum Ethernet frame size, and by design, all collisions will occur within the first <text class="font-weight-bold">64</text> bytes of transmission. If the first <text class="font-weight-bold">64</text> bytes are error-free, the frame is immediately sent to the destination port.</li>
+						</ul>
+					</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note: </text> The Fragment-Free method does <u>not</u> guarantee an error-free transmission, but it offers faster transmission than the Store-and-Forward method. Checking the first 64 bytes helps to detect errors in the frames due to collisions.</text></li>
+					</ul>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note: </text> Any frame smaller than 64 bytes is considered to be a runt and should be removed from the network.</text></li>
+					</ul>
+					<h4>Frame Flooding and Filtering</h4>
+					<p>When a switch receives a frame, it checks the MAC address table to identify the outgoing interface. If the address is <u>not</u> listed in the table, the switch cannot determine the outgoing interface to forward the frame.</p>
+					<p>When the outgoing interface information is <u>not</u> available, the switch <text class="font-italic">forwards copies</text> of the frame to all the ports except the incoming port. This is called <text class="font-weight-bold font-italic text-primary">flooding</text>. Flooding ensures that the switch does <u>not</u> arbitrarily throw away unknown traffic. The switch creates a MAC address table entry for the unknown host when the host replies to the frame it received through the flooding process.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note: </text> Switches also flood broadcast and multicast traffic.</text></li>
+					</ul>
+					<p><text class="font-weight-bold font-italic text-primary">Frame filtering</text> happens when a switch finds a MAC address table entry for a frame's destination MAC address. Unlike flooding, where the frame is sent to all ports but the receiving port, filtering sends the frame out to only the port that is associated with the destination MAC address.</p>
+					<h4>Address Resolution Protocol (ARP)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Address Resolution Protocol (ARP)</text> is an Internet protocol that is used for dynamically mapping IP addresses to MAC addresses. ARP provides a mechanism for the host or router to find the MAC address of another host or router to which it needs to send packets. The source host broadcasts an <text class="font-italic">ARP Request message</text> to the switch, which floods it out all ports, asking for the MAC address of the destination host. The destination host provides its MAC address via an <text class="font-italic">ARP Reply message</text>.</p>
+					<p><text class="font-italic">ARP Request messages</text> are broadcast, while <text class="font-italic">ARP Reply messages</text> are unicast. When a switch receives an ARP Request, it learns the sender's port and updates the MAC address table. It then sends the ARP Request out all ports except the one it came in on.</p>
+					<p>When the destination host sends the ARP Reply, the switch learns its port and updates the MAC address table. Then, it sends the ARP Reply out the port associated with the requester, which stores the information in its ARP table.</p>
+					<p>While switches store MAC address tables that map MAC addresses to port numbers, hosts use an <text class="font-italic">ARP cache</text> or <text class="font-italic">ARP host table</text> to map IP addresses to MAC addresses.</p>
+					<p><img src="/cisco/include/img/Fig-2-1.png" class="img-thumbnail" alt="arp" width="70%" height="70%"></p>
+					<h4>Switches and Security</h4>
+					<p>There are a few security measures that you should consider when you are working with switches:
+						<ul>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Setting passwords</text>: You can set several types of passwords in IOS, including the <text class="font-italic">user password</text>, <text class="font-italic">enable password</text>, and the <text class="font-italic">enable secret password</text>. The user password grants access to user EXEC mode, while both the enable password and enable secret password grant access to privileged EXEC mode. The difference is that the enable password is stored in the running-config and startup-config files in plaintext, while the enable secret password is encrypted. If you set both enable and enable secret passwords, only the enable secret password will enable you to access privileged EXEC mode.</li>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Setting privilege levels</text>: Privilege levels are configured for user EXEC and privileged EXEC mode as <text class="font-weight-bold">level 1</text> and <text class="font-weight-bold">level 15</text>, respectively. You can configure additional levels to fine-tune command access for different users.</li>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">Enabling password checking</text>: To enable password checking at the user level, use the <text class="font-weight-bold text-success">login local</text> command. This tells the switch to use a locally configured username and password combination.</li>
+						</ul>
+					</p>
+					<h4>Command Reference: Switch Basics</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Switch Basics</h5>
+					<p>The following commands are used in the Switch Basics labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">banner motd [delimiting-character message delimiting-caharacter]</text>: Configures a Message-of-the-Day (MOTD) banner that can be used to display a message at user login.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">disable</text>: Returns to user EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enter privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable password [level &lt;level&gt;] &lt;password&gt;</text>: Sets the enable password with an optional level for which the password can be applied.</li>
+						<li><text class="font-weight-bold text-success">enable secret [level &lt;level&gt;] &lt;password&gt;</text>: Sets the enable secret password with an optional level for which the password can be applied.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host_name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">show interfaces &lt;type&gt; &lt;number&gt;</text>: Displays statistics for all interfaces configured on the router.</li>
+						<li><text class="font-weight-bold text-success">show mac-address-table</text>: Displays the MAC address table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show version</text>: Displays the hardware platform and software versions.</li>
+					</ul>
+					<h5>Lab: Switch Basics I, Task 1</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Switch Basics I</text></li>
+						<text class="font-italic">Complete <text class="font-weight-bold">only</text> Task 1</text>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+					<h5>Lab: Switch Basics II, Task 2</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->Switch Basics II</text></li>
+						<text class="font-italic">Complete <text class="font-weight-bold">only</text> Task 2</text>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

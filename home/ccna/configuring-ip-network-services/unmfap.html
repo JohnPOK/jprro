@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Use Network Management Functions and Protocols</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic F</h2>
+					</div>
+					<h3 class="text-success">Perform Network Management</h3>
+					<p>The task of managing the network and its resources is a major responsibility. Many tools exist to assist in network management, and your ability to select the tool that best fits your needs will reduce downtime, costs, and frustration levels.</p>
+					<h4>Network Management Basics</h4>
+					<p>Network Management is the practice of administering computer networks. Common goals of network management include:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Ensure the network supports the organization's business requirements.</li>
+						<li class="alert alert-warning" role="alert">Deliver high-performing services to users that depend on the network to do their jobs.</li>
+						<li class="alert alert-warning" role="alert">Save time and money by automating repetitive or time-consuming tasks.</li>
+						<li class="alert alert-warning" role="alert">Improve efficiency and security by standardizing policies, procedures, configurations, and equipment.</li>
+						<li class="alert alert-warning" role="alert">Reduce costly downtime through automated troubleshooting and fault analysis.</li>
+						<li class="alert alert-warning" role="alert">Improve systems performance through proactive monitoring, maintenance, and capacity forecasting.</li>
+					</ul>
+					<h4>SNMP</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">Simple Network Management Protocol (SNMP)</text> is a set of network management standards for IP-based internetworks. It includes a protocol, a database-structure specification, and a set of management data objects.</p>
+					<p>SNMP implementations typically consist of a management application running on one or more network management systems (NMSs), and agent applications, usually executing in firmware on various network devices.</p>
+					<p>SNMP has three major standard revisions: <text class="font-italic">SNMPv1</text>, <text class="font-italic">SNMPv2</text>, and <text class="font-italic">SNMPv3</text>. The Cisco devices support all three versions, with version 3 being recommended, a standard <text class="font-italic">Management Information Base (MIB-II) object</text>, along with a special set of <text class="font-italic">enterprise MIB objects</text>.</p>
+					<p><text class="font-weight-bold font-italic text-primary">SNMPv1</text> was initially developed as an interem management protocol, and major vendors incorporated SNMP modules into their network systems and components. This led to the enhancement of the protocol and to the development of <text class="font-weight-bold font-italic text-primary">SNMP version2 (SNMPv2)</text>. <text class="font-weight-bold font-italic text-primary">SNMPv3</text> was introduced to meet the need for better security because <text class="font-italic">SNMPv2</text> had no security enhancements. It supports secure authentication and encryption of all SNMP messages.</p>
+					<h4>Agents</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">SNMP agent</text> is a software component running on a managed device. It maintains data about the device and provides that data to management systems. The device information is stored in MIBs.</p>
+					<p>The <text class="font-weight-bold font-italic text-primary">Management Information Base (MIB)</text> defines variables, which enable the management software to monitor or control the network device. Initially, the MIB defines each variable as an <text class="font-italic">object ID (OID)</text>. Then, the MIB organizes the OIDs based on Request for Comments (RFC) standards into a hierarchy of OIDs, usually in a tree structure.</p>
+					<h4>Syslog</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Syslog</text> (<text class="font-weight-bold">RFC 5424</text>) is a standard for message logging. Because so many different network devices use the Syslog standard, you can compile log information for disparate devices in a single, centralized location.</p>
+					<p>Every Syslog message includes a priority value ranging from <text class="font-weight-bold">0</text> to <text class="font-weight-bold">191</text> included in angle brackets (<text class="font-weight-bold"><></text>). This value is calculated according to this formula:<br>
+						<text class="font-weight-bold font-italic text-danger">Priority = Facility*8 + Severity Level</text>
+					</p>
+					<p>Where <text class="font-weight-bold font-italic text-danger">Facility</text> represents the machine process that created the event, and <text class="font-weight-bold font-italic text-danger">Severity Level</text> is one of the levels defined in the standard.</p>
+					<p>By default, Cisco network devices send system messages and debug output to a local logging process stored inside the device. You can manually configure the logging process to allow the messages to be sent to different destinations according to your needs. The destination for the messages can be a syslog server, <u>or</u>, the messages can be sent to an internal buffer for storage, which can be viewed through the device CLI later. You can also filter the type of system messages that need to be sent to any syslog server or other destinations.</p>
+					<h5>Facility Codes and Severity Levels</h5>
+					<p>This table lists the facility codes. Some operating systems might use different keywords than those mentioned here.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 70%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 20%">Facility Code</th>
+									<th style="width: 60%">Keyword and Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="font-weight-bold text-primary">0</td>
+									<td><text class="font-weight-bold text-danger">kern</text><br><text class="text-warning"><b>Kernel messages</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">1</td>
+									<td><text class="font-weight-bold text-danger">user</text><br><text class="text-warning"><b>User-level messages</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">2</td>
+									<td><text class="font-weight-bold text-danger">mail</text><br><text class="text-warning"><b>Mail system</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">3</text></td>
+									<td><text class="font-weight-bold text-danger">daemon</text><br><text class="text-warning"><b>System daemon</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">4</text></td>
+									<td><text class="font-weight-bold text-danger">auth</text><br><text class="text-warning"><b>Security/authentication messages</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">5</text></td>
+									<td><text class="font-weight-bold text-danger">syslog</text><br><text class="text-warning"><b>Messages generated internally by syslogd</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">6</text></td>
+									<td><text class="font-weight-bold text-danger">lpr</text><br><text class="text-warning"><b>Line printer subsystem</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">7</text></td>
+									<td><text class="font-weight-bold text-danger">news</text><br><text class="text-warning"><b>Network news subsystem</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">8</text></td>
+									<td><text class="font-weight-bold text-danger">uucp</text><br><text class="text-warning"><b>UUCP subsystem</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">9</text></td>
+									<td><text class="font-weight-bold text-danger">cron</text><br><text class="text-warning"><b>Clock daemon</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">10</text></td>
+									<td><text class="font-weight-bold text-danger">authpriv</text><br><text class="text-warning"><b>Security/authentication messages</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">11</text></td>
+									<td><text class="font-weight-bold text-danger">ftp</text><br><text class="text-warning"><b>FTP daemon</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">12</text></td>
+									<td><text class="font-weight-bold text-danger">ntp</text><br><text class="text-warning"><b>NTP subsystem</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">13</text></td>
+									<td><text class="font-weight-bold text-danger">security</text><br><text class="text-warning"><b>Log audit</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">14</text></td>
+									<td><text class="font-weight-bold text-danger">console</text><br><text class="text-warning"><b>Log alert</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">15</text></td>
+									<td><text class="font-weight-bold text-danger">solaris-cron</text><br><text class="text-warning"><b>Scheduling daemon</text></td>
+								</tr>
+								<tr>
+									<td class="font-weight-bold text-primary">16 to 23</td>
+									<td><text class="font-weight-bold text-danger">local0 to local7</text><br><text class="text-warning"><b>Locally used facilities</text></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>This table lists the severity levels. Some operating systems might use different keywords than those mentioned here.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 90%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 50%">Severity Level</th>
+									<th style="width: 95%">Keyword and Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">0</text> <text class="font-weight-bold text-danger">Emergency</text></td>
+									<td><text class="font-weight-bold text-danger">emerg</text><br><text class="text-secondary">System is unstable.</text></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">1</text> <text class="font-weight-bold text-danger">Alert</text></td>
+									<td><text class="font-weight-bold text-danger">alert</text><br><text class="text-secondary">Action must be taken immediately.</text></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">2</text> <text class="font-weight-bold text-danger">Critical</text></td>
+									<td><text class="font-weight-bold text-danger">crit</text><br><text class="text-secondary">Critical condition.</text></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">3</text> <text class="font-weight-bold text-danger">Error</text></td>
+									<td><text class="font-weight-bold text-danger">err</text><br><text class="text-secondary">Error condition.</text></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">4</text> <text class="font-weight-bold text-danger">Warning</text></td>
+									<td><text class="font-weight-bold text-danger">warning</text><br><text class="text-secondary">Warning condition.</text></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">5</text> <text class="font-weight-bold text-danger">Notification</text></td>
+									<td><text class="font-weight-bold text-danger">notice</text><br><text class="text-secondary">Normal but significant conditions.</text></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">6</text> <text class="font-weight-bold text-danger">Information</text></td>
+									<td><text class="font-weight-bold text-danger">info</text><br><text class="text-secondary">Informational message.</text></td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">7</text> <text class="font-weight-bold text-danger">Debug</text></td>
+									<td><text class="font-weight-bold text-danger">debug</text><br><text class="text-secondary">Debug-level messages.</text></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Command Reference: System Message Logging</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>System Message Logging</h5>
+					<p>The following commands are used in the System Message Logging lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">hostname &lt;host-name&gt;</text>: Sets the device name.</li>
+						<li><text class="font-weight-bold text-success">logging &lt;ip-address&gt;</text>: Logs messages to a syslog server host.</li>
+						<li><text class="font-weight-bold text-success">logging trap &lt;severity-level&gt;</text>: Limits messages logged to the syslog servers based on severity.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show logging</text>: Displays the syslog state and the contents of the standard syslog buffer.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: System Message Logging</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Network Assurance->System Message Logging</b></li>
+						<li>Approximate duration: 5 minutes</li>
+					</ul>
+					<h4>QoS</h4>
+					<p>QoS deals with the ability of a network to offer improved service to specific types of network traffic. It is defined by a set of parameters that controls the service provided. QoS prioritizes traffic based on importance and uses congestion avoidance methods.</p>
+					<p>The most common QoS parameters are <text class="font-italic">bandwidth</text>, <text class="font-italic">latency</text>, <text class="font-italic">jitter</text>, and <text class="font-italic">packet loss</text>. QoS aims at providing high bandwidth, less latency and jitter, and minimal data loss while making sure that prioritizing one type of network traffic does <u>not</u> affect the other types. The following table describes these QoS parameters.</p>
+					<div>
+						<table class="table table-responsive table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 15%">Qos Parameter</th>
+									<th style="width: 45%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-primary">Bandwidth</td>
+									<td class="text-secondary">The average number of bits of data that can be transmitted from source to destination in one second.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-primary">Latency</td>
+									<td class="text-secondary">The time difference between transmision of a signal and its receipt. Also called <text class="font-italic">lag</text> or <text class="font-italic">delay</text>.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-primary">Jitter</td>
+									<td class="text-secondary">The variability over time in latency between sequentially transmitted packets.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-primary">Packet Loss</td>
+									<td class="text-secondary">The number of packets lost or damaged during transmission.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>An optimum usage of bandwidth is critical for multimedia applications. <text class="font-italic">Low bandwidth</text> may result in bad quality transmission leading to packet dropouts or data loss. <text class="font-italic">Latency</text> is inevitable when packets are held up in queues or when packets are routed through less congested routes that are long. However, latency can be minimized by increasing the network bandwidth, fragmenting data packets, or prioritizing data on a network. <text class="font-italic">Jitter</text> may be caused by network congestion, improper queuing, or configuration errors. A very low jitter is important for voice and video transmissions. <text class="font-italic">Packet loss</text> may be due to full buffers at the destination. This can result in destinations requesting retransmission of data.</p>
+					<p>Two approaches to applying QoS are <text class="font-italic">Integrated Services (IntServ)</text> and <text class="font-italic">Differentiated Services (DiffServ)</text>.</p>
+					<ul>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">IntServ</text> reserves bandwidth between two nodes before communication even begins.</li>
+						<li class="alert alert-info" role="alert"><text class="font-weight-bold font-italic text-primary">DiffServ</text> employs packet prioritization to ensure higher priority traffic is favored.</li>
+					</ul>
+					<h4>Per-Hop Behavior</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Per-hop behavior (PHB)</text> is externally observable forwarding behavior such as <text class="font-italic">packet scheduling</text>, <text class="font-italic">queuing</text>, <text class="font-italic">policing</text>, or <text class="font-italic">shaping</text> behavior that is applied at a DiffServ-compliant node to a DiffServ Behavior Aggregate. PHBs define the packet-forwarding properties for a certain class of traffic.</p>
+					<ul class="list-group">
+						<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> For more information about DiffServ, visit https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos_dfsrv/configuration/15-mt/qos-dfsrv-15-mt-book/qos-dfsrv.pdf.</text></li>
+					</ul>
+					<h4>Classification</h4>
+					<p>Classification is the process of differentiating network traffic types to implement Qos. It is an identification step that examines the fields in packets to classify network traffic.</p>
+					<p>Classification can be applied in two ways:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">On a per-hop basis</text>: Packet is identified at a router but its class is <u>not</u> marked. Class information is <u>not</u> passed on to other routers.</li>
+						<li class="alert alert-warning" role="alert"><text class="font-weight-bold font-italic text-primary">On a network-wide basis</text>: Packet is identified at a router and marked with <text class="font-italic">IP Precedence (IPP)</text> or <text class="font-italic">Differentiated Services Code Point (DSCP)</text> values for network-wide identification. Applied when <text class="font-italic">Priority Queuing (PQ)</text> and <text class="font-italic">Custom Queuing (CQ)</text> methods are used.</li>
+					</ul>
+					<p>Some of the common methods to perform classification are:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Matching <text class="font-italic">Class of Service (CoS)</text>, <text class="font-italic">IPP</text>, or <text class="font-italic">DSCP</text> values or <text class="font-italic">access control lists (ACLs)</text>.</li>
+						<li class="alert alert-success">Policy-based routing.</li>
+						<li class="alert alert-success">Committed Access Rate (CAR).</li>
+						<li class="alert alert-success">Network-Based Application Recognition (NBAR).</li>
+					</ul>
+					<h4>Marking</h4>
+					<p>Marking is the next step after classification. Marking happens at <text class="font-weight-bold">Layer 2</text> and <text class="font-weight-bold">Layer 3</text> of the OSI model. At <text class="font-weight-bold">Layer 2</text>, <text class="font-italic">CoS</text> is identified, and at <text class="font-weight-bold">Layer 3</text>, the <text class="font-italic">IPP</text> and <text class="font-italic">DSCP</text> values are identified.</p>
+					<p>A value is set in an IP packet header depending on the matched class. The value can be an IPP, CoS, or DSCP value, which identifies the traffic class. The newly marked values determine the QoS action on the packet.</p>
+					<p>Earlier Internet Protocol version 4 (IPv4) packets were marked with IPP and CoS values. Currently IPv4 and IPv6 use a <text class="font-weight-bold">6-bit</text> DSCP field to mark packets. In IPv6, the DSCP field is also called the <text class="font-italic">traffic class byte</text>. When <text class="font-weight-bold">802.1Q</text> headers are used in VLAN trunk links, a <text class="font-weight-bold">3-bit</text> <text class="font-italic">CoS</text> or <text class="font-italic">Priority Code Point (PCP)</text> field shows the markings in an Ethernet frame header.</p>
+					<h4>Queuing</h4>
+					<p>Queuing is the method of assigning higher priority to some queues so that packets in higher priority queues are forwarded first. Cisco devices such as routers and switches use different types of prioritization techniques while forwarding packets from queues:</p>
+					<ul>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-primary">Round-robin</text>: Scheduler forwards a specific number of packets or bytes from one queue and moves on to the next queue until it cycles back to the first queue.</li>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-primary">Weighted round-robin</text>: Scheduler cycles through queues but forwards a different number of packets or bytes in each queue based on the priority levels assigned to the queues. <text class="font-italic">Class-Based Weighted Fair Queuing (CBWFQ)</text> is one tool that uses this method.</li>
+						<li class="alert alert-success" role="alert"><text class="font-weight-bold font-italic text-primary">Low-Latency Queuing (LLQ)</text>: Scheduler places voice, video, and data packets into separate queues and assigns different priority levels for each queue.</li>
+					</ul>
+					<h4>Voice Prioritization</h4>
+					<p>Considerations for prioritizing voice include:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Interactive voice applications like IP phone calls need less latency, jitter, and packet loss for good quality audio transmissions.</li>
+						<li class="alert alert-warning" role="alert">Voice over IP (VoIP) calls require lesser bandwidth than data applications.</li>
+						<li class="alert alert-warning" role="alert">Cisco guidelines provide permissible limits on the latency, jitter, and packet loss QoS parameters to ensure good quality audio transmissions.</li>
+						<li class="alert alert-warning" role="alert">Priority queuing with LLQ is the most preferred prioritization mechanism for interactive voice transmissions.</li>
+						<li class="alert alert-warning" role="alert">CBWFQ is the most preferred queuing method for non-interactive voice transmissions.
+						<li class="alert alert-warning" role="alert">The following table lists the Cisco recommended limits for different QoS parameters while prioritizing voice.
+							<div>
+								<table class="table table-responsive table-borderless table-sm" style="width: 70%">
+									<thead class="thead-light">
+										<tr>
+											<th style="width: 15%">Qos Parameter</th>
+											<th style="width: 40%">Recommended Limits</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="alert alert-danger" role="alert">
+											<td class="font-weight-bold text-danger">Latency</td>
+											<td class="text-danger"><text class="font-weight-bold text-danger">150 ms</text> or less for one-way flow</td>
+										</tr>
+										<tr class="alert alert-danger" role="alert">
+											<td class="font-weight-bold text-danger">Jitter</td>
+											<td class="text-danger"><text class="font-weight-bold text-danger">30 ms</text> or less</td>
+										</tr>
+										<tr class="alert alert-danger" role="alert">
+											<td class="font-weight-bold text-danger">Packet Loss</td>
+											<td class="text-danger"><text class="font-weight-bold text-danger">1%</text> or less</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</li>
+					</ul>
+					<h4>Video Prioritization</h4>
+					<p>Considerations for prioritizing video include:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Video applications need less latency, jitter, and packet loss for good quality transmissions. They also require high bandwidths.</li>
+						<li class="alert alert-warning" role="alert">You need careful configuration of QoS parameters to ensure good user experience.</li>
+						<li class="alert alert-warning" role="alert">Cisco guidelines provide permissible limits on the bandwidth, latency, jitter, and packet loss QoS parameters to ensure good quality video.</li>
+						<li class="alert alert-warning" role="alert">Priority queuing with LLQ is the most preferred prioritization mechanism for interactive video transmissions like video conferencing.</li>
+						<li class="alert alert-warning" role="alert">Specifying bandwidth rates for each priority queue helps to avoid packet loss.</li>
+						<li class="alert alert-warning" role="alert">The table lists the Cisco recommended limits for different QoS parameters while prioritizing video.
+							<div>
+								<table class="table table-responsive table-borderless table-sm" style="width: 70%">
+									<thead class="thead-light">
+										<tr>
+											<th style="width: 15%">Qos Parameter</th>
+											<th style="width: 40%">Recommended Limits</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="alert alert-danger" role="alert">
+											<td class="font-weight-bold text-danger">Bandwidth</td>
+											<td class="text-danger"><text class="font-weight-bold text-danger">384 Kbps</text> to more than <text class="font-weight-bold text-danger">20Mbps</text>.</td>
+										</tr>
+										<tr class="alert alert-danger" role="alert">
+											<td class="font-weight-bold text-danger">Latency</td>
+											<td class="text-danger"><text class="font-weight-bold text-danger">200</text> to <text class="font-weight-bold text-danger">400 ms</text> or less for one-way flow</td>
+										</tr>
+										<tr class="alert alert-danger" role="alert">
+											<td class="font-weight-bold text-danger">Jitter</td>
+											<td class="text-danger"><text class="font-weight-bold text-danger">30</text> to <text class="font-weight-bold text-danger">50 ms</text> or less</td>
+										</tr>
+										<tr class="alert alert-danger" role="alert">
+											<td class="font-weight-bold text-danger">Packet Loss</td>
+											<td class="text-danger"><text class="font-weight-bold text-danger">0.1%</text> to <text class="font-weight-bold text-danger">1%</text></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</li>
+					</ul>
+					<h4>Data Prioritization</h4>
+					<p>Considerations for prioritizing data include:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Data applications can tolerate slightly higher latency, jitter, and packet loss than voice and video applications.</li>
+						<li class="alert alert-warning" role="alert">Interactive data applications require high bandwidths to provide fast and reliable services to users.</li>
+						<li class="alert alert-warning" role="alert">Data transmissions typically occur in bursts. For example, a user selecting an option on a web page that results in large downloads of data from the web server.</li>
+						<li class="alert alert-warning" role="alert">In an enterprise, traffic involving data are classified based on importance to ensure that business-critical applications do <u>not</u> suffer data loss.</li>
+						<li class="alert alert-warning" role="alert">CBWFQ is commonly used as the scheduling tool for prioritizing data applications.</li>
+						<li class="alert alert-warning" role="alert">Call Admission Control (CAC) tools are used to prevent accumulation of data packets when audio and video transmissions are given higher priority.</li>
+						<li class="alert alert-warning" role="alert">When prioritizing traffic of different types, care should be taken to ensure that data packets are <u>not</u> delayed in queues for very long time periods.</li>
+					</ul>
+					<h4>Traffic Congestion</h4>
+					<p>The process of managing queues to reduce congestion at networking devices is called <text class="font-weight-bold font-italic text-primary">congestion management</text>. Networking devices such as routers maintain queues at their outgoing interfaces. Packets are stored in queues until an outgoing interface is available for transmission.</p>
+					<p>Packets in queues are marked with class information that determines their priority. When multiple queues are used, a router uses a scheduler function to determine which packet has to be selected from which queue for transmission. Schedulers use prioritization techniques to prioritize queues and manage congestion.</p>
+					<h4>Traffic Policing</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Traffic Policing</text> is the process of creating a policer in a policy map. A policer is a command within a policy map that defines the bandwidth limits for network traffic and outlines the actions to be taken depending on whether a packet conforms to the limits or <u>not</u>. The actions defined in the policer are implemented using a marker. The policer uses the length of the IP payload, which is the length of the IP packet header, to perform the required checks.</p>
+					<p>Policers drop or re-mark traffic without introducing delay or jitter.</p>
+					<h4>Traffic Shaping</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Traffic Shaping</text> is a mechanism to control traffic flow at an outgoing interface. A shaper is a tool that queues packets at an outgoing interface. This helps to reduce the speed of traffic flow to a rate that can be handled by the destination. Shapers use shaping rates to schedule transmission of packets from the output queues. A shaper ensures that the transmission rate of packets does <u>not</u> exceed the specified shaping rate.</p>
+					<p>Shapers might delay traffic, which can introduce jitter.</p>
+					<p>A congestion management tool such as CBWFQ or LLQ scheduling is used to manage congestion at the output queues maintained by a shaper.</p>
+					<h4>Command Reference: Configuring Network Device Management</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>Configuring Network Device Management</h5>
+					<p>The following commands are used in the Configuring Network Device Management lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">aaa authentication login default | &lt;list-name&gt; &lt;method1&gt; &lt;method2&gt;</text>: Enables Authentication, Authorization, and Accounting (AAA) login.</li>
+						<li><text class="font-weight-bold text-success">aaa authorization exec &lt;method1&gt; &lt;method2&gt;</text>: Configures exec authorization to use methods from the list.</li>
+						<li><text class="font-weight-bold text-success">aaa new-model</text>: Enables the AAA model.</li>
+						<li><text class="font-weight-bold text-success">authorization exec default | &lt;list-name&gt;</text>: Enables AAA authorization to determine whether a user can access priviledged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">encapsulation dot1q &lt;vlan-id&gt;</text>: Sets the encapsulation method of the interface for 802.1Q VLAN trunking - also specifies the VLAN ID for which the frames should be tagged.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt; &lt;subinterface-id&gt;</text>: Creates a subinterface.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-success">ip default-gateway &lt;ip-address&gt;</text>: Configures a default gateway IP address to which traffic destined to remote networks will be forwarded.</li>
+						<li><text class="font-weight-bold text-success">line vty 0 4</text>: Enters configuration mode for the specified virtual terminal (VTY or Telnet).</li>
+						<li><text class="font-weight-bold text-success">line vty 0 15</text>: Enters configuration mode for the specified VTY lines.</li>
+						<li><text class="font-weight-bold text-success">login authentication default | &lt;list-name&gt;</text>: Enables login to a TACACS+ server.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show snmp community</text>: Displays SNMP community access strings.</li>
+						<li><text class="font-weight-bold text-success">show snmp contact</text>: Displays SNMP system contact information.</li>
+						<li><text class="font-weight-bold text-success">show snmp host</text>: Displays the recipient details for SNMP notification operations.</li>
+						<li><text class="font-weight-bold text-success">show snmp location</text>: Displays the SNMP system location string.</li>
+						<li><text class="font-weight-bold text-success">snmp-server contact &lt;text&gt;</text>: Sets the system contact (sysContact) string.</li>
+						<li><text class="font-weight-bold text-success">snmp-server community &lt;string&gt; [ro]</text>: Sets up the community access string to permit access to the SNMP.</li>
+						<li><text class="font-weight-bold text-success">snmp-server host &lt;ip-address&gt; [&lt;community-string&gt;]</text>: Specifies the recipient of an SNMP notification operation.</li>
+						<li><text class="font-weight-bold text-success">snmp-server location &lt;text&gt;</text>: Sets the system location information.</li>
+						<li><text class="font-weight-bold text-success">tacacs-server host &lt;ip-address&gt; single-connection</text>: Configures a TACACS+ server to communicate with the specified host.</li>
+						<li><text class="font-weight-bold text-success">tacacs-server key &lt;key&gt;</text>: Sets the authentication encryption key used for all TACACS+ communications between the access server and the TACACS+ daemon.</li>
+						<li><text class="font-weight-bold text-success">telnet &lt;ip-address&gt;</text>: Starts the terminal emulation program from a PC, router, or switch - permits you to access devices remotely over the network.</li>
+						<li><text class="font-weight-bold text-success">username &lt;name&gt; privilege &lt;privilege-level&gt; password &lt;password&gt;</text>: Sets the privilege level for the user.</li>
+						<li><text class="font-weight-bold text-success">vlan &lt;vlan-id&gt; name &lt;vlan-name&gt;</text>: Creates and/or names a VLAN.</li>
+					</ul>
+					<h5>Lab: Configuring Network Device Management</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->Security->Configuring Network Device Management</b></li>
+						<li>Approximate duration: 30 minutes</li>
+					</ul>
+					<h4>Command Reference: Basic Network Services</h4>
+					<p>This section contains the commands you will use in the next labs.</p>
+					<h5>Basic Network Services</h5>
+					<p>The following commands are used in the Basic Network Services labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">clock set &lt;hh:mm:ss&gt; &lt;day&gt; &lt;month&gt; &lt;year&gt;</text>: Sets the system software clock.</li>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">default-router &lt;address&gt;</text>: Specifies the IP address of a default gateway for DHCP clients.</li>
+						<li><text class="font-weight-bold text-success">dns-server &lt;address&gt;</text>: Specifies the DNS IP servers available to a DHCP client.</li>
+						<li><text class="font-weight-bold text-success">domain-name &lt;domain&gt;</text>: Specifies the domain name for a DHCP client.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address dhcp</text>: Configures a router as a DHCP client.</li>
+						<li><text class="text-secondary">ipconfig</text>: Used in NetSim to display the current configured IP address, subnet mask, and default gateway for a workstation.</li>
+						<li><text class="text-secondary">ipconfig /all</text>: Used in NetSim to display the IP address and MAC address on a workstation.</li>
+						<li><text class="text-secondary">ipconfig /ip dhcp</text>: Used in NetSim to configure a workstation to obtain IP addressing information from a DHCP server.</li>
+						<li><text class="text-secondary">ipconfig /release</text>: Used in NetSim to send a message to the DHCP server to release the current DHCP configuration and discard the IP address configuration for the device.</li>
+						<li><text class="text-secondary">ipconfig /renew</text>: Used in NetSim to renew the DHCP configuration for the device.</li>
+						<li><text class="font-weight-bold text-success">ip default-gateway &lt;ip-address&gt;</text>: Configures a default gateway IP address to which traffic destined to remote networks will be forwarded.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp client lease &lt;days&gt; &lt;hours&gt; &lt;minutes&gt; | infinite</text>: Requests a custom lease duration for DHCP clients.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp excluded-address &lt;ip-address&gt; &lt;last-ip-address&gt;</text>: Configures a range of excluded addresses.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp pool &lt;pool-name&gt;</text>: Creates an IP address pool.</li>
+						<li><text class="font-weight-bold text-success">ip dns server</text>: Enables the DNS server on a router.</li>
+						<li><text class="font-weight-bold text-success">ip domain-lookup</text>: Enables the DNS lookup feature.</li>
+						<li><text class="font-weight-bold text-success">ip helper-address &lt;address&gt;</text>: Configures a DHCP relay agent for a particular interface.</li>
+						<li><text class="font-weight-bold text-success">ip host &lt;host-name&gt; &lt;ip-address&gt;</text>: Configures a static host name-to-address mapping in the host cache of the device.</li>
+						<li><text class="font-weight-bold text-success">ip name-server &lt;ip-address&gt;</text>: Configures the name server for a device.</li>
+						<li><text class="font-weight-bold text-success">lease &lt;days&gt; &lt;hours&gt; &lt;minutes&gt; | infinite</text>: Configures a custom lease duration for DHCP assignments.</li>
+						<li><text class="font-weight-bold text-success">network &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Enables a DHCP server for a particular network segment.</li>
+						<li><text class="font-weight-bold text-success">ntp master &lt;stratum&gt;</text>: Configures the Cisco IOS software as an NTP master clock to which peers synchronize themselves.</li>
+						<li><text class="font-weight-bold text-success">ntp server &lt;ip-address&gt; key &lt;key-id&gt;</text>: Allows the Cisco IOS Software clock to be synchronized by an NTP time server.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">[no] service dhcp</text>: Configures the router to respond to any DHCP requests. The <text class="font-weight-bold text-success">no</text> form disables the DHCP service and prevents a DHCP relay agent from forwarding DHCP requests.</li>
+						<li><text class="font-weight-bold text-success">show clock detail</text>: Displays the time and date from the system software clock.</li>
+						<li><text class="font-weight-bold text-success">show dhcp lease</text>: Displays the lease duration of the IP address.</li>
+						<li><text class="font-weight-bold text-success">show dhcp server</text>: Displays IP configuration information contained in DHCPOFFER packets.</li>
+						<li><text class="font-weight-bold text-success">show hosts</text>: Displays the default domain name, a list of name server hosts, and a cached list of host names and addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp binding</text>: Displays active DHCP-assigneed IP addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp pool</text>: Displays a basic summary of a configured DHCP pool.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp server statistics</text>: Displays general operating statistics for a DHCP server process.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show ntp associations detail</text>: Shows the status of NTP associations.</li>
+						<li><text class="font-weight-bold text-success">show ntp status</text>: Shows the status of NTP.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>(Optional) Lab: Basic Network Services I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->IP Services->Basic Network Services I</b></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h5>(Optional) Lab: Basic Network Services II</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <b>CIS-NS-200301-01->IP Services->Basic Network Services II</b></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h4>Summary</h4>
+					<p>In this lesson, you configured basic network services, including FTP and TFTP, DHCP, NAT, NTP, and DNS, and worked with network management. Each of these tasks is sure to be a significant part of your duties as a CCNA.</p>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

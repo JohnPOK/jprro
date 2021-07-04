@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Troubleshoot Network Management Issues</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic H</h2>
+					</div>
+					<h3 class="text-success">Troubleshoot Network Management Issues</h3>
+					<p>As with other facets of network operation, part of the administrator's tasks involve troubleshooting issues that prevent or hinder network management.</p>
+					<h4>Common Network Management Issues</h4>
+					<p>In addition to physical and underlying network issues, some common network management issues include:</p>
+					<ul>
+						<li class="alert alert-info" role="alert">Unsynchronized clocks.</li>
+						<li class="alert alert-info" role="alert">Misconfigured SNMP community string.</li>
+						<li class="alert alert-info" role="alert">Hosts too busy to respond to SNMP.</li>
+						<li class="alert alert-info" role="alert">Hosts and devices <u>not</u> configured to use Telnet or SSH.</li>
+						<li class="alert alert-info" role="alert">Access control and packet filtering restricting Telnet, SSH, SNMP, and ICMP traffic.</li>
+					</ul>
+					<h4>Guidelines for Troubleshooting Network Management Issues</h4>
+					<p>Here are some guidelines for troubleshooting network management issues:</p>
+					<h5>Troubleshooting SNMP Connectivity Issues</h5>
+					<p>Consider the following when you encounter issues with SNMP connectivity:</p>
+					<div class="alert alert-info" role="alert">
+						<ul>
+							<li class="alert alert-primary" role="alert">Verify that the SNMP agent services are running on each device.</li>
+							<li class="alert alert-primary" role="alert">Verify that the SNMP community string is correctly configured on each device.</li>
+							<li class="alert alert-primary" role="alert">Verify that UDP ports <text class="font-weight-bold">161</text> and <text class="font-weight-bold">162</text> are <u>not</u> blocked.</li>
+						</ul>
+					</div>
+					<h5>Troubleshooting Telnet Access to a Device</h5>
+					<p>Some of the factors to consider when you are troubleshooting Telnet access to a device include:</p>
+					<div class="alert alert-primary" role="alert">
+						<ul>
+							<li class="alert alert-info" role="alert">Verify that the IP address of the remote router or switch is reachable. You can use the <text class="font-weight-bold text-success">ping</text> command to test this.</li>
+							<li class="alert alert-info" role="alert">Verify that the correct transport protocols are defined correctly. By default, with IOS <text class="font-weight-bold">15.0</text> and later, Telnet and SSH are permitted, and if other protocols are supported, they are typically permitted as well. However, when you use the <text class="font-weight-bold text-success">transport input</text> command, you can change the transport protocols that are allowed. You can verify the allowed protocols with the <text class="font-weight-bold text-success">show line vty line-number | include allowed</text> command.</li>
+							<li class="alert alert-info" role="alert">Determine if telnet is configured to ask the user for credentials. By default, it will be configured to do so.
+								<ul>
+									<li class="alert alert-light" role="alert">The <text class="font-weight-bold text-success">login</text> command prompts the user for a password. However, when you need to authenticate the user through the local database, you need to use the <text class="font-weight-bold text-success">login local</text> command, and if you need to authenticate the user via AAA, you need to use the <text class="font-weight-bold text-success">login authentication { default | list-name }</text> command.</li>
+									<li class="alert alert-light" role="alert">Determine if a password is specified. Because the <text class="font-weight-bold text-success">login</b></text> command is enabled by default, you need to specify a password. If you have <u>not</u> set the password, the error message <text class="font-weight-bold">Password required, but none set</text> will be displayed. When you are using the <text class="font-weight-bold text-success">login local</text> command or AAA, you are prompted to enter a user name and password instead.</li>
+								</ul>
+							</li>
+							<li class="alert alert-info" role="alert">Determine if there is an ACL denying access for the IP address that can access the router or switch. To receive a log message indicating the IP address that was denied, you may need to add the <text class="font-weight-bold text-success">log</text> keyword to the end of the <text class="font-weight-bold text-success">explicit deny</text> entry in the ACL. If the <text class="font-weight-bold text-success">log</text> keyword is added, the log message <text class="font-weight-bold text-danger">%SEC-6-IPACCESSLOGS: list 1 denied &lt;ip-address&gt; packet</text> is displayed.</li>
+							<li class="alert alert-info" role="alert">Check to see if all vty lines are busy. Remember that by default, there are five vty lines on Cisco routers and switches, which are numbered <text class="font-weight-bold">0</text> to <text class="font-weight-bold">4</text>. Some devices may have more vty lines. However, regardless of the number you specify, when all the lines have established connections, a new connection will <u>not</u> be established. The next device that tries to telnet will be refused and receive the message <text class="font-weight-bold">Password required, but none set</text>, even though that is <u>not</u> technically the actual issue. You need to use the <text class="font-weight-bold text-success">clear line</text> command, if you need to manually clear the lines, and specify the line numbers that you need to clear before vty. Do <u>not</u> use the actual vty number that is listed after vty.</li>
+							<li class="alert alert-info" role="alert">Determine if there is an ACL in the path between the client and the device that is blocking port <text class="font-weight-bold">23</text>. Remember that Telnet uses TCP port <text class="font-weight-bold">23</text>. When there is an ACL configured on a router or firewall that blocks port <text class="font-weight-bold">23</text>, you will be unable to establish a successful Telnet connection.</li>
+						</ul>
+					</div>
+					<h5>Troubleshooting SSH Access to a Device</h5>
+					<p>With SSH, you can experience the same issues as with Telnet. Further, SSH has some additional issues:</p>
+					<div class="alert alert-warning" role="alert">
+						<ul>
+							<li class="alert alert-danger" role="alert">Verify that the correct version of SSH is specified. By default versions <text class="font-weight-bold">1</text> and <text class="font-weight-bold">2</text> are enabled. However, you can use the <text class="font-weight-bold text-success">ip ssh version { 1 | 2 }</text> command to change it to just <text class="font-weight-bold">1</text> or <text class="font-weight-bold">2</text>. When clients are connecting with <text class="font-weight-bold">v2</text> and you have configured the device for <text class="font-weight-bold">v1</text>, the SSH connection will fail. This is also applicable when the clients are using <text class="font-weight-bold">v1</text> and you have configured devices for <text class="font-weight-bold">v2</text>.</li>
+							<li class="alert alert-danger" role="alert">You need to use the <text class="font-weight-bold text-success">show ip ssh</text> command to view the version of SSH that is running. If the version is displayed as version <text class="font-weight-bold">1.99</text>, it indicates that both version <text class="font-weight-bold">1</text> and <text class="font-weight-bold">2</text> are running. When version <text class="font-weight-bold">1</text> is displayed in the output, then it indicates that only <text class="font-weight-bold">SSHv1</text> is running, and when version <text class="font-weight-bold">2</text> is displayed in the output, then it indicates that only <text class="font-weight-bold">SSHv2</text> is running.</li>
+							<li class="alert alert-danger" role="alert">Verify that the correct login command has been specified. SSH uses a user name and password for authentication and the <text class="font-weight-bold text-success">login</text> command will <u>not</u> work in situations where only the password is requested. The <text class="font-weight-bold text-success">login local</text> command enables you to authenticate with the local database, and the <text class="font-weight-bold text-success">login authentication {default | &lt;list-name&gt;}</text> command enables you to authenticate with an AAA server.</li>
+							<li class="alert alert-danger" role="alert">Verify that the correct key size has been specified. Remember that <text class="font-weight-bold">SSHv2</text> uses an RSA key size of <text class="font-weight-bold">768</text> or above. When you have been using a smaller key size with <text class="font-weight-bold">SSHv1</text> and then switched over to <text class="font-weight-bold">SSHv2</text>, you need to create a new key with the correct size. Otherwise, <text class="font-weight-bold">SSHv2</text> will <u>not</u> work. When you are using <text class="font-weight-bold">SSHv2</text> but accidentally specify a key size less than <text class="font-weight-bold">768</text>, you will <u>not</u> be allowed to use <text class="font-weight-bold">SSHv2</text> connections.</li>
+							<li class="alert alert-danger" role="alert">Determine if there is an ACL in the path between the client and the device that is blocking port <text class="font-weight-bold">22</text>. Remember that SSH uses TCP port <text class="font-weight-bold">22</text>. When you configure an ACL to block port <text class="font-weight-bold">22</text> on a router or firewall, you will be unable to establish a successful SSH connection.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

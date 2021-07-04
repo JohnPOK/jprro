@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>	
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe Controller-Based and Software Defined Networking</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Controller-Based Networking and Software-Defined Networking</h3>
+					<p>One of the most efficient ways to use automation in network management is to use software to perform certain management tasks.</p>
+					<h4>Traditional Networks and Software-Defined Networking</h4>
+					<p>Traditional networks are based on physical hardware devices and are generally referred to as <text class="font-italic">static networks</text>. Their flexibility is limited, as any change must be manually implemented. <text class="font-weight-bold font-italic text-primary">Software-defined networking (SDN)</text> is (as its name implies) based on software and provides much more flexibility than traditional networks.</p>
+					<p>The key characteristic of SDN is that it controls network routers and switches through the use of <text class="font-italic">open-source software</text> on generic switches and routers.</p>
+					<h4>Controller-Based Networking</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Controller-based networking</text> is a popular implementation of SDN. You have already seen that controllers are often implemented in a WLAN, but this is <u>not</u> the only solution they can provide for your networks:</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">Controller-based networking provides administrators with increased control over the flow of network traffic. When the need arises, the administrator can change switching rules by changing information on the controller, which then communicates the changes to the network devices.</li>
+						<li class="alert alert-warning" role="alert">Controller-based networking enables administrators to use the controller to distribute changes without having to configure individual devices.</li>
+						<li class="alert alert-warning" role="alert">The traffic monitoring capabilities of a controller can help you identify suspicious network traffic and deal with it accordingly.</li>
+						<li class="alert alert-warning" role="alert">Service virtualization reduces your network's reliance on expensive hardware.</li>
+					</ul>
+					<h4>Architectures</h4>
+					<p>You should recall the <text class="font-italic">three-tier architecture</text> and <text class="font-italic">collapsed core architectures</text> that were introduced in the switching discussions. For network management, the <text class="font-italic">control/data plane architecture</text> might be the most recognized. In this architecture, there are actually three layers, or planes: the <text class="font-italic">application plane</text>, the <text class="font-italic">control/management plane</text>, and the <text class="font-italic">data forwarding/operational plane</text>.</p>
+					<ul>
+						<li class="alert alert-info" role="alert">The <text class="font-weight-bold font-italic text-primary">application plane</text> contains applications and services that make requests for network functions from the control plane and the data plane.</li>
+						<li class="alert alert-info" role="alert">The <text class="font-weight-bold font-italic text-primary">control plane (CP)</text> carries signaling traffic and performs routing functions, as well as system configuration and management.<br>
+							<ul class="list-group">
+								<li class="list-group-item d-flex align-items-left"><text class="alert alert-info" role="alert"><text class="font-weight-bold">Note:</text> Some references cite the management plane as one that carries administrative traffic and that it is considered a subset of the control plane.</text></li>
+							</ul>
+						<li class="alert alert-info" role="alert">The <text class="font-weight-bold font-italic text-primary">data forwarding/operational plane</text> carries the traffic sent to and received by network users.</li>
+					</ul>
+					<p>Unlike traditional networking, where all three planes are incorporated into the firmware of routers and switches, SDN separates the control (and management) plane from the hardware and replaces it with software. This has the distinct advantage of supporting centralized administration of network devices.</p>
+					<p>For SDN, the architectural components include:</p>
+					<ul>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-primary">SDN applications</text>, which communicate their network requirements to an SDN controller.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-primary">SDN controllers</text>, which interpret the requirements of SDN applications and are considered logically centralized components. This does <u>not</u> mean that you can have only one SDN controller - in fact, the implementation of multiple controllers (whether in a peer or hierarchical configuration) is quite common.</li>
+						<li class="alert alert-danger" role="alert"><text class="font-weight-bold font-italic text-primary">SDN datapaths</text>, which are logical network devices that emulate a network switch or other device.</li>
+						<li class="alert alert-warning" role="alert">The <text class="font-weight-bold font-italic text-primary">SDN Control to Data-Plane Interface (CDPI)</text>, which is the interface defined between an SDN controller and an SDN datapath and that provides programmatic control of all forwarding operations, capabilities advertisement, statistics reporting, and event notification.</li>
+					</ul>
+					<h4>Overlay and Underlay Networks</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">overlay network</text> is a virtual network that is built on top of another network and connected by virtual links. Most SDN implementations are carried out on existing networks, so the existing switches and routers remain in place, and the SDN technology is linked to it to provide improved flexibility and manageability.</p>
+					<p>An <text class="font-weight-bold font-italic text-primary">underlay network</text> is simply the physical infrastructure that the overlay network is linked to.</p>
+					<p><img src="/cisco/include/img/Fig-8-2.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<h4>Fabric</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Fabric</text> is a network topology where nodes communicate through one or more interconnected network switches. The interconnected switches often form a mesh network that can provide redundancy and reliability.</p>
+					<p><img src="/cisco/include/img/Fig-8-3.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<p>When you combine SDN with the use of <text class="font-italic">fabric</text>, there are two basic options for implementation:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Obtain SDN software and network fabric from different vendors, and configure SDN to control the fabric.</li>
+						<li class="alert alert-success" role="alert">Obtain network fabric that has SDN technology integrated into it. This fabric is more application-aware and can support QoS.</li>
+					</ul>
+					<h4>Control Plane and Data Plane</h4>
+					<p>The control and data planes are integral components of the SDN architecture. Protocols and network device functions help to separate the data plane and control plane on each network device.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 15%">Type of Plane</th>
+									<th style="width: 85%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-primary" role="alert">
+									<td class="font-weight-bold font-italic text-primary">Control plane</td>
+									<td>
+										<ul>
+											<li class="alert alert-info" role="alert">A collection of actions that control the data plane.</li>
+											<li class="alert alert-info" role="alert">Provides information that the data plane requires to function, such as IP routes and MAC address entries.</li>
+											<li class="alert alert-info" role="alert">Includes operations for creating and managing routing tables, MAC address tables, and ARP tables.</li>
+											<li class="alert alert-info" role="alert">OSPF is a routing protocol that manages the routing tables in the control plane on each router.</li>
+											<li class="alert alert-info" role="alert">The control plane enables the data plane to work efficiently.</li>
+											<li class="alert alert-info" role="alert">The most commonly used protocols in the control plane are <text class="font-italic">IPv4 ARP</text>, <text class="font-italic">IPv6 Neighbor Discovery Protocol (NDP)</text>, <text class="font-italic">STP</text>, and <text class="font-italic">MAC Address Learning</text> in switches, and routing protocols such as <text class="font-italic">OSPF</text>, <text class="font-italic">RIP</text>, <text class="font-italic">BGP</text>, and <text class="font-italic">EIGRP</text>.</li>
+										</ul>
+									</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">Data plane</td>
+									<td>
+										<ul>
+											<li class="alert alert-danger" role="alert">A collection of tasks performed by a networking device when it handles data.</li>
+											<li class="alert alert-danger" role="alert">Includes operations performed by the device when it receives, processes, and transmits data (frames, packets, or messages).</li>
+											<li class="alert alert-danger" role="alert">One of the most important tasks of a router or a switch in the data plane is forwarding data.</li>
+											<li class="alert alert-danger" role="alert">The data plane on each router uses the routing tables to forward packets.</li>
+											<li class="alert alert-danger" role="alert">The data plane is also called the <text class="font-italic">forwarding plane</text>.</li>
+										</ul>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p><img src="/cisco/include/img/Fig-8-4.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+					<h4>Network Devices and Data Plane Actions</h4>
+					<p>This table lists some devices and features, and identifies the actions they perform in the data plane.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th style="width: 25%">Network Device or Feature</th>
+									<th style="width: 75%">Performs Data Plane Actions To:</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-primary" role="alert">
+									<td class="font-weight-bold font-italic text-primary">Routers and Layer 2 switches</td>
+									<td>Add or remove <text class="font-weight-bold">802.1Q</text> headers for VLAN trunks.</td>
+								</tr>
+								<tr class="alert alert-primary" role="alert">
+									<td class="font-weight-bold font-italic text-primary">Routers and Layer 3 switches</td>
+									<td>De-encapsulate and then encapsulate packets into frames.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">Layer 3 switches</td>
+									<td>Match the IP address of the destination to the routing table.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold font-italic text-success">Layer 2 switches</td>
+									<td>Match the MAC address of the destination to the MAC address table.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">ACLs and security</td>
+									<td>Filter packets and drop messages that do <u>not</u> meet the specified ACL criteria or security levels.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold font-italic text-warning">NAT processing</td>
+									<td>Translate the IP address of the source or destination.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold font-italic text-danger">VPN processing</td>
+									<td>Encrypt data and add IP headers for VPN processing.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Management Plane</h4>
+					<p>The management plane is a <text class="font-italic">subset</text> of the control plane.</p>
+					<ul>
+						<li class="alert alert-info" role="alert">It is a collection of <text class="font-italic">protocols</text> that enable management of network devices.</li>
+						<li class="alert alert-info" role="alert">Management plane protocols are <u>not</u> essential for the working of networking devices.</li>
+						<li class="alert alert-info" role="alert">Some of the most commonly used protocols in the management plane are <text class="font-italic">Telnet</text>, <text class="font-italic">SSH</text>, <text class="font-italic">SNMP</text>, and <text class="font-italic">Syslog</text>.</li>
+						<li class="alert alert-info" role="alert">Protocols such as SNMP and Syslog in the management plane help to troubleshoot and diagnose problems, perform maintenance tasks, and monitor device performance.</li>
+					</ul>
+					<h4>Application Programming Interfaces (APIs)</h4>
+					<p>In general computing terms, an <text class="font-weight-bold font-italic text-primary">application programming interface (API)</text> is a collection of commands, functions, protocols, and objects that programmers use to create software or interact with other computers or devices without the need for creating all the code from scratch. They are often incorporated into software development kits (SDKs).</p>
+					<p>When it comes to SDN, APIs enable the exchange of data between a controller and the programs running on network devices. These are generally referred to as <text class="font-weight-bold font-italic text-primary">northbound APIs</text> and <text class="font-weight-bold font-italic text-primary">southbound APIs</text>.</p>
+					<ul>
+						<li class="alert alert-secondary" role="alert">The <text class="font-italic">northbound APIs</text> enable applications to communicate with controllers.</li>
+						<li class="alert alert-secondary" role="alert">The <text class="font-italic">southbound APIs</text> enable controllers to communicate with switches and routers.</li>
+					</ul>
+					<h4>Northbound and Southbound APIs</h4>
+					<p>Northbound and southbound APIs are named as such because in most network diagrams, controllers are found above (or north of) the routers and switches they manage. </p>
+					<p>A <text class="font-weight-bold font-italic text-primary">southbound interface (SBI)</text> enables communication between a controller and a network device. The SBI is configured with the protocols and the southbound API needed to establish a link between the controller and a network device. The controller uses the southbound API to pass on routing tables, MAC address tables, and other control information to the network devices.</p>
+					<p>To perform its functions, a controller stores several pieces of information such as a list of <text class="font-italic">all devices in the network</text>, the <text class="font-italic">network topology</text>, <text class="font-italic">interfaces on each device</text>, <text class="font-italic">device configurations</text> (including IP addresses and VLANs), <text class="font-italic">device capabilities</text>, and <text class="font-italic">current state of devices</text>.</p>
+					<p>A <text class="font-weight-bold font-italic text-primary">northbound interface (NBI)</text> is an interface that enables a program or an application to obtain the information stored on a controller and to process that information. The northbound API enables the exchange of data between the application and the controller. By using the information obtained from the controller, the application programs the logic that the controller uses to maintain forwarding tables for the network.</p>
+					<p><img src="/cisco/include/img/Fig-8-5.png" class="img-thumbnail" alt="a-sample-lan" width="70%" height="70%"></p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

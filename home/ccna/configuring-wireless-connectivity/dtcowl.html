@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Describe the Components of Wireless LANs</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic A</h2>
+					</div>
+					<h3 class="text-success">Wireless LANs</h3>
+					<p>To configure wireless connectivity, you will need to be familiar with the components that make up a wireless LAN.</p>
+					<h4>Wireless LANs (WLANs)</h4>
+					<p>A wireless LAN enables users to connect to a local network or the Internet, even when they are on the move. WLANs use <text class="font-italic">radio frequency (RF) communication</text>, and they are often implemented to overlay an existing LAN.</p>
+					<p><img src="/cisco/include/img/Fig-5-1.png" class="img-thumbnail" alt="a wireless lan" width="70%" height="70%"></p>
+					<h4>Cisco Wireless Architectures</h4>
+					<p>Two main architectures are used for WLANs: <text class="font-weight-bold font-italic text-primary">autonomous</text></text> and <text class="font-weight-bold font-italic text-primary">lightweight</text></p>
+					<ul>
+						<li class="alert alert-danger" role="alert">An autonomous WLAN architecture places the responsibility for access, security, and overall operation on the wireless access point (WAP), with no separate controller required.</li>
+						<li class="alert alert-danger" role="alert">A lightweight WLAN architecture places that responsibility on a wireless LAN controller (WLC), and the WAPs have limited firmware, thus functionality.</li>
+					</ul>
+					<p>All WAPs reside in the Access layer of the three-tier model, but when a controller is implemented for a lightweight WLAN, it resides at the Distribution (or possibly Core) layer.</p>
+					<p><img src="/cisco/include/img/Fig-5-2.png" class="img-thumbnail" alt="wlan architectures are autonomous or lightweight" width="70%" height="70%"></p>
+					<p>Cisco offers support for both architectures. Some Cisco APs, such as the 2800 series, can be configured as autonomous or as a lightweight AP (LAP).</p>
+					<ul>
+						<li class="alert alert-warning" role="alert">For <text class="font-weight-bold font-italic text-warning">autonomous WLANs</text>, Cisco Mobility Express and Cisco Aironet&#174; APs are designed for easy deployment while maintaining secure and reliable operation. Designed for businesses that want to deploy wireless connectivity without a lot of IT resources, it also integrates with Cisco DNA Center to provide a form of centralized administration and control.</li>
+						<li class="alert alert-warning" role="alert">For <text class="font-weight-bold font-italic text-warning">lightweight WLANs</text>, Cisco's Unified Wireless Network (UWN) architecture offers 802.11 wireless networking solutions for service providers and enterprises. It consists of Cisco WLCs and their associated LAPs, which are controlled by the operating system, using the operating system user interfaces such as Web User Interface, Command-Line Interface (CLI), and Cisco Wireless Control System (Cisco WCS). UWN simplifies deployment and management of large-scale wireless LANs and provides a unique best-in-class security infrastructure.</li>
+					</ul>
+					<h4>WLAN Components</h4>
+					<p>Typical WLAN components include <text class="font-italic">clients</text>, <text class="font-italic">APs</text>, <text class="font-italic">WLCs</text>, <text class="font-italic">access and trunk ports</text> (when you assign WLAN components to VLANs), and <text class="font-italic">Link Aggregation Groups (LAGs)</text>.</p>
+					<p><img src="/cisco/include/img/Fig-5-3.png" class="img-thumbnail" alt="wlan components" width="70%" height="70%"></p>
+					<h4>APs</h4>
+					<p>An <text class="font-weight-bold font-italic text-primary">AP</text> is a device that serves as the interface between wireless and wired networks or as the center point of a standalone wireless network. In large installations, wireless users within the radio range of an AP can roam throughout a facility while maintaining seamless, uninterrupted access to the network. Each AP contains one, two, or three radios.</p>
+					<p><img src="/cisco/include/img/Fig-5-4.png" class="img-thumbnail" alt="aps" width="70%" height="70%"></p>
+					<h4>AP Modes</h4>
+					<p>APs can operate in a variety of modes.</p>
+					<p>LAP modes includes the following, depending on the model of LAP and the version of Cisco IOS being used.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col" style="width: 40%">LAP Mode</th>
+									<th scope="col" style="width: 70%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">Local mode</td>
+									<td>This is the default mode of operation, where the LAP maintains a tunnel to its associated WLC and just forwards all traffic through it. Because the WLC is responsible for switching and forwarding the traffic, if a local mode LAP loses its connection to the WLC, it stops forwarding traffic and starts looking for a controller.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">Remote Edge (lightweight) Access Point (REAP) mode and its derivatives</td>
+									<td>REAP mode addresses the scalability issues inherent with using Local mode. For instance, it may <u>not</u> be feasible to place a WLC at multiple branch locations, but if you lose the WAN link that connects the LAPs with a remote WLC, then the LAP's entire branch location would stop forwarding traffic. LAPs operating in REAP mode do <u>not</u> always require a connection to the WLC, and they can switch local WLAN traffic without relying on the controller. The functionality of REAP was later expanded to <text class="font-weight-bold font-italic text-primary">H-REAP (Hybrid-REAP)</text> and then <text class="font-weight-bold font-italic text-primary">FlexConnect</text>, which is the most recent version.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">Bridge mode</td>
+									<td>Bridge mode enables you to bridge the WLAN and the wired infrastructure.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">SE-Connect mode</td>
+									<td>Spectrum Expert (SE) Connect mode enables you to connect to LAPs that support the Cisco CleanAir technology by using Cisco Spectrum Expert and gather vital information about the RF spectrum surrounding the LAP. A LAP operating in SE-Connect mode does <u>not</u> broadcast an SSID or service any WLAN clients. This mode is used strictly for troubleshooting purposes.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Sniffer mode</td>
+									<td>Similar to SE-Connect mode, Sniffer mode is strictly for troubleshooting purposes. Sniffer mode passively monitors the WLAN environment by using a specifically configured channel and tunnels all <text class="font-weight-bold">802.11</text> WLAN traffic to an endpoint on your network, where you can use protocol analysis tools such as Wireshark to review the packets and diagnose issues.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Rogue Detector mode</td>
+									<td>Again similar to SE-Connect mode & Sniffer mode, this mode does <u>not</u> service WLAN clients. Rogue Detector mode connects to your wired infrastructure, usually over a trunk link, and monitors traffic moving among VLANs. LAPs running in Rogue Detector mode watch for any MAC addresses that other LAPs have marked as wireless rogue devices. So, LAPs oprating in Local mode or a REAP-based mode passively watch and report rogue APs and rogue WLAN clients, while LAPs in Rogue Detector mode watch the wired network for the MAC addresses of those same rogue APs and rogue WLAN clients.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Monitor mode</td>
+									<td>Monitor mode is a feature designed to enable LAPs to exclude themselves from handling data traffic between clients and the infrastructure. Instead, they act as dedicated sensors for location-based services (LBS), rogue access point detection, and intrusion detection (IDS). When APs are in Monitor mode, they do <u>not</u> serve clients, and they continuously cycle through all configured channels listening to each channel for approximately 60 ms.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">Root mode</td>
+									<td>Root mode is the default mode, and indicates an AP that is directly connected to the wired LAN backbone.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">Root Bridge mode</td>
+									<td>When you configure an AP to act as a bridge, you can select either Root Bridge or Non-Root Bridge mode. Similar to switches using STP, the Root Bridge mode AP connects Non-Root Bridge APs to the wired LAN. It can also have client devices connected to it.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">Non-Root Bridge mode</td>
+									<td>Similar to switches using STP, the Non-Root Bridge mode AP is connected to a Root Bridge mode AP to access the wired LAN, and it can have client devices connected to it.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">Workgroup Bridge mode</td>
+									<td>When an AP is configured in Workgroup Bridge (WGB) mode, it can provide wireless connectivity to LAPs for wired clients. This mode is optimal for connecting fewer than 20 wired clients to a LAP.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Scanner mode</td>
+									<td>When an AP is in Scanner mode, it does <u>not</u> support clients but instead acts as a network monitoring device.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">Spectrum mode</td>
+									<td>Spectrum mode is the autonomous AP equivalent of SE-Connect mode.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">Repeater mode</td>
+									<td>An AP configured in Repeater mode provides a wireless uplink to the wired network by connecting as a client to a Root mode AP. Clients see the Repeater mode AP as a regular AP. This mode reduces wireless throughput and might <u>not</u> work as expected with non-Cisco client devices. Therefore, it is recommended for use only when necessary to extend the range of the wireless infrastructure.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Other Wireless Components</h4>
+					<p>Additional wireless LAN components are described in this table.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col" style="width: 20%">WLAN Component</th>
+									<th scope="col" style="width: 80%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold text-primary">WLCs</td>
+									<td>WLCs manage LAPs, and they can be hardware devices or software-based controllers.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold text-primary">Access and trunk ports</td>
+									<td>Access and trunk ports on APs operate the same as they do in wired VLANs.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold text-primary">LAGs</td>
+									<td>On Cisco WLCs, you can configure <text class="font-weight-bold font-italic text-primary">link aggregation groups (LAGs)</text> to combine the controller ports into one channel to simplify configuration, increase bandwidth between the WLAN and wired LAN, and provide load balancing and redundancy. Only one LAG is supported on each WLC.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Wi-Fi Channels</h4>
+					<p>Wi-Fi channels are the common name used for WLAN channels. APs have one to three radios incorporated in them. The <text class="font-weight-bold">IEEE 802.11</text> standard provides several distinct RF ranges for Wi-Fi communications, including <text class="font-weight-bold">900 MHz</text>, <text class="font-weight-bold">2.4 GHz</text>, <text class="font-weight-bold">3.6 GHz</text>, <text class="font-weight-bold">4.9 GHz</text>, <text class="font-weight-bold">5 GHz</text>, <text class="font-weight-bold">5.9 GHz</text>, and <text class="font-weight-bold">60 GHz</text>.</p>
+					<p>Each of these ranges is further divided into channels. The standards refer to numbered channels spaced evenly apart, with the channel number being the midpoint of the channel's frequency range. You can however, bond channels for higher throughput. In this case, the channel number is the center frequency of the bonded group.</p>
+					<p>To prevent the interference caused by channel overlap, the Wi-Fi protocol calls for channel seperation of <text class="font-weight-bold">16.25</text> to <text class="font-weight-bold">22 MHz</text>, which corresponds to three non-overlapping channels on <text class="font-weight-bold">2.4 GHz</text>: <text class="font-weight-bold">1</text>, <text class="font-weight-bold">6</text>, and <text class="font-weight-bold">11</text>.</p>
+					<p>There are circumstances where you might use subsets of frequencies to provide additional channels.</p>
+					<h4>Wi-Fi Network Standards</h4>
+					<p>Numerous Wi-Fi standards have been developed. This table briefly describes them.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col" style="width: 20%">Wi-Fi Standard</th>
+									<th scope="col" style="width: 80%">Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold text-info">802.11a</td>
+									<td>This standard uses the <text class="font-weight-bold">5.2</text> to <text class="font-weight-bold">5.8 GHz</text> range. Channel width is <text class="font-weight-bold">20 MHz</text>. Its theoretical maximum rate is <text class="font-weight-bold">54 Mbps</text>. A distinguishing feature is that this standard offered <text class="font-italic">eight non-overlapping channels</text> in the U.S., making it relatively easy to avoid interference from other wireless installations.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-dark">802.11b</td>
+									<td>This standard uses only the <text class="font-weight-bold">2.4 GHz</text> band. Channel width is <text class="font-weight-bold">22 MHz</text>. It has a theoretical maximum rate of <text class="font-weight-bold">11 Mbps</text>.</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning">802.11g</td>
+									<td>This standard uses only the <text class="font-weight-bold">2.4 GHz</text> band. Channel width is <text class="font-weight-bold">20 MHz</text>. Its theoretical maximum rate is <text class="font-weight-bold">54 Mbps</text>. It is backward compatible with <text class="font-weight-bold">802.11b</text>, but <text class="font-weight-bold">802.11b</text> devices connecting to an <text class="font-weight-bold">802.11g</text> AP will operate at <text class="font-weight-bold">802.11b</text> speeds.</td>
+								</tr>
+								<tr class="alert alert-danger" role="alert">
+									<td class="font-weight-bold text-danger">802.11n</td>
+									<td>Also referred to as Wireless-N, it uses either the <text class="font-weight-bold">2.4 GHz</text> band or the <text class="font-weight-bold">5 GHz</text> band, with the majority of devices at <text class="font-weight-bold">2.4 GHz</text>. Channel width is <text class="font-weight-bold">20</text> or <text class="font-weight-bold">40 MHz</text>. It is fully compatible with <text class="font-weight-bold">802.11b</text> and <text class="font-weight-bold">802.11g</text>. Speeds of up to <text class="font-weight-bold">300 Mbps</text> are possible.</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success">802.11ac</td>
+									<td>The latest of the standards to be released, it uses only the <text class="font-weight-bold">5 GHz</text> band, lowering the risk of interference. Channel width is <text class="font-weight-bold">20</text>, <text class="font-weight-bold">40</text>, or <text class="font-weight-bold">80 MHz</text>, twice the width of <text class="font-weight-bold">802.11n</text>. It is fully backward compatible with <text class="font-weight-bold">802.11n</text>, and in environments where all devices support it, can provide at least <text class="font-weight-bold">1 Gbps</text> for multiple-station throughput and at least <text class="font-weight-bold">500 Mbps</text> for a single link.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h4>Statutory Regulation of Wi-Fi Channels</h4>
+					<p>Different nations apply different regulations regarding allowable channels, allowed users, and maximum power levels. For instance, the following table describes the channels of the <text class="font-weight-bold">2.4 GHz</text> range.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<thead class="thead-light">
+								<tr>
+									<th scope="col" style="width: 5%" class="text-center">Channel</th>
+									<th scope="col" style="width: 15%" class="text-center">Range (MHz)</th>
+									<th scope="col" style="width: 15%" class="text-center">Midpoint (MHz)</th>
+									<th scope="col" style="width: 15%" class="text-center">Use Allowed in North America?</th>
+									<th scope="col" style="width: 15%" class="text-center">Use Allowed in Japan?</th>
+									<th scope="col" style="width: 15%" class="text-center">Use Allowed in Most of the World?</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">1</td>
+									<td class="font-weight-bold text-center">2401 to 2423</td>
+									<td class="font-weight-bold text-success text-center">2412</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">2</td>
+									<td class="font-weight-bold text-center">2406 to 2428</td>
+									<td class="font-weight-bold text-success text-center">2417</text></td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">3</td>
+									<td class="font-weight-bold text-center">2411 to 2433</td>
+									<td class="font-weight-bold text-success text-center">2422</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">4</td>
+									<td class="font-weight-bold text-center">2416 to 2438</td>
+									<td class="font-weight-bold text-success text-center">2427</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">5</td>
+									<td class="font-weight-bold text-center">2421 to 2443</td>
+									<td class="font-weight-bold text-success text-center">2432</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">6</td>
+									<td class="font-weight-bold text-center">2426 to 2448</td>
+									<td class="font-weight-bold text-success text-center">2437</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">7</td>
+									<td class="font-weight-bold text-center">2431 to 2453</td>
+									<td class="font-weight-bold text-success text-center">2442</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">8</td>
+									<td class="font-weight-bold text-center">2436 to 2458</td>
+									<td class="font-weight-bold text-success text-center">2447</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">9</td>
+									<td class="font-weight-bold text-center">2441 to 2463</td>
+									<td class="font-weight-bold text-success text-center">2452</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">10</td>
+									<td class="font-weight-bold text-center">2446 to 2468</td>
+									<td class="font-weight-bold text-success text-center">2457</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-success" role="alert">
+									<td class="font-weight-bold text-success text-center">11</td>
+									<td class="font-weight-bold text-center">2451 to 2473</td>
+									<td class="font-weight-bold text-success text-center">2462</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning text-center">12</td>
+									<td class="font-weight-bold text-center">2456 to 2478</td>
+									<td class="font-weight-bold text-warning text-center">2467</td>
+									<td class="text-warning text-center">Canada only</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning text-center">13</td>
+									<td class="font-weight-bold text-center">2461 to 2483</td>
+									<td class="font-weight-bold text-warning text-center">2472</td>
+									<td class="text-center">No</td>
+									<td class="text-center">Yes</td>
+									<td class="text-center">Yes</td>
+								</tr>
+								<tr class="alert alert-warning" role="alert">
+									<td class="font-weight-bold text-warning text-center">14</td>
+									<td class="font-weight-bold text-center">2473 to 2495</td>
+									<td class="font-weight-bold text-warning text-center">2484</td>
+									<td class="text-center">No</td>
+									<td class="text-warning text-center">Limited</td>
+									<td class="text-center">No</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p>As you review this table, you should notice a few things:
+						<ul>
+							<li class="alert alert-info" role="alert">Each channel is spaced <text class="font-weight-bold">5 MHz</text> apart, except for the <text class="font-weight-bold">12 MHz</text> gap between channels <text class="font-weight-bold text-warning">13</text> and <text class="font-weight-bold text-warning">14</text>.</li>
+							<li class="alert alert-danger" role="alert">Each of the frequency ranges overlap, which can cause interference.</li>
+							<li class="alert alert-info" role="alert">Channels <text class="font-weight-bold text-warning">12</text>, <text class="font-weight-bold text-warning">13</text>, and <text class="font-weight-bold text-warning">14</text> are <u>not</u> used except in some special or limited circumstances.</li>
+						</ul>
+					</p>
+					<h4>Service Set Identifiers (SSIDs)</h4>
+					<p><text class="font-weight-bold font-italic text-primary">Service Set Identifiers (SSIDs)</text> are simply names for Wi-Fi networks. For instance, if you go to a coffee shop or other business that offers wireless to their patrons, your mobile phone will probably prompt you to connect to a Wi-Fi network, and then lists the SSIDs for any local WLANs it detects. The reason that devices can detect WLAN SSIDs is because the APs broadcast them. If there is no SSID broadcast, the networks will <u>not</u> be discoverable.</p>
+					<p>Depending on how the AP is configured, you might need a Wi-Fi password to gain access to the WLAN.</p>
+					<h4>Encryption</h4>
+					<p>Wireless networks, like all networks, require security to protect the components and the data stored on them. For WLANs, one of the primary security controls is <text class="font-weight-bold font-italic text-primary">encryption</text>, or the process of encoding information so that only those authorized to view it can view it. Even if a transmission is intercepted by an unauthorized party, the contents of that transmission cannot be read.</p>
+					<p>Wi-Fi security is often implemented by using one of the following security standards:
+						<ul>
+							<li class="alert alert-danger" role="alert"><text class="font-weight-bold text-dark">Wired Equivalent Privacy (WEP)</text>, which is a weak implementation of the RC4 encryption algorithm. WEP keys were <text class="font-weight-bold">24</text> bits shorter than indicated and used a <text class="font-weight-bold">24-bit</text> Initialization Vector (I.V.). It has been replaced by WPA.</li>
+							<li class="alert alert-warning" role="alert"><text class="font-weight-bold text-ingo">Wi-Fi Protected Access (WPA)</text>, which was designed specifically to address the shortcomings of WEP. It uses the <text class="font-italic">TKIP protocol</text> to change the encryption key for every packet. It also adds message integrity and a <text class="font-weight-bold">48-bit</text> I.V., and it uses true key sizes.</li>
+							<li class="alert alert-success" role="alert"><text class="font-weight-bold">WPA2</text>, which might require firmware changes to run successfully, also uses a <text class="font-weight-bold">48-bit</text> key and true key sizes. However, it uses a variant of the <text class="font-italic">AES encryption algorithm</text> called CCMP instead of RC4. There are two flavors of WPA2:
+								<ul>
+									<li><text class="font-weight-bold">WPA2 Personal</text> uses a shared password for authentication.</li>
+									<li><text class="font-weight-bold">WPA2 Enterprise</text> uses a user name/password pair or digital certificates for authentication.</li>
+								</ul>
+							</li>
+						</ul>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>

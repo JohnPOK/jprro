@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cisco Training</title>
+		<link href="" media="all" rel="Stylesheet" type="text/css" />
+		<link href="/home/include/img/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/home/include/css/bootstrap/bootstrap.min.css">
+
+		<!-- jQuery Script -->
+		<script src="../../home/include/js/jquery/jquery.min.js"></script>
+
+		<!-- Popper, Bootstrap, Custom JS -->
+		<script src="../../home/include/js/popper/popper.min.js"></script>
+		<script src="../../home/include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="../../home/include/js/custom.js"></script>
+	</head>
+	<body>
+		<!-- Header -->
+		<div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:0">
+			<h1>Configure DHCP</h1>
+		</div>
+
+		<!-- Content -->
+		<div class="container" style="margin-top:30px">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="alert alert-warning">
+						<h2 class="text-warning">Topic B</h2>
+					</div>
+					<h3 class="text-success">Configure DHCP</h3>
+					<p>Another popular network service is automatic IP address assignments for clients. Because IP addresses must be unique, having them dynamically assigned ensures that no two client devices will ever have the same IP address.</p>
+					<h4>DHCP</h4>
+					<p>The <text class="font-weight-bold font-italic text-primary">Dynamic Host Configuration Protocol (DHCP)</text> is a protocol that automates the assignment of IP addresses, subnet masks, gateways, and other IP parameters. You configure the DHCP server with the information it needs to provide to clients, including:</p>
+					<ul>
+						<li class="alert alert-success" role="alert">Subnet IDs and masks to represent the IP addresses that are available in the subnet. This is called the <text class="font-weight-bold font-italic text-primary">DHCP scope</text>.</li>
+						<li class="alert alert-success" role="alert">The IP address of the default router on the subnet.</li>
+						<li class="alert alert-success" role="alert">The IP addresses of the DNS servers.</li>
+						<li class="alert alert-success" role="alert">The domain name.</li>
+						<li class="alert alert-success" role="alert">Reserved/excluded addresses that are <u>not</u> available for lease.</li>
+						<li class="alert alert-success" role="alert">Additional options for speciality services.</li>
+					</ul>
+					<p>DHCP uses TCP/UDP ports <text class="font-weight-bold">67</text> (server) and <text class="font-weight-bold">68</text> (client).</p>
+					<h4>The DORA Process</h4>
+					<p>The entire process of communication between a DHCP server and a host/DHCP client is called the <text class="font-weight-bold font-italic text-primary">Discover Offer Request Acknowledge (DORA) process</text>.</p>
+					<div>
+						<table class="table table-responsive table-borderless table-sm" style="width: 95%">
+							<tbody>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold"style="width: 5%">1.</td>
+									<td style="width: 95%">A host sends a DHCP <text class="font-weight-bold font-italic">Discover</text> message to communicate with a DHCP server. Because hosts do <u>not</u> have any initial IP settings to start communicating in the network, they use the addresses <text class="font-weight-bold">0.0.0.0</text> and <text class="font-weight-bold">255.255.255.255</text>. For example, a host that does <u>not</u> have an IP address can use the IP address <text class="font-weight-bold">0.0.0.0</text> as its source IP address to send discover messages to the DHCP server. It can use the IP address <text class="font-weight-bold">255.255.255.255</text> to broadcast the discover message within a subnet.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold"style="width: 5%">2.</td>
+									<td style="width: 95%">The DHCP server sends a DHCP <text class="font-weight-bold font-italic">Offer</text> message providing its IP address to the DHCP client.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold"style="width: 5%">3.</td>
+									<td style="width: 95%">When the DHCP client receives an offer message, it sends a DHCP <text class="font-weight-bold font-italic">Request</text> back to the DHCP server. When multiple DHCP servers send offer messages to the client, the client responds to the first offer message.</td>
+								</tr>
+								<tr class="alert alert-info" role="alert">
+									<td class="font-weight-bold"style="width: 5%">4.</td>
+									<td style="width: 95%">When the DHCP server receives the request message, it sends a DHCP <text class="font-weight-bold font-italic">Acknowledgement</text> message, along with the required IP settings. The IP address is usually leased to the client for a specific time period.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p><img src="/cisco/include/img/Fig-6-1.png" class="img-thumbnail" alt="the dora process" width="65%" height="65%"></p>
+					<h4>DHCP Servers</h4>
+					<p>The DHCP server is configured with a list of IP addresses called a <text class="font-italic">DHCP scope</text>. The scope contains a range of IP addresses and a subnet mask, and it can contain other options, such as a default gateway and DNS server addresses. A scope also needs to specify the duration of the lease. When the lease period is over, the client needs to renew the lease with the DHCP server.</p>
+					<p>When a DHCP server enables the scope, it automatically leases TCP/IP information to DHCP clients for the established lease duration. The DHCP server determines the lease duration, which can be a defined time period or an unlimited length of time.</p>
+					<h4>DHCP Relays</h4>
+					<p>In most enterprise networks, DHCP servers are centralized and serve hosts in many different remote subnets. Routers in the subnets use a mechanism called <text class="font-weight-bold font-italic text-primary">DHCP relay</text> to route DHCP messages between the hosts that need IP address assignment and the DHCP server.</p>
+					<p>The routers in a network that enable communication between a central DHCP server and hosts in different subnets are called <text class="font-weight-bold font-italic text-primary">DHCP relay agents</text>. Relay agents take the place of a DHCP server on a network segment. Clients do <u>not</u> realize they are communicating with a relay agent. The relay agent uses <text class="font-italic">broadcasting</text> to communicate with the clients, but <text class="font-italic">uni-casting</text> when communicating with the DHCP server.</p>
+					<p>The <text class="font-weight-bold font-italic text-success">ip helper-address &lt;server-ip&gt;</text> subcommand is configured on each router interface that will receive broadcast DHCP Discover messages from clients to relay DHCP messages correctly to the specified DHCP server address.</p>
+					<p><img src="/cisco/include/img/Fig-6-2.png" class="img-thumbnail" alt="dhcp relays" width="70%" height="70%"></p>
+					<h4>Command Reference: DHCP Configuration</h4>
+					<p>This section contains the commands you will use in the next set of labs.</p>
+					<h5>DHCP Configuration</h5>
+					<p>The following commands are used in the DHCP Configuration labs:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">default-router &lt;address&gt;</text>: Specifies the IP address of a default gateway for DHCP clients.</li>
+						<li><text class="font-weight-bold text-success">dns-server</text>: Specifies the DNS OP servers available to a DHCP client.</li>
+						<li><text class="font-weight-bold text-success">domain-name &lt;domain&gt;</text>: Specifies the domain name for a DHCP client.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address dhcp</text>: Configures a router as a DHCP client.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /all</text>: Used in NetSim to display the IP addresses and MAC addresses on a workstation.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /ip dhcp</text>: Used in NetSim to configure a workstation to obtain IP addressing information from a DHCP server.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp excluded-address &lt;ip-address&gt; &lt;last-ip-address&gt;</text>: Configures a range of excluded addresses.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp pool &lt;pool-name&gt;</text>: Creates an IP address pool.</li>
+						<li><text class="font-weight-bold text-success">lease  &lt;days&gt; &lt;hours&gt; &lt;minutes&gt; | infinite</text>: Configures a custom lease duration for DHCP.</li>
+						<li><text class="font-weight-bold text-success">network  &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Enables a DHCP server for a particular network segment.</li>
+						<li><text class="font-weight-bold text-success">[no] service dhcp</text>: Configures the router to respond to any DHCP requests. The <text class="font-weight-bold text-success">no</text> form disables the DHCP service and prevents a DHCP relay agent from forwarding DHCP requests.</li>
+						<li><text class="font-weight-bold text-success">show dhcp lease</text>: Displays the lease duration of the IP address.</li>
+						<li><text class="font-weight-bold text-success">show dhcp server</text>: Displays IP configuration information contained in DHCPOFFER packets.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp binding</text>: Displays active  DHCP-assigned IP addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp pool</text>: Displays a basic summary of a configured DHCP pool.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp server statistics</text>: Displays general operating statistics for a DHCP server process.</li>
+						<li><text class="font-weight-bold text-success">show ip interface brief</text>: Displays a brief summary of interface status and configuration.</li>
+						<li><text class="font-weight-bold text-success">show ip route</text>: Displays the IP routing table.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: DHCP</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->DHCP</text></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+					<h5>Lab: DHCP II</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Connectivity->DHCP II</text></li>
+						<li>Approximate duration: 20 minutes</li>
+					</ul>
+					<h4>Command Reference: DHCP Relay Agents</h4>
+					<p>This section contains the commands you will use in the next lab.</p>
+					<h5>DHCP Relay Agents</h5>
+					<p>The following commands are used in the DHCP Relay Agents I lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">default-router &lt;address&gt;</text>: Specifies the IP address of a default gateway for DHCP clients.</li>
+						<li><text class="font-weight-bold text-success">dns-server</text>: Specifies the DNS OP servers available to a DHCP client.</li>
+						<li><text class="font-weight-bold text-success">domain-name &lt;domain&gt;</text>: Specifies the domain name for a DHCP client.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">ip address dhcp</text>: Configures a router as a DHCP client.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /ip dhcp</text>: Used in NetSim to configure a workstation to obtain IP addressing information from a DHCP server.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp client lease &lt;days&gt; &lt;hours&gt; &lt;minutes&gt; | infinite</text>: Requests a custom lease duration for DHCP clients.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp excluded-address &lt;ip-address&gt; &lt;last-ip-address&gt;</text>: Configures a range of excluded addresses.</li>
+						<li><text class="font-weight-bold text-success">[no] ip dhcp pool &lt;pool-name&gt;</text>: Creates an IP address pool. The <text class="font-weight-bold text-success">no</text> form removes the specified address pool.</li>
+						<li><text class="font-weight-bold text-success">ip helper-address &lt;ip-address&gt;</text>: Configures a DHCP relay agent for a particular interface.</li>
+						<li><text class="font-weight-bold text-success">lease  &lt;days&gt; &lt;hours&gt; &lt;minutes&gt; | infinite</text>: Configures a custom lease duration for DHCP.</li>
+						<li><text class="font-weight-bold text-success">network  &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Enables a DHCP server for a particular network segment.</li>
+						<li><text class="font-weight-bold text-success">[no] service dhcp</text>: Configures the router to respond to any DHCP requests. The <text class="font-weight-bold text-success">no</text> form disables the DHCP service and prevents a DHCP relay agent from forwarding DHCP requests.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp binding</text>: Displays active  DHCP-assigned IP addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp pool</text>: Displays a basic summary of a configured DHCP pool.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp server statistics</text>: Displays general operating statistics for a DHCP server process.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+					</ul>
+					<h5>Lab: DHCP Relay Agents I</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->IP Services->DHCP Relay Agents I</text></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h4>Command Reference: VLSM Practice</h4>
+					<p>This section contains the commands you will use in the next set of labs.</p>
+					<h5>VLSM Practice</h5>
+					<p>The following commands are used in the DHCP Relay Agents I lab:</p>
+					<ul>
+						<li><text class="font-weight-bold text-success">configure terminal</text>: Enters global configuration mode from privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">default-router &lt;address&gt;</text>: Specifies the IP address of a default gateway for DHCP clients.</li>
+						<li><text class="font-weight-bold text-success">domain-name &lt;domain&gt;</text>: Specifies the domain name for a DHCP client.</li>
+						<li><text class="font-weight-bold text-success">enable</text>: Enters privileged EXEC mode.</li>
+						<li><text class="font-weight-bold text-success">end</text>: Ends and exits configuration mode.</li>
+						<li><text class="font-weight-bold text-success">exit</text>: Exits one level in the menu structure.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt;</text>: Changes from global configuration mode to interface configuration mode.</li>
+						<li><text class="font-weight-bold text-success">interface &lt;type&gt; &lt;number&gt; &lt;subinterface-id&gt;</text>: Creates a subinterface.</li>
+						<li><text class="font-weight-bold text-success">ip address &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Assigns an IP address to an interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /all</text>: Used in NetSim to display the IP address and MAC address on a workstation.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /dg &lt;ip-address&gt;</text>: Used in NetSim to assign a default gateway IP address to a workstation interface.</li>
+						<li><text class="font-weight-bold text-secondary">ipconfig /ip &lt;ip-address&gt; &lt;subnetmask&gt;</text>: Used in NetSim to assign an IP address and subnet mask to a workstation interface.</li>
+						<li><text class="font-weight-bold text-success">ip dhcp excluded-address &lt;ip-address&gt; &lt;last-ip-address&gt;</text>: Configures a range of excluded addresses.</li>
+						<li><text class="font-weight-bold text-success">[no] ip dhcp pool &lt;pool-name&gt;</text>: Creates an IP address pool. The <text class="font-weight-bold text-success">no</text> form removes the specified address pool.</li>
+						<li><text class="font-weight-bold text-success">network  &lt;ip-address&gt; &lt;subnet-mask&gt;</text>: Enables a DHCP server for a particular network segment.</li>
+						<li><text class="font-weight-bold text-success">ping &lt;ip-address&gt;</text>: Sends an Internet Control Message Protocol (ICMP) echo request to the specified address.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp binding</text>: Displays active  DHCP-assigned IP addresses.</li>
+						<li><text class="font-weight-bold text-success">show ip dhcp pool</text>: Displays a basic summary of a configured DHCP pool.</li>
+						<li><text class="font-weight-bold text-success">show running-config</text>: Displays the active configuration file.</li>
+						<li><text class="font-weight-bold text-success">show vlan brief</text>: Displays parameters for all VLANs - contains the VLAN's name, status, and ports associated with it.</li>
+						<li><text class="font-weight-bold text-success">[no] shutdown</text>: Disables an interface. The <text class="font-weight-bold text-success">no</text> form enables an interface.</li>
+					</ul>
+					<h5>Lab: VLSM Practice I-D</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->VLSM Practice I-D</text></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h5>Lab: VLSM Practice II-D</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->VLSM Practice II-D</text></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+					<h5>Lab: VLSM Practice III-D</h5>
+					<p>Here is the information you need to complete this lab:</p>
+					<ul>
+						<li>Path to lab: <text class="font-weight-bold">CIS-NS-200301-01->Network Fundamentals->VLSM Practice III-D</text></li>
+						<li>Approximate duration: 15 minutes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<footer>
+			<div class="container">
+				<p class="text-center">Copyright (c) 2020, JPRRO</p>
+			</div>
+		</footer>
+	</body>
+</html>
